@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+public class PlayerJumpState : IState
+{
+    private PlayerFSM playerFSM;
+    private PlayerParameters parameters;
+
+    private Vector2 lastInput = Vector2.zero;
+
+    public PlayerJumpState(PlayerFSM playerFSM)
+    {
+        this.playerFSM = playerFSM;
+        this.parameters = playerFSM.parameters;
+    }
+
+    public void OnEnter()
+    {
+        parameters.animator.enabled = true;
+        parameters.rb.AddForce(Vector2.up * parameters.jumpForce);
+        Debug.Log("Jump");
+
+    }
+
+    public void OnExit()
+    {
+
+    }
+
+    public void OnFixedUpdate()
+    {
+        parameters.rb.linearVelocity = new Vector2(parameters.moveInput.x * parameters.moveSpeed, parameters.rb.linearVelocity.y);
+        if (parameters.moveInput.x > 0)
+        {
+            playerFSM.transform.localScale = new Vector3(-1, 1, 1) * 25;
+        }
+        else if (parameters.moveInput.x < 0)
+        {
+            playerFSM.transform.localScale = new Vector3(1, 1, 1) * 25;
+        }
+    }
+
+    public void OnUpdate()
+    {
+
+    }
+
+}

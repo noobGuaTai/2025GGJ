@@ -1,0 +1,161 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json;
+using Unity.Mathematics;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public enum PlayerStateType
+{
+    Idle,
+    Move,
+    Jump
+}
+
+
+[Serializable]
+public class PlayerParameters
+{
+    public Vector2 moveInput;
+
+
+    [Header("Player Components")]
+    public Rigidbody2D rb;
+    public Camera mainCamera;
+    public Animator animator;
+    public SpriteRenderer sr;
+    [Tooltip("Sprites used during walking animations.")]
+    public Sprite[] walkSprites;
+
+    [Header("Audio Settings")]
+    public AudioSource dieAudio;
+    public AudioSource winAudio;
+    public AudioSource walkAudio;
+    public AudioSource combatAudio;
+    public AudioSource shootAudio;
+    public AudioSource underAttackAudio;
+    internal bool fireInput;
+    public float shootTimer;
+    public float shootCooldown;
+    public float moveSpeed = 10;
+    public int health;
+    public float jumpForce = 100f;
+    public GameObject bubble;
+}
+
+
+public class PlayerFSM : MonoBehaviour
+{
+    public PlayerParameters parameters;
+    public IState currentState;
+    public Dictionary<PlayerStateType, IState> state = new Dictionary<PlayerStateType, IState>();
+
+    private Tween tween;
+
+    void Awake()
+    {
+        parameters.rb = GetComponent<Rigidbody2D>();
+        parameters.animator = GetComponentInChildren<Animator>();
+        parameters.sr = GetComponent<SpriteRenderer>();
+    }
+
+
+    void Start()
+    {
+        state.Add(PlayerStateType.Idle, new PlayerIdleState(this));
+        state.Add(PlayerStateType.Move, new PlayerMoveState(this));
+        state.Add(PlayerStateType.Jump, new PlayerJumpState(this));
+        tween = GetComponent<Tween>();
+        ChangeState(PlayerStateType.Idle);
+
+    }
+
+    void Update()
+    {
+        currentState.OnUpdate();
+
+        if (parameters.health <= 0)
+        {
+            // Die();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        currentState.OnFixedUpdate();
+        Mathf.Clamp(parameters.shootTimer -= Time.fixedDeltaTime, 0, float.MaxValue);
+    }
+
+    public void ChangeState(PlayerStateType stateType)
+    {
+        if (currentState != null)
+        {
+            currentState.OnExit();
+        }
+        currentState = state[stateType];
+        currentState.OnEnter();
+    }
+
+    void Die()
+    {
+        // parameters.animator.Play("Die");
+        GetComponent<Collider2D>().enabled = false;
+        this.enabled = false;
+        // parameters.dieAudio.Play();
+    }
+
+    public void PlayerMove(InputAction.CallbackContext context)
+    {
+        parameters.moveInput = context.ReadValue<Vector2>();
+        // parameters.walkAudio.Play();
+
+    }
+
+    public void PlayerFire(InputAction.CallbackContext context)
+    {
+        parameters.fireInput = context.ReadValueAsButton();
+        Fire();
+    }
+
+
+    void Fire()
+    {
+        if (parameters.fireInput && parameters.shootTimer <= 0f)
+        {
+            // if (!parameters.shootAudio.isPlaying)
+            //     parameters.shootAudio.Play();
+            Invoke("InstantiateBubble", 1f);
+            parameters.shootTimer = parameters.shootCooldown;
+        }
+        else
+        {
+            parameters.fireInput = false;
+        }
+    }
+
+    void InstantiateBubble()
+    {
+        var b = Instantiate(parameters.bubble, transform.position + Vector3.left * transform.localScale.x * 1f, Quaternion.identity);
+        b.transform.localScale = new Vector3(25, 25, 25);
+        b.transform.SetParent(transform.Find("Root/Bubbles"));
+    }
+
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") && currentState == state[PlayerStateType.Jump])
+        {
+            ChangeState(PlayerStateType.Idle);
+        }
+    }
+
+
+    public void Reset()
+    {
+
+    }
+
+}
