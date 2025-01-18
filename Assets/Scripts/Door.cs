@@ -1,14 +1,14 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Door : MonoBehaviour
 {
     [Header("Need Set")]
     public DoorKey needKey = DoorKey.None;
-    public DoorButton doorButton;
-    public bool isOpen;
-    public bool fullyOpened;
-    Tween tween;
+    public List<DoorButton> doorButtons = new();
+    public List<DoorTrader> doorTraders = new();
     [Serializable]
     public enum DoorKey{
         None,
@@ -16,6 +16,9 @@ public class Door : MonoBehaviour
         Red
     }
     [Header("Do Not Set")]
+    public bool isOpen;
+    public bool fullyOpened;
+    Tween tween;
     public PlayerInventory playerInventory;
     GameObject doorInnerMask;
     public void Start()
@@ -28,7 +31,7 @@ public class Door : MonoBehaviour
     public bool Open(){
         if (needKey != DoorKey.None && !playerInventory.hasKey.Contains(needKey))
             return OpenFailed();
-        if (doorButton != null && !doorButton.isPressing)
+        if (doorButtons.All(x=>x.isPressing) && doorTraders.All(x=>x.deal))
             return OpenFailed();
         return OpenSuccess();
     }

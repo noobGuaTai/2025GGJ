@@ -208,6 +208,10 @@ public class PlayerFSM : MonoBehaviour
             ChangeState(PlayerStateType.Idle);
         }
 
+        if (other.gameObject.layer == LayerMask.NameToLayer("DoorButton") && currentState == state[PlayerStateType.Jump])
+        {
+            ChangeState(PlayerStateType.Idle);
+        }
     }
 
 
