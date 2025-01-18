@@ -106,10 +106,8 @@ public class PlayerFSM : MonoBehaviour
 
     void Die()
     {
-        // parameters.animator.Play("Die");
-        GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;
-        // parameters.dieAudio.Play();
+        // Time.timeScale = 0;
+        GameManager.Instance.ResetGame();
     }
 
     public void PlayerMove(InputAction.CallbackContext context)
@@ -128,7 +126,7 @@ public class PlayerFSM : MonoBehaviour
 
     void Fire()
     {
-        if (parameters.fireInput && parameters.shootTimer <= 0f)
+        if (parameters.fireInput && parameters.shootTimer <= 0f && parameters.existingBubble == null)
         {
             // if (!parameters.shootAudio.isPlaying)
             //     parameters.shootAudio.Play();
@@ -170,8 +168,8 @@ public class PlayerFSM : MonoBehaviour
     void InstantiateBubble()
     {
         var b = Instantiate(parameters.bubble, transform.position + Vector3.left * transform.localScale.x * 1f, Quaternion.identity);
-        b.transform.localScale = new Vector3(25, 25, 25);
-        b.transform.SetParent(transform.Find("/Root/Bubbles"));
+        // b.transform.localScale = new Vector3(25, 25, 25);
+        b.transform.SetParent(transform.Find("/Root/Bubbles"), false);
         b.GetComponent<Bubble>().bubbleState = Bubble.BubbleState.hard;
         parameters.existingBubble = b;
     }
@@ -208,13 +206,11 @@ public class PlayerFSM : MonoBehaviour
             ChangeState(PlayerStateType.Idle);
         }
 
+        if (other.gameObject.layer == LayerMask.NameToLayer("Nail") || other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            Die();
+        }
     }
 
-
-
-    public void Reset()
-    {
-
-    }
 
 }

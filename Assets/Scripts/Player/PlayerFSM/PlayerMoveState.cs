@@ -18,6 +18,7 @@ public class PlayerMoveState : IState
     public void OnEnter()
     {
         Debug.Log("Move");
+        parameters.animator.Play("run");
     }
 
     public void OnExit()
@@ -30,19 +31,19 @@ public class PlayerMoveState : IState
         parameters.rb.linearVelocity = new Vector2(parameters.moveInput.x * parameters.moveSpeed, parameters.rb.linearVelocity.y);
         // if (parameters.moveInput.x > 0)
         // {
-        //     playerFSM.parameters.sr.sprite = parameters.walkSprites[0];
-        //     parameters.animator.Play("WalkRight");
+        //     // playerFSM.parameters.sr.sprite = parameters.walkSprites[0];
+        //     // parameters.animator.Play("WalkRight");
         // }
-        // else if (parameters.moveInput.x < 0)
-        // {
-        //     playerFSM.parameters.sr.sprite = parameters.walkSprites[1];
-        //     parameters.animator.Play("WalkLeft");
-        // }
-        // else if (parameters.moveInput.y < 0)
-        // {
-        //     playerFSM.parameters.sr.sprite = parameters.walkSprites[3];
-        //     parameters.animator.Play("WalkDown");
-        // }
+        // // else if (parameters.moveInput.x < 0)
+        // // {
+        //     // playerFSM.parameters.sr.sprite = parameters.walkSprites[1];
+        //     // parameters.animator.Play("WalkLeft");
+        // // }
+        // // else if (parameters.moveInput.y < 0)
+        // // {
+        // //     playerFSM.parameters.sr.sprite = parameters.walkSprites[3];
+        // //     parameters.animator.Play("WalkDown");
+        // // }
         if (parameters.moveInput.x > 0)
         {
             playerFSM.transform.localScale = new Vector3(-1, 1, 1);
