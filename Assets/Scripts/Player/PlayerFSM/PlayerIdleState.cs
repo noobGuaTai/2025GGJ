@@ -15,7 +15,7 @@ public class PlayerIdleState : IState
 
     public void OnEnter()
     {
-        parameters.animator.enabled = false;
+        parameters.animator.Play("idle");
         Debug.Log("Idle");
     }
 

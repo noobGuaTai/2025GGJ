@@ -14,17 +14,17 @@ TagManager:
   - Ground
   - Bubble
   - Nail
-  - Stone
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
   - DoorButton
-  - Coin
-  - Key
   - Door
+  - Stone
+  - Key
   - DoorTrader
+  - Coin
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
