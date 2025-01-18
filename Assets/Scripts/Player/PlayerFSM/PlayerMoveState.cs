@@ -45,11 +45,11 @@ public class PlayerMoveState : IState
         // }
         if (parameters.moveInput.x > 0)
         {
-            playerFSM.transform.localScale = new Vector3(-1, 1, 1) * 25;
+            playerFSM.transform.localScale = new Vector3(-1, 1, 1);
         }
         else if (parameters.moveInput.x < 0)
         {
-            playerFSM.transform.localScale = new Vector3(1, 1, 1) * 25;
+            playerFSM.transform.localScale = new Vector3(1, 1, 1);
         }
 
         lastInput = parameters.moveInput;

@@ -44,6 +44,11 @@ public class PlayerParameters
     public int health;
     public float jumpForce = 100f;
     public GameObject bubble;
+    internal bool blowInput;
+    public Collider2D blowArea;
+    internal float blowPressStartTime = 0f;
+    public bool isBlowing = false;
+    public GameObject existingBubble;
 }
 
 
@@ -136,11 +141,58 @@ public class PlayerFSM : MonoBehaviour
         }
     }
 
+    public void Playerblow(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            parameters.isBlowing = true;
+            parameters.blowPressStartTime = Time.time;
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            if (parameters.isBlowing)
+            {
+                float pressDuration = Math.Clamp(Time.time - parameters.blowPressStartTime, 0, 1);
+                parameters.isBlowing = false;
+                blow(pressDuration);
+            }
+        }
+    }
+
+
+    void blow(float duration)
+    {
+        parameters.blowArea.GetComponent<Blow>().blowForce = duration * 1000f;
+        parameters.blowArea.gameObject.SetActive(true);
+    }
+
+
     void InstantiateBubble()
     {
         var b = Instantiate(parameters.bubble, transform.position + Vector3.left * transform.localScale.x * 1f, Quaternion.identity);
         b.transform.localScale = new Vector3(25, 25, 25);
-        b.transform.SetParent(transform.Find("Root/Bubbles"));
+        b.transform.SetParent(transform.Find("/Root/Bubbles"));
+        b.GetComponent<Bubble>().bubbleState = Bubble.BubbleState.hard;
+        parameters.existingBubble = b;
+    }
+
+    public void BubbleBomb(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            if (parameters.existingBubble != null)
+            {
+                foreach (Transform child in parameters.existingBubble.transform)
+                {
+                    child.SetParent(transform.Find("/Root"), false);
+                    child.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+                    child.GetComponent<Rigidbody2D>().angularVelocity = 0f;
+                    child.transform.position = parameters.existingBubble.transform.position;
+                }
+            }
+            Destroy(parameters.existingBubble);
+            parameters.existingBubble = null;
+        }
     }
 
 
@@ -150,7 +202,14 @@ public class PlayerFSM : MonoBehaviour
         {
             ChangeState(PlayerStateType.Idle);
         }
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Bubble") && currentState == state[PlayerStateType.Jump])
+        {
+            ChangeState(PlayerStateType.Idle);
+        }
+
     }
+
 
 
     public void Reset()

@@ -1,15 +1,27 @@
 using UnityEngine;
 
+
 public class Bubble : MonoBehaviour
 {
+    public enum BubbleState
+    {
+        soft,
+        hard
+    }
     public Animator animator;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
+    public BubbleState bubbleState = BubbleState.soft;
+    public Collider2D colliders;
+    void Awake()
+    {
+        colliders = GetComponent<Collider2D>();
+    }
 
     void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        Invoke("Escape", 1f);
+        colliders.isTrigger = bubbleState == BubbleState.soft ? true : false;
     }
 
 
@@ -18,21 +30,17 @@ public class Bubble : MonoBehaviour
 
     }
 
-    void Escape()
-    {
-        transform.SetParent(transform.Find("/Root/Bubbles"));
-    }
 
-    void Swallow(GameObject g)
-    {
+    // void Swallow(GameObject g)
+    // {
+    //     g.transform.SetParent(transform, false);
+    // }
 
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.GetComponent<SwallowedObject>() != null)
+        if (other.gameObject.GetComponent<SwallowedObject>() != null)
         {
-            Swallow(other.gameObject);
+            other.gameObject.GetComponent<SwallowedObject>().OnLoad(this);
         }
     }
 }

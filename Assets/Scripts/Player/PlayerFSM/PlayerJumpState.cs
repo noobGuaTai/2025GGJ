@@ -33,11 +33,11 @@ public class PlayerJumpState : IState
         parameters.rb.linearVelocity = new Vector2(parameters.moveInput.x * parameters.moveSpeed, parameters.rb.linearVelocity.y);
         if (parameters.moveInput.x > 0)
         {
-            playerFSM.transform.localScale = new Vector3(-1, 1, 1) * 25;
+            playerFSM.transform.localScale = new Vector3(-1, 1, 1);
         }
         else if (parameters.moveInput.x < 0)
         {
-            playerFSM.transform.localScale = new Vector3(1, 1, 1) * 25;
+            playerFSM.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
