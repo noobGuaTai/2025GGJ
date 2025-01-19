@@ -10,6 +10,7 @@ public class BossController : MonoBehaviour
     public Vector2 initPos;
     private float shootTimer = 0f;
     public float cooldown = 3f;
+    public GameObject book;
 
     void Start()
     {
@@ -34,7 +35,7 @@ public class BossController : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-
+            book.SetActive(true);
         }
     }
 

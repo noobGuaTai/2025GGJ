@@ -14,6 +14,7 @@ public class Bubble : MonoBehaviour
     public Collider2D colliders;
     public GameObject swallowedObject;
     public bool isDestoryOnGround = false;
+    public AudioSource destory;
     void Awake()
     {
         colliders = GetComponent<Collider2D>();
@@ -39,6 +40,7 @@ public class Bubble : MonoBehaviour
         swallowedObject = null;
         animator.Play("bomb");
         colliders.enabled = false;
+        destory.Play();
         Destroy(gameObject, 0.4f);
     }
 

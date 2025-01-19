@@ -194,6 +194,7 @@ MonoBehaviour:
   moveSpeed: 50
   player: {fileID: 0}
   initPos: {x: 0, y: 0}
+  key: {fileID: 0}
 --- !u!61 &8482787136885981979
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -238,7 +239,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 92.25688, y: 17}
+  m_Size: {x: 166.29, y: 17}
   m_EdgeRadius: 0
 --- !u!95 &-8929536887990909823
 Animator:

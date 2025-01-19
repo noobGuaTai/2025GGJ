@@ -34,7 +34,7 @@ public class PlayerParameters
     public AudioSource dieAudio;
     public AudioSource winAudio;
     public AudioSource walkAudio;
-    public AudioSource combatAudio;
+    public AudioSource blowAudio;
     public AudioSource shootAudio;
     public AudioSource underAttackAudio;
     internal bool fireInput;
@@ -50,6 +50,8 @@ public class PlayerParameters
     public bool isBlowing = false;
     public GameObject existingBubble;
     public Animator bubblingAnimator;
+
+    internal float initGravityScale = 50;
 }
 
 
@@ -66,6 +68,7 @@ public class PlayerFSM : MonoBehaviour
         parameters.rb = GetComponent<Rigidbody2D>();
         parameters.animator = GetComponentInChildren<Animator>();
         parameters.sr = GetComponent<SpriteRenderer>();
+        parameters.initGravityScale = parameters.rb.gravityScale;
     }
 
 
@@ -108,7 +111,25 @@ public class PlayerFSM : MonoBehaviour
     void Die()
     {
         // Time.timeScale = 0;
+        parameters.rb.linearVelocity = Vector2.zero;
+        ChangeState(PlayerStateType.Idle);
+        transform.rotation = Quaternion.Euler(0, 0, -90 * transform.localScale.x);
+        enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        parameters.rb.gravityScale = 0;
+        UIManager.Instance.CancelInvoke("CloseDialog");
+        Invoke("Restore", 1f);
+    }
+
+    void Restore()
+    {
         GameManager.Instance.ResetGame();
+        enabled = true;
+        GetComponent<Collider2D>().enabled = true;
+        parameters.rb.gravityScale = parameters.initGravityScale;
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        UIManager.Instance.ShowDialog($"enemy{GameManager.Instance.level}");
+        print(1);
     }
 
     public void PlayerMove(InputAction.CallbackContext context)
@@ -131,8 +152,6 @@ public class PlayerFSM : MonoBehaviour
     {
         if (parameters.fireInput && parameters.shootTimer <= 0f && parameters.existingBubble == null)
         {
-            // if (!parameters.shootAudio.isPlaying)
-            //     parameters.shootAudio.Play();
             parameters.bubblingAnimator.Play("bubbling");
             Invoke("InstantiateBubble", 0.5f);
             parameters.shootTimer = parameters.shootCooldown;
@@ -171,6 +190,8 @@ public class PlayerFSM : MonoBehaviour
 
     void InstantiateBubble()
     {
+        if (!parameters.shootAudio.isPlaying)
+            parameters.shootAudio.Play();
         var b = Instantiate(parameters.bubble, transform.position + Vector3.left * transform.localScale.x * 23f, Quaternion.identity);
         // b.transform.localScale = new Vector3(25, 25, 25);
         // b.transform.SetParent(transform.Find("/Root/Bubbles"), false);
@@ -193,20 +214,24 @@ public class PlayerFSM : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground") && currentState == state[PlayerStateType.Jump])
         {
             ChangeState(PlayerStateType.Idle);
+            parameters.rb.linearVelocity = Vector2.zero;
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Bubble") && currentState == state[PlayerStateType.Jump])
         {
             ChangeState(PlayerStateType.Idle);
+            parameters.rb.linearVelocity = Vector2.zero;
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("DoorButton") && currentState == state[PlayerStateType.Jump])
         {
             ChangeState(PlayerStateType.Idle);
+            parameters.rb.linearVelocity = Vector2.zero;
         }
         if (other.gameObject.layer == LayerMask.NameToLayer("Nail") || other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             Die();
+            parameters.rb.linearVelocity = Vector2.zero;
         }
     }
 

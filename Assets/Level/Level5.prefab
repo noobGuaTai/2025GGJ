@@ -2419,7 +2419,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6346718712147560704, guid: 802b73f298c1fdd43bf41c1b80ebe343, type: 3}
       propertyPath: m_Name
-      value: DoorTrader
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 9026622585820448945, guid: 802b73f298c1fdd43bf41c1b80ebe343, type: 3}
       propertyPath: m_LocalPosition.x
