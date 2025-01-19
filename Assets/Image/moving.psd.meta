@@ -342,7 +342,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 184}
     spritePosition: {x: 73, y: 99}
-  - name: "\u56FE\u5C42 3 \u62F7\u8D1D 3"
+  - name: enemy2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -364,7 +364,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 78, y: 4}
     spritePosition: {x: 66, y: 24}
-  - name: "\u56FE\u5C42 3 \u62F7\u8D1D"
+  - name: enemy1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0

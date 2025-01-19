@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6663174027561115096}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.18803072, y: -2.8345065, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -80,8 +80,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.41960785}
+  m_Sprite: {fileID: -3557995642865903261, guid: be0b036b1cff8c241a2d49eda49ba913, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -106,7 +106,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 1
   m_AngularDamping: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -148,12 +148,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 15.25
 --- !u!114 &-5795823984512168547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,8 +168,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   rb: {fileID: 0}
-  bubbleState: 0
+  bubbleState: 1
   colliders: {fileID: 0}
+  swallowedObject: {fileID: 0}
+  isDestoryOnGround: 0
 --- !u!95 &8361603716610868231
 Animator:
   serializedVersion: 7
@@ -180,7 +182,7 @@ Animator:
   m_GameObject: {fileID: 6663174027561115096}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 82ae7308e526a0d4f8ffcddcdcc00b50, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

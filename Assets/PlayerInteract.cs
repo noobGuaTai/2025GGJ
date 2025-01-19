@@ -5,26 +5,37 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
 {
-    HashSet<Collision2D> interact;
+    HashSet<Collider2D> interact = new();
     string[] layers = { "DoorTrader", "Door" };
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if(layers.ToList().Any(x => LayerMask.NameToLayer(x) == other.gameObject.layer)){
+        if (layers.ToList().Any(x => LayerMask.NameToLayer(x) == other.gameObject.layer))
+        {
             interact.Add(other);
         }
     }
-    public void OnInteract(InputAction.CallbackContext context){
-        if(context.action.IsPressed()){
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (interact.Contains(other))
+            interact.Remove(other);
+    }
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.action.IsPressed())
+        {
             interact.ToList().ForEach(x =>
             {
-                if( x.gameObject.TryGetComponent<DoorTrader>(out var dt)){
+                if (x.gameObject.TryGetComponent<DoorTrader>(out var dt))
+                {
                     dt.Trade();
                 }
-                if( x.gameObject.TryGetComponent<Door>(out var dr)){
+                if (x.gameObject.TryGetComponent<Door>(out var dr))
+                {
                     dr.TryEnter();
                 }
             });
 
-        }   
+        }
     }
 }

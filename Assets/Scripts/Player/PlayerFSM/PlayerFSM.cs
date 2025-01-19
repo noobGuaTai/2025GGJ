@@ -49,6 +49,7 @@ public class PlayerParameters
     internal float blowPressStartTime = 0f;
     public bool isBlowing = false;
     public GameObject existingBubble;
+    public Animator bubblingAnimator;
 }
 
 
@@ -119,6 +120,8 @@ public class PlayerFSM : MonoBehaviour
 
     public void PlayerFire(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance.level == 0)
+            return;
         parameters.fireInput = context.ReadValueAsButton();
         Fire();
     }
@@ -130,7 +133,8 @@ public class PlayerFSM : MonoBehaviour
         {
             // if (!parameters.shootAudio.isPlaying)
             //     parameters.shootAudio.Play();
-            Invoke("InstantiateBubble", 1f);
+            parameters.bubblingAnimator.Play("bubbling");
+            Invoke("InstantiateBubble", 0.5f);
             parameters.shootTimer = parameters.shootCooldown;
         }
         else
@@ -167,28 +171,18 @@ public class PlayerFSM : MonoBehaviour
 
     void InstantiateBubble()
     {
-        var b = Instantiate(parameters.bubble, transform.position + Vector3.left * transform.localScale.x * 1f, Quaternion.identity);
+        var b = Instantiate(parameters.bubble, transform.position + Vector3.left * transform.localScale.x * 23f, Quaternion.identity);
         // b.transform.localScale = new Vector3(25, 25, 25);
-        b.transform.SetParent(transform.Find("/Root/Bubbles"), false);
+        // b.transform.SetParent(transform.Find("/Root/Bubbles"), false);
         b.GetComponent<Bubble>().bubbleState = Bubble.BubbleState.hard;
         parameters.existingBubble = b;
     }
 
     public void BubbleBomb(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started && parameters.existingBubble != null)
         {
-            if (parameters.existingBubble != null)
-            {
-                foreach (Transform child in parameters.existingBubble.transform)
-                {
-                    child.SetParent(transform.Find("/Root"), false);
-                    child.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
-                    child.GetComponent<Rigidbody2D>().angularVelocity = 0f;
-                    child.transform.position = parameters.existingBubble.transform.position;
-                }
-            }
-            Destroy(parameters.existingBubble);
+            parameters.existingBubble.GetComponent<Bubble>().Break();
             parameters.existingBubble = null;
         }
     }
