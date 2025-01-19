@@ -36,6 +36,7 @@ public class PlayerParameters
     public AudioSource walkAudio;
     public AudioSource blowAudio;
     public AudioSource shootAudio;
+    public AudioSource coinAudio;
     public AudioSource underAttackAudio;
     internal bool fireInput;
     public float shootTimer;
@@ -110,7 +111,8 @@ public class PlayerFSM : MonoBehaviour
 
     void Die()
     {
-        // Time.timeScale = 0;
+        if (!parameters.dieAudio.isPlaying)
+            parameters.dieAudio.Play();
         parameters.rb.linearVelocity = Vector2.zero;
         ChangeState(PlayerStateType.Idle);
         transform.rotation = Quaternion.Euler(0, 0, -90 * transform.localScale.x);

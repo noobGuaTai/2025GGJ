@@ -571,6 +571,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1577220268}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &552706730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7076440021898726736, guid: af9677cb4b8090744a639dd11f968bfe, type: 3}
+  m_PrefabInstance: {fileID: 2533690539570801326}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &557303761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -811,6 +816,7 @@ GameObject:
   - component: {fileID: 978125389}
   - component: {fileID: 978125388}
   - component: {fileID: 978125390}
+  - component: {fileID: 978125391}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -860,6 +866,7 @@ MonoBehaviour:
   worldOffset: {x: -30, y: 0, z: 0}
   screenOffset: {x: 0, y: 200}
   uiCanvas: {fileID: 1580320092}
+  gameOverText: {fileID: 552706730}
 --- !u!114 &978125389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -904,6 +911,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1433c778395d4c04098a0cb6db0603dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &978125391
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978125386}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c32172297fcc3d24ca7b292bf404544a, type: 3}
+  m_Resource: {fileID: 8300000, guid: c32172297fcc3d24ca7b292bf404544a, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.35
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &1002124011 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 582763939643860816, guid: af9677cb4b8090744a639dd11f968bfe, type: 3}
@@ -3601,9 +3705,9 @@ Transform:
   - {fileID: 1650364350}
   - {fileID: 462672797}
   - {fileID: 978125387}
-  - {fileID: 1580320089}
   - {fileID: 1997363905}
   - {fileID: 492087057}
+  - {fileID: 1580320089}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1577864445 stripped
@@ -4661,6 +4765,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 6833955433682024793, guid: af9677cb4b8090744a639dd11f968bfe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 978125389}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

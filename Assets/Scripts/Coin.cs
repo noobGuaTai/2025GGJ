@@ -10,6 +10,8 @@ public class Coin : MonoBehaviour
             var player = other.gameObject;
             var playerInv = player.GetComponent<PlayerInventory>();
             playerInv.coins += amount;
+            if (player.GetComponent<PlayerFSM>().parameters.coinAudio.isPlaying == false)
+                player.GetComponent<PlayerFSM>().parameters.coinAudio.Play();
             Destroy(gameObject);
         }
     }

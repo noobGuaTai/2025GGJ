@@ -50,6 +50,8 @@ public class GameManager : MonoSingleton<GameManager>
         UIManager.Instance.level5Helper.SetActive(level == 5);
         UIManager.Instance.CancelInvoke("CloseDialog");
         UIManager.Instance.ShowDialog($"enemy{level}");
+        if (level == 6)
+            UIManager.Instance.CloseDialog();
 
 
     }
@@ -81,5 +83,19 @@ public class GameManager : MonoSingleton<GameManager>
         UIManager.Instance.mainPage.SetActive(true);
         UIManager.Instance.playerUI.SetActive(false);
         UIManager.Instance.gameOver.SetActive(false);
+    }
+
+    public void CloseGame()
+    {
+        // 打印日志（用于测试和调试）
+        Debug.Log("Closing the game...");
+
+        // 在编辑器中停止运行（仅在编辑模式有效）
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+    // 关闭应用程序
+    Application.Quit();
+#endif
     }
 }

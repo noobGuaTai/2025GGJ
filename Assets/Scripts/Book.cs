@@ -8,6 +8,7 @@ public class Book : MonoBehaviour
         {
             GameManager.Instance.getedBook = true;
             UIManager.Instance.gameOver.SetActive(true);
+            UIManager.Instance.Invoke("RollUpGameOver", 5f);
         }
     }
 }

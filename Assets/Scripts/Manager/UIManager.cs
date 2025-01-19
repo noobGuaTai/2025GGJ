@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -24,6 +25,8 @@ public class UIManager : MonoSingleton<UIManager>
     public Vector2 screenOffset = new Vector2(0, 30); // (x, y) in pixels
 
     public Canvas uiCanvas;
+
+    public GameObject gameOverText;
 
     private Camera mainCamera;
     private RectTransform canvasRectTransform;
@@ -174,5 +177,36 @@ public class UIManager : MonoSingleton<UIManager>
             playerDialog.gameObject.SetActive(false);
         if (enemyDialog != null && enemyDialog.gameObject.activeSelf)
             enemyDialog.gameObject.SetActive(false);
+    }
+
+    public void RollUpGameOver()
+    {
+        StartCoroutine(RollUpGameOverCoroutine());
+    }
+
+    private IEnumerator RollUpGameOverCoroutine()
+    {
+        float duration = 8f; // 持续时间为3秒
+        float elapsed = 0f;
+
+        RectTransform rectTransform = gameOverText.GetComponent<RectTransform>();
+        if (rectTransform == null)
+        {
+            Debug.LogError("RollUpGameOverCoroutine: gameOver 对象没有 RectTransform 组件。");
+            yield break;
+        }
+
+        Vector2 startPos = rectTransform.anchoredPosition;
+        Vector2 endPos = startPos + new Vector2(0, 1100f); // 向上移动1000像素
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+            rectTransform.anchoredPosition = Vector2.Lerp(startPos, endPos, t);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        rectTransform.anchoredPosition = endPos;
     }
 }
