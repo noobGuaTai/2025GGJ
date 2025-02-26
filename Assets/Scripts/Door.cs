@@ -10,7 +10,8 @@ public class Door : MonoBehaviour
     public List<DoorButton> doorButtons = new();
     public List<DoorTrader> doorTraders = new();
     [Serializable]
-    public enum DoorKey{
+    public enum DoorKey
+    {
         None,
         Yellow,
         Red
@@ -27,32 +28,40 @@ public class Door : MonoBehaviour
         tween = gameObject.AddComponent<Tween>();
         doorInnerMask = transform.Find("DoorMask").gameObject;
     }
-    
-    public bool Open(){
+
+    public bool Open()
+    {
         if (needKey != DoorKey.None && !playerInventory.hasKey.Contains(needKey))
             return OpenFailed();
-        if (doorButtons.All(x=>x.isPressing) && doorTraders.All(x=>x.deal))
-            return OpenFailed();
-        return OpenSuccess();
+        if (doorButtons.Count == 0 && doorTraders.Count == 0)
+            return OpenSuccess();
+        if (doorButtons.All(x => x.isPressing) && doorTraders.All(x => x.deal))
+            return OpenSuccess();
+        return OpenFailed();
     }
     public Vector3 startPos;
     public Vector3 toPos;
     void FixedUpdate()
     {
-        if(!isOpen)
+        if (!isOpen)
             Open();
     }
-    public bool OpenSuccess(){
+    public bool OpenSuccess()
+    {
         isOpen = true;
-        tween.AddTween(x => doorInnerMask.transform.localPosition = x, startPos, toPos, 1f).AddTween(_ => fullyOpened=true,0,0,0).Play();
+        tween.AddTween(x => doorInnerMask.transform.localPosition = x, startPos, toPos, 1f).AddTween(_ => fullyOpened = true, 0, 0, 0).Play();
+        playerInventory.hasKey.Remove(needKey);
         return true;
     }
-    public bool OpenFailed(){
+    public bool OpenFailed()
+    {
         return true;
     }
-    public bool TryEnter(){
-        if(!isOpen) 
+    public bool TryEnter()
+    {
+        if (!isOpen)
             return false;
+        GameManager.Instance.NextGame();
         return true;
     }
 

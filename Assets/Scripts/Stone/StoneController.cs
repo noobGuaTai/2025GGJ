@@ -21,7 +21,11 @@ public class StoneController : MonoBehaviour
     public void ResetSelf()
     {
         transform.position = initPos;
-        rb.linearVelocity = Vector2.zero;
-        rb.angularVelocity = 0f;
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
+
     }
 }

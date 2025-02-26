@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class EnemySwallowedObject : SwallowedObject
 {
+    public override void Start()
+    {
+        base.Start();
+    }
     public override void OnBreak(Bubble bubble)
     {
         base.OnBreak(bubble);

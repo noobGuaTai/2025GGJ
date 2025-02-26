@@ -12,6 +12,9 @@ public class Bubble : MonoBehaviour
     public Rigidbody2D rb;
     public BubbleState bubbleState = BubbleState.soft;
     public Collider2D colliders;
+    public GameObject swallowedObject;
+    public bool isDestoryOnGround = false;
+    public AudioSource destory;
     void Awake()
     {
         colliders = GetComponent<Collider2D>();
@@ -30,6 +33,17 @@ public class Bubble : MonoBehaviour
 
     }
 
+    public void Break()
+    {
+        if (swallowedObject != null)
+            swallowedObject?.GetComponent<SwallowedObject>().OnBreak(this);
+        swallowedObject = null;
+        animator.Play("bomb");
+        colliders.enabled = false;
+        destory.Play();
+        Destroy(gameObject, 0.4f);
+    }
+
 
     // void Swallow(GameObject g)
     // {
@@ -38,9 +52,15 @@ public class Bubble : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.GetComponent<SwallowedObject>() != null)
+        if (other.gameObject.GetComponent<SwallowedObject>() != null && swallowedObject == null)
         {
             other.gameObject.GetComponent<SwallowedObject>().OnLoad(this);
+            swallowedObject = other.gameObject;
+        }
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Nail") || (other.gameObject.layer == LayerMask.NameToLayer("Ground") && isDestoryOnGround))
+        {
+            Break();
         }
     }
 }
