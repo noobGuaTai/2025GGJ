@@ -19,7 +19,7 @@ public class GameManager : MonoSingleton<GameManager>
         if (enemy != null)
         {
             enemy.gameObject.SetActive(true);
-            enemy.TryGetComponent<EnemyController>(out var e);
+            enemy.TryGetComponent<EnemyFSM>(out var e);
             if (e != null)
                 e.ResetSelf();
         }
