@@ -47,13 +47,17 @@ public class ChickenManFSM : EnemyFSM
     {
         currentState.OnFixedUpdate();
     }
+    public bool TargetLayer(GameObject gameObject)
+        => gameObject.layer == LayerMask.NameToLayer("Player") || gameObject.layer == LayerMask.NameToLayer("Bubble");
     void OnTriggerEnter2D(Collider2D other)
     {
-        attackTarget.Add(other.gameObject);
+        if(TargetLayer(other.gameObject))
+            attackTarget.Add(other.gameObject);
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        attackTarget.Remove(other.gameObject);
+        if(TargetLayer(other.gameObject))
+            attackTarget.Remove(other.gameObject);
     }
 
     public void ChangeState(ChickenManStateType stateType)

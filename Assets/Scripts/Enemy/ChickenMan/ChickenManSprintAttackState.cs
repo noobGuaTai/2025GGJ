@@ -17,7 +17,15 @@ public class ChickenManSprintAttackState : IState
 
     public void OnEnter()
     {
-        
+        var tw = fSM.GetOrAddComponent<Tween>();
+        var curveTime = parameters.sprintAttackCurve.keys.Last().time;
+        tw.AddTween("sprint", x =>
+            fSM.rb.linearVelocityX =
+                    fSM.attackDirection * parameters.sprintAttackCurve.Evaluate(x)
+                    , 0.0f, curveTime, curveTime)
+                    .AddTween(_ => fSM.ChangeState(ChickenManStateType.Patrol), 0, 0, 0).Play();
+
+        return;
     }
 
     public void OnExit()
@@ -27,13 +35,6 @@ public class ChickenManSprintAttackState : IState
 
     public void OnFixedUpdate()
     {
-        var tw = fSM.GetOrAddComponent<Tween>();
-        var curveTime = parameters.sprintAttackCurve.keys.Last().time;
-        tw.AddTween("sprint", x =>
-            fSM.rb.MovePosition(new Vector2(
-                    fSM.attackDirection * parameters.sprintAttackCurve.Evaluate(x), 0)),
-                    0, curveTime, curveTime)
-                    .AddTween(_ => fSM.ChangeState(ChickenManStateType.Patrol), 0, 0, 0).Play();
     }
 
     public void OnUpdate()
