@@ -28,6 +28,7 @@ public class MushroomManPatrolState : IState
 
     public void OnUpdate()
     {
-
+        if (fSM.DetectPlayer(parameters.attackRange))
+            fSM.ChangeState(MushroomManStateType.Attack);
     }
 }

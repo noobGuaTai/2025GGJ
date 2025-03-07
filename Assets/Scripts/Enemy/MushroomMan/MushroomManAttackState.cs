@@ -15,7 +15,7 @@ public class MushroomManAttackState : IState
 
     public void OnEnter()
     {
-        
+
     }
 
     public void OnExit()
@@ -28,5 +28,9 @@ public class MushroomManAttackState : IState
 
     public void OnUpdate()
     {
+        fSM.ChasePlayer(parameters.chaseSpeed);
+        // if (fSM.DetectPlayer(parameters.detectRange))
     }
+
+
 }

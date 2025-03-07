@@ -56,7 +56,7 @@ public class PlayerParameters
 }
 
 
-public class PlayerFSM : MonoBehaviour
+public class PlayerFSM : MonoSingleton<PlayerFSM>
 {
     public PlayerParameters parameters;
     public IState currentState;
@@ -64,7 +64,7 @@ public class PlayerFSM : MonoBehaviour
 
     private Tween tween;
 
-    void Awake()
+    public override void Init()
     {
         parameters.rb = GetComponent<Rigidbody2D>();
         parameters.animator = GetComponentInChildren<Animator>();

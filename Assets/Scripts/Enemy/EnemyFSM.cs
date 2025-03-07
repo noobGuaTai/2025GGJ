@@ -3,14 +3,21 @@ using UnityEngine;
 
 public class EnemyFSM : MonoBehaviour
 {
-    Rigidbody2D rb;
-    Animator animator;
+    public Rigidbody2D rb;
+    public Animator animator;
+    public Vector2 initPos;
     public virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        initPos = transform.position;
     }
     public virtual void ResetSelf()
+    {
+
+    }
+
+    public virtual void ReturnToInitPos()
     {
 
     }
@@ -35,33 +42,37 @@ public class EnemyFSM : MonoBehaviour
         while (Mathf.Abs(transform.position.x - target.x) > tolerance)
         {
             float direction = (target.x - transform.position.x) > 0 ? 1 : -1;
-            rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocityY);
+            rb.linearVelocityX = direction * speed;
             yield return null;
         }
 
-        rb.linearVelocity = new Vector2(0, rb.linearVelocityY);
+        rb.linearVelocityX = 0;
         transform.position = new Vector3(target.x, transform.position.y, transform.position.z);
 
         yield return null;
     }
 
-    // public virtual void DetectPlayer()
-    // {
-    //     // 从怪物位置发射一条向前的 Ray，检测玩家
-    //     RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, detectionRange, playerLayer);
+    public virtual bool DetectPlayer(float range)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, range, LayerMask.NameToLayer("Player"));
 
-    //     // 如果 Raycast 检测到物体并且物体属于玩家 Layer
-    //     if (hit.collider != null)
-    //     {
-    //         if (hit.collider.CompareTag("Player"))
-    //         {
-    //             Debug.Log("玩家在检测范围内！");
-    //             // 在这里可以加入其他逻辑，例如攻击玩家或跟随玩家等
-    //         }
-    //     }
-    //     else
-    //     {
-    //         Debug.Log("没有玩家在检测范围内");
-    //     }
-    // }
+        if (hit.collider != null)
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public virtual void ChasePlayer(float speed)
+    {
+        float tolerance = 0.1f;
+        if (Mathf.Abs(transform.position.x - PlayerFSM.Instance.transform.position.x) > tolerance)
+        {
+            float direction = (PlayerFSM.Instance.transform.position.x - transform.position.x) > 0 ? 1 : -1;
+            rb.linearVelocityX = direction * speed;
+        }
+        else
+            rb.linearVelocityX = 0;
+    }
 }
