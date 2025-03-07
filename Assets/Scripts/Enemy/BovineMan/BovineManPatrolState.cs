@@ -19,7 +19,6 @@ public class BovineManPatrolState : BovineBaseState
     override public void OnExit()
     {
         fsm.StopCoroutine("TwoPointPatrol");
-        fsm.rb.linearVelocity = Vector3.zero;
     }
 
     override public void OnFixedUpdate()

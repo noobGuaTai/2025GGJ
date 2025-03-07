@@ -87,8 +87,8 @@ public class BovineManParameters
             ChangeState(BovineManStateType.Braking);
         if(Vector2.Distance(transform.position, PlayerFSM.Instance.transform.position) > parameters.attackDetectRange)
         {
-            ReturnToInitPos();
-            ChangeState(BovineManStateType.Patrol);
+            ReturnToInitPos(parameters.patrolSpeed);
         }
+        finishMoved += () => { ChangeState(BovineManStateType.Patrol); finishMoved = null;};
     }
 }
