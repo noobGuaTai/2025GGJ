@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyFSM : MonoBehaviour
 {
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     Animator animator;
     public virtual void Start()
     {
