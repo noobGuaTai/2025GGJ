@@ -17,7 +17,6 @@ public class PlayerMoveState : IState
 
     public void OnEnter()
     {
-        Debug.Log("Move");
         parameters.animator.Play("run");
     }
 
