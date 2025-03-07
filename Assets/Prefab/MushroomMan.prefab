@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 7420538712685012137}
   - component: {fileID: 1795212613712927338}
   - component: {fileID: 8817198467322062312}
-  - component: {fileID: 2431879611912508392}
   - component: {fileID: 8482787136885981979}
   - component: {fileID: -8929536887990909823}
+  - component: {fileID: 8647488485328744265}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: MushroomMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,23 +178,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 16, y: 17}
   m_EdgeRadius: 0
---- !u!114 &2431879611912508392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6519572436789688924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f65f42a08b63975429e3a5fdcd666292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detect: {fileID: 8482787136885981979}
-  moveSpeed: 50
-  player: {fileID: 0}
-  initPos: {x: 0, y: 0}
-  key: {fileID: 0}
 --- !u!61 &8482787136885981979
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -263,3 +246,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8647488485328744265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519572436789688924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f8d82906f9efc4e8977c1791b88e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parameters:
+    currentState: 0
