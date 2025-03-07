@@ -114,8 +114,9 @@ public class {fsmName} : EnemyFSM
     public IState currentState;
     public Dictionary<{enumName}, IState> state = new Dictionary<{enumName}, IState>();
 
-    void Start()
+    public override void Start()
     {{
+base.Start();
 {registrationContent}        ChangeState({enumName}.{states[0]});
     }}
 
