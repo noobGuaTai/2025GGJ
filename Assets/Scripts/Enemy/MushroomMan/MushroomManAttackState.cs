@@ -6,6 +6,7 @@ public class MushroomManAttackState : IState
 {
     private MushroomManFSM fSM;
     private MushroomManParameters parameters;
+    Coroutine returnToInitPosCoroutine;
 
     public MushroomManAttackState(MushroomManFSM fSM)
     {
@@ -20,6 +21,8 @@ public class MushroomManAttackState : IState
 
     public void OnExit()
     {
+        fSM.finishMoved = null;
+        // fSM.StopCoroutine(returnToInitPosCoroutine);
     }
 
     public void OnFixedUpdate()
@@ -28,8 +31,19 @@ public class MushroomManAttackState : IState
 
     public void OnUpdate()
     {
-        fSM.ChasePlayer(parameters.chaseSpeed);
-        // if (fSM.DetectPlayer(parameters.detectRange))
+        if (fSM.DetectPlayer(parameters.detectRange))
+        {
+            // if (returnToInitPosCoroutine != null)
+            //     fSM.StopCoroutine(returnToInitPosCoroutine);
+            fSM.ChasePlayer(parameters.chaseSpeed);
+        }
+        else
+        {
+            // fSM.finishMoved += () => { fSM.ChangeState(MushroomManStateType.Patrol); };
+            // returnToInitPosCoroutine = fSM.ReturnToInitPos(parameters.patrolSpeed);
+            fSM.ChangeState(MushroomManStateType.Patrol);
+        }
+
     }
 
 

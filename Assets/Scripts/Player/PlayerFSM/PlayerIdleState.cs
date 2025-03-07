@@ -16,7 +16,6 @@ public class PlayerIdleState : IState
     public void OnEnter()
     {
         parameters.animator.Play("idle");
-        Debug.Log("Idle");
     }
 
     public void OnExit()

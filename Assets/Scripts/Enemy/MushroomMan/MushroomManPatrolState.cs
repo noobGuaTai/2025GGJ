@@ -6,6 +6,7 @@ public class MushroomManPatrolState : IState
 {
     private MushroomManFSM fSM;
     private MushroomManParameters parameters;
+    Coroutine patrolCoroutine;
 
     public MushroomManPatrolState(MushroomManFSM fSM)
     {
@@ -15,11 +16,13 @@ public class MushroomManPatrolState : IState
 
     public void OnEnter()
     {
-        fSM.TwoPointPatrol(parameters.patrolPoint[0], parameters.patrolPoint[1], parameters.patrolSpeed);
+        patrolCoroutine = fSM.TwoPointPatrol(new Vector2(fSM.initPos.x + parameters.patrolPoint[0], fSM.initPos.y), new Vector2(fSM.initPos.x + parameters.patrolPoint[1], fSM.initPos.y), parameters.patrolSpeed);
     }
 
     public void OnExit()
     {
+        fSM.StopCoroutine(patrolCoroutine);
+        // fSM.StopAllCoroutines();
     }
 
     public void OnFixedUpdate()

@@ -109,7 +109,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         currentState.OnEnter();
     }
 
-    void Die()
+    public void Die()
     {
         if (!parameters.dieAudio.isPlaying)
             parameters.dieAudio.Play();
@@ -210,32 +210,6 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         }
     }
 
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") && currentState == state[PlayerStateType.Jump])
-        {
-            ChangeState(PlayerStateType.Idle);
-            parameters.rb.linearVelocity = Vector2.zero;
-        }
-
-        if (other.gameObject.layer == LayerMask.NameToLayer("Bubble") && currentState == state[PlayerStateType.Jump])
-        {
-            ChangeState(PlayerStateType.Idle);
-            parameters.rb.linearVelocity = Vector2.zero;
-        }
-
-        if (other.gameObject.layer == LayerMask.NameToLayer("DoorButton") && currentState == state[PlayerStateType.Jump])
-        {
-            ChangeState(PlayerStateType.Idle);
-            parameters.rb.linearVelocity = Vector2.zero;
-        }
-        if (other.gameObject.layer == LayerMask.NameToLayer("Nail") || other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-        {
-            Die();
-            parameters.rb.linearVelocity = Vector2.zero;
-        }
-    }
 
 
 }

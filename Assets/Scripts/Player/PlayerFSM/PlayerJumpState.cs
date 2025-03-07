@@ -19,7 +19,6 @@ public class PlayerJumpState : IState
     {
         parameters.rb.AddForce(Vector2.up * parameters.jumpForce);
         parameters.animator.Play("jump");
-        Debug.Log("Jump");
 
     }
 
