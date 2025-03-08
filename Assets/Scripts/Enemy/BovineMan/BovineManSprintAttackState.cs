@@ -15,7 +15,6 @@ public class BovineManSprintAttackState : BovineBaseState
 
     override public void OnExit()
     {
-        fsm.rb.linearVelocity = Vector3.zero;
     }
 
     override public void OnFixedUpdate()
@@ -24,19 +23,24 @@ public class BovineManSprintAttackState : BovineBaseState
 
     override public void OnUpdate()
     {
+        // 计算当前速度
         sprintTimer += Time.deltaTime;
         parameters.currentSpeed = getSpeed();
         fsm.ChasePlayer();
         // 玩家不在攻击范围内，一段时间后开始刹车
-        if(!fsm.DetectPlayer(parameters.attackDetectRange))
+        if(!fsm.IsPlayerInFront(parameters.attackDetectRange))
         {
             detectTimer += Time.deltaTime;
             if(detectTimer >= parameters.canCancelSprintDuration)
-            {
                 fsm.ChangeState(BovineManStateType.Braking);
-            }
         }
-
+        // 玩家在攻击范围内
+        if(fsm.IsPlayerInFront(parameters.attackDetectRange))
+            detectTimer = 0.0f;
+        // 撞击到玩家开始刹车
+        float tolerance = 1f;
+        if(Vector2.Distance(PlayerFSM.Instance.transform.position, fsm.transform.position) <= tolerance)
+            fsm.ChangeState(BovineManStateType.Braking);
     }
 
     // 基础速度 + 蓄力速度 + 

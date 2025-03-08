@@ -16,7 +16,6 @@ public class BovineManBrakingState : BovineBaseState
 
     override public void OnExit()
     {
-        fsm.rb.linearVelocity = Vector3.zero;
     }
 
     override public void OnFixedUpdate()
@@ -25,12 +24,12 @@ public class BovineManBrakingState : BovineBaseState
 
     override public void OnUpdate()
     {
+        // 计算当前速度
         barkingTimer += Time.deltaTime;
         parameters.currentSpeed = startSpeed - barkingTimer * parameters.retardedVelocity;
-        fsm.ChasePlayer();
+        // 刹车
+        fsm.Braking();
         if(parameters.currentSpeed <= 0f)
-        {
             fsm.ChangeState(BovineManStateType.Patrol);
-        }
     }
 }

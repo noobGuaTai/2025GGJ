@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BovineManPatrolState : BovineBaseState
 {
+    Coroutine patrolCoroutine;
     public BovineManPatrolState(BovineManFSM _fsm) : base(_fsm)
     {
     }
@@ -12,13 +13,13 @@ public class BovineManPatrolState : BovineBaseState
         {
             parameters.patrolPoint = new Vector2[2] { fsm.transform.position - Vector3.right * 5, fsm.transform.position + Vector3.right * 5 };
         }
-        fsm.TwoPointPatrol(parameters.patrolPoint[0], parameters.patrolPoint[1], parameters.patrolSpeed);
+        patrolCoroutine = fsm.TwoPointPatrol(parameters.patrolPoint[0], parameters.patrolPoint[1], parameters.patrolSpeed);
         parameters.currentSpeed = parameters.patrolSpeed;
     }
 
     override public void OnExit()
     {
-        fsm.StopCoroutine("TwoPointPatrol");
+        fsm.StopCoroutine(patrolCoroutine);
     }
 
     override public void OnFixedUpdate()

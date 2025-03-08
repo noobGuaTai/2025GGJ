@@ -42,7 +42,7 @@ public class BovineManParameters
 
     [Header("Detection")]
     public float attackDetectRange;   // 追逐玩家过程中超过该范围则返回原地
-    public float returenDetectRange;   // 玩家进入该范围则进入蓄力状态
+    public float returnDetectRange;   // 玩家进入该范围则进入蓄力状态
  }
 
  public class BovineManFSM : EnemyFSM
@@ -67,28 +67,27 @@ public class BovineManParameters
         currentState = state[stateType];
         currentState.OnEnter();
         parameters.currentState = stateType;
-        Debug.Log("ChangeState: " + stateType);
+        Debug.Log("BovineMan ChangeState: " + stateType);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.GetComponent<PlayerFSM>() != null)
-            ChangeState(BovineManStateType.Braking);
     }
+
+    public bool IsPlayerInFront(float range) =>
+        Physics2D.Raycast(transform.position, new Vector2(0, parameters.sprintDirection), range, 1 << LayerMask.NameToLayer("Player")).collider != null;
+
+    public void Braking() => ChasePlayer();
 
     public void ChasePlayer() => ChasePlayer(parameters.currentSpeed);
 
-    public override void ChasePlayer(float speed)
+    public override void ChasePlayer(float speed) => rb.linearVelocityX = parameters.sprintDirection * speed;
+
+    void OnDrawGizmosSelected()
     {
-        float tolerance = 0.1f;
-        if (Mathf.Abs(transform.position.x - PlayerFSM.Instance.transform.position.x) > tolerance)
-            rb.linearVelocityX = parameters.sprintDirection * speed;
-        else
-            ChangeState(BovineManStateType.Braking);
-        if(Vector2.Distance(transform.position, PlayerFSM.Instance.transform.position) > parameters.attackDetectRange)
-        {
-            ReturnToInitPos(parameters.patrolSpeed);
-        }
-        finishMoved += () => { ChangeState(BovineManStateType.Patrol); finishMoved = null;};
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, parameters.returnDetectRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, parameters.attackDetectRange);
     }
 }
