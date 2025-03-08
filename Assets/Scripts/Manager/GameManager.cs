@@ -24,8 +24,8 @@ public class GameManager : MonoSingleton<GameManager>
                 e.ResetSelf();
         }
         player.transform.position = playerInitPos[level - 1];
-        player.GetComponent<PlayerFSM>().parameters.rb.linearVelocity = Vector2.zero;
-        var b = player.GetComponent<PlayerFSM>().parameters.existingBubble;
+        player.GetComponent<PlayerFSM>().param.rb.linearVelocity = Vector2.zero;
+        var b = player.GetComponent<PlayerFSM>().param.existingBubble;
         if (b != null)
             b.GetComponent<Bubble>().Break();
         b = null;

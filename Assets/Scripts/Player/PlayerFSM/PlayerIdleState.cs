@@ -10,7 +10,7 @@ public class PlayerIdleState : IState
     public PlayerIdleState(PlayerFSM playerFSM)
     {
         this.playerFSM = playerFSM;
-        this.parameters = playerFSM.parameters;
+        this.parameters = playerFSM.param;
     }
 
     public void OnEnter()
@@ -36,7 +36,7 @@ public class PlayerIdleState : IState
 
             return;
         }
-        if (parameters.moveInput.y > 0)
+        if (parameters.jumpInput)
         {
             playerFSM.ChangeState(PlayerStateType.Jump);
             return;

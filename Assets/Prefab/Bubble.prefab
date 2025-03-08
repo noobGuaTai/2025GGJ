@@ -172,7 +172,9 @@ MonoBehaviour:
   bubbleState: 1
   colliders: {fileID: 0}
   swallowedObject: {fileID: 0}
-  isDestoryOnGround: 0
+  destoryLayer:
+    serializedVersion: 2
+    m_Bits: 256
   destory: {fileID: -5590158697434578146}
 --- !u!95 &8361603716610868231
 Animator:
