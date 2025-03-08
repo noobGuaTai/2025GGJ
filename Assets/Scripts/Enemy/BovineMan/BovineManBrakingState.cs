@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class BovineManBrakingState : BovineBaseState
@@ -29,7 +30,7 @@ public class BovineManBrakingState : BovineBaseState
         parameters.currentSpeed = startSpeed - barkingTimer * parameters.retardedVelocity;
         // 刹车
         fsm.Braking();
-        if(parameters.currentSpeed <= 0f)
+        if(parameters.currentSpeed <= 0f || Mathf.Abs(fsm.rb.linearVelocityX) < 1.0f)
             fsm.ChangeState(BovineManStateType.Patrol);
     }
 }

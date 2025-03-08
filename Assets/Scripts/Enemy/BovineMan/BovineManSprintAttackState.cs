@@ -41,6 +41,8 @@ public class BovineManSprintAttackState : BovineBaseState
         float tolerance = 1f;
         if(Vector2.Distance(PlayerFSM.Instance.transform.position, fsm.transform.position) <= tolerance)
             fsm.ChangeState(BovineManStateType.Braking);
+        if(Mathf.Abs(fsm.rb.linearVelocityX) < 1.0f)
+            fsm.ChangeState(BovineManStateType.Patrol);
     }
 
     // 基础速度 + 蓄力速度 + 

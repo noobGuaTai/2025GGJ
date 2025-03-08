@@ -43,6 +43,7 @@ public class BovineManParameters
     [Header("Detection")]
     public float attackDetectRange;   // 追逐玩家过程中超过该范围则返回原地
     public float returnDetectRange;   // 玩家进入该范围则进入蓄力状态
+    public LayerMask deadlyLayers;
  }
 
  public class BovineManFSM : EnemyFSM
@@ -61,6 +62,16 @@ public class BovineManParameters
         ChangeState(BovineManStateType.Patrol);
     }
 
+    void Update()
+    {
+        currentState.OnUpdate();
+    }
+
+    void FixedUpdate()
+    {
+        currentState.OnFixedUpdate();
+    }
+
     public void ChangeState(BovineManStateType stateType)
     {
         currentState?.OnExit();
@@ -72,6 +83,10 @@ public class BovineManParameters
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (((1 << other.gameObject.layer) & parameters.deadlyLayers) != 0)
+        {
+            Die();
+        }
     }
 
     public bool IsPlayerInFront(float range) =>
@@ -89,5 +104,10 @@ public class BovineManParameters
         Gizmos.DrawWireSphere(transform.position, parameters.returnDetectRange);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, parameters.attackDetectRange);
+    }
+
+    void Die()
+    {
+
     }
 }
