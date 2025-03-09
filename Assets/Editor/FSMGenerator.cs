@@ -215,12 +215,10 @@ using UnityEngine;
 public class {stateClassName} : IState
 {{
     private {fsmName} fSM;
-    private {paramName} parameters;
 
     public {stateClassName}({fsmName} fSM)
     {{
         this.fSM = fSM;
-        this.parameters = fSM.parameters;
     }}
 
     public void OnEnter()

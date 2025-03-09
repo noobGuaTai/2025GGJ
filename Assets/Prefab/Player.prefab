@@ -93,6 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 5904521776170420339}
   blowForce: 200
+  direction: {x: 0, y: 0}
 --- !u!1 &3726743865043386454
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,6 +226,7 @@ GameObject:
   - component: {fileID: 7332784512375910097}
   - component: {fileID: 7487480275575559371}
   - component: {fileID: 5732275893289816563}
+  - component: {fileID: 7189021814369380991}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -247,6 +249,7 @@ Transform:
   m_Children:
   - {fileID: 3284269866718750849}
   - {fileID: 5542097376665198116}
+  - {fileID: 4840310765969338487}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2917168255833827774
@@ -449,6 +452,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f675c915-f184-4418-906e-658792eec13b
     m_ActionName: 'Player/Interact[/Keyboard/s]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7545381697119716827}
+        m_TargetAssemblyTypeName: PlayerFSM, Assembly-CSharp
+        m_MethodName: PlayerJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2fb09c0c-0625-41bf-b23c-9647236a0ef9
+    m_ActionName: 'Player/Jump[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -493,30 +512,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a23ac580fe8cf41428426ed691b16643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parameters:
+  param:
     moveInput: {x: 0, y: 0}
     rb: {fileID: 0}
-    mainCamera: {fileID: 0}
     animator: {fileID: 0}
     sr: {fileID: 0}
     walkSprites: []
-    dieAudio: {fileID: 7332784512375910097}
-    winAudio: {fileID: 0}
-    walkAudio: {fileID: 0}
-    blowAudio: {fileID: 0}
-    shootAudio: {fileID: 4518142092502789733}
-    coinAudio: {fileID: 7487480275575559371}
-    underAttackAudio: {fileID: 0}
+    fireInput: 0
+    bubblePrefab: {fileID: 0}
+    blowInput: 0
+    blowArea: {fileID: 813489461257095057}
+    existingBubble: {fileID: 0}
+    bubblingAnimator: {fileID: 5408160020305475881}
+    jumpInput: 0
+    isOnGround: 0
+  attributes:
     shootTimer: 0
     shootCooldown: 1
     moveSpeed: 100
-    health: 10
-    jumpForce: 15000
-    bubble: {fileID: 6663174027561115096, guid: 42f10f69e285ee748847db5e3a744ac1, type: 3}
-    blowArea: {fileID: 813489461257095057}
+    health: 0
+    jumpForce: 14000
     isBlowing: 0
-    existingBubble: {fileID: 0}
-    bubblingAnimator: {fileID: 5408160020305475881}
 --- !u!95 &1820713251153905025
 Animator:
   serializedVersion: 7
@@ -962,3 +978,52 @@ MonoBehaviour:
   deadlyLayers:
     serializedVersion: 2
     m_Bits: 256
+  minAngle: 45
+--- !u!114 &7189021814369380991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904521776170420339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e67e47ae1dad848bbe8cbb770a0682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCheck: {fileID: 4840310765969338487}
+  checkRadius: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!1 &6651475601379371962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4840310765969338487}
+  m_Layer: 3
+  m_Name: GroundCheckPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4840310765969338487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6651475601379371962}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -10.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1592291461830382405}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
