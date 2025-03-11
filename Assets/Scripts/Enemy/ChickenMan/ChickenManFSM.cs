@@ -17,6 +17,7 @@ public class ChickenManParameters
 {
     public ChickenManStateType currentState;
     public AnimationCurve sprintAttackCurve;
+    public PatrolParameter patrolParameter = new();
 }
 
 public class ChickenManFSM : EnemyFSM
@@ -24,7 +25,6 @@ public class ChickenManFSM : EnemyFSM
     public ChickenManParameters parameters;
     public IState currentState;
     public Dictionary<ChickenManStateType, IState> state = new Dictionary<ChickenManStateType, IState>();
-    public HashSet<GameObject> attackTarget = new();
     public float attackDirection = new();
 
     public override void Start()
@@ -47,18 +47,8 @@ public class ChickenManFSM : EnemyFSM
     {
         currentState.OnFixedUpdate();
     }
-    public bool TargetLayer(GameObject gameObject)
-        => gameObject.layer == LayerMask.NameToLayer("Player") || gameObject.layer == LayerMask.NameToLayer("Bubble");
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if(TargetLayer(other.gameObject))
-            attackTarget.Add(other.gameObject);
-    }
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if(TargetLayer(other.gameObject))
-            attackTarget.Remove(other.gameObject);
-    }
+   
+   
 
     public void ChangeState(ChickenManStateType stateType)
     {

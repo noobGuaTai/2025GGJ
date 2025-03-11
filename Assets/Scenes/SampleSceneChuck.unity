@@ -1435,6 +1435,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 668767459}
     m_Modifications:
     - target: {fileID: 4590935172930462887, guid: 744fe1d7f8fef1b46821a6f782dbd18c, type: 3}
+      propertyPath: parameters.patrolParameter.partrolSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4590935172930462887, guid: 744fe1d7f8fef1b46821a6f782dbd18c, type: 3}
+      propertyPath: 'parameters.patrolParameter.patrolRange.Array.data[0]'
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4590935172930462887, guid: 744fe1d7f8fef1b46821a6f782dbd18c, type: 3}
+      propertyPath: 'parameters.patrolParameter.patrolRange.Array.data[1]'
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4590935172930462887, guid: 744fe1d7f8fef1b46821a6f782dbd18c, type: 3}
       propertyPath: parameters.sprintAttackCurve.m_Curve.Array.data[0].time
       value: -0.0035438538
       objectReference: {fileID: 0}
@@ -1444,11 +1456,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4590935172930462887, guid: 744fe1d7f8fef1b46821a6f782dbd18c, type: 3}
       propertyPath: parameters.sprintAttackCurve.m_Curve.Array.data[0].value
-      value: 100
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4590935172930462887, guid: 744fe1d7f8fef1b46821a6f782dbd18c, type: 3}
       propertyPath: parameters.sprintAttackCurve.m_Curve.Array.data[0].inSlope
-      value: -103.11799
+      value: -212.5462
       objectReference: {fileID: 0}
     - target: {fileID: 4590935172930462887, guid: 744fe1d7f8fef1b46821a6f782dbd18c, type: 3}
       propertyPath: parameters.sprintAttackCurve.m_Curve.Array.data[1].inSlope
@@ -1456,7 +1468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4590935172930462887, guid: 744fe1d7f8fef1b46821a6f782dbd18c, type: 3}
       propertyPath: parameters.sprintAttackCurve.m_Curve.Array.data[0].outSlope
-      value: -103.11799
+      value: -212.5462
       objectReference: {fileID: 0}
     - target: {fileID: 4590935172930462887, guid: 744fe1d7f8fef1b46821a6f782dbd18c, type: 3}
       propertyPath: parameters.sprintAttackCurve.m_Curve.Array.data[1].inWeight
@@ -1468,7 +1480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4590935172930462887, guid: 744fe1d7f8fef1b46821a6f782dbd18c, type: 3}
       propertyPath: parameters.sprintAttackCurve.m_Curve.Array.data[0].outWeight
-      value: 0.073333345
+      value: 0.09000001
       objectReference: {fileID: 0}
     - target: {fileID: 4590935172930462887, guid: 744fe1d7f8fef1b46821a6f782dbd18c, type: 3}
       propertyPath: parameters.sprintAttackCurve.m_Curve.Array.data[0].tangentMode

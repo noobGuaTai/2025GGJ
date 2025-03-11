@@ -15,7 +15,7 @@ public class ChickenManAttackState : IState
     }
     public void OnEnter()
     {
-        var target = fSM.attackTarget.First();
+        var target = fSM.GetComponent<TargetCollect>().attackTarget.First();
         var dir = Mathf.Sign(target.transform.position.x - fSM.transform.position.x);
         fSM.attackDirection = dir;
     }
