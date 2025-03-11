@@ -6,12 +6,20 @@ using System.IO;
 /// FSM代码生成器窗口：只需配置一个名字及状态列表，自动生成主FSM类及各个状态类
 /// 例如：名字为 "Player"，状态为 "Idle,Move,Attack"
 /// 则生成：PlayerFSM、PlayerStateType、PlayerParameters、PlayerIdleState 等
+/// 
+/// 新增功能：可以选择仅生成单个状态类
 /// </summary>
 public class FSMGenerator : EditorWindow
 {
     // 配置项
     private string entityName = "Player";
     private string stateNames = "Idle,Move,Attack";
+
+    // 单个状态生成的选项
+    private bool generateSingleState = false;
+    private string singleStateName = "Idle";
+    private int selectedTab = 0;
+    private string[] tabOptions = new string[] { "生成完整FSM", "生成单个状态" };
 
     [MenuItem("Tools/FSM代码生成器")]
     public static void ShowWindow()
@@ -22,13 +30,61 @@ public class FSMGenerator : EditorWindow
     private void OnGUI()
     {
         GUILayout.Label("FSM生成设置", EditorStyles.boldLabel);
-        entityName = EditorGUILayout.TextField("名字", entityName);
-        stateNames = EditorGUILayout.TextField("状态名称（逗号分隔）", stateNames);
 
-        if (GUILayout.Button("生成FSM代码"))
+        // 添加选项卡切换
+        selectedTab = GUILayout.Toolbar(selectedTab, tabOptions);
+
+        // 始终显示实体名称
+        entityName = EditorGUILayout.TextField("名字", entityName);
+
+        if (selectedTab == 0)
         {
-            GenerateFSM();
+            // 完整FSM生成模式
+            stateNames = EditorGUILayout.TextField("状态名称（逗号分隔）", stateNames);
+
+            if (GUILayout.Button("生成完整FSM代码"))
+            {
+                GenerateFSM();
+            }
         }
+        else
+        {
+            // 单个状态生成模式
+            singleStateName = EditorGUILayout.TextField("状态名", singleStateName);
+
+            if (GUILayout.Button("生成单个状态类"))
+            {
+                GenerateSingleState();
+            }
+        }
+    }
+
+    private void GenerateSingleState()
+    {
+        if (string.IsNullOrEmpty(entityName) || string.IsNullOrEmpty(singleStateName))
+        {
+            EditorUtility.DisplayDialog("错误", "名字和状态名不能为空", "确定");
+            return;
+        }
+
+        string folderPath = $"Assets/Scripts/Enemy/{entityName}";
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+        }
+
+        // 生成单个状态类
+        string fsmClassName = entityName + "FSM";
+        string parameterClassName = entityName + "Parameters";
+        string statePrefix = entityName;
+        string stateSuffix = "State";
+
+        string stateFileContent = GenerateStateContent(singleStateName, fsmClassName, parameterClassName, statePrefix, stateSuffix);
+        string stateFilePath = Path.Combine(folderPath, statePrefix + singleStateName + stateSuffix + ".cs");
+        File.WriteAllText(stateFilePath, stateFileContent);
+
+        AssetDatabase.Refresh();
+        Debug.Log($"单个状态类 {statePrefix + singleStateName + stateSuffix} 生成完成，生成路径：{stateFilePath}");
     }
 
     private void GenerateFSM()
@@ -159,12 +215,10 @@ using UnityEngine;
 public class {stateClassName} : IState
 {{
     private {fsmName} fSM;
-    private {paramName} parameters;
 
     public {stateClassName}({fsmName} fSM)
     {{
         this.fSM = fSM;
-        this.parameters = fSM.parameters;
     }}
 
     public void OnEnter()
@@ -188,3 +242,4 @@ public class {stateClassName} : IState
         return stateTemplate;
     }
 }
+

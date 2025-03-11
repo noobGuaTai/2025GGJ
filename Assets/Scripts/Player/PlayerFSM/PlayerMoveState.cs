@@ -4,21 +4,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerMoveState : IState
 {
-    private PlayerFSM playerFSM;
-    private PlayerParameters parameters;
+    private PlayerFSM fSM;
 
     private Vector2 lastInput = Vector2.zero;
 
     public PlayerMoveState(PlayerFSM playerFSM)
     {
-        this.playerFSM = playerFSM;
-        this.parameters = playerFSM.parameters;
+        this.fSM = playerFSM;
     }
 
     public void OnEnter()
     {
-        Debug.Log("Move");
-        parameters.animator.Play("run");
+        fSM.param.animator.Play("run");
     }
 
     public void OnExit()
@@ -28,7 +25,7 @@ public class PlayerMoveState : IState
 
     public void OnFixedUpdate()
     {
-        parameters.rb.linearVelocity = new Vector2(parameters.moveInput.x * parameters.moveSpeed, parameters.rb.linearVelocity.y);
+        fSM.param.rb.linearVelocity = new Vector2(fSM.param.moveInput.x * fSM.attributes.moveSpeed, fSM.param.rb.linearVelocity.y);
         // if (parameters.moveInput.x > 0)
         // {
         //     // playerFSM.parameters.sr.sprite = parameters.walkSprites[0];
@@ -44,24 +41,24 @@ public class PlayerMoveState : IState
         // //     playerFSM.parameters.sr.sprite = parameters.walkSprites[3];
         // //     parameters.animator.Play("WalkDown");
         // // }
-        if (parameters.moveInput.x > 0)
+        if (fSM.param.moveInput.x > 0)
         {
-            playerFSM.transform.localScale = new Vector3(-1, 1, 1);
+            fSM.transform.localScale = new Vector3(-1, 1, 1);
         }
-        else if (parameters.moveInput.x < 0)
+        else if (fSM.param.moveInput.x < 0)
         {
-            playerFSM.transform.localScale = new Vector3(1, 1, 1);
+            fSM.transform.localScale = new Vector3(1, 1, 1);
         }
 
-        lastInput = parameters.moveInput;
-        if (parameters.moveInput.y > 0)
+        lastInput = fSM.param.moveInput;
+        if (fSM.param.jumpInput)
         {
-            playerFSM.ChangeState(PlayerStateType.Jump);
+            fSM.ChangeState(PlayerStateType.Jump);
             return;
         }
-        if (parameters.moveInput == Vector2.zero)
+        if (fSM.param.moveInput.x == 0)
         {
-            playerFSM.ChangeState(PlayerStateType.Idle);
+            fSM.ChangeState(PlayerStateType.Idle);
             return;
         }
     }

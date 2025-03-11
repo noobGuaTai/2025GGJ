@@ -6,18 +6,20 @@ using UnityEngine;
 public enum MushroomManStateType
 {
     Patrol,
-    Attack
+    Attack,
+    UnderSwallowed
 }
 
 [Serializable]
 public class MushroomManParameters
 {
     public MushroomManStateType currentState;
-    public Vector2[] patrolPoint;
+    public float[] patrolPoint;
     public float patrolSpeed;
     public float chaseSpeed;
     public float detectRange;// 追逐玩家过程中超过该范围则返回原地
     public float attackRange;// 玩家进入该范围则进入攻击状态
+    public LayerMask deadlyLayers;
 }
 
 public class MushroomManFSM : EnemyFSM
@@ -31,6 +33,7 @@ public class MushroomManFSM : EnemyFSM
         base.Start();
         state.Add(MushroomManStateType.Patrol, new MushroomManPatrolState(this));
         state.Add(MushroomManStateType.Attack, new MushroomManAttackState(this));
+        state.Add(MushroomManStateType.UnderSwallowed, new MushroomManUnderSwallowedState(this));
         ChangeState(MushroomManStateType.Patrol);
     }
 
@@ -55,11 +58,24 @@ public class MushroomManFSM : EnemyFSM
         parameters.currentState = stateType;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (((1 << other.gameObject.layer) & parameters.deadlyLayers) != 0)
         {
-
+            Die();
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, parameters.detectRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, parameters.attackRange);
+    }
+
+    void Die()
+    {
+
     }
 }

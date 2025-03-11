@@ -13,7 +13,7 @@ public class Bubble : MonoBehaviour
     public BubbleState bubbleState = BubbleState.soft;
     public Collider2D colliders;
     public GameObject swallowedObject;
-    public bool isDestoryOnGround = false;
+    public LayerMask destoryLayer;
     public AudioSource destory;
     void Awake()
     {
@@ -58,7 +58,7 @@ public class Bubble : MonoBehaviour
             swallowedObject = other.gameObject;
         }
 
-        if (other.gameObject.layer == LayerMask.NameToLayer("Nail") || (other.gameObject.layer == LayerMask.NameToLayer("Ground") && isDestoryOnGround))
+        if (((1 << other.gameObject.layer) & destoryLayer) != 0)
         {
             Break();
         }

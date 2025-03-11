@@ -20,56 +20,57 @@ public enum PlayerStateType
 public class PlayerParameters
 {
     public Vector2 moveInput;
-
-
-    [Header("Player Components")]
     public Rigidbody2D rb;
-    public Camera mainCamera;
     public Animator animator;
     public SpriteRenderer sr;
-    [Tooltip("Sprites used during walking animations.")]
     public Sprite[] walkSprites;
+    public bool fireInput;
+    public GameObject bubblePrefab;
+    public bool blowInput;
+    public Collider2D blowArea;
+    public GameObject existingBubble;
+    public Animator bubblingAnimator;
+    public bool jumpInput;
+    public bool isOnGround;
+}
 
-    [Header("Audio Settings")]
-    public AudioSource dieAudio;
-    public AudioSource winAudio;
-    public AudioSource walkAudio;
-    public AudioSource blowAudio;
-    public AudioSource shootAudio;
-    public AudioSource coinAudio;
-    public AudioSource underAttackAudio;
-    internal bool fireInput;
+[Serializable]
+public class PlayerDelegateParameters
+{
+    public Action onDie;
+    public Action onShoot;
+}
+
+[Serializable]
+public class PlayerAttributes
+{
     public float shootTimer;
     public float shootCooldown;
     public float moveSpeed = 10;
     public int health;
     public float jumpForce = 100f;
-    public GameObject bubble;
-    internal bool blowInput;
-    public Collider2D blowArea;
     internal float blowPressStartTime = 0f;
     public bool isBlowing = false;
-    public GameObject existingBubble;
-    public Animator bubblingAnimator;
-
     internal float initGravityScale = 50;
 }
 
 
-public class PlayerFSM : MonoBehaviour
+public class PlayerFSM : MonoSingleton<PlayerFSM>
 {
-    public PlayerParameters parameters;
+    public PlayerParameters param;
+    public PlayerDelegateParameters delegateParam;
+    public PlayerAttributes attributes;
     public IState currentState;
     public Dictionary<PlayerStateType, IState> state = new Dictionary<PlayerStateType, IState>();
 
     private Tween tween;
 
-    void Awake()
+    public override void Init()
     {
-        parameters.rb = GetComponent<Rigidbody2D>();
-        parameters.animator = GetComponentInChildren<Animator>();
-        parameters.sr = GetComponent<SpriteRenderer>();
-        parameters.initGravityScale = parameters.rb.gravityScale;
+        param.rb = GetComponent<Rigidbody2D>();
+        param.animator = GetComponentInChildren<Animator>();
+        param.sr = GetComponent<SpriteRenderer>();
+        attributes.initGravityScale = param.rb.gravityScale;
     }
 
 
@@ -87,7 +88,7 @@ public class PlayerFSM : MonoBehaviour
     {
         currentState.OnUpdate();
 
-        if (parameters.health <= 0)
+        if (attributes.health <= 0)
         {
             // Die();
         }
@@ -96,7 +97,7 @@ public class PlayerFSM : MonoBehaviour
     void FixedUpdate()
     {
         currentState.OnFixedUpdate();
-        Mathf.Clamp(parameters.shootTimer -= Time.fixedDeltaTime, 0, float.MaxValue);
+        Mathf.Clamp(attributes.shootTimer -= Time.fixedDeltaTime, 0, float.MaxValue);
     }
 
     public void ChangeState(PlayerStateType stateType)
@@ -109,18 +110,17 @@ public class PlayerFSM : MonoBehaviour
         currentState.OnEnter();
     }
 
-    void Die()
+    public void Die()
     {
-        if (!parameters.dieAudio.isPlaying)
-            parameters.dieAudio.Play();
-        parameters.rb.linearVelocity = Vector2.zero;
+        param.rb.linearVelocity = Vector2.zero;
         ChangeState(PlayerStateType.Idle);
         transform.rotation = Quaternion.Euler(0, 0, -90 * transform.localScale.x);
         enabled = false;
         GetComponent<Collider2D>().enabled = false;
-        parameters.rb.gravityScale = 0;
+        param.rb.gravityScale = 0;
         UIManager.Instance.CancelInvoke("CloseDialog");
         Invoke("Restore", 1f);
+        delegateParam.onDie?.Invoke();
     }
 
     void Restore()
@@ -128,16 +128,26 @@ public class PlayerFSM : MonoBehaviour
         GameManager.Instance.ResetGame();
         enabled = true;
         GetComponent<Collider2D>().enabled = true;
-        parameters.rb.gravityScale = parameters.initGravityScale;
+        param.rb.gravityScale = attributes.initGravityScale;
         transform.rotation = Quaternion.Euler(0, 0, 0);
         UIManager.Instance.ShowDialog($"enemy{GameManager.Instance.level}");
-        print(1);
     }
 
     public void PlayerMove(InputAction.CallbackContext context)
     {
-        parameters.moveInput = context.ReadValue<Vector2>();
-        // parameters.walkAudio.Play();
+        if (context.phase == InputActionPhase.Started || context.phase == InputActionPhase.Performed)
+            param.moveInput = context.ReadValue<Vector2>();
+        else if (context.phase == InputActionPhase.Canceled)
+            param.moveInput = Vector2.zero;
+
+    }
+
+    public void PlayerJump(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+            param.jumpInput = context.ReadValueAsButton();
+        else if (context.phase == InputActionPhase.Canceled)
+            param.jumpInput = false;
 
     }
 
@@ -145,22 +155,40 @@ public class PlayerFSM : MonoBehaviour
     {
         if (GameManager.Instance.level == 0)
             return;
-        parameters.fireInput = context.ReadValueAsButton();
+        param.fireInput = context.ReadValueAsButton();
         Fire();
     }
 
 
     void Fire()
     {
-        if (parameters.fireInput && parameters.shootTimer <= 0f && parameters.existingBubble == null)
+        if (param.fireInput && attributes.shootTimer <= 0f && param.existingBubble == null)
         {
-            parameters.bubblingAnimator.Play("bubbling");
+            param.bubblingAnimator.Play("bubbling");
             Invoke("InstantiateBubble", 0.5f);
-            parameters.shootTimer = parameters.shootCooldown;
+            attributes.shootTimer = attributes.shootCooldown;
         }
         else
         {
-            parameters.fireInput = false;
+            param.fireInput = false;
+        }
+    }
+
+    public void PlayerLongblow(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            attributes.isBlowing = true;
+            attributes.blowPressStartTime = Time.time;
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            if (attributes.isBlowing)
+            {
+                float pressDuration = Math.Clamp(Time.time - attributes.blowPressStartTime, 0, 1);
+                attributes.isBlowing = false;
+                blow(pressDuration);
+            }
         }
     }
 
@@ -168,74 +196,51 @@ public class PlayerFSM : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
-            parameters.isBlowing = true;
-            parameters.blowPressStartTime = Time.time;
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            if (parameters.isBlowing)
+            if (param.moveInput == Vector2.zero)
             {
-                float pressDuration = Math.Clamp(Time.time - parameters.blowPressStartTime, 0, 1);
-                parameters.isBlowing = false;
-                blow(pressDuration);
+                param.blowArea.GetComponent<Blow>().direction = Vector2.left * transform.localScale.x;
             }
+            else
+            {
+                param.blowArea.GetComponent<Blow>().direction = new Vector2(param.moveInput.x, param.moveInput.y).normalized;
+            }
+            blow();
         }
+
     }
 
 
     void blow(float duration)
     {
-        parameters.blowArea.GetComponent<Blow>().blowForce = duration * 1000f;
-        parameters.blowArea.gameObject.SetActive(true);
+        param.blowArea.GetComponent<Blow>().blowForce = duration * 1000f;
+        param.blowArea.gameObject.SetActive(true);
+    }
+
+    void blow()
+    {
+        param.blowArea.gameObject.SetActive(true);
     }
 
 
     void InstantiateBubble()
     {
-        if (!parameters.shootAudio.isPlaying)
-            parameters.shootAudio.Play();
-        var b = Instantiate(parameters.bubble, transform.position + Vector3.left * transform.localScale.x * 23f, Quaternion.identity);
+        var b = Instantiate(param.bubblePrefab, transform.position + Vector3.left * transform.localScale.x * 23f, Quaternion.identity);
         // b.transform.localScale = new Vector3(25, 25, 25);
         // b.transform.SetParent(transform.Find("/Root/Bubbles"), false);
         b.GetComponent<Bubble>().bubbleState = Bubble.BubbleState.hard;
-        parameters.existingBubble = b;
+        param.existingBubble = b;
+        delegateParam.onShoot?.Invoke();
     }
 
     public void BubbleBomb(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && parameters.existingBubble != null)
+        if (context.phase == InputActionPhase.Started && param.existingBubble != null)
         {
-            parameters.existingBubble.GetComponent<Bubble>().Break();
-            parameters.existingBubble = null;
+            param.existingBubble.GetComponent<Bubble>().Break();
+            param.existingBubble = null;
         }
     }
 
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") && currentState == state[PlayerStateType.Jump])
-        {
-            ChangeState(PlayerStateType.Idle);
-            parameters.rb.linearVelocity = Vector2.zero;
-        }
-
-        if (other.gameObject.layer == LayerMask.NameToLayer("Bubble") && currentState == state[PlayerStateType.Jump])
-        {
-            ChangeState(PlayerStateType.Idle);
-            parameters.rb.linearVelocity = Vector2.zero;
-        }
-
-        if (other.gameObject.layer == LayerMask.NameToLayer("DoorButton") && currentState == state[PlayerStateType.Jump])
-        {
-            ChangeState(PlayerStateType.Idle);
-            parameters.rb.linearVelocity = Vector2.zero;
-        }
-        if (other.gameObject.layer == LayerMask.NameToLayer("Nail") || other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-        {
-            Die();
-            parameters.rb.linearVelocity = Vector2.zero;
-        }
-    }
 
 
 }

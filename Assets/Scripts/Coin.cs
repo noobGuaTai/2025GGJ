@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
     public int amount;
+    public AudioSource collectAudio;
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -10,8 +12,8 @@ public class Coin : MonoBehaviour
             var player = other.gameObject;
             var playerInv = player.GetComponent<PlayerInventory>();
             playerInv.coins += amount;
-            if (player.GetComponent<PlayerFSM>().parameters.coinAudio.isPlaying == false)
-                player.GetComponent<PlayerFSM>().parameters.coinAudio.Play();
+            if (!collectAudio.isPlaying)
+                collectAudio.Play();
             Destroy(gameObject);
         }
     }
