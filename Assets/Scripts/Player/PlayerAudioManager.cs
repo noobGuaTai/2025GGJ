@@ -19,7 +19,7 @@ public class PlayerAudioManager : MonoBehaviour
                 dieAudio.Play();
         };
 
-        playerFSM.delegateParam.onShoot += () =>
+        playerFSM.delegateParam.onBlowBubble += () =>
         {
             if (!shootAudio.isPlaying)
                 shootAudio.Play();

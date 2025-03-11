@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 public class Blow : MonoBehaviour
 {
-    public GameObject player;
     public float blowForce = 1000f;
     public Vector2 direction;
 
@@ -18,13 +17,12 @@ public class Blow : MonoBehaviour
 
     void BlowByMouseDirection(Collider2D other)
     {
-        Bubble bubbleScript = other.GetComponent<Bubble>();
-        if (bubbleScript != null && bubbleScript.rb != null && player != null)
+        if (other.TryGetComponent<BaseBubble>(out var bubbleScript))
         {
             Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
             mouseWorldPosition.z = 0f;
-            Vector3 playerPosition = player.transform.position;
+            Vector3 playerPosition = PlayerFSM.Instance.transform.position;
             Vector2 forceDirection = ((Vector2)(mouseWorldPosition - playerPosition)).normalized;
             bubbleScript.rb.AddForce(forceDirection * blowForce, ForceMode2D.Impulse);
         }
@@ -33,8 +31,7 @@ public class Blow : MonoBehaviour
 
     void BlowDirectly(Collider2D other)
     {
-        Bubble bubbleScript = other.GetComponent<Bubble>();
-        if (bubbleScript != null && bubbleScript.rb != null && player != null)
+        if (other.TryGetComponent<BaseBubble>(out var bubbleScript))
         {
             bubbleScript.rb.AddForce(direction * blowForce, ForceMode2D.Impulse);
         }

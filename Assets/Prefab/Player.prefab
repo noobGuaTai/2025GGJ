@@ -91,7 +91,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659adbd1df9c0d546a00380c0c5a0ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 5904521776170420339}
   blowForce: 200
   direction: {x: 0, y: 0}
 --- !u!1 &3726743865043386454
@@ -334,9 +333,9 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7545381697119716827}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerFSM, Assembly-CSharp
-        m_MethodName: PlayerMove
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -350,9 +349,9 @@ MonoBehaviour:
     m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7545381697119716827}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerFSM, Assembly-CSharp
-        m_MethodName: PlayerFire
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -406,9 +405,9 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7545381697119716827}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerFSM, Assembly-CSharp
-        m_MethodName: Playerblow
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -422,9 +421,9 @@ MonoBehaviour:
     m_ActionName: 'Player/Blow[/Mouse/rightButton]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7545381697119716827}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerFSM, Assembly-CSharp
-        m_MethodName: BubbleBomb
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -438,9 +437,9 @@ MonoBehaviour:
     m_ActionName: 'Player/Bomb[/Keyboard/e]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 332974899975481157}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerInteract, Assembly-CSharp
-        m_MethodName: OnInteract
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -454,9 +453,9 @@ MonoBehaviour:
     m_ActionName: 'Player/Interact[/Keyboard/s]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7545381697119716827}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerFSM, Assembly-CSharp
-        m_MethodName: PlayerJump
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -522,7 +521,6 @@ MonoBehaviour:
     bubblePrefab: {fileID: 0}
     blowInput: 0
     blowArea: {fileID: 813489461257095057}
-    existingBubble: {fileID: 0}
     bubblingAnimator: {fileID: 5408160020305475881}
     jumpInput: 0
     isOnGround: 0
@@ -992,7 +990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 4840310765969338487}
-  checkRadius: 0.2
+  checkRadius: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64

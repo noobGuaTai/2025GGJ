@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    public GameObject player;
     public GameObject[] levels;
     public int level = 1;//第几关
     public bool getedBook = false;
@@ -23,12 +22,9 @@ public class GameManager : MonoSingleton<GameManager>
             if (e != null)
                 e.ResetSelf();
         }
-        player.transform.position = playerInitPos[level - 1];
-        player.GetComponent<PlayerFSM>().param.rb.linearVelocity = Vector2.zero;
-        var b = player.GetComponent<PlayerFSM>().param.existingBubble;
-        if (b != null)
-            b.GetComponent<Bubble>().Break();
-        b = null;
+        PlayerFSM.Instance.transform.position = playerInitPos[level - 1];
+        PlayerFSM.Instance.param.rb.linearVelocity = Vector2.zero;
+        PlayerFSM.Instance.param.existingBubble.Clear();
     }
 
     public void StartGame()

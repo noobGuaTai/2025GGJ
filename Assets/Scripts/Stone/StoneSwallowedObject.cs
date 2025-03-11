@@ -6,12 +6,12 @@ public class StoneSwallowedObject : SwallowedObject
     {
         base.Start();
     }
-    public override void OnBreak(Bubble bubble)
+    public override void OnBreak(BaseBubble bubble)
     {
         base.OnBreak(bubble);
     }
 
-    public override void OnLoad(Bubble bubble)
+    public override void OnLoad(BaseBubble bubble)
     {
         base.OnLoad(bubble);
     }

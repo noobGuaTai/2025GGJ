@@ -36,7 +36,7 @@ public class PlayerIdleState : IState
 
             return;
         }
-        if (parameters.jumpInput)
+        if (parameters.jumpInput && parameters.isOnGround)
         {
             playerFSM.ChangeState(PlayerStateType.Jump);
             return;
