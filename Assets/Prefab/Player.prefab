@@ -519,8 +519,12 @@ MonoBehaviour:
     walkSprites: []
     fireInput: 0
     bubblePrefab: {fileID: 0}
+    weaponCoinPrefab: {fileID: 0}
     blowInput: 0
     blowArea: {fileID: 813489461257095057}
+    existingBubble:
+      smallBubbleNums: 0
+      bigBubbleNums: 0
     bubblingAnimator: {fileID: 5408160020305475881}
     jumpInput: 0
     isOnGround: 0
@@ -531,6 +535,7 @@ MonoBehaviour:
     health: 0
     jumpForce: 14000
     isBlowing: 0
+    throwCoinSpeed: 130
 --- !u!95 &1820713251153905025
 Animator:
   serializedVersion: 7

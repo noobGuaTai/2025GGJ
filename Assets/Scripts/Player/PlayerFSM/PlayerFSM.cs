@@ -6,7 +6,9 @@ using Newtonsoft.Json;
 using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public enum PlayerStateType
 {
@@ -26,6 +28,7 @@ public class PlayerParameters
     public Sprite[] walkSprites;
     public bool fireInput;
     public GameObject bubblePrefab;
+    public GameObject weaponCoinPrefab;
     public bool blowInput;
     public Collider2D blowArea;
     public BubbleQueue existingBubble;
@@ -52,6 +55,7 @@ public class PlayerAttributes
     internal float blowPressStartTime = 0f;
     public bool isBlowing = false;
     internal float initGravityScale = 50;
+    public float throwCoinSpeed;
 }
 
 
@@ -71,6 +75,8 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         param.animator = GetComponentInChildren<Animator>();
         param.sr = GetComponent<SpriteRenderer>();
         attributes.initGravityScale = param.rb.gravityScale;
+        Addressables.LoadAssetAsync<GameObject>("Assets/Prefab/Bubble/SmallBubble.prefab").Completed += (AsyncOperationHandle<GameObject> handle) => { if (handle.Status == AsyncOperationStatus.Succeeded) param.bubblePrefab = handle.Result; };
+        Addressables.LoadAssetAsync<GameObject>("Assets/Prefab/Item/WeaponCoin.prefab").Completed += (AsyncOperationHandle<GameObject> handle) => { if (handle.Status == AsyncOperationStatus.Succeeded) param.weaponCoinPrefab = handle.Result; };
         InitAction();
     }
 
@@ -88,14 +94,22 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
     void InitAction()
     {
         var playerInput = GetComponent<PlayerInput>();
-        List<string> actionNames = new() { "Move", "Blow", "Push", "Bomb", "Jump" };
-        List<Action<InputAction.CallbackContext>> actions = new() { PlayerMove, PlayerBlowBubble, PlayerPush, BubbleBomb, PlayerJump };
-        for (int i = 0; i < actionNames.Count; i++)
+        Dictionary<string, Action<InputAction.CallbackContext>> actionMap = new()
         {
-            InputAction action = playerInput.actions.FindAction(actionNames[i]);
-            action.started += actions[i];
-            action.performed += actions[i];
-            action.canceled += actions[i];
+            { "Move", PlayerMove },
+            { "Blow", PlayerBlowBubble },
+            { "Push", PlayerPush },
+            { "Bomb", BubbleBomb },
+            { "Jump", PlayerJump },
+            { "Throw", PlayerThrowCoin }
+        };
+
+        foreach (var pair in actionMap)
+        {
+            InputAction action = playerInput.actions.FindAction(pair.Key);
+            action.started += pair.Value;
+            action.performed += pair.Value;
+            action.canceled += pair.Value;
         }
     }
 
@@ -224,6 +238,16 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
 
     }
 
+    public void PlayerThrowCoin(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            var c = Instantiate(param.weaponCoinPrefab, transform.position, Quaternion.identity).GetComponent<WeaponCoin>();
+            c.onInit += () => c.rb.linearVelocity = new Vector2(-transform.localScale.x, 2).normalized * attributes.throwCoinSpeed;
+        }
+
+    }
+
 
     void Push(float duration)
     {
@@ -242,7 +266,6 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         var b = Instantiate(param.bubblePrefab, transform.position + Vector3.left * transform.localScale.x * 23f, Quaternion.identity);
         // b.transform.localScale = new Vector3(25, 25, 25);
         // b.transform.SetParent(transform.Find("/Root/Bubbles"), false);
-        // param.existingBubble.Enqueue(b);
         delegateParam.onBlowBubble?.Invoke();
     }
 

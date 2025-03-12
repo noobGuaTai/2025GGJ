@@ -30,5 +30,6 @@ public class PlayerCollisionHandler : MonoBehaviour
                 playerFSM.ChangeState(PlayerStateType.Idle);
             }
         }
+
     }
 }

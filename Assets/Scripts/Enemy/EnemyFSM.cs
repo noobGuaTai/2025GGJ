@@ -9,6 +9,13 @@ public class EnemyFSM : MonoBehaviour
     public Animator animator;
     public Vector2 initPos;
     public float health;
+    public enum EnemySomatotype
+    {
+        Light,
+        Heavy
+    }
+    public EnemySomatotype somatotype = EnemySomatotype.Light;
+
     public virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();

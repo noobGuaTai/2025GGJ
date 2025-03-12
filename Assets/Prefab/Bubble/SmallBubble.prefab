@@ -107,7 +107,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 1
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -169,13 +169,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   rb: {fileID: 0}
-  bubbleState: 1
   colliders: {fileID: 0}
   swallowedObject: {fileID: 0}
   destoryLayer:
     serializedVersion: 2
     m_Bits: 256
-  destory: {fileID: -5590158697434578146}
+  destoryAudio: {fileID: 0}
+  initSpeed: {x: 0, y: 0}
+  bigBubblePrefab: {fileID: 0}
+  reboundVelocity: 100
 --- !u!95 &8361603716610868231
 Animator:
   serializedVersion: 7

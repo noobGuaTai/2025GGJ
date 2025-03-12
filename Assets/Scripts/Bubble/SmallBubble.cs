@@ -10,6 +10,8 @@ public class SmallBubble : BaseBubble
 {
     public GameObject bigBubblePrefab;
     Queue<Action> collisionActions = new();
+    public float reboundVelocity;
+
     public override void Awake()
     {
         base.Awake();
@@ -49,6 +51,16 @@ public class SmallBubble : BaseBubble
                     collisionActions.Enqueue(() => MergeToBigBubble(otherBubble));
             }
         }
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Item") || other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            float angle = Vector2.Angle(Vector2.up, (other.transform.position - transform.position).normalized);
+            if (angle <= 60f)
+            {
+                other.gameObject.GetComponent<Rigidbody2D>().linearVelocityY = reboundVelocity;
+                PlayerFSM.Instance.param.existingBubble.DestroyBubble(gameObject);
+            }
+        }
     }
 
     void MergeToBigBubble(SmallBubble otherBubble)
@@ -56,7 +68,6 @@ public class SmallBubble : BaseBubble
         PlayerFSM.Instance.param.existingBubble.DestroyBubble(otherBubble.gameObject);
 
         var bigBubble = Instantiate(bigBubblePrefab, (transform.position + otherBubble.transform.position) / 2, Quaternion.identity);
-        // PlayerFSM.Instance.param.existingBubble.Enqueue(bigBubble);
         bigBubble.GetComponent<BigBubble>().initSpeed = (rb.linearVelocity + otherBubble.rb.linearVelocity) / 2;
 
         PlayerFSM.Instance.param.existingBubble.DestroyBubble(gameObject);

@@ -11,6 +11,7 @@ public class BaseBubble : MonoBehaviour
     public LayerMask destoryLayer;
     public AudioSource destoryAudio;
     public Vector2 initSpeed;
+    float swallowedObjectMass;
     public virtual void Awake()
     {
         colliders = GetComponent<Collider2D>();
@@ -45,15 +46,23 @@ public class BaseBubble : MonoBehaviour
 
     public virtual void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.GetComponent<SwallowedObject>() != null && swallowedObject == null)
+        if (other.gameObject.TryGetComponent<SwallowedObject>(out var s) && swallowedObject == null)
         {
-            other.gameObject.GetComponent<SwallowedObject>().OnLoad(this);
+            s.OnLoad(this);
             swallowedObject = other.gameObject;
+            if (other.gameObject.TryGetComponent<EnemyFSM>(out var e))
+            {
+                if (e.somatotype == EnemyFSM.EnemySomatotype.Heavy)
+                    PlayerFSM.Instance.param.existingBubble.DestroyBubble(gameObject);
+                swallowedObjectMass = e.rb.mass;
+                rb.mass += e.rb.mass;
+                rb.gravityScale = 1;
+            }
         }
 
         if (((1 << other.gameObject.layer) & destoryLayer) != 0)
         {
-            Break();
+            PlayerFSM.Instance.param.existingBubble.DestroyBubble(gameObject);
         }
     }
 
