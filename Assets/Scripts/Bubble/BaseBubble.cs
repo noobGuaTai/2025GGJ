@@ -46,11 +46,17 @@ public class BaseBubble : MonoBehaviour
 
     public virtual void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.TryGetComponent<SwallowedObject>(out var s) && swallowedObject == null)
+        SwallowObject(other.gameObject);
+        DestroyBubble(other.gameObject);
+    }
+
+    public virtual void SwallowObject(GameObject other)
+    {
+        if (other.TryGetComponent<SwallowedObject>(out var s) && swallowedObject == null)
         {
             s.OnLoad(this);
-            swallowedObject = other.gameObject;
-            if (other.gameObject.TryGetComponent<EnemyFSM>(out var e))
+            swallowedObject = other;
+            if (other.TryGetComponent<EnemyFSM>(out var e))
             {
                 if (e.somatotype == EnemyFSM.EnemySomatotype.Heavy)
                     PlayerFSM.Instance.param.existingBubble.DestroyBubble(gameObject);
@@ -59,8 +65,11 @@ public class BaseBubble : MonoBehaviour
                 rb.gravityScale = 1;
             }
         }
+    }
 
-        if (((1 << other.gameObject.layer) & destoryLayer) != 0)
+    public virtual void DestroyBubble(GameObject other)
+    {
+        if (((1 << other.layer) & destoryLayer) != 0)
         {
             PlayerFSM.Instance.param.existingBubble.DestroyBubble(gameObject);
         }
@@ -70,5 +79,10 @@ public class BaseBubble : MonoBehaviour
     {
         if (handle.Status == AsyncOperationStatus.Succeeded)
             destoryAudio.clip = handle.Result;
+    }
+
+    public virtual void OnTriggerEnter2D(Collider2D other)
+    {
+
     }
 }

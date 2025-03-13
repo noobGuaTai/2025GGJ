@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8647488485328744265}
   - component: {fileID: -5699326640305639141}
   - component: {fileID: -3072049877793455537}
+  - component: {fileID: 8918869802295284714}
   m_Layer: 9
   m_Name: MushroomMan
   m_TagString: Untagged
@@ -217,6 +218,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   initPos: {x: 0, y: 0}
   health: 0
+  somatotype: 0
   parameters:
     currentState: 0
     patrolPoint:
@@ -251,5 +253,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95c2c78bc7b7bf6458a186c9433230b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8918869802295284714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519572436789688924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2f2616475a5174da41dd40a0d66caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

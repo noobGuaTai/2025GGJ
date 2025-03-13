@@ -20,7 +20,6 @@ public class EnemyFSM : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        initPos = transform.position;
     }
     public virtual void ResetSelf()
     {
@@ -34,7 +33,33 @@ public class EnemyFSM : MonoBehaviour
 
     public virtual Coroutine TwoPointPatrol(Vector2 first, Vector2 second, float speed)
     {
-        return StartCoroutine(TwoPointPatrolCoroutine(first, second, speed));
+        Vector2 adjustedFirst = AdjustPatrolPoint(first);
+        Vector2 adjustedSecond = AdjustPatrolPoint(second);
+
+        return StartCoroutine(TwoPointPatrolCoroutine(adjustedFirst, adjustedSecond, speed));
+    }
+
+    /// <summary>
+    /// 调整巡逻点，避免巡逻点在墙壁外
+    /// </summary>
+    /// <param name="targetPoint">初始巡逻点</param>
+    /// <returns>调整后的巡逻点</returns>
+    protected virtual Vector2 AdjustPatrolPoint(Vector2 targetPoint)
+    {
+        Vector2 direction = (targetPoint - (Vector2)transform.position).normalized;
+        float distance = Vector2.Distance(transform.position, targetPoint);
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, LayerMask.GetMask("Wall"));
+
+        if (hit.collider != null)
+        {
+            float safeDistance = hit.distance - 0.5f; // 留出安全距离
+            safeDistance = Mathf.Max(safeDistance, 1.0f); // 最小安全距离
+            return (Vector2)transform.position + direction * safeDistance;
+        }
+
+        // 如果没有击中墙壁，返回原始巡逻点
+        return targetPoint;
     }
 
     IEnumerator TwoPointPatrolCoroutine(Vector2 first, Vector2 second, float speed)
@@ -91,6 +116,12 @@ public class EnemyFSM : MonoBehaviour
         }
         else
             rb.linearVelocityX = 0;
+    }
+
+    public Action OnKnockedBackActions;
+    public virtual void OnKnockedBack()
+    {
+        OnKnockedBackActions?.Invoke();
     }
 
 }
