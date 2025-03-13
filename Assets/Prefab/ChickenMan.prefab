@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4590935172930462887}
   - component: {fileID: 411948332934334272}
   - component: {fileID: 5172676911752498154}
+  - component: {fileID: 2145778462892949615}
   m_Layer: 9
   m_Name: ChickenMan
   m_TagString: Untagged
@@ -278,10 +279,10 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     patrolParameter:
-      patrolRange:
+      range:
       - -100
       - 100
-      partrolSpeed: 50
+      speed: 50
   attackDirection: 0
 --- !u!58 &411948332934334272
 CircleCollider2D:
@@ -334,3 +335,16 @@ MonoBehaviour:
   autoFlipX: 1
   lastPosition: {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 0, z: 0}
+  startPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &2145778462892949615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519572436789688924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e98730135f0e604eb1a686b04739f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
