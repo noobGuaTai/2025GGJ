@@ -21,7 +21,7 @@ public class BubbleQueue
         if (smallBubbleNums + bigBubbleNums * 2 > 4)
         {
             var latest = bubbles.Dequeue();
-            latest.GetComponent<BaseBubble>().Break();
+            DestroyBubble(latest);
         }
 
     }
