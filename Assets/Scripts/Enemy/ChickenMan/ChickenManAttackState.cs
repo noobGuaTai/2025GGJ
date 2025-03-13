@@ -25,7 +25,6 @@ public class ChickenManAttackState : IState
             .AddTween(_ => { }, 0, 0, 0.5f)
             .AddTween(_ => fSM.GetComponent<SpriteRenderer>().color = Color.white, 0,0,0)
             .AddTween(_ => fSM.ChangeState(ChickenManStateType.SprintAttack), 0, 0, 0 ).Play();
-        
     }
 
     public void OnExit()
