@@ -252,6 +252,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   initPos: {x: 0, y: 0}
   health: 0
+  somatotype: 0
   parameters:
     currentState: 0
     sprintAttackCurve:
@@ -259,21 +260,21 @@ MonoBehaviour:
       m_Curve:
       - serializedVersion: 3
         time: -0.0035438538
-        value: 300
-        inSlope: -212.5462
-        outSlope: -212.5462
+        value: 250
+        inSlope: -135.98636
+        outSlope: -135.98636
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
-        outWeight: 0.09000001
+        outWeight: 0.14333335
       - serializedVersion: 3
         time: 2
         value: 1
-        inSlope: -0.33596605
-        outSlope: -0.33596605
+        inSlope: -101.97534
+        outSlope: -101.97534
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.23666663
+        inWeight: 0.20000002
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2

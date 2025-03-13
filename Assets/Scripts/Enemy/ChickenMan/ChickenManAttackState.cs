@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ChickenManAttackState : IState
@@ -18,6 +19,13 @@ public class ChickenManAttackState : IState
         var target = fSM.GetComponent<TargetCollect>().attackTarget.First();
         var dir = Mathf.Sign(target.transform.position.x - fSM.transform.position.x);
         fSM.attackDirection = dir;
+        var tw = fSM.GetOrAddComponent<Tween>();
+        var trname = "Attack";
+        tw.AddTween(trname, x => fSM.GetComponent<SpriteRenderer>().color = Color.red, 0, 0, 0)
+            .AddTween(_ => { }, 0, 0, 0.5f)
+            .AddTween(_ => fSM.GetComponent<SpriteRenderer>().color = Color.white, 0,0,0)
+            .AddTween(_ => fSM.ChangeState(ChickenManStateType.SprintAttack), 0, 0, 0 ).Play();
+        
     }
 
     public void OnExit()
@@ -26,7 +34,6 @@ public class ChickenManAttackState : IState
 
     public void OnFixedUpdate()
     {
-        fSM.ChangeState(ChickenManStateType.SprintAttack);
     }
 
     public void OnUpdate()

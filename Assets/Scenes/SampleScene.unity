@@ -903,6 +903,8 @@ MonoBehaviour:
   - {x: -174, y: -66}
   - {x: -174, y: 54}
   - {x: -174, y: -49}
+  levelNameString: 0,1,2,3
+  levelIndex: -1
 --- !u!114 &978125390
 MonoBehaviour:
   m_ObjectHideFlags: 0
