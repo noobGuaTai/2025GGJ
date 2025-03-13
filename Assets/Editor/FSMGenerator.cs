@@ -171,7 +171,7 @@ public class {fsmName} : EnemyFSM
 
     public override void Start()
     {{
-base.Start();
+        base.Start();
 {registrationContent}        ChangeState({enumName}.{states[0]});
     }}
 
