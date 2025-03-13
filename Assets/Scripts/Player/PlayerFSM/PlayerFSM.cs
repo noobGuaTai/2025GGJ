@@ -182,8 +182,8 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
 
     public void PlayerBlowBubble(InputAction.CallbackContext context)
     {
-        if (GameManager.Instance.level == 0)
-            return;
+        // if (GameManager.Instance.level == 0)
+        //     return;
         param.fireInput = context.ReadValueAsButton();
         BlowBubble();
     }

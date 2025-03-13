@@ -91,7 +91,12 @@ public class BigBubble : BaseBubble
             {
                 rb.bodyType = RigidbodyType2D.Kinematic;
                 rb.linearVelocity = Vector2.zero;
-                tween.AddTween(x => transform.position = x, transform.position,
+                tween.AddTween(
+                    x =>
+                    {
+                        Debug.Log($"{x}");
+                        transform.position = x;
+                    }, transform.position,
                  transform.position + GetCardinalDirection(contactPoint, transform.position) * radius,
                   2f, Tween.TransitionType.QUART, Tween.EaseType.IN_OUT).Play();
                 yield break;
