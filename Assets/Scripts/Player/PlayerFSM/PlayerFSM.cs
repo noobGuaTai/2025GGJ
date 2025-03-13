@@ -6,7 +6,9 @@ using Newtonsoft.Json;
 using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public enum PlayerStateType
 {
@@ -26,9 +28,10 @@ public class PlayerParameters
     public Sprite[] walkSprites;
     public bool fireInput;
     public GameObject bubblePrefab;
+    public GameObject weaponCoinPrefab;
     public bool blowInput;
     public Collider2D blowArea;
-    public GameObject existingBubble;
+    public BubbleQueue existingBubble;
     public Animator bubblingAnimator;
     public bool jumpInput;
     public bool isOnGround;
@@ -38,7 +41,7 @@ public class PlayerParameters
 public class PlayerDelegateParameters
 {
     public Action onDie;
-    public Action onShoot;
+    public Action onBlowBubble;
 }
 
 [Serializable]
@@ -52,6 +55,7 @@ public class PlayerAttributes
     internal float blowPressStartTime = 0f;
     public bool isBlowing = false;
     internal float initGravityScale = 50;
+    public float throwCoinSpeed;
 }
 
 
@@ -71,6 +75,9 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         param.animator = GetComponentInChildren<Animator>();
         param.sr = GetComponent<SpriteRenderer>();
         attributes.initGravityScale = param.rb.gravityScale;
+        Addressables.LoadAssetAsync<GameObject>("Assets/Prefab/Bubble/SmallBubble.prefab").Completed += (AsyncOperationHandle<GameObject> handle) => { if (handle.Status == AsyncOperationStatus.Succeeded) param.bubblePrefab = handle.Result; };
+        Addressables.LoadAssetAsync<GameObject>("Assets/Prefab/Item/WeaponCoin.prefab").Completed += (AsyncOperationHandle<GameObject> handle) => { if (handle.Status == AsyncOperationStatus.Succeeded) param.weaponCoinPrefab = handle.Result; };
+        InitAction();
     }
 
 
@@ -82,6 +89,28 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         tween = GetComponent<Tween>();
         ChangeState(PlayerStateType.Idle);
 
+    }
+
+    void InitAction()
+    {
+        var playerInput = GetComponent<PlayerInput>();
+        Dictionary<string, Action<InputAction.CallbackContext>> actionMap = new()
+        {
+            { "Move", PlayerMove },
+            { "Blow", PlayerBlowBubble },
+            { "Push", PlayerPush },
+            { "Bomb", BubbleBomb },
+            { "Jump", PlayerJump },
+            { "Throw", PlayerThrowCoin }
+        };
+
+        foreach (var pair in actionMap)
+        {
+            InputAction action = playerInput.actions.FindAction(pair.Key);
+            action.started += pair.Value;
+            action.performed += pair.Value;
+            action.canceled += pair.Value;
+        }
     }
 
     void Update()
@@ -151,18 +180,18 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
 
     }
 
-    public void PlayerFire(InputAction.CallbackContext context)
+    public void PlayerBlowBubble(InputAction.CallbackContext context)
     {
         if (GameManager.Instance.level == 0)
             return;
         param.fireInput = context.ReadValueAsButton();
-        Fire();
+        BlowBubble();
     }
 
 
-    void Fire()
+    void BlowBubble()
     {
-        if (param.fireInput && attributes.shootTimer <= 0f && param.existingBubble == null)
+        if (attributes.shootTimer <= 0f)
         {
             param.bubblingAnimator.Play("bubbling");
             Invoke("InstantiateBubble", 0.5f);
@@ -174,7 +203,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         }
     }
 
-    public void PlayerLongblow(InputAction.CallbackContext context)
+    public void PlayerLongPush(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
@@ -187,12 +216,12 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
             {
                 float pressDuration = Math.Clamp(Time.time - attributes.blowPressStartTime, 0, 1);
                 attributes.isBlowing = false;
-                blow(pressDuration);
+                Push(pressDuration);
             }
         }
     }
 
-    public void Playerblow(InputAction.CallbackContext context)
+    public void PlayerPush(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
@@ -204,19 +233,29 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
             {
                 param.blowArea.GetComponent<Blow>().direction = new Vector2(param.moveInput.x, param.moveInput.y).normalized;
             }
-            blow();
+            Push();
+        }
+
+    }
+
+    public void PlayerThrowCoin(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            var c = Instantiate(param.weaponCoinPrefab, transform.position, Quaternion.identity).GetComponent<WeaponCoin>();
+            c.onInit += () => c.rb.linearVelocity = new Vector2(-transform.localScale.x, 2).normalized * attributes.throwCoinSpeed;
         }
 
     }
 
 
-    void blow(float duration)
+    void Push(float duration)
     {
         param.blowArea.GetComponent<Blow>().blowForce = duration * 1000f;
         param.blowArea.gameObject.SetActive(true);
     }
 
-    void blow()
+    void Push()
     {
         param.blowArea.gameObject.SetActive(true);
     }
@@ -227,17 +266,15 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         var b = Instantiate(param.bubblePrefab, transform.position + Vector3.left * transform.localScale.x * 23f, Quaternion.identity);
         // b.transform.localScale = new Vector3(25, 25, 25);
         // b.transform.SetParent(transform.Find("/Root/Bubbles"), false);
-        b.GetComponent<Bubble>().bubbleState = Bubble.BubbleState.hard;
-        param.existingBubble = b;
-        delegateParam.onShoot?.Invoke();
+        delegateParam.onBlowBubble?.Invoke();
     }
 
     public void BubbleBomb(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && param.existingBubble != null)
+        if (context.phase == InputActionPhase.Started && (param.existingBubble.smallBubbleNums > 0 || param.existingBubble.bigBubbleNums > 0))
         {
-            param.existingBubble.GetComponent<Bubble>().Break();
-            param.existingBubble = null;
+            var b = param.existingBubble.Dequeue();
+            b.GetComponent<BaseBubble>().Break();
         }
     }
 

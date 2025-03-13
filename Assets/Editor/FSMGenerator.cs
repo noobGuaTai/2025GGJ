@@ -16,7 +16,6 @@ public class FSMGenerator : EditorWindow
     private string stateNames = "Idle,Move,Attack";
 
     // 单个状态生成的选项
-    private bool generateSingleState = false;
     private string singleStateName = "Idle";
     private int selectedTab = 0;
     private string[] tabOptions = new string[] { "生成完整FSM", "生成单个状态" };
@@ -166,7 +165,7 @@ public class {paramName}
 
 public class {fsmName} : EnemyFSM
 {{
-    public {paramName} parameters;
+    public {paramName} param;
     public IState currentState;
     public Dictionary<{enumName}, IState> state = new Dictionary<{enumName}, IState>();
 
@@ -194,7 +193,7 @@ base.Start();
         }}
         currentState = state[stateType];
         currentState.OnEnter();
-        parameters.currentState = stateType;
+        param.currentState = stateType;
     }}
 }}
 ";
@@ -214,11 +213,11 @@ using UnityEngine;
 
 public class {stateClassName} : IState
 {{
-    private {fsmName} fSM;
+    private {fsmName} fsm;
 
-    public {stateClassName}({fsmName} fSM)
+    public {stateClassName}({fsmName} fsm)
     {{
-        this.fSM = fSM;
+        this.fsm = fsm;
     }}
 
     public void OnEnter()

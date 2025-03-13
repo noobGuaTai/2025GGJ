@@ -6,7 +6,6 @@ public class SwallowedObject : MonoBehaviour
     private Collider2D c;
     protected Rigidbody2D rb;
     private float initGravityScale = 50;
-    private Action action;
     private Transform parent;
     public virtual void Start()
     {
@@ -21,7 +20,7 @@ public class SwallowedObject : MonoBehaviour
             transform.position = parent.transform.position;
         }
     }
-    public virtual void OnLoad(Bubble bubble)
+    public virtual void OnLoad(BaseBubble bubble)
     {
         parent = bubble.transform;
         // transform.SetParent(bubble.transform, false);// 不知道为什么移动父物体子物体在世界坐标下不动
@@ -32,7 +31,7 @@ public class SwallowedObject : MonoBehaviour
         rb.gravityScale = 0;
         rb.linearVelocity = Vector2.zero;
     }
-    public virtual void OnBreak(Bubble bubble)
+    public virtual void OnBreak(BaseBubble bubble)
     {
         // transform.SetParent(parent, false);
         parent = null;
@@ -41,6 +40,5 @@ public class SwallowedObject : MonoBehaviour
         transform.position = bubble.transform.position;
         c.enabled = true;
         rb.gravityScale = initGravityScale;
-        action = null;
     }
 }

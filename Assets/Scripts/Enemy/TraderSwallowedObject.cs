@@ -10,12 +10,12 @@ public class TraderSwallowedObject : SwallowedObject
         rb = GetComponent<Rigidbody2D>();
         rb.bodyType = RigidbodyType2D.Kinematic;
     }
-    public override void OnBreak(Bubble bubble)
+    public override void OnBreak(BaseBubble bubble)
     {
         base.OnBreak(bubble);
     }
 
-    public override void OnLoad(Bubble bubble)
+    public override void OnLoad(BaseBubble bubble)
     {
         if (health > 0)
         {

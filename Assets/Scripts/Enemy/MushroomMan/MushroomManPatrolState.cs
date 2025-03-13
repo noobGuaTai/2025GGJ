@@ -16,6 +16,7 @@ public class MushroomManPatrolState : IState
 
     public void OnEnter()
     {
+        fSM.initPos = fSM.transform.position;
         patrolCoroutine = fSM.TwoPointPatrol(new Vector2(fSM.initPos.x + parameters.patrolPoint[0], fSM.initPos.y), new Vector2(fSM.initPos.x + parameters.patrolPoint[1], fSM.initPos.y), parameters.patrolSpeed);
     }
 

@@ -51,7 +51,7 @@ public class PlayerMoveState : IState
         }
 
         lastInput = fSM.param.moveInput;
-        if (fSM.param.jumpInput)
+        if (fSM.param.jumpInput && fSM.param.isOnGround)
         {
             fSM.ChangeState(PlayerStateType.Jump);
             return;
