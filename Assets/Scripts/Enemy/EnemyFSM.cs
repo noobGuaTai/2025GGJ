@@ -118,10 +118,9 @@ public class EnemyFSM : MonoBehaviour
             rb.linearVelocityX = 0;
     }
 
-    public Action OnKnockedBackActions;
-    public virtual void OnKnockedBack()
+    public virtual void Die()
     {
-        OnKnockedBackActions?.Invoke();
+        Destroy(gameObject);
     }
 
 }

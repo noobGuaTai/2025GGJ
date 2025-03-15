@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public enum MushroomManStateType
@@ -38,7 +39,9 @@ public class MushroomManFSM : EnemyFSM
         state.Add(MushroomManStateType.KnockedBack, new MushroomManKnockedBackState(this));
         ChangeState(MushroomManStateType.Patrol);
 
-        OnKnockedBackActions += () => ChangeState(MushroomManStateType.KnockedBack);
+        GetComponent<SwallowedEnemy>().onLoadActions += () => ChangeState(MushroomManStateType.UnderSwallowed);
+        GetComponent<SwallowedEnemy>().onBreakActions += () => ChangeState(MushroomManStateType.Patrol);
+        GetComponent<KnockedBackEnemy>().onKnockedBackActions += () => ChangeState(MushroomManStateType.KnockedBack);
     }
 
     void Update()
@@ -78,8 +81,9 @@ public class MushroomManFSM : EnemyFSM
         Gizmos.DrawWireSphere(transform.position, parameters.attackRange);
     }
 
-    void Die()
+    public override void Die()
     {
 
+        base.Die();
     }
 }

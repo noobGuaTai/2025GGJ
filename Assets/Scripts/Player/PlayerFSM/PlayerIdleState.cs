@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class PlayerIdleState : IState
 {
-    private PlayerFSM playerFSM;
-    private PlayerParameters parameters;
+    private PlayerFSM fsm;
 
     public PlayerIdleState(PlayerFSM playerFSM)
     {
-        this.playerFSM = playerFSM;
-        this.parameters = playerFSM.param;
+        this.fsm = playerFSM;
     }
 
     public void OnEnter()
     {
-        parameters.animator.Play("idle");
+        fsm.param.animator.Play("idle", 0, 0f);
     }
 
     public void OnExit()
@@ -30,15 +28,15 @@ public class PlayerIdleState : IState
 
     public void OnUpdate()
     {
-        if (parameters.moveInput.x != 0)
+        if (fsm.param.moveInput.x != 0)
         {
-            playerFSM.ChangeState(PlayerStateType.Move);
+            fsm.ChangeState(PlayerStateType.Move);
 
             return;
         }
-        if (parameters.jumpInput && parameters.isOnGround)
+        if (fsm.param.jumpInput && (fsm.param.isOnGround || fsm.param.isOnBigBubble))
         {
-            playerFSM.ChangeState(PlayerStateType.Jump);
+            fsm.ChangeState(PlayerStateType.Jump);
             return;
         }
     }

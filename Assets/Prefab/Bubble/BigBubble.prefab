@@ -362,7 +362,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   rb: {fileID: 0}
-  colliders: {fileID: 0}
+  colliders:
+  - {fileID: 0}
   swallowedObject: {fileID: 0}
   destoryLayer:
     serializedVersion: 2
@@ -372,6 +373,32 @@ MonoBehaviour:
   explosionEffectMask:
     serializedVersion: 2
     m_Bits: 131592
+  outsideCollider: {fileID: 959944911756882733}
+  triggerCollider: {fileID: 9016929489739431230}
   explosionRadius: 100
-  explosionForce: 100
+  explosionForce: 400
   contactGroundThreshold: 1
+  impactedSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

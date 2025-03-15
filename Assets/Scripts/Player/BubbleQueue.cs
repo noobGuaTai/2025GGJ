@@ -20,8 +20,8 @@ public class BubbleQueue
 
         if (smallBubbleNums + bigBubbleNums * 2 > 4)
         {
-            var latest = bubbles.Dequeue();
-            DestroyBubble(latest);
+            var latest = PlayerFSM.Instance.param.existingBubble.Dequeue();
+            latest.GetComponent<BaseBubble>().Break();
         }
 
     }
