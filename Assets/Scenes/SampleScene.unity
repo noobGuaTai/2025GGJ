@@ -884,7 +884,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ef6d567e70c594db266b7106d0beb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1229101848}
   levels:
   - {fileID: 4846692151810646849}
   - {fileID: 1558551738}
@@ -904,6 +903,8 @@ MonoBehaviour:
   - {x: -174, y: -66}
   - {x: -174, y: 54}
   - {x: -174, y: -49}
+  levelNameString: 0,1,2,3
+  levelIndex: -1
 --- !u!114 &978125390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4785,10 +4786,6 @@ PrefabInstance:
     - target: {fileID: 3685208462614323722, guid: af9677cb4b8090744a639dd11f968bfe, type: 3}
       propertyPath: m_Name
       value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 3685208462614323722, guid: af9677cb4b8090744a639dd11f968bfe, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6833955433682024793, guid: af9677cb4b8090744a639dd11f968bfe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

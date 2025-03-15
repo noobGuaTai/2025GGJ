@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Enemy
+  m_EditorClassIdentifier: 
+  m_GroupName: Enemy
+  m_GUID: 407d0efadf0cb8b42897a8442d8da444
+  m_SerializeEntries:
+  - m_GUID: a6ab033977b83044aa49b7e14a6acb96
+    m_Address: Assets/Prefab/Enemy/MushroomMan.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: d4171720940b8ea4ba23569bd51f8989, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c793ea7c5ac9196429f8109348bd2f76, type: 2}
+    - {fileID: 11400000, guid: 8f18b0ad7db0cfa4d942efbcc26017e0, type: 2}

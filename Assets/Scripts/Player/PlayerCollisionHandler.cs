@@ -1,6 +1,5 @@
 using UnityEngine;
 
-// 在玩家角色上挂载
 public class PlayerCollisionHandler : MonoBehaviour
 {
     public LayerMask deadlyLayers;
@@ -31,5 +30,6 @@ public class PlayerCollisionHandler : MonoBehaviour
                 playerFSM.ChangeState(PlayerStateType.Idle);
             }
         }
+
     }
 }

@@ -1,9 +1,10 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    public GameObject player;
     public GameObject[] levels;
     public int level = 1;//第几关
     public bool getedBook = false;
@@ -23,37 +24,29 @@ public class GameManager : MonoSingleton<GameManager>
             if (e != null)
                 e.ResetSelf();
         }
-        player.transform.position = playerInitPos[level - 1];
-        player.GetComponent<PlayerFSM>().param.rb.linearVelocity = Vector2.zero;
-        var b = player.GetComponent<PlayerFSM>().param.existingBubble;
-        if (b != null)
-            b.GetComponent<Bubble>().Break();
-        b = null;
+        PlayerFSM.Instance.transform.position = playerInitPos[level - 1];
+        PlayerFSM.Instance.param.rb.linearVelocity = Vector2.zero;
+        PlayerFSM.Instance.param.existingBubble.Clear();
     }
-
+    [Header("Level")]
+    public string levelNameString = "";
+    public List<string> levelNames => levelNameString.Replace(" ", "").Split(',').ToList();
+    public int levelIndex = -1;
+    private GameObject lastLevel = null;
     public void StartGame()
     {
         NextGame();
         UIManager.Instance.mainPage.SetActive(false);
         UIManager.Instance.playerUI.SetActive(true);
     }
-
+    public GameObject LevelNode(string levelName)
+        => transform.Find($"../Level/Level{levelName}").gameObject;
     public void NextGame()
     {
-        levels[level].SetActive(false);
-        level++;
-        levels[level].SetActive(true);
-        StartCoroutine(NextGameCoroutine());
-        UIManager.Instance.help.SetActive(level == 1);
-        UIManager.Instance.lastGame.SetActive(level > 1);
-        UIManager.Instance.level4Helper.SetActive(level == 4);
-        UIManager.Instance.level5Helper.SetActive(level == 5);
-        UIManager.Instance.CancelInvoke("CloseDialog");
-        UIManager.Instance.ShowDialog($"enemy{level}");
-        if (level == 6)
-            UIManager.Instance.CloseDialog();
-
-
+        levelIndex++;
+        lastLevel?.SetActive(false);
+        lastLevel = LevelNode(levelNames[levelIndex]);
+        lastLevel.SetActive(true);
     }
 
     public void LastGame()

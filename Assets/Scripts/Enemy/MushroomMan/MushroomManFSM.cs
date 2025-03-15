@@ -7,7 +7,8 @@ public enum MushroomManStateType
 {
     Patrol,
     Attack,
-    UnderSwallowed
+    UnderSwallowed,
+    KnockedBack
 }
 
 [Serializable]
@@ -34,7 +35,10 @@ public class MushroomManFSM : EnemyFSM
         state.Add(MushroomManStateType.Patrol, new MushroomManPatrolState(this));
         state.Add(MushroomManStateType.Attack, new MushroomManAttackState(this));
         state.Add(MushroomManStateType.UnderSwallowed, new MushroomManUnderSwallowedState(this));
+        state.Add(MushroomManStateType.KnockedBack, new MushroomManKnockedBackState(this));
         ChangeState(MushroomManStateType.Patrol);
+
+        OnKnockedBackActions += () => ChangeState(MushroomManStateType.KnockedBack);
     }
 
     void Update()
