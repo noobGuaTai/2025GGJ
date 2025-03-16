@@ -655,6 +655,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MushroomMan
       objectReference: {fileID: 0}
+    - target: {fileID: 6519572436789688924, guid: a6ab033977b83044aa49b7e14a6acb96, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9027380424867919135, guid: a6ab033977b83044aa49b7e14a6acb96, type: 3}
       propertyPath: m_LocalPosition.x
       value: -177
@@ -4659,7 +4663,7 @@ GameObject:
   - component: {fileID: 2109734369}
   - component: {fileID: 2109734372}
   - component: {fileID: 2109734371}
-  m_Layer: 6
+  m_Layer: 18
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}

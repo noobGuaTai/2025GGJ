@@ -16,14 +16,13 @@ public class MushroomManPatrolState : IState
 
     public void OnEnter()
     {
-        fSM.initPos = fSM.transform.position;
-        patrolCoroutine = fSM.TwoPointPatrol(new Vector2(fSM.initPos.x + parameters.patrolPoint[0], fSM.initPos.y), new Vector2(fSM.initPos.x + parameters.patrolPoint[1], fSM.initPos.y), parameters.patrolSpeed);
+
     }
 
     public void OnExit()
     {
         fSM.StopCoroutine(patrolCoroutine);
-        // fSM.StopAllCoroutines();
+        patrolCoroutine = null;
     }
 
     public void OnFixedUpdate()
@@ -32,7 +31,17 @@ public class MushroomManPatrolState : IState
 
     public void OnUpdate()
     {
+        StartPatrol();
         if (fSM.DetectPlayer(parameters.attackRange))
             fSM.ChangeState(MushroomManStateType.Attack);
+    }
+
+    void StartPatrol()
+    {
+        if (patrolCoroutine == null && fSM.parameters.isOnGround)
+        {
+            fSM.initPos = fSM.transform.position;
+            patrolCoroutine = fSM.TwoPointPatrol(new Vector2(fSM.initPos.x + parameters.patrolPoint[0], fSM.initPos.y), new Vector2(fSM.initPos.x + parameters.patrolPoint[1], fSM.initPos.y), parameters.patrolSpeed);
+        }
     }
 }

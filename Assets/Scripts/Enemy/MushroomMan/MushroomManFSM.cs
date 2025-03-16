@@ -22,6 +22,8 @@ public class MushroomManParameters
     public float detectRange;// 追逐玩家过程中超过该范围则返回原地
     public float attackRange;// 玩家进入该范围则进入攻击状态
     public LayerMask deadlyLayers;
+    public bool isOnGround => groundCheck.isChecked;
+    internal AnythingCheck groundCheck;
 }
 
 public class MushroomManFSM : EnemyFSM
@@ -29,6 +31,12 @@ public class MushroomManFSM : EnemyFSM
     public MushroomManParameters parameters;
     public IState currentState;
     public Dictionary<MushroomManStateType, IState> state = new Dictionary<MushroomManStateType, IState>();
+
+    public override void Awake()
+    {
+        base.Awake();
+        parameters.groundCheck = GetComponent<AnythingCheck>();
+    }
 
     public override void Start()
     {
@@ -42,6 +50,8 @@ public class MushroomManFSM : EnemyFSM
         GetComponent<SwallowedEnemy>().onLoadActions += () => ChangeState(MushroomManStateType.UnderSwallowed);
         GetComponent<SwallowedEnemy>().onBreakActions += () => ChangeState(MushroomManStateType.Patrol);
         GetComponent<KnockedBackEnemy>().onKnockedBackActions += () => ChangeState(MushroomManStateType.KnockedBack);
+
+
     }
 
     void Update()

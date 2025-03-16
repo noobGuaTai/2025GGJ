@@ -37,7 +37,7 @@ public class AnythingCheck : MonoBehaviour
         }
     }
 
-    void OnDrawGizmos()
+    void OnDrawGizmosSelected()
     {
         if (anythingCheckpoints != null)
         {

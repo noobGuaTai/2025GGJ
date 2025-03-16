@@ -76,7 +76,7 @@ public class SmallBubble : BaseBubble
     public override void SwallowObject(GameObject other)
     {
         if (other.TryGetComponent<EnemyFSM>(out var e))
-            if (e.somatotype == EnemyFSM.EnemySomatotype.Heavy)
+            if (e.somatoType == EnemyFSM.EnemySomatoType.Heavy)
                 PlayerFSM.Instance.param.existingBubble.DestroyBubble(gameObject);
             else
                 base.SwallowObject(other);

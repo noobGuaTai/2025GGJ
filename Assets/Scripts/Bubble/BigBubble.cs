@@ -12,7 +12,7 @@ public class BigBubble : BaseBubble
     public float explosionForce;
     public float contactGroundThreshold;// 触地超过这个时间就会吸附到地面
     float contactGroundTimer;// 触地计时器
-    public Coroutine absorbedCoroutine;
+    public bool isAbsorbed;
     public AnimationCurve impactedSpeedCurve;
     Tween tween;
     float radius = 7f;
@@ -40,14 +40,14 @@ public class BigBubble : BaseBubble
     public override void OnTriggerStay2D(Collider2D other)
     {
         base.OnTriggerStay2D(other);
-        if ((other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Wall")) && absorbedCoroutine == null)
+        if ((other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Wall")) && isAbsorbed == false)
         {
             while (true)
             {
                 contactGroundTimer += Time.fixedDeltaTime;
                 if (contactGroundTimer > contactGroundThreshold)
                 {
-                    absorbedCoroutine = StartCoroutine(Absorbed());
+                    Absorbed();
                     break;
                 }
             }
@@ -63,23 +63,24 @@ public class BigBubble : BaseBubble
 
     }
 
-    IEnumerator Absorbed()
+    void Absorbed()
     {
-        rb.bodyType = RigidbodyType2D.Kinematic;
-        rb.linearVelocity = Vector2.zero;
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-
         Vector3 contactPoint = CalculateContactPoint();
         if (contactPoint == Vector3.zero)
         {
             contactGroundTimer = 0;
-            absorbedCoroutine = null;
-            yield break;
+            isAbsorbed = false;
+            return;
         }
+
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        rb.linearVelocity = Vector2.zero;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
         tween.AddTween(x => transform.position = x, transform.position,
          contactPoint + GetNormalVector(contactPoint) * radius,
           0.5f, Tween.TransitionType.QUART, Tween.EaseType.IN).Play();
-        yield return null;
+        isAbsorbed = true;
     }
 
     void SetGravityScale() => rb.gravityScale = 1;
@@ -147,7 +148,7 @@ public class BigBubble : BaseBubble
         bool hitDetected = false;
         foreach (Vector2 direction in directions)
         {
-            RaycastHit2D hit = Physics2D.Raycast(origin, direction, 30f, 1 << LayerMask.NameToLayer("Ground"));
+            RaycastHit2D hit = Physics2D.Raycast(origin, direction, 30f, LayerMask.GetMask("Ground", "Wall"));
             if (hit.collider != null)
             {
                 float distance = Vector2.Distance(origin, hit.point);
@@ -166,7 +167,7 @@ public class BigBubble : BaseBubble
     public override void SwallowObject(GameObject other)
     {
         if (other.TryGetComponent<EnemyFSM>(out var e))
-            if (e.somatotype == EnemyFSM.EnemySomatotype.Light)
+            if (e.somatoType == EnemyFSM.EnemySomatoType.Light)
                 PlayerFSM.Instance.param.existingBubble.DestroyBubble(gameObject);
             else
             {
