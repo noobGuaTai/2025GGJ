@@ -9,6 +9,7 @@ public class EnemyFSM : MonoBehaviour
     public Animator animator;
     public Vector2 initPos;
     public float health;
+    public LayerMask deadlyLayers;
     public enum EnemySomatoType
     {
         Light,
@@ -26,6 +27,7 @@ public class EnemyFSM : MonoBehaviour
     {
 
     }
+
     public virtual void ResetSelf()
     {
 
@@ -47,7 +49,6 @@ public class EnemyFSM : MonoBehaviour
         (Vector2 adjustedFirst, Vector2 adjustedSecond) = AdjustPatrolPoints(first, second);
         return StartCoroutine(RandomRangePatrolCoroutine(adjustedFirst, adjustedSecond, speed, minDistance));
     }
-
 
     /// <summary>
     /// 统一处理巡逻点的调整，包含墙壁检测和距离补偿
@@ -134,6 +135,7 @@ public class EnemyFSM : MonoBehaviour
         return targetPoint;
     }
 
+
     IEnumerator TwoPointPatrolCoroutine(Vector2 first, Vector2 second, float speed)
     {
         while (true)
@@ -152,47 +154,64 @@ public class EnemyFSM : MonoBehaviour
         }
     }
 
-    public Action finishMoved;
-    IEnumerator MoveToTarget(Vector2 target, float speed)
+    IEnumerator MoveToTarget(Vector2 target, float speed, Action onComplete = null)
     {
         float tolerance = 1f;
         while (Mathf.Abs(transform.position.x - target.x) > tolerance)
         {
             float direction = (target.x - transform.position.x) > 0 ? 1 : -1;
             rb.linearVelocityX = direction * speed;
+            transform.localScale = new Vector3(direction, transform.localScale.y, transform.localScale.z);
             yield return null;
         }
 
         rb.linearVelocityX = 0;
         transform.position = new Vector3(target.x, transform.position.y, transform.position.z);
-        finishMoved?.Invoke();
+        onComplete?.Invoke();
 
         yield return null;
     }
 
     /// <summary>
-    /// 往左往右发射射线检测玩家
+    /// 往左往右发射射线检测物体
     /// </summary>
-    /// <param name="range">检测范围</param>
-    /// <returns>是否检测到玩家</returns>
-    public virtual bool DetectPlayer(float range)
+    /// <param name="range">射线长度</param>
+    /// <param name="layer">目标layer</param>
+    /// <param name="aim">返回第一个碰到的物体</param>
+    /// <param name="direction">-1仅往左发射，1仅往右发射，0左右都发射</param>
+    /// <returns>是否检测到物体</returns>
+    public virtual bool IsDetectObjectByLayer(float range, LayerMask layer, out GameObject aim, int direction = 0)
     {
-        RaycastHit2D hit1 = Physics2D.Raycast(transform.position, Vector2.right, range, 1 << LayerMask.NameToLayer("Player"));
-        RaycastHit2D hit2 = Physics2D.Raycast(transform.position, Vector2.left, range, 1 << LayerMask.NameToLayer("Player"));
-        if (hit1.collider != null || hit2.collider != null)
+        aim = null;
+        if (direction >= 0)
         {
-            return true;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, range, layer);
+            if (hit.collider != null)
+            {
+                aim = hit.collider.gameObject;
+                return true;
+            }
         }
-        else
-            return false;
+
+        if (direction <= 0)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, range, layer);
+            if (hit.collider != null)
+            {
+                aim = hit.collider.gameObject;
+                return true;
+            }
+        }
+
+        return false;
     }
 
-    public virtual void ChasePlayer(float speed)
+    public virtual void ChaseObject(float speed, GameObject aim)
     {
         float tolerance = 1f;
-        if (Mathf.Abs(transform.position.x - PlayerFSM.Instance.transform.position.x) > tolerance)
+        if (Mathf.Abs(transform.position.x - aim.transform.position.x) > tolerance)
         {
-            float direction = (PlayerFSM.Instance.transform.position.x - transform.position.x) > 0 ? 1 : -1;
+            float direction = (aim.transform.position.x - transform.position.x) > 0 ? 1 : -1;
             rb.linearVelocityX = direction * speed;
         }
         else
@@ -202,6 +221,22 @@ public class EnemyFSM : MonoBehaviour
     public virtual void Die()
     {
         Destroy(gameObject);
+    }
+
+    public virtual void OnTriggerEnter2D(Collider2D other)
+    {
+        if (((1 << other.gameObject.layer) & deadlyLayers) != 0)
+        {
+            Die();
+        }
+    }
+
+    public virtual void OnCollisionEnter2D(Collision2D other)
+    {
+        if (((1 << other.gameObject.layer) & deadlyLayers) != 0)
+        {
+            Die();
+        }
     }
 
 }

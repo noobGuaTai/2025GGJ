@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5542097376665198116}
   - component: {fileID: 813489461257095057}
   - component: {fileID: 6435415848657024109}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: BlowArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 3284269866718750849}
   - component: {fileID: 8354128009523275954}
   - component: {fileID: 5408160020305475881}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bubbling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -531,9 +531,6 @@ MonoBehaviour:
     weaponCoinPrefab: {fileID: 0}
     blowInput: 0
     blowArea: {fileID: 813489461257095057}
-    existingBubble:
-      smallBubbleNums: 0
-      bigBubbleNums: 0
     bubblingAnimator: {fileID: 5408160020305475881}
     jumpInput: 0
   attributes:
@@ -1053,7 +1050,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4840310765969338487}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: GroundCheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1084,7 +1081,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6712183740628152267}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: BubbleCheckPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1115,7 +1112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 590071074577810198}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: BubbleCheckPoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

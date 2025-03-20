@@ -21,7 +21,7 @@ public class MushroomManAttackState : IState
 
     public void OnExit()
     {
-        fSM.finishMoved = null;
+        // fSM.finishMoved = null;
         // fSM.StopCoroutine(returnToInitPosCoroutine);
     }
 
@@ -31,11 +31,11 @@ public class MushroomManAttackState : IState
 
     public void OnUpdate()
     {
-        if (fSM.DetectPlayer(parameters.detectRange))
+        if (fSM.IsDetectObjectByLayer(parameters.detectRange, LayerMask.GetMask("Player"), out var g))
         {
             // if (returnToInitPosCoroutine != null)
             //     fSM.StopCoroutine(returnToInitPosCoroutine);
-            fSM.ChasePlayer(parameters.chaseSpeed);
+            fSM.ChaseObject(parameters.chaseSpeed, g);
         }
         else
         {

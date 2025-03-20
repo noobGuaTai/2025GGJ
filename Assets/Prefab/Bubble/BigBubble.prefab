@@ -372,12 +372,13 @@ MonoBehaviour:
   initSpeed: {x: 0, y: 0}
   explosionEffectMask:
     serializedVersion: 2
-    m_Bits: 131592
+    m_Bits: 131720
   outsideCollider: {fileID: 959944911756882733}
   triggerCollider: {fileID: 9016929489739431230}
   explosionRadius: 100
   explosionForce: 400
   contactGroundThreshold: 1
+  isAbsorbed: 0
   impactedSpeedCurve:
     serializedVersion: 2
     m_Curve:

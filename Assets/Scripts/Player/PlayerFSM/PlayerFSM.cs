@@ -33,7 +33,6 @@ public class PlayerParameters
     public GameObject weaponCoinPrefab;
     public bool blowInput;
     public Collider2D blowArea;
-    public BubbleQueue existingBubble;
     public Animator bubblingAnimator;
     public bool jumpInput;
     public bool isOnGround => groundCheck.isChecked;
@@ -283,9 +282,9 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
 
     public void BubbleBomb(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && (param.existingBubble.smallBubbleNums > 0 || param.existingBubble.bigBubbleNums > 0))
+        if (context.phase == InputActionPhase.Started && (BubbleQueue.smallBubbleNums > 0 || BubbleQueue.bigBubbleNums > 0))
         {
-            var b = param.existingBubble.Dequeue();
+            var b = BubbleQueue.Dequeue();
             b.GetComponent<BaseBubble>().Break();
         }
     }

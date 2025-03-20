@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,11 +19,16 @@ public class BigBubble : BaseBubble
     float radius = 7f;
     HashSet<Collider2D> collidingObjects = new HashSet<Collider2D>();
 
+    public override void Awake()
+    {
+        base.Awake();
+        tween = gameObject.AddComponent<Tween>();
+        Invoke("SetGravityScale", 1f);
+    }
+
     public override void Start()
     {
         base.Start();
-        tween = gameObject.AddComponent<Tween>();
-        Invoke("SetGravityScale", 1f);
     }
     public override void OnCollisionEnter2D(Collision2D other)
     {
@@ -168,7 +174,7 @@ public class BigBubble : BaseBubble
     {
         if (other.TryGetComponent<EnemyFSM>(out var e))
             if (e.somatoType == EnemyFSM.EnemySomatoType.Light)
-                PlayerFSM.Instance.param.existingBubble.DestroyBubble(gameObject);
+                BubbleQueue.DestroyBubble(gameObject);
             else
             {
                 base.SwallowObject(other);

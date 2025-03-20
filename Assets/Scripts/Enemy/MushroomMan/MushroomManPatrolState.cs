@@ -21,7 +21,8 @@ public class MushroomManPatrolState : IState
 
     public void OnExit()
     {
-        fSM.StopCoroutine(patrolCoroutine);
+        if (patrolCoroutine != null)
+            fSM.StopCoroutine(patrolCoroutine);
         patrolCoroutine = null;
     }
 
@@ -32,7 +33,7 @@ public class MushroomManPatrolState : IState
     public void OnUpdate()
     {
         StartPatrol();
-        if (fSM.DetectPlayer(parameters.attackRange))
+        if (fSM.IsDetectObjectByLayer(parameters.attackRange, LayerMask.GetMask("Player"), out var _))
             fSM.ChangeState(MushroomManStateType.Attack);
     }
 

@@ -21,11 +21,12 @@ public class BaseBubble : MonoBehaviour
         rb.linearVelocity = initSpeed;
         destoryAudio = GetComponent<AudioSource>();
         Addressables.LoadAssetAsync<AudioClip>("Assets/Sound/bubble7.mp3").Completed += OnAudioClipLoaded;
+
     }
 
     public virtual void Start()
     {
-        PlayerFSM.Instance.param.existingBubble.Enqueue(gameObject);
+        BubbleQueue.Enqueue(gameObject);
     }
 
 
@@ -70,7 +71,7 @@ public class BaseBubble : MonoBehaviour
     {
         if (((1 << other.layer) & destoryLayer) != 0)
         {
-            PlayerFSM.Instance.param.existingBubble.DestroyBubble(gameObject);
+            BubbleQueue.DestroyBubble(gameObject);
         }
     }
 
