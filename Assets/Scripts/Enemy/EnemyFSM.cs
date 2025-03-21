@@ -38,16 +38,16 @@ public class EnemyFSM : MonoBehaviour
         return StartCoroutine(MoveToTarget(initPos, speed));
     }
 
-    public virtual Coroutine TwoPointPatrol(Vector2 first, Vector2 second, float speed)
+    public virtual Coroutine TwoPointPatrol(Vector2 first, Vector2 second, float speed, bool isChangeScale = true)
     {
         (Vector2 adjustedFirst, Vector2 adjustedSecond) = AdjustPatrolPoints(first, second);
-        return StartCoroutine(TwoPointPatrolCoroutine(adjustedFirst, adjustedSecond, speed));
+        return StartCoroutine(TwoPointPatrolCoroutine(adjustedFirst, adjustedSecond, speed, isChangeScale));
     }
 
-    public virtual Coroutine RandomRangePatrol(Vector2 first, Vector2 second, float speed, float minDistance)
+    public virtual Coroutine RandomRangePatrol(Vector2 first, Vector2 second, float speed, float minDistance, bool isChangeScale = true)
     {
         (Vector2 adjustedFirst, Vector2 adjustedSecond) = AdjustPatrolPoints(first, second);
-        return StartCoroutine(RandomRangePatrolCoroutine(adjustedFirst, adjustedSecond, speed, minDistance));
+        return StartCoroutine(RandomRangePatrolCoroutine(adjustedFirst, adjustedSecond, speed, minDistance, isChangeScale));
     }
 
     /// <summary>
@@ -136,32 +136,33 @@ public class EnemyFSM : MonoBehaviour
     }
 
 
-    IEnumerator TwoPointPatrolCoroutine(Vector2 first, Vector2 second, float speed)
+    IEnumerator TwoPointPatrolCoroutine(Vector2 first, Vector2 second, float speed, bool isChangeScale = true)
     {
         while (true)
         {
-            yield return MoveToTarget(second, speed);
-            yield return MoveToTarget(first, speed);
+            yield return MoveToTarget(second, speed, isChangeScale: isChangeScale);
+            yield return MoveToTarget(first, speed, isChangeScale: isChangeScale);
         }
     }
 
-    IEnumerator RandomRangePatrolCoroutine(Vector2 first, Vector2 second, float speed, float minDistance)
+    IEnumerator RandomRangePatrolCoroutine(Vector2 first, Vector2 second, float speed, float minDistance, bool isChangeScale = true)
     {
         while (true)
         {
-            yield return MoveToTarget(new Vector2(UnityEngine.Random.Range(transform.position.x + minDistance, second.x), second.y), speed);
-            yield return MoveToTarget(new Vector2(UnityEngine.Random.Range(first.x, transform.position.x - minDistance), first.y), speed);
+            yield return MoveToTarget(new Vector2(UnityEngine.Random.Range(transform.position.x + minDistance, second.x), second.y), speed, isChangeScale: isChangeScale);
+            yield return MoveToTarget(new Vector2(UnityEngine.Random.Range(first.x, transform.position.x - minDistance), first.y), speed, isChangeScale: isChangeScale);
         }
     }
 
-    IEnumerator MoveToTarget(Vector2 target, float speed, Action onComplete = null)
+    IEnumerator MoveToTarget(Vector2 target, float speed, Action onComplete = null, bool isChangeScale = true)
     {
         float tolerance = 1f;
         while (Mathf.Abs(transform.position.x - target.x) > tolerance)
         {
             float direction = (target.x - transform.position.x) > 0 ? 1 : -1;
             rb.linearVelocityX = direction * speed;
-            transform.localScale = new Vector3(direction, transform.localScale.y, transform.localScale.z);
+            if (isChangeScale)
+                transform.localScale = new Vector3(direction, transform.localScale.y, transform.localScale.z);
             yield return null;
         }
 
