@@ -15,6 +15,7 @@ public class TreeManParameters
 {
     public TreeManStateType currentState;
     public Vector3 growPosition;
+    public GameObject saplingPrefab;
 }
 
 public class TreeManFSM : EnemyFSM
