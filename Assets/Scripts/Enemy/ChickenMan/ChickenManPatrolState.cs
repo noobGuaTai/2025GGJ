@@ -16,7 +16,9 @@ public class ChickenManPatrolState : IState
     Coroutine patrolCoroutine;
     public void OnEnter()
     {
-        patrolCoroutine = fSM.TwoPointPatrol(new Vector2(fSM.initPos.x + parameters.patrolParameter.range[0], fSM.initPos.y), new Vector2(fSM.initPos.x + parameters.patrolParameter.range[1], fSM.initPos.y), parameters.patrolParameter.speed);
+        patrolCoroutine = fSM.TwoPointPatrol(
+            new Vector2(fSM.initPos.x + parameters.patrolParameter.range[0], fSM.initPos.y), new Vector2(fSM.initPos.x + parameters.patrolParameter.range[1], fSM.initPos.y),
+            parameters.patrolParameter.speed, isChangeScale:false);
     }
 
     public void OnExit()

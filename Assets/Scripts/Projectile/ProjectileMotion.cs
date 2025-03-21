@@ -12,6 +12,7 @@ public static class ProjectileMotion
     /// <returns>返回所需的初速度向量，如果无法到达目标则返回Vector3.zero</returns>
     public static Vector3 CalculateInitialVelocity(Vector3 startPoint, Vector3 targetPoint, float angle, float gravity = 9.81f)
     {
+        targetPoint.z = startPoint.z;
         // 将角度转换为弧度
         float angleRad = angle * Mathf.Deg2Rad;
 
@@ -31,7 +32,6 @@ public static class ProjectileMotion
         // 检查是否有解
         if (denominator <= 0)
         {
-            Debug.LogWarning("无法以给定角度到达目标点");
             return Vector3.zero;
         }
 
@@ -40,7 +40,6 @@ public static class ProjectileMotion
         // 确保速度值有效
         if (speedSquared <= 0)
         {
-            Debug.LogWarning("计算结果速度无效");
             return Vector3.zero;
         }
 
@@ -52,6 +51,7 @@ public static class ProjectileMotion
         // 构建初速度向量
         Vector3 initialVelocity = horizontalDir * speed * Mathf.Cos(angleRad);
         initialVelocity.y = speed * Mathf.Sin(angleRad);
+        initialVelocity.x *= -1;
 
         return initialVelocity;
     }

@@ -16,6 +16,7 @@ public class TreeManParameters
     public TreeManStateType currentState;
     public Vector3 growPosition;
     public GameObject saplingPrefab;
+    public GameObject saplingGrowUpMirage;
 }
 
 public class TreeManFSM : EnemyFSM
@@ -23,6 +24,10 @@ public class TreeManFSM : EnemyFSM
     public TreeManParameters parameters;
     public IState currentState;
     public Dictionary<TreeManStateType, IState> state = new Dictionary<TreeManStateType, IState>();
+    public void TreeManGrowFinish()
+    {
+        (state[TreeManStateType.Grow] as TreeManGrowState).growFinish = true;
+    }
 
     public override void Start()
     {

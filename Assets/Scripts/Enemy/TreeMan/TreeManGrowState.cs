@@ -12,28 +12,31 @@ public class TreeManGrowState : IState
         this.fSM = fSM;
     }
     public void PlayAnimation() {
+        fSM.animator.SetTrigger("GrowBegin");
 
     }
     public GameObject CreateGrowMirage() {
-        return null;
+        var mirageIns = Object.Instantiate(fSM.parameters.saplingGrowUpMirage);
+        return mirageIns;
     }
-    public bool animationFinish;
+    public bool growFinish;
     public GameObject growMirage;
 
     public void OnEnter()
     {
-        animationFinish = false;
+        growFinish = false;
         PlayAnimation();
         growMirage = CreateGrowMirage();
     }
 
     public void OnExit()
     {
+        fSM.animator.SetTrigger("GrowEnd");
     }
 
     public void OnFixedUpdate()
     {
-        if (animationFinish)
+        if (growFinish)
         {
             fSM.transform.position = fSM.parameters.growPosition;
             Object.Destroy(growMirage);
