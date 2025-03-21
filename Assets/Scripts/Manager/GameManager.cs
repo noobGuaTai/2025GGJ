@@ -24,9 +24,9 @@ public class GameManager : MonoSingleton<GameManager>
             if (e != null)
                 e.ResetSelf();
         }
-        PlayerFSM.Instance.transform.position = playerInitPos[level - 1];
+        PlayerFSM.Instance.transform.position = playerInitPos[level];
         PlayerFSM.Instance.param.rb.linearVelocity = Vector2.zero;
-        PlayerFSM.Instance.param.existingBubble.Clear();
+        BubbleQueue.Clear();
     }
     [Header("Level")]
     public string levelNameString = "";

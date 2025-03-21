@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MushroomManKnockedBackState : IState
+public class WorkerUnderSwallowedState : IState
 {
-    private MushroomManFSM fsm;
+    private WorkerFSM fsm;
 
-    public MushroomManKnockedBackState(MushroomManFSM fsm)
+    public WorkerUnderSwallowedState(WorkerFSM fsm)
     {
         this.fsm = fsm;
     }
 
     public void OnEnter()
     {
-
+        
     }
 
     public void OnExit()
@@ -26,9 +26,5 @@ public class MushroomManKnockedBackState : IState
 
     public void OnUpdate()
     {
-        if (fsm.rb.linearVelocity.magnitude < 40f)
-        {
-            fsm.ChangeState(MushroomManStateType.Patrol);
-        }
     }
 }

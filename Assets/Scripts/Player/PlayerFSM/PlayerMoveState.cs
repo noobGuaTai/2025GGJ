@@ -15,7 +15,7 @@ public class PlayerMoveState : IState
 
     public void OnEnter()
     {
-        fSM.param.animator.Play("run");
+        fSM.param.animator.Play("run", 0, 0f);
     }
 
     public void OnExit()
@@ -26,21 +26,6 @@ public class PlayerMoveState : IState
     public void OnFixedUpdate()
     {
         fSM.param.rb.linearVelocity = new Vector2(fSM.param.moveInput.x * fSM.attributes.moveSpeed, fSM.param.rb.linearVelocity.y);
-        // if (parameters.moveInput.x > 0)
-        // {
-        //     // playerFSM.parameters.sr.sprite = parameters.walkSprites[0];
-        //     // parameters.animator.Play("WalkRight");
-        // }
-        // // else if (parameters.moveInput.x < 0)
-        // // {
-        //     // playerFSM.parameters.sr.sprite = parameters.walkSprites[1];
-        //     // parameters.animator.Play("WalkLeft");
-        // // }
-        // // else if (parameters.moveInput.y < 0)
-        // // {
-        // //     playerFSM.parameters.sr.sprite = parameters.walkSprites[3];
-        // //     parameters.animator.Play("WalkDown");
-        // // }
         if (fSM.param.moveInput.x > 0)
         {
             fSM.transform.localScale = new Vector3(-1, 1, 1);
@@ -51,7 +36,7 @@ public class PlayerMoveState : IState
         }
 
         lastInput = fSM.param.moveInput;
-        if (fSM.param.jumpInput && fSM.param.isOnGround)
+        if (fSM.param.jumpInput && (fSM.param.isOnGround || fSM.param.isOnBigBubble))
         {
             fSM.ChangeState(PlayerStateType.Jump);
             return;

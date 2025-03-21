@@ -5,11 +5,11 @@ using UnityEngine;
 [Serializable]
 public class BubbleQueue
 {
-    public Queue<GameObject> bubbles = new();
-    public int smallBubbleNums = 0;
-    public int bigBubbleNums = 0;
+    public static Queue<GameObject> bubbles = new();
+    public static int smallBubbleNums = 0;
+    public static int bigBubbleNums = 0;
 
-    public void Enqueue(GameObject bubble)
+    public static void Enqueue(GameObject bubble)
     {
         bubbles.Enqueue(bubble);
 
@@ -20,13 +20,13 @@ public class BubbleQueue
 
         if (smallBubbleNums + bigBubbleNums * 2 > 4)
         {
-            var latest = bubbles.Dequeue();
-            DestroyBubble(latest);
+            var latest = Dequeue();
+            latest.GetComponent<BaseBubble>().Break();
         }
 
     }
 
-    public GameObject Dequeue()
+    public static GameObject Dequeue()
     {
         GameObject bubble = bubbles.Dequeue();
 
@@ -38,7 +38,7 @@ public class BubbleQueue
         return bubble;
     }
 
-    public void Clear()
+    public static void Clear()
     {
         while (bubbles.Count > 0)
         {
@@ -49,7 +49,7 @@ public class BubbleQueue
         bigBubbleNums = 0;
     }
 
-    public void DestroyBubble(GameObject bubble)
+    public static void DestroyBubble(GameObject bubble)
     {
         Queue<GameObject> tempQueue = new Queue<GameObject>();
         while (bubbles.Count > 0)

@@ -177,7 +177,7 @@ MonoBehaviour:
   destoryAudio: {fileID: 0}
   initSpeed: {x: 0, y: 0}
   bigBubblePrefab: {fileID: 0}
-  reboundVelocity: 100
+  reboundVelocity: 200
 --- !u!95 &8361603716610868231
 Animator:
   serializedVersion: 7

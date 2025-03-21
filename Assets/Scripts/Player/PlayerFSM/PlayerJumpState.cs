@@ -15,8 +15,8 @@ public class PlayerJumpState : IState
 
     public void OnEnter()
     {
-        fSM.param.rb.AddForce(Vector2.up * fSM.attributes.jumpForce);
-        fSM.param.animator.Play("jump");
+        fSM.param.rb.linearVelocityY = fSM.attributes.jumpSpeed;
+        fSM.param.animator.Play("jump", 0, 0f);
 
     }
 

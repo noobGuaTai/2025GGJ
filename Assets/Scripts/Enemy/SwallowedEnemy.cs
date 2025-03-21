@@ -1,22 +1,23 @@
+using System;
 using UnityEngine;
 
-public class MushroomManSwallowedObject : SwallowedObject
+public class SwallowedEnemy : SwallowedObject
 {
-    MushroomManFSM fsm;
+    public Action onBreakActions;
+    public Action onLoadActions;
     public override void Start()
     {
         base.Start();
-        fsm = GetComponent<MushroomManFSM>();
     }
     public override void OnBreak(BaseBubble bubble)
     {
         base.OnBreak(bubble);
-        fsm.ChangeState(MushroomManStateType.Patrol);
+        onBreakActions?.Invoke();
     }
 
     public override void OnLoad(BaseBubble bubble)
     {
         base.OnLoad(bubble);
-        fsm.ChangeState(MushroomManStateType.UnderSwallowed);
+        onLoadActions?.Invoke();
     }
 }

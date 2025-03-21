@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -6,7 +7,7 @@ public class BaseBubble : MonoBehaviour
 {
     public Animator animator;
     public Rigidbody2D rb;
-    public Collider2D colliders;
+    public Collider2D[] colliders;
     public GameObject swallowedObject;
     public LayerMask destoryLayer;
     public AudioSource destoryAudio;
@@ -14,17 +15,18 @@ public class BaseBubble : MonoBehaviour
     float swallowedObjectMass;
     public virtual void Awake()
     {
-        colliders = GetComponent<Collider2D>();
+        colliders = GetComponents<Collider2D>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = initSpeed;
         destoryAudio = GetComponent<AudioSource>();
         Addressables.LoadAssetAsync<AudioClip>("Assets/Sound/bubble7.mp3").Completed += OnAudioClipLoaded;
+
     }
 
     public virtual void Start()
     {
-        PlayerFSM.Instance.param.existingBubble.Enqueue(gameObject);
+        BubbleQueue.Enqueue(gameObject);
     }
 
 
@@ -39,7 +41,7 @@ public class BaseBubble : MonoBehaviour
             swallowedObject?.GetComponent<SwallowedObject>().OnBreak(this);
         swallowedObject = null;
         animator.Play("bomb");
-        colliders.enabled = false;
+        colliders.Any(c => c.enabled = false);
         destoryAudio.Play();
         Destroy(gameObject, 0.4f);
     }
@@ -58,8 +60,6 @@ public class BaseBubble : MonoBehaviour
             swallowedObject = other;
             if (other.TryGetComponent<EnemyFSM>(out var e))
             {
-                if (e.somatotype == EnemyFSM.EnemySomatotype.Heavy)
-                    PlayerFSM.Instance.param.existingBubble.DestroyBubble(gameObject);
                 swallowedObjectMass = e.rb.mass;
                 rb.mass += e.rb.mass;
                 rb.gravityScale = 1;
@@ -71,7 +71,7 @@ public class BaseBubble : MonoBehaviour
     {
         if (((1 << other.layer) & destoryLayer) != 0)
         {
-            PlayerFSM.Instance.param.existingBubble.DestroyBubble(gameObject);
+            BubbleQueue.DestroyBubble(gameObject);
         }
     }
 
@@ -82,6 +82,11 @@ public class BaseBubble : MonoBehaviour
     }
 
     public virtual void OnTriggerEnter2D(Collider2D other)
+    {
+
+    }
+
+    public virtual void OnTriggerStay2D(Collider2D other)
     {
 
     }

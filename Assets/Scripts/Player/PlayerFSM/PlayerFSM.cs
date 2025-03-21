@@ -14,13 +14,15 @@ public enum PlayerStateType
 {
     Idle,
     Move,
-    Jump
+    Jump,
+    KnockedBack
 }
 
 
 [Serializable]
 public class PlayerParameters
 {
+    public PlayerStateType currentState;
     public Vector2 moveInput;
     public Rigidbody2D rb;
     public Animator animator;
@@ -31,10 +33,12 @@ public class PlayerParameters
     public GameObject weaponCoinPrefab;
     public bool blowInput;
     public Collider2D blowArea;
-    public BubbleQueue existingBubble;
     public Animator bubblingAnimator;
     public bool jumpInput;
-    public bool isOnGround;
+    public bool isOnGround => groundCheck.isChecked;
+    public bool isOnBigBubble => bubbleCheck.isChecked;
+    internal AnythingCheck groundCheck;
+    internal BubbleCheck bubbleCheck;
 }
 
 [Serializable]
@@ -51,7 +55,7 @@ public class PlayerAttributes
     public float shootCooldown;
     public float moveSpeed = 10;
     public int health;
-    public float jumpForce = 100f;
+    public float jumpSpeed = 100f;
     internal float blowPressStartTime = 0f;
     public bool isBlowing = false;
     internal float initGravityScale = 50;
@@ -86,9 +90,12 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         state.Add(PlayerStateType.Idle, new PlayerIdleState(this));
         state.Add(PlayerStateType.Move, new PlayerMoveState(this));
         state.Add(PlayerStateType.Jump, new PlayerJumpState(this));
+        state.Add(PlayerStateType.KnockedBack, new PlayerKnockedBackState(this));
         tween = GetComponent<Tween>();
         ChangeState(PlayerStateType.Idle);
 
+        param.groundCheck = GetComponent<AnythingCheck>();
+        param.bubbleCheck = GetComponent<BubbleCheck>();
     }
 
     void InitAction()
@@ -136,6 +143,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
             currentState.OnExit();
         }
         currentState = state[stateType];
+        param.currentState = stateType;
         currentState.OnEnter();
     }
 
@@ -165,7 +173,10 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
     public void PlayerMove(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started || context.phase == InputActionPhase.Performed)
+        {
             param.moveInput = context.ReadValue<Vector2>();
+        }
+
         else if (context.phase == InputActionPhase.Canceled)
             param.moveInput = Vector2.zero;
 
@@ -271,13 +282,15 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
 
     public void BubbleBomb(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && (param.existingBubble.smallBubbleNums > 0 || param.existingBubble.bigBubbleNums > 0))
+        if (context.phase == InputActionPhase.Started && (BubbleQueue.smallBubbleNums > 0 || BubbleQueue.bigBubbleNums > 0))
         {
-            var b = param.existingBubble.Dequeue();
+            var b = BubbleQueue.Dequeue();
             b.GetComponent<BaseBubble>().Break();
         }
     }
 
-
-
+    public void OnKnockedBack()
+    {
+        ChangeState(PlayerStateType.KnockedBack);
+    }
 }
