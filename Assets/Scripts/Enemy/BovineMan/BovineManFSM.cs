@@ -107,7 +107,7 @@ public class BovineManParameters
         Gizmos.DrawWireSphere(transform.position, parameters.attackDetectRange);
     }
 
-    // # TODO: 可能还需要检测泡泡
+    // # TODO: 可能还需要检测泡泡，攻击泡泡的优先级高于玩家
    public bool DetectPlayer(float attackDetectRange) =>
         IsDetectObjectByLayer(attackDetectRange, LayerMask.GetMask("Player"), out var _);
 }
