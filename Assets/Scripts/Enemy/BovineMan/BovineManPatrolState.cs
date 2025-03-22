@@ -28,8 +28,7 @@ public class BovineManPatrolState : BovineBaseState
 
     override public void OnUpdate()
     {
-        Debug.Log("fsm.DetectPlayer(parameters.attackDetectRange): "+ fsm.DetectPlayer(parameters.attackDetectRange));
-        if(fsm.DetectPlayer(parameters.attackDetectRange))
+        if(fsm.IsDetectObjectByLayer(parameters.attackDetectRange, LayerMask.GetMask("Player"), out var _))
             fsm.ChangeState(BovineManStateType.ChargedEnergy);
     }
 }
