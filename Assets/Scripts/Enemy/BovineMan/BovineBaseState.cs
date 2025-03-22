@@ -1,11 +1,11 @@
 public class BovineBaseState : IState
 {
-    protected BovineManFSM fsm;
+    protected BovineManFSM fSM;
     protected BovineManParameters parameters;
-    public BovineBaseState(BovineManFSM _fsm)
+    public BovineBaseState(BovineManFSM fSM)
     {
-        fsm = _fsm;
-        parameters = _fsm.parameters;
+        this.fSM = fSM;
+        parameters = fSM.parameters;
     }
     public virtual void OnEnter()
     {

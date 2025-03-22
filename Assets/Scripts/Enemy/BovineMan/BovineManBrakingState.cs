@@ -29,8 +29,8 @@ public class BovineManBrakingState : BovineBaseState
         barkingTimer += Time.deltaTime;
         parameters.currentSpeed = startSpeed - barkingTimer * parameters.retardedVelocity;
         // 刹车
-        fsm.Braking();
-        if(parameters.currentSpeed <= 0f || Mathf.Abs(fsm.rb.linearVelocityX) < 1.0f)
-            fsm.ChangeState(BovineManStateType.Patrol);
+        fSM.Braking();
+        if(parameters.currentSpeed <= 0f || Mathf.Abs(fSM.rb.linearVelocityX) < 1.0f)
+            fSM.ChangeState(BovineManStateType.Patrol);
     }
 }

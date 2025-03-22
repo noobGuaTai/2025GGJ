@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BovineManPatrolState : BovineBaseState
 {
+    // # FIXME: Some API Changed
     Coroutine patrolCoroutine;
     public BovineManPatrolState(BovineManFSM _fsm) : base(_fsm)
     {
@@ -11,15 +12,15 @@ public class BovineManPatrolState : BovineBaseState
     {
         if(parameters.patrolPoint.Length == 0)
         {
-            parameters.patrolPoint = new Vector2[2] { fsm.transform.position - Vector3.right * 50, fsm.transform.position + Vector3.right * 50 };
+            parameters.patrolPoint = new Vector2[2] { fSM.transform.position - Vector3.right * 50, fSM.transform.position + Vector3.right * 50 };
         }
-        patrolCoroutine = fsm.TwoPointPatrol(parameters.patrolPoint[0], parameters.patrolPoint[1], parameters.patrolSpeed);
+        patrolCoroutine = fSM.TwoPointPatrol(parameters.patrolPoint[0], parameters.patrolPoint[1], parameters.patrolSpeed);
         parameters.currentSpeed = parameters.patrolSpeed;
     }
 
     override public void OnExit()
     {
-        fsm.StopCoroutine(patrolCoroutine);
+        fSM.StopCoroutine(patrolCoroutine);
     }
 
     override public void OnFixedUpdate()
@@ -28,7 +29,7 @@ public class BovineManPatrolState : BovineBaseState
 
     override public void OnUpdate()
     {
-        if(fsm.IsDetectObjectByLayer(parameters.attackDetectRange, LayerMask.GetMask("Player"), out var _))
-            fsm.ChangeState(BovineManStateType.ChargedEnergy);
+        if(fSM.DetectPlayer(parameters.attackDetectRange))
+            fSM.ChangeState(BovineManStateType.ChargedEnergy);
     }
 }

@@ -26,23 +26,24 @@ public class BovineManSprintAttackState : BovineBaseState
         // 计算当前速度
         sprintTimer += Time.deltaTime;
         parameters.currentSpeed = getSpeed();
-        fsm.ChasePlayer();
+        fSM.ChasePlayer();
         // 玩家不在攻击范围内，一段时间后开始刹车
-        if(!fsm.IsPlayerInFront(parameters.attackDetectRange))
+        if(!fSM.IsPlayerInFront(parameters.attackDetectRange))
         {
             detectTimer += Time.deltaTime;
             if(detectTimer >= parameters.canCancelSprintDuration)
-                fsm.ChangeState(BovineManStateType.Braking);
+                fSM.ChangeState(BovineManStateType.Braking);
         }
         // 玩家在攻击范围内
-        if(fsm.IsPlayerInFront(parameters.attackDetectRange))
+        if(fSM.IsPlayerInFront(parameters.attackDetectRange))
             detectTimer = 0.0f;
+        // # FIXME: Some API Changed
         // 撞击到玩家开始刹车
         float tolerance = 1f;
-        if(Vector2.Distance(PlayerFSM.Instance.transform.position, fsm.transform.position) <= tolerance)
-            fsm.ChangeState(BovineManStateType.Braking);
-        if(Mathf.Abs(fsm.rb.linearVelocityX) < 1.0f)
-            fsm.ChangeState(BovineManStateType.Patrol);
+        if(Vector2.Distance(PlayerFSM.Instance.transform.position, fSM.transform.position) <= tolerance)
+            fSM.ChangeState(BovineManStateType.Braking);
+        if(Mathf.Abs(fSM.rb.linearVelocityX) < 1.0f)
+            fSM.ChangeState(BovineManStateType.Patrol);
     }
 
     // 基础速度 + 蓄力速度 + 

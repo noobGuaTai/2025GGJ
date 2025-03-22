@@ -9,7 +9,8 @@ public enum BovineManStateType
     Patrol,
     SprintAttack,   // 冲刺攻击
     Braking,    // 刹车
-    ChargedEnergy   // 蓄力
+    ChargedEnergy,   // 蓄力
+    UnderSwallowed,   // 被吞下
 }
 
 [Serializable]
@@ -59,7 +60,13 @@ public class BovineManParameters
         state.Add(BovineManStateType.ChargedEnergy, new BovineManChargedEnergyState(this));
         state.Add(BovineManStateType.SprintAttack, new BovineManSprintAttackState(this));
         state.Add(BovineManStateType.Braking, new BovineManBrakingState(this));
+        state.Add(BovineManStateType.UnderSwallowed, new BovineManUnderSwallowedState(this));
+
         ChangeState(BovineManStateType.Patrol);
+
+        GetComponent<SwallowedEnemy>().onLoadActions += () => ChangeState(BovineManStateType.UnderSwallowed);
+        GetComponent<SwallowedEnemy>().onBreakActions += () => ChangeState(BovineManStateType.Patrol);
+        // #TODO: 撞击伤害
     }
 
     void Update()
@@ -81,14 +88,6 @@ public class BovineManParameters
         Debug.Log("BovineMan ChangeState: " + stateType);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (((1 << other.gameObject.layer) & parameters.deadlyLayers) != 0)
-        {
-            Die();
-        }
-    }
-
     public bool IsPlayerInFront(float range) =>
         Physics2D.Raycast(transform.position, new Vector2(0, parameters.sprintDirection), range, 1 << LayerMask.NameToLayer("Player")).collider != null;
 
@@ -96,7 +95,7 @@ public class BovineManParameters
 
     public void ChasePlayer() => ChasePlayer(parameters.currentSpeed);
 
-    public override void ChasePlayer(float speed) => rb.linearVelocityX = parameters.sprintDirection * speed;
+    public void ChasePlayer(float speed) => rb.linearVelocityX = parameters.sprintDirection * speed;
 
     void OnDrawGizmosSelected()
     {
@@ -106,8 +105,6 @@ public class BovineManParameters
         Gizmos.DrawWireSphere(transform.position, parameters.attackDetectRange);
     }
 
-    void Die()
-    {
-
-    }
+   public bool DetectPlayer(float attackDetectRange) =>
+        IsDetectObjectByLayer(parameters.attackDetectRange, LayerMask.GetMask("Player"), out var _);
 }
