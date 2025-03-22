@@ -14,6 +14,7 @@ public class PlayerIdleState : IState
     public void OnEnter()
     {
         fsm.param.animator.Play("idle", 0, 0f);
+        fsm.param.rb.linearVelocityX = 0;
     }
 
     public void OnExit()
