@@ -1,9 +1,7 @@
-using System;
 using UnityEngine;
 
-public class KnockedBackEnemy : KnockedBackObject
+public class KnockedBackPlayer : KnockedBackObject
 {
-    public Action onKnockedBackActions;
     public override void Start()
     {
         base.Start();
@@ -11,6 +9,6 @@ public class KnockedBackEnemy : KnockedBackObject
     public override void OnKnockedBack()
     {
         base.OnKnockedBack();
-        onKnockedBackActions?.Invoke();
+        PlayerFSM.Instance.OnKnockedBack();
     }
 }

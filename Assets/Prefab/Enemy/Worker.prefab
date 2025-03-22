@@ -31,6 +31,100 @@ Transform:
   m_Children: []
   m_Father: {fileID: 9027380424867919135}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5822850840863521195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7978463243563586483}
+  - component: {fileID: 1364287371229804807}
+  - component: {fileID: 1004151329279487216}
+  m_Layer: 9
+  m_Name: Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7978463243563586483
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5822850840863521195}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9027380424867919135}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1364287371229804807
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5822850840863521195}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 100, y: 16}
+  m_EdgeRadius: 0
+--- !u!114 &1004151329279487216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5822850840863521195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929dc3628c053ba4292a58b22fba967a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aim:
+    serializedVersion: 2
+    m_Bits: 136
 --- !u!1 &6519572436789688924
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,14 +139,14 @@ GameObject:
   - component: {fileID: 8817198467322062312}
   - component: {fileID: 687017811085693696}
   - component: {fileID: -8929536887990909823}
-  - component: {fileID: 8647488485328744265}
+  - component: {fileID: -2919695179572340279}
   - component: {fileID: -5699326640305639141}
   - component: {fileID: -3072049877793455537}
   - component: {fileID: 8918869802295284714}
   - component: {fileID: 1060872501328041528}
   - component: {fileID: 5482216318276291448}
   m_Layer: 9
-  m_Name: MushroomMan
+  m_Name: Worker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,6 +166,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6934090196938974}
+  - {fileID: 7978463243563586483}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6882816926513969201
@@ -120,7 +215,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 1246392865353077368, guid: 7a04899a4f449b64794b174555ea4278, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 2}
@@ -141,7 +236,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 10
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 10
@@ -270,7 +365,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8647488485328744265
+--- !u!114 &-2919695179572340279
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -279,7 +374,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6519572436789688924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f8d82906f9efc4e8977c1791b88e30, type: 3}
+  m_Script: {fileID: 11500000, guid: 776847f441806ef42bd2edf11021f12b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
@@ -288,20 +383,22 @@ MonoBehaviour:
   health: 0
   deadlyLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1048832
   somatoType: 0
-  parameters:
+  param:
     currentState: 0
     patrolPoint:
-    - -20
-    - 20
-    patrolSpeed: 20
+    - -40
+    - 40
+    patrolSpeed: 30
+    patrolMinDistance: 20
     chaseSpeed: 40
-    detectRange: 80
-    attackRange: 50
-    deadlyLayers:
-      serializedVersion: 2
-      m_Bits: 256
+    detectRange: 100
+    attackDetectRange: 70
+    attackRange: 30
+    idleToPatrolTime: {x: 10, y: 15}
+    patrolToIdleTime: {x: 5, y: 10}
+    attackCollider: {fileID: 1364287371229804807}
 --- !u!114 &-5699326640305639141
 MonoBehaviour:
   m_ObjectHideFlags: 0

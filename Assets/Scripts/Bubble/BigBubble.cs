@@ -1,31 +1,37 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 
 public class BigBubble : BaseBubble
 {
     public LayerMask explosionEffectMask;
+    public Collider2D outsideCollider;
+    public Collider2D triggerCollider;
     public float explosionRadius;
     public float explosionForce;
     public float contactGroundThreshold;// 触地超过这个时间就会吸附到地面
     float contactGroundTimer;// 触地计时器
-    Coroutine contactGroundTimeCoroutine;
+    public bool isAbsorbed;
+    public AnimationCurve impactedSpeedCurve;
     Tween tween;
-    float radius = 7.5f;
+    float radius = 7f;
+    HashSet<Collider2D> collidingObjects = new HashSet<Collider2D>();
+
+    public override void Awake()
+    {
+        base.Awake();
+        tween = gameObject.AddComponent<Tween>();
+        Invoke("SetGravityScale", 1f);
+    }
 
     public override void Start()
     {
         base.Start();
-        tween = gameObject.AddComponent<Tween>();
-        Invoke("SetGravityScale", 1f);
     }
     public override void OnCollisionEnter2D(Collision2D other)
     {
-        // if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        // {
-        //     rb.bodyType = RigidbodyType2D.Kinematic;
-        //     rb.linearVelocity = Vector2.zero;
-        // }
         if (rb.bodyType != RigidbodyType2D.Kinematic)
             SwallowObject(other.gameObject);
         DestroyBubble(other.gameObject);
@@ -34,20 +40,53 @@ public class BigBubble : BaseBubble
     public override void OnTriggerEnter2D(Collider2D other)
     {
         base.OnTriggerEnter2D(other);
-        if ((other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Wall")) && contactGroundTimeCoroutine == null)
+        collidingObjects.Add(other);
+    }
+
+    public override void OnTriggerStay2D(Collider2D other)
+    {
+        base.OnTriggerStay2D(other);
+        if ((other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Wall")) && isAbsorbed == false)
         {
-            contactGroundTimeCoroutine = StartCoroutine(CumulativeContactGroundTime(other));
+            while (true)
+            {
+                contactGroundTimer += Time.fixedDeltaTime;
+                if (contactGroundTimer > contactGroundThreshold)
+                {
+                    Absorbed();
+                    break;
+                }
+            }
         }
 
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (contactGroundTimeCoroutine != null)
-        {
-            StopCoroutine(contactGroundTimeCoroutine);
+        collidingObjects.Remove(other);
+        if (collidingObjects.Count == 0)
             contactGroundTimer = 0;
+
+    }
+
+    void Absorbed()
+    {
+        Vector3 contactPoint = CalculateContactPoint();
+        if (contactPoint == Vector3.zero)
+        {
+            contactGroundTimer = 0;
+            isAbsorbed = false;
+            return;
         }
+
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        rb.linearVelocity = Vector2.zero;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        tween.AddTween(x => transform.position = x, transform.position,
+         contactPoint + GetNormalVector(contactPoint) * radius,
+          0.5f, Tween.TransitionType.QUART, Tween.EaseType.IN).Play();
+        isAbsorbed = true;
     }
 
     void SetGravityScale() => rb.gravityScale = 1;
@@ -63,8 +102,8 @@ public class BigBubble : BaseBubble
 
             Vector2 direction = (Vector2)hit.transform.position - (Vector2)transform.position;
             float distance = direction.magnitude;
-            float forceFactor = 1f - (distance / explosionRadius);
-            rb.AddForce(direction.normalized * explosionForce * forceFactor, ForceMode2D.Impulse);
+            float forceFactor = impactedSpeedCurve.Evaluate(distance / explosionRadius);
+            rb.linearVelocity = direction.normalized * explosionForce * forceFactor;
 
             if (hit.TryGetComponent<KnockedBackObject>(out var k))
             {
@@ -80,60 +119,68 @@ public class BigBubble : BaseBubble
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 
-    IEnumerator CumulativeContactGroundTime(Collider2D other)
+    /// <summary>
+    /// 判断接触点的法线方向
+    /// </summary>
+    /// <param name="contactPointPosition"></param>
+    /// <param name="bubblePosition"></param>
+    /// <returns></returns>
+    Vector3 GetNormalVector(Vector3 contactPointPosition)
     {
-        Vector2 contactPoint = CalculateContactPoint(other);
-
-        while (true)
-        {
-            contactGroundTimer += Time.deltaTime;
-            if (contactGroundTimer > contactGroundThreshold)
-            {
-                rb.bodyType = RigidbodyType2D.Kinematic;
-                rb.linearVelocity = Vector2.zero;
-                tween.AddTween(
-                    x =>
-                    {
-                        Debug.Log($"{x}");
-                        transform.position = x;
-                    }, transform.position,
-                 transform.position + GetCardinalDirection(contactPoint, transform.position) * radius,
-                  2f, Tween.TransitionType.QUART, Tween.EaseType.IN_OUT).Play();
-                yield break;
-            }
-            yield return null;
-        }
-    }
-
-    Vector3 GetCardinalDirection(Vector2 contactPointPosition, Vector2 bubblePosition)
-    {
-        Vector2 direction = contactPointPosition - bubblePosition;
+        Vector2 direction = contactPointPosition - transform.position;
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             return direction.x > 0 ? Vector2.right : Vector2.left;
         else
             return direction.y > 0 ? Vector2.up : Vector2.down;
     }
 
-    Vector2 CalculateContactPoint(Collider2D other)
+    /// <summary>
+    /// 搜索最近的接触点
+    /// </summary>
+    /// <returns>接触点</returns>
+    Vector2 CalculateContactPoint()
     {
-        // 获取两个碰撞体的边界
-        Bounds myBounds = GetComponent<Collider2D>().bounds;
-        Bounds otherBounds = other.bounds;
+        Vector2 origin = transform.position;
+        Vector2[] directions = new Vector2[]
+        {
+            Vector2.up,
+            Vector2.down,
+            Vector2.left,
+            Vector2.right
+        };
 
-        // 计算边界的重叠区域
-        Bounds intersection = new Bounds();
-        intersection.min = new Vector3(
-            Mathf.Max(myBounds.min.x, otherBounds.min.x),
-            Mathf.Max(myBounds.min.y, otherBounds.min.y),
-            0
-        );
-        intersection.max = new Vector3(
-            Mathf.Min(myBounds.max.x, otherBounds.max.x),
-            Mathf.Min(myBounds.max.y, otherBounds.max.y),
-            0
-        );
+        float closestDistance = float.MaxValue;
+        Vector2 closestPoint = Vector2.zero;
+        bool hitDetected = false;
+        foreach (Vector2 direction in directions)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(origin, direction, 30f, LayerMask.GetMask("Ground", "Wall"));
+            if (hit.collider != null)
+            {
+                float distance = Vector2.Distance(origin, hit.point);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestPoint = hit.point;
+                    hitDetected = true;
+                }
 
-        // 返回重叠区域的中心作为近似接触点
-        return intersection.center;
+            }
+        }
+        return hitDetected ? closestPoint : Vector2.zero;
+    }
+
+    public override void SwallowObject(GameObject other)
+    {
+        if (other.TryGetComponent<EnemyFSM>(out var e))
+            if (e.somatoType == EnemyFSM.EnemySomatoType.Light)
+                BubbleQueue.DestroyBubble(gameObject);
+            else
+            {
+                base.SwallowObject(other);
+                outsideCollider.excludeLayers = 0;
+                triggerCollider.enabled = false;
+            }
+
     }
 }

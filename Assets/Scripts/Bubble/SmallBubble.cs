@@ -58,18 +58,27 @@ public class SmallBubble : BaseBubble
             if (angle <= 60f)
             {
                 other.gameObject.GetComponent<Rigidbody2D>().linearVelocityY = reboundVelocity;
-                PlayerFSM.Instance.param.existingBubble.DestroyBubble(gameObject);
+                BubbleQueue.DestroyBubble(gameObject);
             }
         }
     }
 
     void MergeToBigBubble(SmallBubble otherBubble)
     {
-        PlayerFSM.Instance.param.existingBubble.DestroyBubble(otherBubble.gameObject);
+        BubbleQueue.DestroyBubble(otherBubble.gameObject);
 
         var bigBubble = Instantiate(bigBubblePrefab, (transform.position + otherBubble.transform.position) / 2, Quaternion.identity);
         bigBubble.GetComponent<BigBubble>().initSpeed = (rb.linearVelocity + otherBubble.rb.linearVelocity) / 2;
 
-        PlayerFSM.Instance.param.existingBubble.DestroyBubble(gameObject);
+        BubbleQueue.DestroyBubble(gameObject);
+    }
+
+    public override void SwallowObject(GameObject other)
+    {
+        if (other.TryGetComponent<EnemyFSM>(out var e))
+            if (e.somatoType == EnemyFSM.EnemySomatoType.Heavy)
+                BubbleQueue.DestroyBubble(gameObject);
+            else
+                base.SwallowObject(other);
     }
 }

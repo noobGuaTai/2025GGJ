@@ -1,15 +1,16 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class SwallowedObject : MonoBehaviour
 {
-    private Collider2D c;
+    private Collider2D[] c;
     protected Rigidbody2D rb;
     private float initGravityScale = 50;
     private Transform parent;
     public virtual void Start()
     {
-        c = GetComponent<Collider2D>();
+        c = GetComponents<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
         initGravityScale = rb.gravityScale;
     }
@@ -27,7 +28,7 @@ public class SwallowedObject : MonoBehaviour
         // action = () => { };
 
 
-        c.enabled = false;
+        Array.ForEach(c, collider => collider.enabled = false);
         rb.gravityScale = 0;
         rb.linearVelocity = Vector2.zero;
     }
@@ -38,7 +39,7 @@ public class SwallowedObject : MonoBehaviour
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         GetComponent<Rigidbody2D>().angularVelocity = 0f;
         transform.position = bubble.transform.position;
-        c.enabled = true;
+        Array.ForEach(c, collider => collider.enabled = true);
         rb.gravityScale = initGravityScale;
     }
 }
