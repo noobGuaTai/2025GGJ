@@ -35,12 +35,6 @@ public class PlayerCollisionHandler : MonoBehaviour
         playerFSM.currentState == playerFSM.state[PlayerStateType.Rebound] ||
         playerFSM.currentState == playerFSM.state[PlayerStateType.KnockedBack]))
         {
-            // float angle = Vector2.Angle(Vector2.left * transform.localScale.x, other.contacts[0].normal);
-            if (other.contacts[0].normal.y >= groundThreshold)
-            {
-                playerFSM.ChangeState(PlayerStateType.Idle);
-            }
-            // float angle = Vector2.Angle(Vector2.left * transform.localScale.x, other.contacts[0].normal);
             if (other.contacts[0].normal.y >= groundThreshold)
             {
                 playerFSM.ChangeState(PlayerStateType.Idle);
@@ -59,7 +53,7 @@ public class PlayerCollisionHandler : MonoBehaviour
             if (b.absorbedType == BigBubble.AbsorbType.Ground && lastPlayerVelocity.normalized.y < -0.5f)
             {
                 float angle = Vector2.Angle(Vector2.up, (transform.position - other.transform.position).normalized);
-                if (angle <= 60f && lastPlayerVelocity.normalized.y < -0.5f)
+                if (angle <= 45f && lastPlayerVelocity.normalized.y < -0.5f)
                 {
                     var speed = other.GetContact(0).normal * b.reboundVelocity;
                     playerFSM.delegateParam.onRebound += () => playerFSM.param.rb.linearVelocity = speed;

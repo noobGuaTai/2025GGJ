@@ -598,7 +598,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 655d7a63bd4ccaf48b008b67a9cc74bf, type: 2}
+  m_Material: {fileID: 6200000, guid: 8af89a44db7a01f47984bc2d88753bec, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -632,7 +632,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 15, y: 22}
+  m_Size: {x: 12, y: 22}
   m_EdgeRadius: 0
 --- !u!61 &7257881811414629748
 BoxCollider2D:
@@ -678,7 +678,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 15, y: 22}
+  m_Size: {x: 12, y: 22}
   m_EdgeRadius: 0
 --- !u!82 &4518142092502789733
 AudioSource:
