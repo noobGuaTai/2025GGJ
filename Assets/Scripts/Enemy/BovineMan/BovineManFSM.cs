@@ -98,6 +98,7 @@ public class BovineManParameters
 
     public void ChasePlayer(float speed) => rb.linearVelocityX = parameters.sprintDirection * speed;
 
+    // # TODO: 调试信息可能需要修改
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
@@ -106,6 +107,7 @@ public class BovineManParameters
         Gizmos.DrawWireSphere(transform.position, parameters.attackDetectRange);
     }
 
+    // # TODO: 可能还需要检测泡泡
    public bool DetectPlayer(float attackDetectRange) =>
-        IsDetectObjectByLayer(parameters.attackDetectRange, LayerMask.GetMask("Player"), out var _);
+        IsDetectObjectByLayer(attackDetectRange, LayerMask.GetMask("Player"), out var _);
 }
