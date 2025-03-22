@@ -67,6 +67,7 @@ public class BovineManParameters
         GetComponent<SwallowedEnemy>().onLoadActions += () => ChangeState(BovineManStateType.UnderSwallowed);
         GetComponent<SwallowedEnemy>().onBreakActions += () => ChangeState(BovineManStateType.Patrol);
         // #TODO: 撞击伤害
+        // #TODO: 被高速硬币撞击
     }
 
     void Update()

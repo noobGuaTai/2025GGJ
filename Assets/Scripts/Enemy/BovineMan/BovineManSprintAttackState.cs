@@ -37,7 +37,7 @@ public class BovineManSprintAttackState : BovineBaseState
         // 玩家在攻击范围内
         if(fSM.IsPlayerInFront(parameters.attackDetectRange))
             detectTimer = 0.0f;
-        // # FIXME: Some API Changed
+        // # FIXME: 撞击玩家需要其他API
         // 撞击到玩家开始刹车
         float tolerance = 1f;
         if(Vector2.Distance(PlayerFSM.Instance.transform.position, fSM.transform.position) <= tolerance)
