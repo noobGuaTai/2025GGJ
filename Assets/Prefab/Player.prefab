@@ -534,8 +534,7 @@ MonoBehaviour:
     bubblingAnimator: {fileID: 5408160020305475881}
     jumpInput: 0
   attributes:
-    shootTimer: 0
-    shootCooldown: 1
+    blowCooldown: 1
     moveSpeed: 100
     health: 0
     jumpSpeed: 250

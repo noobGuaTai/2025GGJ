@@ -53,8 +53,8 @@ public class PlayerDelegateParameters
 [Serializable]
 public class PlayerAttributes
 {
-    public float shootTimer;
-    public float shootCooldown;
+    internal float blowTimer;
+    public float blowCooldown;
     public float moveSpeed = 10;
     public int health;
     public float jumpSpeed = 100f;
@@ -136,7 +136,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
     void FixedUpdate()
     {
         currentState.OnFixedUpdate();
-        Mathf.Clamp(attributes.shootTimer -= Time.fixedDeltaTime, 0, float.MaxValue);
+        Mathf.Clamp(attributes.blowTimer -= Time.fixedDeltaTime, 0, float.MaxValue);
     }
 
     public void ChangeState(PlayerStateType stateType)
@@ -205,11 +205,11 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
 
     void BlowBubble()
     {
-        if (attributes.shootTimer <= 0f)
+        if (attributes.blowTimer <= 0f)
         {
             param.bubblingAnimator.Play("bubbling");
             Invoke("InstantiateBubble", 0.5f);
-            attributes.shootTimer = attributes.shootCooldown;
+            attributes.blowTimer = attributes.blowCooldown;
         }
         else
         {
