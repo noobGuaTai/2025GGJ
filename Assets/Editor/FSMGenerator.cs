@@ -255,12 +255,9 @@ using UnityEngine;
 
 public class {stateClassName} : IState
 {{
-    private {fsmName} fsm;
+    {fsmName} fsm;
 
-    public {stateClassName}({fsmName} fsm)
-    {{
-        this.fsm = fsm;
-    }}
+    public {stateClassName}({fsmName} fsm) => this.fsm = fsm;
 
     public void OnEnter()
     {{

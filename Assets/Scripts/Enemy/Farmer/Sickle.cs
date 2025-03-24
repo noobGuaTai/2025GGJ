@@ -29,7 +29,7 @@ public class Sickle : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Bubble"))
         {
-            Destroy(other.gameObject);
+            BubbleQueue.DestroyBubble(other.gameObject);
         }
 
         if (other.gameObject == father && isReturn)
@@ -56,6 +56,11 @@ public class Sickle : MonoBehaviour
         tween.AddTween("attack", (x) => rb.linearVelocity = x, Vector2.zero, -direction * initSpeed, flyTime,
             Tween.TransitionType.CIRC, Tween.EaseType.IN).Play();
     };
+
+    void OnDestroy()
+    {
+        father.GetComponent<FarmerFSM>().param.currentSickle = null;
+    }
 
 
 

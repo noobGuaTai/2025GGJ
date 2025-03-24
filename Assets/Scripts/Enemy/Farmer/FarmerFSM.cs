@@ -24,6 +24,7 @@ public class FarmerParameters
     public float chaseSpeed;
     public float detectRange;// 追逐玩家过程中超过该范围则返回原地
     public float attackDetectRange;// 玩家进入该范围则进入攻击状态
+    public float pullRange;// 玩家进入该范围则不进入攻击状态，而是远离玩家进行拉扯
     public float attackRange;
     public Vector2 idleToPatrolTime;
     public Vector2 patrolToIdleTime;
@@ -105,5 +106,17 @@ public class FarmerFSM : EnemyFSM
     public void OnEnter(FarmerStateType type)
     {
         enterStateActions[type]?.Invoke();
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, param.detectRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, param.attackDetectRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, param.pullRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, param.attackRange);
     }
 }
