@@ -32,7 +32,7 @@ public class BovineManSprintAttackState : BovineBaseState
         {
             detectTimer += Time.deltaTime;
             if(detectTimer >= parameters.canCancelSprintDuration)
-                // # TODO: 玩家脱离攻击范围内可能是直接返回
+                // # TODO: 如果玩家離的太遠，則返回原地
                 fSM.ChangeState(BovineManStateType.Braking);
         }
         // 玩家在攻击范围内

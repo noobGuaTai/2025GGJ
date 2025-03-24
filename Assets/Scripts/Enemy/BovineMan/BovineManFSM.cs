@@ -42,8 +42,8 @@ public class BovineManParameters
     public float retardedVelocity;  // 减速度
 
     [Header("Detection")]
-    public float attackDetectRange;   // 追逐玩家过程中超过该范围则返回原地
-    public float returnDetectRange;   // 玩家进入该范围则进入蓄力状态
+    public float attackDetectRange;   // 玩家进入该范围则进入蓄力状态
+    public float returnDetectRange;   // 追逐玩家过程中超过该范围则返回原地
     public LayerMask deadlyLayers;
  }
 
