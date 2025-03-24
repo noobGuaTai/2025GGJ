@@ -2,8 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class BubbleQueue
+public static class BubbleQueue
 {
     public static Queue<GameObject> bubbles = new();
     public static int smallBubbleNums = 0;
@@ -23,7 +22,7 @@ public class BubbleQueue
             var latest = Dequeue();
             latest.GetComponent<BaseBubble>().Break();
         }
-
+        Debug.Log($"smallBubbleNums: {smallBubbleNums}, bigBubbleNums: {bigBubbleNums}");
     }
 
     public static GameObject Dequeue()
@@ -68,5 +67,7 @@ public class BubbleQueue
             bigBubbleNums--;
 
         bubble.GetComponent<BaseBubble>().Break();
+        Debug.Log($"smallBubbleNums: {smallBubbleNums}, bigBubbleNums: {bigBubbleNums}");
+
     }
 }

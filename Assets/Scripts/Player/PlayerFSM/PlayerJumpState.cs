@@ -4,19 +4,19 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerJumpState : IState
 {
-    private PlayerFSM fSM;
+    private PlayerFSM fsm;
 
     private Vector2 lastInput = Vector2.zero;
 
     public PlayerJumpState(PlayerFSM playerFSM)
     {
-        this.fSM = playerFSM;
+        this.fsm = playerFSM;
     }
 
     public void OnEnter()
     {
-        fSM.param.rb.linearVelocityY = fSM.attributes.jumpSpeed;
-        fSM.param.animator.Play("jump", 0, 0f);
+        fsm.param.rb.linearVelocityY = fsm.attributes.jumpSpeed;
+        fsm.param.animator.Play("jump", 0, 0f);
 
     }
 
@@ -27,14 +27,15 @@ public class PlayerJumpState : IState
 
     public void OnFixedUpdate()
     {
-        fSM.param.rb.linearVelocity = new Vector2(fSM.param.moveInput.x * fSM.attributes.moveSpeed, fSM.param.rb.linearVelocity.y);
-        if (fSM.param.moveInput.x > 0)
+        if (!fsm.param.isOnBigBubble)
+            fsm.Move();
+        if (fsm.param.moveInput.x > 0)
         {
-            fSM.transform.localScale = new Vector3(-1, 1, 1);
+            fsm.transform.localScale = new Vector3(-1, 1, 1);
         }
-        else if (fSM.param.moveInput.x < 0)
+        else if (fsm.param.moveInput.x < 0)
         {
-            fSM.transform.localScale = new Vector3(1, 1, 1);
+            fsm.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 

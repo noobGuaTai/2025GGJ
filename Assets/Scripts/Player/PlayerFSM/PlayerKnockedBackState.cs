@@ -13,7 +13,7 @@ public class PlayerKnockedBackState : IState
 
     public void OnEnter()
     {
-
+        fsm.StartCoroutine(SlowDown());
     }
 
     public void OnExit()
@@ -29,6 +29,17 @@ public class PlayerKnockedBackState : IState
         if (fsm.param.rb.linearVelocity.magnitude < 40f)
         {
             fsm.ChangeState(PlayerStateType.Idle);
+        }
+    }
+
+    IEnumerator SlowDown()
+    {
+        float dragFactor = 0.98f;
+
+        while (fsm.param.rb.linearVelocity.magnitude > 40f)
+        {
+            fsm.param.rb.linearVelocity *= dragFactor;
+            yield return new WaitForFixedUpdate();
         }
     }
 }

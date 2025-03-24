@@ -4,18 +4,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerMoveState : IState
 {
-    private PlayerFSM fSM;
+    private PlayerFSM fsm;
 
     private Vector2 lastInput = Vector2.zero;
 
     public PlayerMoveState(PlayerFSM playerFSM)
     {
-        this.fSM = playerFSM;
+        this.fsm = playerFSM;
     }
 
     public void OnEnter()
     {
-        fSM.param.animator.Play("run", 0, 0f);
+        fsm.param.animator.Play("run", 0, 0f);
     }
 
     public void OnExit()
@@ -25,25 +25,26 @@ public class PlayerMoveState : IState
 
     public void OnFixedUpdate()
     {
-        fSM.param.rb.linearVelocity = new Vector2(fSM.param.moveInput.x * fSM.attributes.moveSpeed, fSM.param.rb.linearVelocity.y);
-        if (fSM.param.moveInput.x > 0)
+        fsm.Move();
+        // fsm.param.rb.linearVelocity = new Vector2(fsm.param.moveInput.x * fsm.attributes.moveSpeed, fsm.param.rb.linearVelocity.y);
+        if (fsm.param.moveInput.x > 0)
         {
-            fSM.transform.localScale = new Vector3(-1, 1, 1);
+            fsm.transform.localScale = new Vector3(-1, 1, 1);
         }
-        else if (fSM.param.moveInput.x < 0)
+        else if (fsm.param.moveInput.x < 0)
         {
-            fSM.transform.localScale = new Vector3(1, 1, 1);
+            fsm.transform.localScale = new Vector3(1, 1, 1);
         }
 
-        lastInput = fSM.param.moveInput;
-        if (fSM.param.jumpInput && (fSM.param.isOnGround || fSM.param.isOnBigBubble))
+        lastInput = fsm.param.moveInput;
+        if (fsm.param.jumpInput && (fsm.param.isOnGround || fsm.param.isOnBigBubble))
         {
-            fSM.ChangeState(PlayerStateType.Jump);
+            fsm.ChangeState(PlayerStateType.Jump);
             return;
         }
-        if (fSM.param.moveInput.x == 0)
+        if (fsm.param.moveInput.x == 0)
         {
-            fSM.ChangeState(PlayerStateType.Idle);
+            fsm.ChangeState(PlayerStateType.Idle);
             return;
         }
     }

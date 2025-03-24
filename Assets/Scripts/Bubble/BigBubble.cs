@@ -13,11 +13,20 @@ public class BigBubble : BaseBubble
     public float explosionForce;
     public float contactGroundThreshold;// 触地超过这个时间就会吸附到地面
     float contactGroundTimer;// 触地计时器
-    public bool isAbsorbed;
+    public enum AbsorbType
+    {
+        None,
+        Ground,
+        Wall
+    }
+    public AbsorbType absorbedType;
     public AnimationCurve impactedSpeedCurve;
     Tween tween;
     float radius = 7f;
     HashSet<Collider2D> collidingObjects = new HashSet<Collider2D>();
+    public float reboundVelocity;
+    public float slideSpeed;
+    Coroutine slideCoroutine;
 
     public override void Awake()
     {
@@ -34,26 +43,34 @@ public class BigBubble : BaseBubble
     {
         if (rb.bodyType != RigidbodyType2D.Kinematic)
             SwallowObject(other.gameObject);
-        DestroyBubble(other.gameObject);
+        Destroyed(other.gameObject);
     }
+
 
     public override void OnTriggerEnter2D(Collider2D other)
     {
         base.OnTriggerEnter2D(other);
         collidingObjects.Add(other);
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") && slideCoroutine != null)
+        {
+            StopCoroutine(slideCoroutine);
+            slideCoroutine = null;
+        }
     }
 
     public override void OnTriggerStay2D(Collider2D other)
     {
         base.OnTriggerStay2D(other);
-        if ((other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Wall")) && isAbsorbed == false)
+        if ((other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Wall")) && absorbedType == AbsorbType.None)
         {
             while (true)
             {
                 contactGroundTimer += Time.fixedDeltaTime;
                 if (contactGroundTimer > contactGroundThreshold)
                 {
-                    Absorbed();
+                    Absorbed(other);
+                    if (other.gameObject.layer == LayerMask.NameToLayer("Wall"))
+                        slideCoroutine = StartCoroutine(SlideOnWall());
                     break;
                 }
             }
@@ -69,13 +86,13 @@ public class BigBubble : BaseBubble
 
     }
 
-    void Absorbed()
+    void Absorbed(Collider2D other)
     {
         Vector3 contactPoint = CalculateContactPoint();
         if (contactPoint == Vector3.zero)
         {
             contactGroundTimer = 0;
-            isAbsorbed = false;
+            absorbedType = AbsorbType.None;
             return;
         }
 
@@ -83,10 +100,25 @@ public class BigBubble : BaseBubble
         rb.linearVelocity = Vector2.zero;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
-        tween.AddTween(x => transform.position = x, transform.position,
-         contactPoint + GetNormalVector(contactPoint) * radius,
+        float targetRotation;
+        Vector2 normal = GetNormalVector(contactPoint);
+        if (normal == Vector2.up)
+            targetRotation = 180f;
+        else if (normal == Vector2.right)
+            targetRotation = 90f;
+        else if (normal == Vector2.down)
+            targetRotation = 0f;
+        else
+            targetRotation = 270f;
+
+        tween.AddTween("absorb", x => transform.position = x, transform.position,
+         contactPoint + (Vector3)normal * radius,
           0.5f, Tween.TransitionType.QUART, Tween.EaseType.IN).Play();
-        isAbsorbed = true;
+        tween.AddTween("rotate", x => transform.rotation = Quaternion.Euler(0, 0, x),
+         transform.rotation.eulerAngles.z, targetRotation, 0.5f).Play();
+
+        absorbedType = other.gameObject.layer == LayerMask.NameToLayer("Ground") ? AbsorbType.Ground : other.gameObject.layer == LayerMask.NameToLayer("Wall") ? AbsorbType.Wall : AbsorbType.None;
+
     }
 
     void SetGravityScale() => rb.gravityScale = 1;
@@ -103,7 +135,8 @@ public class BigBubble : BaseBubble
             Vector2 direction = (Vector2)hit.transform.position - (Vector2)transform.position;
             float distance = direction.magnitude;
             float forceFactor = impactedSpeedCurve.Evaluate(distance / explosionRadius);
-            rb.linearVelocity = direction.normalized * explosionForce * forceFactor;
+            // rb.linearVelocity = direction.normalized * explosionForce * forceFactor;
+            rb.AddForce(direction.normalized * explosionForce * forceFactor, ForceMode2D.Impulse);
 
             if (hit.TryGetComponent<KnockedBackObject>(out var k))
             {
@@ -182,5 +215,19 @@ public class BigBubble : BaseBubble
                 triggerCollider.enabled = false;
             }
 
+    }
+
+    void Rotate()
+    {
+        tween.AddTween("rotate", x => transform.rotation = Quaternion.Euler(0, 0, x), 0, 360, 1f, Tween.TransitionType.QUART, Tween.EaseType.IN).Play();
+    }
+
+    IEnumerator SlideOnWall()
+    {
+        while (true)
+        {
+            rb.MovePosition(new Vector2(transform.position.x, transform.position.y - slideSpeed));
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

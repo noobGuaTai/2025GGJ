@@ -7,7 +7,10 @@ using System.IO;
 /// 例如：名字为 "Player"，状态为 "Idle,Move,Attack"
 /// 则生成：PlayerFSM、PlayerStateType、PlayerParameters、PlayerIdleState 等
 /// 
-/// 新增功能：可以选择仅生成单个状态类
+/// 新增功能：
+/// 1. 可以选择仅生成单个状态类
+/// 2. 支持事件系统 - 每个状态可以注册 Action 进入事件
+/// 3. 使用 LINQ 简化状态注册代码
 /// </summary>
 public class FSMGenerator : EditorWindow
 {
@@ -74,11 +77,12 @@ public class FSMGenerator : EditorWindow
 
         // 生成单个状态类
         string fsmClassName = entityName + "FSM";
+        string stateEnumName = entityName + "StateType";
         string parameterClassName = entityName + "Parameters";
         string statePrefix = entityName;
         string stateSuffix = "State";
 
-        string stateFileContent = GenerateStateContent(singleStateName, fsmClassName, parameterClassName, statePrefix, stateSuffix);
+        string stateFileContent = GenerateStateContent(singleStateName, fsmClassName, stateEnumName, parameterClassName, statePrefix, stateSuffix);
         string stateFilePath = Path.Combine(folderPath, statePrefix + singleStateName + stateSuffix + ".cs");
         File.WriteAllText(stateFilePath, stateFileContent);
 
@@ -116,7 +120,7 @@ public class FSMGenerator : EditorWindow
         // 生成每个状态类代码文件
         foreach (string state in states)
         {
-            string stateFileContent = GenerateStateContent(state, fsmClassName, parameterClassName, statePrefix, stateSuffix);
+            string stateFileContent = GenerateStateContent(state, fsmClassName, stateEnumName, parameterClassName, statePrefix, stateSuffix);
             string stateFilePath = Path.Combine(folderPath, statePrefix + state + stateSuffix + ".cs");
             File.WriteAllText(stateFilePath, stateFileContent);
         }
@@ -141,12 +145,12 @@ public class FSMGenerator : EditorWindow
         }
         enumContent += "}\n";
 
-        // 生成 Start 方法中状态注册代码（使用带前缀和后缀的状态类名）
-        string registrationContent = "";
+        // 生成 CreateState 方法内容
+        string createStateContent = "";
         for (int i = 0; i < states.Length; i++)
         {
             string stateClassName = statePrefix + states[i] + stateSuffix;
-            registrationContent += "        state.Add(" + enumName + "." + states[i] + ", new " + stateClassName + "(this));\n";
+            createStateContent += $"            case {enumName}.{states[i]}: return new {stateClassName}(this);\n";
         }
 
         // FSM主类模板代码
@@ -154,6 +158,7 @@ public class FSMGenerator : EditorWindow
 $@"using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 {enumContent}
@@ -168,11 +173,27 @@ public class {fsmName} : EnemyFSM
     public {paramName} param;
     public IState currentState;
     public Dictionary<{enumName}, IState> state = new Dictionary<{enumName}, IState>();
+    Dictionary<{enumName}, Action> enterStateActions = new Dictionary<{enumName}, Action>();
+
+    public override void Awake()
+    {{
+        base.Awake();
+    }}
 
     public override void Start()
     {{
         base.Start();
-{registrationContent}        ChangeState({enumName}.{states[0]});
+        state = Enum.GetValues(typeof({enumName})).Cast<{enumName}>().ToDictionary(
+            stateType => stateType,
+            stateType => CreateState(stateType)
+        );
+
+        enterStateActions = Enum.GetValues(typeof({enumName})).Cast<{enumName}>().ToDictionary(
+            stateType => stateType,
+            _ => (Action)null
+        );
+        
+        ChangeState({enumName}.{states[0]});
     }}
 
     void Update()
@@ -185,8 +206,14 @@ public class {fsmName} : EnemyFSM
         currentState.OnFixedUpdate();
     }}
 
-    public void ChangeState({enumName} stateType)
+    public void ChangeState({enumName} stateType, Action onEnter = null)
     {{
+        if (onEnter != null)
+            if (enterStateActions.ContainsKey(stateType))
+                enterStateActions[stateType] += onEnter;
+            else
+                enterStateActions.Add(stateType, onEnter);
+
         if (currentState != null)
         {{
             currentState.OnExit();
@@ -194,6 +221,19 @@ public class {fsmName} : EnemyFSM
         currentState = state[stateType];
         currentState.OnEnter();
         param.currentState = stateType;
+    }}
+
+    IState CreateState({enumName} stateType)
+    {{
+        switch (stateType)
+        {{
+{createStateContent}            default: throw new ArgumentException($""Unknown state type: {{stateType}}"");
+        }}
+    }}
+
+    public void OnEnter({enumName} stateType)
+    {{
+        enterStateActions[stateType]?.Invoke();
     }}
 }}
 ";
@@ -203,9 +243,11 @@ public class {fsmName} : EnemyFSM
     /// <summary>
     /// 生成单个状态类代码模板，类名格式：{entityName}{state}{stateSuffix} 例如 PlayerIdleState
     /// </summary>
-    private string GenerateStateContent(string state, string fsmName, string paramName, string statePrefix, string stateSuffix)
+    private string GenerateStateContent(string state, string fsmName, string enumName, string paramName, string statePrefix, string stateSuffix)
     {
         string stateClassName = statePrefix + state + stateSuffix;
+        string stateEnumValue = enumName + "." + state;
+
         string stateTemplate =
 $@"using System.Collections;
 using System.Collections.Generic;
@@ -222,23 +264,25 @@ public class {stateClassName} : IState
 
     public void OnEnter()
     {{
-        
+        fsm.OnEnter({stateEnumValue});
     }}
 
     public void OnExit()
     {{
+        
     }}
 
     public void OnFixedUpdate()
     {{
+        
     }}
 
     public void OnUpdate()
     {{
+        
     }}
 }}
 ";
         return stateTemplate;
     }
 }
-

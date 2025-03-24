@@ -15,7 +15,8 @@ public enum PlayerStateType
     Idle,
     Move,
     Jump,
-    KnockedBack
+    KnockedBack,
+    Rebound
 }
 
 
@@ -46,13 +47,14 @@ public class PlayerDelegateParameters
 {
     public Action onDie;
     public Action onBlowBubble;
+    public Action onRebound;
 }
 
 [Serializable]
 public class PlayerAttributes
 {
-    public float shootTimer;
-    public float shootCooldown;
+    internal float blowTimer;
+    public float blowCooldown;
     public float moveSpeed = 10;
     public int health;
     public float jumpSpeed = 100f;
@@ -91,6 +93,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         state.Add(PlayerStateType.Move, new PlayerMoveState(this));
         state.Add(PlayerStateType.Jump, new PlayerJumpState(this));
         state.Add(PlayerStateType.KnockedBack, new PlayerKnockedBackState(this));
+        state.Add(PlayerStateType.Rebound, new PlayerReboundState(this));
         tween = GetComponent<Tween>();
         ChangeState(PlayerStateType.Idle);
 
@@ -133,7 +136,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
     void FixedUpdate()
     {
         currentState.OnFixedUpdate();
-        Mathf.Clamp(attributes.shootTimer -= Time.fixedDeltaTime, 0, float.MaxValue);
+        Mathf.Clamp(attributes.blowTimer -= Time.fixedDeltaTime, 0, float.MaxValue);
     }
 
     public void ChangeState(PlayerStateType stateType)
@@ -202,11 +205,11 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
 
     void BlowBubble()
     {
-        if (attributes.shootTimer <= 0f)
+        if (attributes.blowTimer <= 0f)
         {
             param.bubblingAnimator.Play("bubbling");
             Invoke("InstantiateBubble", 0.5f);
-            attributes.shootTimer = attributes.shootCooldown;
+            attributes.blowTimer = attributes.blowCooldown;
         }
         else
         {
@@ -292,5 +295,24 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
     public void OnKnockedBack()
     {
         ChangeState(PlayerStateType.KnockedBack);
+    }
+
+    public void Move()
+    {
+        Vector2 targetVelocity = new Vector2(param.moveInput.x * attributes.moveSpeed, param.rb.linearVelocity.y);
+
+        Vector2 currentVelocity = param.rb.linearVelocity;
+        Vector2 velocityChange = new Vector2(targetVelocity.x - currentVelocity.x, 0);
+
+        param.rb.AddForce(velocityChange, ForceMode2D.Impulse);
+
+        if (Mathf.Abs(param.rb.linearVelocity.x) > attributes.moveSpeed)
+        {
+            Vector2 clampedVelocity = new Vector2(
+                Mathf.Sign(param.rb.linearVelocity.x) * attributes.moveSpeed,
+                param.rb.linearVelocity.y
+            );
+            param.rb.linearVelocity = clampedVelocity;
+        }
     }
 }
