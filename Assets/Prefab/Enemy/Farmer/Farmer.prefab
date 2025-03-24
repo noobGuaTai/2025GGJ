@@ -397,8 +397,8 @@ MonoBehaviour:
     attackDetectRange: 60
     attackRange: 60
     idleToPatrolTime: {x: 0, y: 2}
-    patrolToIdleTime: {x: 5, y: 10}
-    attackCollider: {fileID: 0}
+    patrolToIdleTime: {x: 1, y: 2}
+    sicklePrefab: {fileID: 7872871544301588018, guid: 3cc67da9f955bf14a97d9e7a4e5afda6, type: 3}
 --- !u!114 &-5699326640305639141
 MonoBehaviour:
   m_ObjectHideFlags: 0

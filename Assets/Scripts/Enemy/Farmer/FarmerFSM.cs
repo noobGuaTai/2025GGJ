@@ -29,7 +29,8 @@ public class FarmerParameters
     public Vector2 patrolToIdleTime;
     public bool isOnGround => groundCheck.isChecked;
     internal AnythingCheck groundCheck;
-    public Collider2D attackCollider;
+    public GameObject sicklePrefab;
+    internal GameObject currentSickle;
 }
 
 public class FarmerFSM : EnemyFSM
