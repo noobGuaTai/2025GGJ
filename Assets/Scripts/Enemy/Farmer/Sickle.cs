@@ -53,7 +53,7 @@ public class Sickle : MonoBehaviour
         tween.AddTween("attack", (x) => rb.linearVelocity = x, direction * initSpeed, Vector2.zero, flyTime,
             Tween.TransitionType.CIRC, Tween.EaseType.OUT);
         tween.AddTween("attack", (x) => isReturn = true, 0, 0, 0);
-        tween.AddTween("attack", (x) => { rb.linearVelocity = x; Debug.Log(x); }, Vector2.zero, -direction * initSpeed, flyTime,
+        tween.AddTween("attack", (x) => rb.linearVelocity = x, Vector2.zero, -direction * initSpeed, flyTime,
             Tween.TransitionType.CIRC, Tween.EaseType.IN).Play();
     };
 
