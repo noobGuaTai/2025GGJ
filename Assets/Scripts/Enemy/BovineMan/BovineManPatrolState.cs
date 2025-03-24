@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class BovineManPatrolState : BovineBaseState
 {
-    // # FIXME: Some API Changed
     Coroutine patrolCoroutine;
     public BovineManPatrolState(BovineManFSM _fsm) : base(_fsm)
     {
@@ -15,7 +14,7 @@ public class BovineManPatrolState : BovineBaseState
             // parameters.patrolPoint = new Vector2[2] { fSM.transform.position - Vector3.right * 50, fSM.transform.position + Vector3.right * 50 };
             parameters.patrolPoint = new float[2] { -50f, 50f };
         }
-        // patrolCoroutine = fSM.TwoPointPatrol(parameters.patrolPoint[0], parameters.patrolPoint[1], parameters.patrolSpeed);
+        // patrolCoroutine = fSM.TwoPointPatrol(parameters.patrolPoint[0], parameters.patrolPoint[1], p arameters.patrolSpeed);
         // parameters.currentSpeed = parameters.patrolSpeed;
     }
 
