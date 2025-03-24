@@ -4605,22 +4605,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4874552481950853941, guid: a619584dd43dc1a499fc3149c14da1b1, type: 3}
-      propertyPath: param.pullRange
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 4874552481950853941, guid: a619584dd43dc1a499fc3149c14da1b1, type: 3}
-      propertyPath: param.attackRange
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4874552481950853941, guid: a619584dd43dc1a499fc3149c14da1b1, type: 3}
-      propertyPath: param.detectRange
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 4874552481950853941, guid: a619584dd43dc1a499fc3149c14da1b1, type: 3}
-      propertyPath: param.attackDetectRange
-      value: 120
-      objectReference: {fileID: 0}
     - target: {fileID: 5087556892446460077, guid: a619584dd43dc1a499fc3149c14da1b1, type: 3}
       propertyPath: m_Name
       value: Level0

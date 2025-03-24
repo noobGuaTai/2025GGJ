@@ -54,7 +54,7 @@ public class Sickle : MonoBehaviour
             Tween.TransitionType.CIRC, Tween.EaseType.OUT);
         tween.AddTween("attack", (x) => isReturn = true, 0, 0, 0);
         tween.AddTween("attack", (x) => rb.linearVelocity = x, Vector2.zero, -direction * initSpeed, flyTime,
-            Tween.TransitionType.CIRC, Tween.EaseType.IN).Play();
+            Tween.TransitionType.QUART, Tween.EaseType.IN).Play();
     };
 
     void OnDestroy()

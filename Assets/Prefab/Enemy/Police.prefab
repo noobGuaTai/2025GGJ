@@ -139,14 +139,14 @@ GameObject:
   - component: {fileID: 8817198467322062312}
   - component: {fileID: 687017811085693696}
   - component: {fileID: -8929536887990909823}
-  - component: {fileID: -458252106087995134}
+  - component: {fileID: 8123256366452371246}
   - component: {fileID: -5699326640305639141}
   - component: {fileID: -3072049877793455537}
   - component: {fileID: 8918869802295284714}
   - component: {fileID: 1060872501328041528}
   - component: {fileID: 5482216318276291448}
   m_Layer: 9
-  m_Name: Farmer
+  m_Name: Police
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -365,7 +365,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-458252106087995134
+--- !u!114 &8123256366452371246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -374,7 +374,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6519572436789688924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c53e5f7cfa8ce1346b8bb52cba025f34, type: 3}
+  m_Script: {fileID: 11500000, guid: c563bafcc4dcf7a479c99daf40fba9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
@@ -392,14 +392,13 @@ MonoBehaviour:
     - 50
     patrolSpeed: 30
     patrolMinDistance: 10
-    chaseSpeed: 30
+    chaseSpeed: 40
     detectRange: 150
-    attackDetectRange: 120
-    pullRange: 60
-    attackRange: 90
+    attackDetectRange: 80
+    attackRange: 40
     idleToPatrolTime: {x: 0, y: 2}
-    patrolToIdleTime: {x: 1, y: 2}
-    sicklePrefab: {fileID: 7872871544301588018, guid: 3cc67da9f955bf14a97d9e7a4e5afda6, type: 3}
+    patrolToIdleTime: {x: 5, y: 10}
+    attackCollider: {fileID: 1364287371229804807}
 --- !u!114 &-5699326640305639141
 MonoBehaviour:
   m_ObjectHideFlags: 0
