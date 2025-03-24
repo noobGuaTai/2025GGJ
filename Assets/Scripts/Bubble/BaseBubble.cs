@@ -49,7 +49,7 @@ public class BaseBubble : MonoBehaviour
     public virtual void OnCollisionEnter2D(Collision2D other)
     {
         SwallowObject(other.gameObject);
-        DestroyBubble(other.gameObject);
+        Destroyed(other.gameObject);
     }
 
     public virtual void SwallowObject(GameObject other)
@@ -67,7 +67,7 @@ public class BaseBubble : MonoBehaviour
         }
     }
 
-    public virtual void DestroyBubble(GameObject other)
+    public virtual void Destroyed(GameObject other)
     {
         if (((1 << other.layer) & destoryLayer) != 0)
         {
