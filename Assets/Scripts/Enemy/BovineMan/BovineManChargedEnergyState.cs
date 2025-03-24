@@ -29,7 +29,7 @@ public class BovineManChargedEnergyState : BovineBaseState
     {
         chargeTimer += Time.deltaTime;
         // 不在攻击检测范围内一段时候后取消蓄力
-        if(!fSM.DetectPlayer(parameters.attackDetectRange))
+        if(!fSM.DetectPlayer(parameters.attackDetectRange) && !fSM.IsBubbleInFront(parameters.attackDetectRange))
         {
             detectTimer += Time.deltaTime;
             if(detectTimer >= parameters.canCancelChargingDuration)
@@ -38,12 +38,16 @@ public class BovineManChargedEnergyState : BovineBaseState
         // 蓄力完成后冲刺攻击
         else if(chargeTimer >= fSM.parameters.chargingDuration)
         {
-            fSM.parameters.sprintDirection = fSM.transform.position.x > PlayerFSM.Instance.transform.position.x ? -1 : 1;
             fSM.ChangeState(BovineManStateType.SprintAttack);
         }
-        // 检测到玩家进入攻击范围
-        else if(fSM.DetectPlayer(parameters.attackDetectRange))
+        // 检测到泡泡或者玩家进入攻击范围
+        else if(fSM.DetectPlayer(parameters.attackDetectRange) || fSM.DetectBubble(parameters.attackDetectRange, out var _))
         {
+            GameObject bubble;
+            if(fSM.DetectBubble(parameters.attackDetectRange, out bubble))
+                fSM.parameters.sprintDirection = fSM.transform.position.x > bubble.transform.position.x ? -1 : 1;
+            else
+                fSM.parameters.sprintDirection = fSM.transform.position.x > PlayerFSM.Instance.transform.position.x ? -1 : 1;
             detectTimer = 0.0f;
         }
     }

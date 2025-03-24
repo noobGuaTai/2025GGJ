@@ -11,6 +11,7 @@ public enum BovineManStateType
     Braking,    // 刹车
     ChargedEnergy,   // 蓄力
     UnderSwallowed,   // 被吞下
+    Return,   // 返回
 }
 
 [Serializable]
@@ -21,22 +22,23 @@ public class BovineManParameters
     public float currentSpeed;
 
     [Header("Patrol")]
-    public Vector2[] patrolPoint;
+    // public Vector2[] patrolPoint;
+    public float[] patrolPoint;
     public float patrolSpeed;
 
     [Header("SprintAttack")]
     public float sprintBaseSpeed;     // 冲刺基础速度
-    public float speedIncrementOnChargingPerSec;  // 蓄力每秒基础速度增量
     [HideInInspector] public int sprintDirection;   // 冲刺方向
+    public float acceleratedVelocity; // 加速度
     public float maxVelocity; // 最大速度
     public float canCancelSprintDuration; // 检测不到玩家多少秒后停止冲刺
 
     [Header("ChargingEnergy")]
     public float chargingDurationUpper;  // 冲刺蓄力时间上限
     public float chargingDurationLower;  // 冲刺蓄力时间下限
+    public float speedIncrementOnChargingPerSec;  // 蓄力每秒基础速度增量
     public float canCancelChargingDuration; // 检测不到玩家多少秒后停止蓄力
     [HideInInspector] public float chargingDuration;  // 冲刺蓄力时间
-    public float acceleratedVelocity; // 加速度
 
     [Header("Braking")]
     public float retardedVelocity;  // 减速度
@@ -44,6 +46,9 @@ public class BovineManParameters
     [Header("Detection")]
     public float attackDetectRange;   // 玩家进入该范围则进入蓄力状态
     public float returnDetectRange;   // 追逐玩家过程中超过该范围则返回原地
+    public float returnSpeed;  // 返回原地的速度
+    public bool isOnGround => groundCheck.isChecked;
+    internal AnythingCheck groundCheck;
     public LayerMask deadlyLayers;
  }
 
@@ -89,8 +94,12 @@ public class BovineManParameters
         Debug.Log("BovineMan ChangeState: " + stateType);
     }
 
+    // public bool IsPlayerInFront(float range) =>
+    //     Physics2D.Raycast(transform.position, new Vector2(0, parameters.sprintDirection), range, 1 << LayerMask.NameToLayer("Player")).collider != null;
+    public bool IsBubbleInFront(float range) =>
+        IsDetectObjectByLayer(range, LayerMask.GetMask("Bubble"), out var _, direction: parameters.sprintDirection);
     public bool IsPlayerInFront(float range) =>
-        Physics2D.Raycast(transform.position, new Vector2(0, parameters.sprintDirection), range, 1 << LayerMask.NameToLayer("Player")).collider != null;
+        IsDetectObjectByLayer(range, LayerMask.GetMask("Player"), out var _, direction: parameters.sprintDirection);
 
     public void Braking() => ChasePlayer();
 
@@ -108,6 +117,9 @@ public class BovineManParameters
     }
 
     // # TODO: 可能还需要检测泡泡，攻击泡泡的优先级高于玩家
-   public bool DetectPlayer(float attackDetectRange) =>
+    public bool DetectBubble(float attackDetectRange, out GameObject bubble) =>
+        IsDetectObjectByLayer(attackDetectRange, LayerMask.GetMask("Bubble"), out bubble);
+
+    public bool DetectPlayer(float attackDetectRange) =>
         IsDetectObjectByLayer(attackDetectRange, LayerMask.GetMask("Player"), out var _);
 }

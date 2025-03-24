@@ -31,6 +31,7 @@ public class BovineManBrakingState : BovineBaseState
         // 刹车
         fSM.Braking();
         if(parameters.currentSpeed <= 0f || Mathf.Abs(fSM.rb.linearVelocityX) < 1.0f)
+            // # TODO: 检测到玩家离得太远可能需要先返回原点
             fSM.ChangeState(BovineManStateType.Patrol);
     }
 }
