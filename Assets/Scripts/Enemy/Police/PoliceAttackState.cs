@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PoliceAttackState : IState
@@ -13,7 +14,8 @@ public class PoliceAttackState : IState
     {
         fsm.OnEnter(PoliceStateType.Attack);
         fsm.rb.linearVelocity = Vector2.zero;
-        if (fsm.param.attackCollider.enabled == false) fsm.EnableAttackCollider();
+        fsm.transform.localScale = new Vector3(fsm.transform.position.x < PlayerFSM.Instance.transform.position.x ? 1 : -1, 1, 1);
+        if (fsm.param.attackCollider.All(x => x.enabled == false)) fsm.EnableAttackCollider();
         wait = fsm.StartCoroutine(Wait());
         disableAttackCollider = fsm.StartCoroutine(DisableAttackCollider());
     }

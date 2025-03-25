@@ -29,7 +29,7 @@ public class PoliceParameters
     public Vector2 patrolToIdleTime;
     public bool isOnGround => groundCheck.isChecked;
     internal AnythingCheck groundCheck;
-    public Collider2D attackCollider;
+    public Collider2D[] attackCollider;
 }
 
 public class PoliceFSM : EnemyFSM
@@ -112,8 +112,8 @@ public class PoliceFSM : EnemyFSM
         enterStateActions[stateType]?.Invoke();
     }
 
-    public void EnableAttackCollider() => param.attackCollider.enabled = true;
-    public void DisableAttackCollider() => param.attackCollider.enabled = false;
+    public void EnableAttackCollider() => Array.ForEach(param.attackCollider, x => x.enabled = true);
+    public void DisableAttackCollider() => Array.ForEach(param.attackCollider, x => x.enabled = false);
 
 
     public void Attack(Collider2D other)
