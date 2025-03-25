@@ -8,7 +8,7 @@ public class KilledByCoinEnemy : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Rigidbody2D>().linearVelocity.magnitude > 100f)
             {
-                GetComponent<EnemyFSM>().Die();
+                if (TryGetComponent<EnemyFSM>(out var e)) e.Die();
             }
         }
     }

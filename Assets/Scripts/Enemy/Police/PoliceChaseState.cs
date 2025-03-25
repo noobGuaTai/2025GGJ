@@ -2,35 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FarmerChaseState : IState
+public class PoliceChaseState : IState
 {
-    private FarmerFSM fsm;
+    PoliceFSM fsm;
 
-    public FarmerChaseState(FarmerFSM fsm)
-    {
-        this.fsm = fsm;
-    }
+    public PoliceChaseState(PoliceFSM fsm) => this.fsm = fsm;
 
     public void OnEnter()
     {
-
+        fsm.OnEnter(PoliceStateType.Chase);
     }
 
     public void OnExit()
     {
+
     }
 
     public void OnFixedUpdate()
     {
+
     }
 
     public void OnUpdate()
     {
-        if (fsm.IsDetectObjectByLayer(fsm.param.attackRange, LayerMask.GetMask("Player", "Bubble"), out var _) &&
-        !fsm.IsDetectObjectByLayer(fsm.param.pullRange, LayerMask.GetMask("Player"), out var _))
-            fsm.ChangeState(FarmerStateType.Attack);
+        if (fsm.IsDetectObjectByLayer(fsm.param.attackRange, LayerMask.GetMask("Player", "Bubble"), out var _))
+            fsm.ChangeState(PoliceStateType.Attack);
         if (!fsm.IsDetectObjectByLayer(fsm.param.detectRange, LayerMask.GetMask("Player", "Bubble"), out var _))
-            fsm.ChangeState(FarmerStateType.Idle);
+            fsm.ChangeState(PoliceStateType.Idle);
 
 
         if (fsm.IsDetectObjectByLayer(fsm.param.attackDetectRange, LayerMask.GetMask("Bubble"), out var g))
@@ -40,10 +38,7 @@ public class FarmerChaseState : IState
         }
         if (fsm.IsDetectObjectByLayer(fsm.param.attackDetectRange, LayerMask.GetMask("Player"), out var p))
         {
-            if (!fsm.IsDetectObjectByLayer(fsm.param.pullRange, LayerMask.GetMask("Player"), out var _))
-                fsm.ChaseObject(fsm.param.chaseSpeed, p);
-            else
-                fsm.ChaseObject(-fsm.param.chaseSpeed, p);
+            fsm.ChaseObject(fsm.param.chaseSpeed, p);
             return;
         }
     }

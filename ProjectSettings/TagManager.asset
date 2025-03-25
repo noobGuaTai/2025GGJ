@@ -26,8 +26,8 @@ TagManager:
   - Wall
   - Border
   - PlayerAttack
-  - 
-  - 
+  - EnemyWeapon
+  - EnemyAttack
   - 
   - 
   - 

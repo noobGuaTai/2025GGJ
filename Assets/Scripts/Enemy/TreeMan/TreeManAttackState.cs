@@ -1,24 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class TreeManAttackState : IState
 {
     private TreeManFSM fSM;
+    public GameObject saplingIns;
 
     public TreeManAttackState(TreeManFSM fSM)
     {
         this.fSM = fSM;
     }
-    public GameObject Shoot(Vector3 position)
+    public GameObject Shoot(Vector3 targetPos)
     {
+        var saplingIns = UnityEngine.Object.Instantiate(fSM.parameters.saplingPrefab);
+        saplingIns.transform.position = fSM.transform.position;
+        var rb = saplingIns.GetComponent<Rigidbody2D>();
+        for(var angle = 30; angle < 360;angle += 30)
+        {
+            if (angle % 90 == 0) continue;
+            var v = ProjectileMotion.CalculateInitialVelocity(
+                fSM.transform.position, targetPos, angle,
+                saplingIns.GetComponent<Rigidbody2D>().gravityScale * 9.81f);
+            if (v != Vector3.zero)
+            {
+                rb.linearVelocity = v;
+                return saplingIns;
+            }
+        }
+        Debug.Log("TreeMan can not find a nice sapling speed");
         return null;
     }
-    GameObject sapling;
     public void OnEnter()
     {
-        Shoot(fSM.GetComponent<TargetCollect>().attackTarget.First().transform.position);
+        saplingIns = Shoot(fSM.GetComponent<TargetCollect>().attackTarget.First().transform.position);
     }
 
     public void OnExit()
@@ -27,10 +41,15 @@ public class TreeManAttackState : IState
 
     public void OnFixedUpdate()
     {
-        if (sapling.GetComponent<Sapling>().impacted)
+        if (saplingIns == null)
         {
-            fSM.parameters.growPosition = sapling.transform.position;
-            Object.Destroy(sapling);
+            fSM.ChangeState(TreeManStateType.Idle);
+            return;
+        }
+        if (saplingIns.GetComponent<TreeManSapling>().impacted)
+        {
+            fSM.parameters.growPosition = saplingIns.transform.position;
+            UnityEngine.Object.Destroy(saplingIns);
             fSM.ChangeState(TreeManStateType.Grow);
         }
     }
