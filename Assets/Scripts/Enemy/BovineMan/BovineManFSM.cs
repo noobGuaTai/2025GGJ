@@ -58,6 +58,12 @@ public class BovineManParameters
     public IState currentState;
     public Dictionary<BovineManStateType, IState> state = new Dictionary<BovineManStateType, IState>();
 
+    public override void Awake()
+    {
+        base.Awake();
+        parameters.groundCheck = GetComponentInChildren<AnythingCheck>();
+    }
+
     public override void Start()
     {
         base.Start();
