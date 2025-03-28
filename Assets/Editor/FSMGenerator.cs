@@ -183,12 +183,14 @@ public class {fsmName} : EnemyFSM
     public override void Start()
     {{
         base.Start();
-        state = Enum.GetValues(typeof({enumName})).Cast<{enumName}>().ToDictionary(
+        state = Enum.GetValues(typeof({enumName})).Cast<{enumName}>().ToDictionary
+        (
             stateType => stateType,
             stateType => CreateState(stateType)
         );
 
-        enterStateActions = Enum.GetValues(typeof({enumName})).Cast<{enumName}>().ToDictionary(
+        enterStateActions = Enum.GetValues(typeof({enumName})).Cast<{enumName}>().ToDictionary
+        (
             stateType => stateType,
             _ => (Action)null
         );

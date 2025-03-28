@@ -27,13 +27,19 @@ public class PoliceChaseState : IState
     {
         if (fsm.IsDetectObjectByLayer(fsm.param.attackRange, LayerMask.GetMask("Player", "Bubble"), out var _))
             fsm.ChangeState(PoliceStateType.Attack);
-        if (!fsm.IsDetectObjectByLayer(fsm.param.detectRange, LayerMask.GetMask("Player", "Bubble"), out var _))
+        if (!fsm.IsDetectObjectByLayer(fsm.param.detectRange, LayerMask.GetMask("Player", "Bubble"), out var _) &&
+        !fsm.IsDetectObjectByComponent<WeaponCoin>(fsm.param.detectRange, out var _, customLayer: LayerMask.GetMask("Item")))
             fsm.ChangeState(PoliceStateType.Idle);
 
 
-        if (fsm.IsDetectObjectByLayer(fsm.param.attackDetectRange, LayerMask.GetMask("Bubble"), out var g))
+        if (fsm.IsDetectObjectByLayer(fsm.param.attackDetectRange, LayerMask.GetMask("Coin"), out var g))
         {
             fsm.ChaseObject(fsm.param.chaseSpeed, g);
+            return;
+        }
+        if (fsm.IsDetectObjectByLayer(fsm.param.attackDetectRange, LayerMask.GetMask("Bbble"), out var b))
+        {
+            fsm.ChaseObject(fsm.param.chaseSpeed, b);
             return;
         }
         if (fsm.IsDetectObjectByLayer(fsm.param.attackDetectRange, LayerMask.GetMask("Player"), out var p))

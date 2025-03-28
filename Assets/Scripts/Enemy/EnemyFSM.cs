@@ -33,9 +33,9 @@ public class EnemyFSM : MonoBehaviour
 
     }
 
-    public virtual Coroutine ReturnToInitPos(float speed)
+    public virtual Coroutine ReturnToInitPos(float speed, bool isChangeScale = true)
     {
-        return StartCoroutine(MoveToTarget(initPos, speed));
+        return StartCoroutine(MoveToTarget(initPos, speed, isChangeScale: isChangeScale));
     }
 
     public virtual Coroutine TwoPointPatrol(Vector2 first, Vector2 second, float speed, bool isChangeScale = true)
@@ -157,19 +157,29 @@ public class EnemyFSM : MonoBehaviour
     IEnumerator MoveToTarget(Vector2 target, float speed, Action onComplete = null, bool isChangeScale = true)
     {
         float tolerance = 1f;
+
         while (Mathf.Abs(transform.position.x - target.x) > tolerance)
         {
             float direction = (target.x - transform.position.x) > 0 ? 1 : -1;
-            rb.linearVelocityX = direction * speed;
+            float targetVelocity = direction * speed;
+            float velocityChange = targetVelocity - rb.linearVelocityX;
+            rb.AddForce(velocityChange * Vector2.right, ForceMode2D.Impulse);
+
             if (isChangeScale)
                 transform.localScale = new Vector3(direction, transform.localScale.y, transform.localScale.z);
+
             yield return null;
         }
 
-        rb.linearVelocityX = 0;
+        while (Mathf.Abs(rb.linearVelocityX) > 0.1f)
+        {
+            rb.AddForce(-rb.linearVelocityX * Vector2.right, ForceMode2D.Impulse);
+            yield return null;
+        }
+
+        rb.linearVelocity = Vector2.zero;
         transform.position = new Vector3(target.x, transform.position.y, transform.position.z);
         onComplete?.Invoke();
-
         yield return null;
     }
 
@@ -178,18 +188,18 @@ public class EnemyFSM : MonoBehaviour
     /// </summary>
     /// <param name="range">射线长度</param>
     /// <param name="layer">目标layer</param>
-    /// <param name="aim">返回第一个碰到的物体</param>
+    /// <param name="detected">返回第一个碰到的物体</param>
     /// <param name="direction">-1仅往左发射，1仅往右发射，0左右都发射</param>
     /// <returns>是否检测到物体</returns>
-    public virtual bool IsDetectObjectByLayer(float range, LayerMask layer, out GameObject aim, int direction = 0)
+    public virtual bool IsDetectObjectByLayer(float range, LayerMask layer, out GameObject detected, int direction = 0)
     {
-        aim = null;
+        detected = null;
         if (direction >= 0)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, range, layer);
             if (hit.collider != null)
             {
-                aim = hit.collider.gameObject;
+                detected = hit.collider.gameObject;
                 return true;
             }
         }
@@ -199,7 +209,7 @@ public class EnemyFSM : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, range, layer);
             if (hit.collider != null)
             {
-                aim = hit.collider.gameObject;
+                detected = hit.collider.gameObject;
                 return true;
             }
         }
@@ -207,16 +217,74 @@ public class EnemyFSM : MonoBehaviour
         return false;
     }
 
+    public virtual bool IsDetectObjectByComponent<T>(float range, out GameObject detected, int direction = 0, LayerMask? customLayer = null) where T : Component
+    {
+        detected = null;
+        LayerMask layer = customLayer ?? Physics2D.AllLayers;
+        if (direction >= 0)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, range, layer);
+            if (hit.collider != null)
+            {
+                if (hit.collider.TryGetComponent<T>(out var _))
+                {
+                    detected = hit.collider.gameObject;
+                    return true;
+                }
+            }
+        }
+
+        if (direction <= 0)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, range, layer);
+            if (hit.collider != null)
+            {
+                if (hit.collider.TryGetComponent<T>(out var _))
+                {
+                    detected = hit.collider.gameObject;
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+
+
     public virtual void ChaseObject(float speed, GameObject aim)
     {
         float tolerance = 1f;
         if (Mathf.Abs(transform.position.x - aim.transform.position.x) > tolerance)
         {
             float direction = (aim.transform.position.x - transform.position.x) > 0 ? 1 : -1;
-            rb.linearVelocityX = direction * speed;
+            float targetVelocity = direction * speed;
+            float velocityChange = targetVelocity - rb.linearVelocityX;
+            rb.AddForce(velocityChange * Vector2.right, ForceMode2D.Impulse);
         }
         else
-            rb.linearVelocityX = 0;
+        {
+            rb.AddForce(-rb.linearVelocityX * Vector2.right, ForceMode2D.Impulse);
+        }
+    }
+
+    public virtual void InertialChaseObject(float speed, GameObject aim)
+    {
+        float tolerance = 1f;
+        float inertiaFactor = 0.1f;
+
+        if (Mathf.Abs(transform.position.x - aim.transform.position.x) > tolerance)
+        {
+            float direction = (aim.transform.position.x - transform.position.x) > 0 ? 1 : -1;
+            float targetVelocity = direction * speed;
+            float velocityChange = (targetVelocity - rb.linearVelocityX) * inertiaFactor;
+            rb.AddForce(velocityChange * Vector2.right, ForceMode2D.Impulse);
+        }
+        else
+        {
+            float velocityChange = -rb.linearVelocityX * inertiaFactor;
+            rb.AddForce(velocityChange * Vector2.right, ForceMode2D.Impulse);
+        }
     }
 
     public virtual void Die()

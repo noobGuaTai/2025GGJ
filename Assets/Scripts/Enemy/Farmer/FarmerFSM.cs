@@ -50,12 +50,14 @@ public class FarmerFSM : EnemyFSM
     public override void Start()
     {
         base.Start();
-        state = Enum.GetValues(typeof(FarmerStateType)).Cast<FarmerStateType>().ToDictionary(
+        state = Enum.GetValues(typeof(FarmerStateType)).Cast<FarmerStateType>().ToDictionary
+        (
             stateType => stateType,
             stateType => CreateState(stateType)
         );
 
-        enterStateActions = Enum.GetValues(typeof(FarmerStateType)).Cast<FarmerStateType>().ToDictionary(
+        enterStateActions = Enum.GetValues(typeof(FarmerStateType)).Cast<FarmerStateType>().ToDictionary
+        (
             stateType => stateType,
             _ => (Action)null
         );

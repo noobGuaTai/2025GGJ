@@ -11,7 +11,8 @@ public enum PoliceStateType
     Chase,
     Attack,
     KnockedBack,
-    UnderSwallowed
+    UnderSwallowed,
+    Disarm
 }
 
 [Serializable]
@@ -48,12 +49,14 @@ public class PoliceFSM : EnemyFSM
     public override void Start()
     {
         base.Start();
-        state = Enum.GetValues(typeof(PoliceStateType)).Cast<PoliceStateType>().ToDictionary(
+        state = Enum.GetValues(typeof(PoliceStateType)).Cast<PoliceStateType>().ToDictionary
+        (
             stateType => stateType,
             stateType => CreateState(stateType)
         );
 
-        enterStateActions = Enum.GetValues(typeof(PoliceStateType)).Cast<PoliceStateType>().ToDictionary(
+        enterStateActions = Enum.GetValues(typeof(PoliceStateType)).Cast<PoliceStateType>().ToDictionary
+        (
             stateType => stateType,
             _ => (Action)null
         );
@@ -103,6 +106,7 @@ public class PoliceFSM : EnemyFSM
             case PoliceStateType.Attack: return new PoliceAttackState(this);
             case PoliceStateType.KnockedBack: return new PoliceKnockedBackState(this);
             case PoliceStateType.UnderSwallowed: return new PoliceUnderSwallowedState(this);
+            case PoliceStateType.Disarm: return new PoliceDisarmState(this);
             default: throw new ArgumentException($"Unknown state type: {stateType}");
         }
     }
@@ -126,6 +130,15 @@ public class PoliceFSM : EnemyFSM
         if (other.CompareTag("Player"))
         {
             PlayerFSM.Instance.Die();
+        }
+    }
+
+    public override void OnCollisionEnter2D(Collision2D other)
+    {
+        base.OnCollisionEnter2D(other);
+        if (other.gameObject.layer == LayerMask.NameToLayer("Coin"))
+        {
+            Destroy(other.gameObject);
         }
     }
 }

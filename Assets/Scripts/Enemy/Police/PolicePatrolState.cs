@@ -31,7 +31,7 @@ public class PolicePatrolState : IState
     public void OnUpdate()
     {
         StartPatrol();
-        if (fsm.IsDetectObjectByLayer(fsm.param.attackDetectRange, LayerMask.GetMask("Player", "Bubble"), out var _))
+        if (fsm.IsDetectObjectByLayer(fsm.param.attackDetectRange, LayerMask.GetMask("Player", "Coin", "Bubble"), out var _))
             fsm.ChangeState(PoliceStateType.Chase);
     }
 
