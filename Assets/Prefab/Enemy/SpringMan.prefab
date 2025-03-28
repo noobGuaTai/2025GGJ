@@ -139,14 +139,14 @@ GameObject:
   - component: {fileID: 8817198467322062312}
   - component: {fileID: 687017811085693696}
   - component: {fileID: -8929536887990909823}
-  - component: {fileID: -2919695179572340279}
   - component: {fileID: -5699326640305639141}
   - component: {fileID: -3072049877793455537}
   - component: {fileID: 8918869802295284714}
   - component: {fileID: 1060872501328041528}
   - component: {fileID: 5482216318276291448}
+  - component: {fileID: -488793554104135723}
   m_Layer: 9
-  m_Name: Worker
+  m_Name: SpringMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,7 +239,7 @@ Rigidbody2D:
   m_Mass: 10
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 10
+  m_GravityScale: 20
   m_Material: {fileID: 6200000, guid: 655d7a63bd4ccaf48b008b67a9cc74bf, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -365,40 +365,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-2919695179572340279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6519572436789688924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 776847f441806ef42bd2edf11021f12b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  animator: {fileID: 0}
-  initPos: {x: 0, y: 0}
-  health: 0
-  deadlyLayers:
-    serializedVersion: 2
-    m_Bits: 1048832
-  somatoType: 1
-  param:
-    currentState: 0
-    patrolPoint:
-    - -40
-    - 40
-    patrolSpeed: 30
-    patrolMinDistance: 20
-    chaseSpeed: 40
-    detectRange: 100
-    attackDetectRange: 70
-    attackRange: 30
-    idleToPatrolTime: {x: 0, y: 2}
-    patrolToIdleTime: {x: 5, y: 10}
-    attackCollider: {fileID: 1364287371229804807}
 --- !u!114 &-5699326640305639141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,3 +433,38 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   isChecked: 0
+--- !u!114 &-488793554104135723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519572436789688924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2361fb63377dc84186be7cc8a08ee40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  animator: {fileID: 0}
+  initPos: {x: 0, y: 0}
+  health: 0
+  deadlyLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  somatoType: 0
+  param:
+    currentState: 0
+    patrolPoint:
+    - -50
+    - 50
+    patrolSpeed: 50
+    patrolMinDistance: 20
+    chaseSpeed: 80
+    springForce: 1200
+    springCoolDown: 0.2
+    sprintHeavyThingForce: 1200
+    detectRange: 100
+    attackDetectRange: 80
+    idleToPatrolTime: {x: 0, y: 2}
+    patrolToIdleTime: {x: 5, y: 10}

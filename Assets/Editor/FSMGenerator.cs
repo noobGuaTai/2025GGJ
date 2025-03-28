@@ -233,10 +233,7 @@ public class {fsmName} : EnemyFSM
         }}
     }}
 
-    public void OnEnter({enumName} stateType)
-    {{
-        enterStateActions[stateType]?.Invoke();
-    }}
+    public void OnEnter({enumName} stateType) => enterStateActions[stateType]?.Invoke();
 }}
 ";
         return fsmTemplate;
