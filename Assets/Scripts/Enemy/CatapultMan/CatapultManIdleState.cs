@@ -2,18 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorkerIdleState : IState
+public class CatapultManIdleState : IState
 {
-    private WorkerFSM fsm;
+    CatapultManFSM fsm;
     Coroutine patrol;
 
-    public WorkerIdleState(WorkerFSM fsm)
-    {
-        this.fsm = fsm;
-    }
+    public CatapultManIdleState(CatapultManFSM fsm) => this.fsm = fsm;
 
     public void OnEnter()
     {
+        fsm.OnEnter(CatapultManStateType.Idle);
         patrol = fsm.StartCoroutine(Patrol());
     }
 
@@ -30,12 +28,12 @@ public class WorkerIdleState : IState
     public void OnUpdate()
     {
         if (fsm.IsDetectObjectByLayer(fsm.param.attackDetectRange, LayerMask.GetMask("Player", "Bubble"), out var _, (int)fsm.transform.localScale.x))
-            fsm.ChangeState(WorkerStateType.Chase);
+            fsm.ChangeState(CatapultManStateType.Chase);
     }
 
     IEnumerator Patrol()
     {
         yield return new WaitForSeconds(Random.Range(fsm.param.idleToPatrolTime.x, fsm.param.idleToPatrolTime.y));
-        fsm.ChangeState(WorkerStateType.Patrol);
+        fsm.ChangeState(CatapultManStateType.Patrol);
     }
 }

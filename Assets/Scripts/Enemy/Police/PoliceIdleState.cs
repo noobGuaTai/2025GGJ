@@ -17,7 +17,7 @@ public class PoliceIdleState : IState
     public void OnExit()
     {
         if (patrol != null)
-            fsm.StopCoroutine(Patrol());
+            fsm.StopCoroutine(patrol);
     }
 
     public void OnFixedUpdate()

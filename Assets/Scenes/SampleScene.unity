@@ -4671,6 +4671,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6589104274001882459, guid: 9b8f075e451f3b843b34a73f5d7d9e83, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257881811414629748, guid: 9b8f075e451f3b843b34a73f5d7d9e83, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7545381697119716827, guid: 9b8f075e451f3b843b34a73f5d7d9e83, type: 3}
       propertyPath: param.bubblePrefab
       value: 
