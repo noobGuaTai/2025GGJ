@@ -55,6 +55,9 @@ public class GyroManFSM : EnemyFSM
         );
 
         ChangeState(GyroManStateType.Idle);
+        GetComponent<SwallowedEnemy>().onLoadActions += () => ChangeState(GyroManStateType.UnderSwallowed);
+        GetComponent<SwallowedEnemy>().onBreakActions += () => ChangeState(GyroManStateType.Idle);
+        GetComponent<KnockedBackEnemy>().onKnockedBackActions += () => ChangeState(GyroManStateType.KnockedBack);
     }
 
     void Update()

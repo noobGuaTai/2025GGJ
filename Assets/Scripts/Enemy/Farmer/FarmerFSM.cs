@@ -62,6 +62,9 @@ public class FarmerFSM : EnemyFSM
             _ => (Action)null
         );
         ChangeState(FarmerStateType.Idle);
+        GetComponent<SwallowedEnemy>().onLoadActions += () => ChangeState(FarmerStateType.UnderSwallowed);
+        GetComponent<SwallowedEnemy>().onBreakActions += () => ChangeState(FarmerStateType.Idle);
+        GetComponent<KnockedBackEnemy>().onKnockedBackActions += () => ChangeState(FarmerStateType.KnockedBack);
     }
 
     void Update()
