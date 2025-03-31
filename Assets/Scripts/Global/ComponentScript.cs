@@ -7,4 +7,5 @@ class ComponentScript
     KilledByCoinEnemy killedByCoinEnemy;// 可被高速硬币砸死
     KnockedBackEnemy knockedBackEnemy;// 可被大泡泡击退
     SwallowedEnemy swallowedEnemy;// 可被泡泡吞
+    KilledByHeavyObject killedByHeavyObject;// 可被重物砸死
 }

@@ -21,13 +21,13 @@ TagManager:
   - Key
   - DoorTrader
   - Coin
-  - HighSpeedCoin
+  - 
   - Item
   - Wall
   - Border
   - PlayerAttack
+  - EnemyWeapon
   - EnemyAttack
-  - 
   - 
   - 
   - 

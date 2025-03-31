@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3874415891310581503}
   - component: {fileID: 926927558174132771}
   - component: {fileID: -3348303881421465747}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Sickle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initSpeed: 300
-  flyTime: 1
+  flyTime: 2
 --- !u!50 &-3348303881421465747
 Rigidbody2D:
   serializedVersion: 5

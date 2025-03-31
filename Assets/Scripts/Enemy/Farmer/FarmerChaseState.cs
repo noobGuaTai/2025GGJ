@@ -26,7 +26,8 @@ public class FarmerChaseState : IState
 
     public void OnUpdate()
     {
-        if (fsm.IsDetectObjectByLayer(fsm.param.attackRange, LayerMask.GetMask("Player", "Bubble"), out var _))
+        if (fsm.IsDetectObjectByLayer(fsm.param.attackRange, LayerMask.GetMask("Player", "Bubble"), out var _) &&
+        !fsm.IsDetectObjectByLayer(fsm.param.pullRange, LayerMask.GetMask("Player"), out var _))
             fsm.ChangeState(FarmerStateType.Attack);
         if (!fsm.IsDetectObjectByLayer(fsm.param.detectRange, LayerMask.GetMask("Player", "Bubble"), out var _))
             fsm.ChangeState(FarmerStateType.Idle);
@@ -39,7 +40,10 @@ public class FarmerChaseState : IState
         }
         if (fsm.IsDetectObjectByLayer(fsm.param.attackDetectRange, LayerMask.GetMask("Player"), out var p))
         {
-            fsm.ChaseObject(fsm.param.chaseSpeed, p);
+            if (!fsm.IsDetectObjectByLayer(fsm.param.pullRange, LayerMask.GetMask("Player"), out var _))
+                fsm.ChaseObject(fsm.param.chaseSpeed, p);
+            else
+                fsm.ChaseObject(-fsm.param.chaseSpeed, p);
             return;
         }
     }

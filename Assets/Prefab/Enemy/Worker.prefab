@@ -384,7 +384,7 @@ MonoBehaviour:
   deadlyLayers:
     serializedVersion: 2
     m_Bits: 1048832
-  somatoType: 0
+  somatoType: 1
   param:
     currentState: 0
     patrolPoint:
@@ -396,7 +396,7 @@ MonoBehaviour:
     detectRange: 100
     attackDetectRange: 70
     attackRange: 30
-    idleToPatrolTime: {x: 10, y: 15}
+    idleToPatrolTime: {x: 0, y: 2}
     patrolToIdleTime: {x: 5, y: 10}
     attackCollider: {fileID: 1364287371229804807}
 --- !u!114 &-5699326640305639141

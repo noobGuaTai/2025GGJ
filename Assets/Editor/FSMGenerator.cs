@@ -183,12 +183,14 @@ public class {fsmName} : EnemyFSM
     public override void Start()
     {{
         base.Start();
-        state = Enum.GetValues(typeof({enumName})).Cast<{enumName}>().ToDictionary(
+        state = Enum.GetValues(typeof({enumName})).Cast<{enumName}>().ToDictionary
+        (
             stateType => stateType,
             stateType => CreateState(stateType)
         );
 
-        enterStateActions = Enum.GetValues(typeof({enumName})).Cast<{enumName}>().ToDictionary(
+        enterStateActions = Enum.GetValues(typeof({enumName})).Cast<{enumName}>().ToDictionary
+        (
             stateType => stateType,
             _ => (Action)null
         );
@@ -231,10 +233,7 @@ public class {fsmName} : EnemyFSM
         }}
     }}
 
-    public void OnEnter({enumName} stateType)
-    {{
-        enterStateActions[stateType]?.Invoke();
-    }}
+    public void OnEnter({enumName} stateType) => enterStateActions[stateType]?.Invoke();
 }}
 ";
         return fsmTemplate;
@@ -255,12 +254,9 @@ using UnityEngine;
 
 public class {stateClassName} : IState
 {{
-    private {fsmName} fsm;
+    {fsmName} fsm;
 
-    public {stateClassName}({fsmName} fsm)
-    {{
-        this.fsm = fsm;
-    }}
+    public {stateClassName}({fsmName} fsm) => this.fsm = fsm;
 
     public void OnEnter()
     {{
