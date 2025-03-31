@@ -3934,11 +3934,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9027380424867919135, guid: 585f913a54f8b864e8d7e7e694db413d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.9056654
+      value: -93.5
       objectReference: {fileID: 0}
     - target: {fileID: 9027380424867919135, guid: 585f913a54f8b864e8d7e7e694db413d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -63.885628
+      value: -53.7
       objectReference: {fileID: 0}
     - target: {fileID: 9027380424867919135, guid: 585f913a54f8b864e8d7e7e694db413d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4434,6 +4434,10 @@ PrefabInstance:
     - target: {fileID: 6519572436789688924, guid: ee98d6e454eebd845abdc33d630db8a6, type: 3}
       propertyPath: m_Name
       value: TreeMan
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519572436789688924, guid: ee98d6e454eebd845abdc33d630db8a6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6882816926513969201, guid: ee98d6e454eebd845abdc33d630db8a6, type: 3}
       propertyPath: m_Color.b
@@ -5010,6 +5014,10 @@ PrefabInstance:
     - target: {fileID: 3685208462614323722, guid: af9677cb4b8090744a639dd11f968bfe, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3685208462614323722, guid: af9677cb4b8090744a639dd11f968bfe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6833955433682024793, guid: af9677cb4b8090744a639dd11f968bfe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
