@@ -11,12 +11,15 @@ public class TreeManGrowState : IState
     {
         this.fSM = fSM;
     }
-    public void PlayAnimation() {
+    public void PlayAnimation()
+    {
         fSM.animator.SetTrigger("GrowBegin");
 
     }
-    public GameObject CreateGrowMirage() {
+    public GameObject CreateGrowMirage()
+    {
         var mirageIns = Object.Instantiate(fSM.parameters.saplingGrowUpMirage);
+        mirageIns.transform.position = fSM.parameters.growPosition;
         return mirageIns;
     }
     public bool growFinish;

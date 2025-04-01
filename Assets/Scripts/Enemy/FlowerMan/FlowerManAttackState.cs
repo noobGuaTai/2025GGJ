@@ -15,7 +15,7 @@ public class FlowerManAttackState : IState
 
     public void OnEnter()
     {
-        
+
     }
 
     public void OnExit()
@@ -35,7 +35,7 @@ public class FlowerManAttackState : IState
             Shoot(target);
         }
     }
-    public float shootCD;
+    public float shootCD => fSM.parameters.shootCD;
     public float _shootTick;
     public void Shoot(GameObject target)
     {
@@ -44,11 +44,14 @@ public class FlowerManAttackState : IState
         if (tr._tweenState == Tween.TweenState.RUNNING)
             return;
         tr.AddTween(_ => ShootImp(target), 0.0, 0.0, 0.0f)
-            .AddTween(_=> { }, 0, 0, shootCD).Play();
+            .AddTween(_ => { }, 0, 0, shootCD).Play();
     }
     public void ShootImp(GameObject target)
     {
-
+        var flowerIns = Object.Instantiate(fSM.parameters.flowerProjectile);
+        flowerIns.transform.position = fSM.transform.position;
+        var rb = flowerIns.GetComponent<Rigidbody2D>();
+        rb.linearVelocity = (target.transform.position - fSM.transform.position).normalized * fSM.parameters.flowerSpeed;
     }
 
     public void OnUpdate()
