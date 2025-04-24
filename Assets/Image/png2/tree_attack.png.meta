@@ -155,12 +155,12 @@ TextureImporter:
       name: tree_attack_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 209
-        width: 50
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 210
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.57, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: tree_attack_1
       rect:
         serializedVersion: 2
-        x: 84
-        y: 209
-        width: 50
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 70
+        y: 210
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.57, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -199,12 +199,12 @@ TextureImporter:
       name: tree_attack_2
       rect:
         serializedVersion: 2
-        x: 154
-        y: 209
-        width: 50
-        height: 60
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 140
+        y: 210
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.57, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -221,12 +221,12 @@ TextureImporter:
       name: tree_attack_3
       rect:
         serializedVersion: 2
-        x: 226
-        y: 209
-        width: 46
-        height: 69
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 210
+        y: 210
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.57, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -243,19 +243,19 @@ TextureImporter:
       name: tree_attack_4
       rect:
         serializedVersion: 2
-        x: 11
-        y: 154
-        width: 7
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 140
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.57, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 856c0ae4730452a50800000000000000
+      spriteID: 2cc55f764fcb2924790489853a6f7527
       internalID: 6495668643838346840
       vertices: []
       indices: 
@@ -265,19 +265,19 @@ TextureImporter:
       name: tree_attack_5
       rect:
         serializedVersion: 2
-        x: 14
-        y: 139
-        width: 50
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 70
+        y: 140
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.57, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 70d103e2d65282e40800000000000000
+      spriteID: b91ce1f356753e54182e822ffa0ee0e7
       internalID: 5631792484883373319
       vertices: []
       indices: 
@@ -287,19 +287,19 @@ TextureImporter:
       name: tree_attack_6
       rect:
         serializedVersion: 2
-        x: 84
-        y: 139
-        width: 50
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 140
+        y: 140
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.57, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e2dc570d94249b860800000000000000
+      spriteID: dc33c32a6ce252a428b07eb5c6fd8dbd
       internalID: 7546135535433403694
       vertices: []
       indices: 
@@ -309,19 +309,19 @@ TextureImporter:
       name: tree_attack_7
       rect:
         serializedVersion: 2
-        x: 154
-        y: 139
-        width: 50
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 210
+        y: 140
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.57, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3545bf81319701c00800000000000000
+      spriteID: ad391e1972566d84c892e4258a810755
       internalID: 869327851012969555
       vertices: []
       indices: 
@@ -331,19 +331,19 @@ TextureImporter:
       name: tree_attack_8
       rect:
         serializedVersion: 2
-        x: 224
-        y: 139
-        width: 50
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 70
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.57, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b0dde4413d4434990800000000000000
+      spriteID: d4a37b28eab03c24b944e8a8c92f23cf
       internalID: -7402997689097462517
       vertices: []
       indices: 
@@ -353,19 +353,19 @@ TextureImporter:
       name: tree_attack_9
       rect:
         serializedVersion: 2
-        x: 14
-        y: 69
-        width: 50
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 70
+        y: 70
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.57, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6b55bcb79e47111f0800000000000000
+      spriteID: c82762acc651abc44bf1d0bd176460d3
       internalID: -1075950289811712586
       vertices: []
       indices: 
@@ -375,19 +375,19 @@ TextureImporter:
       name: tree_attack_10
       rect:
         serializedVersion: 2
-        x: 84
-        y: 69
-        width: 50
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 140
+        y: 70
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.57, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 983510892c1dd1810800000000000000
+      spriteID: 3f1705a10d3a8d5469610f84e8642897
       internalID: 1737775664938963849
       vertices: []
       indices: 
@@ -397,19 +397,19 @@ TextureImporter:
       name: tree_attack_11
       rect:
         serializedVersion: 2
-        x: 154
-        y: 69
-        width: 50
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 210
+        y: 70
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.57, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 922ed81a5ac1e4c90800000000000000
+      spriteID: ff335f116f221a64a98f32e59393ba9b
       internalID: -7183772857903750615
       vertices: []
       indices: 
@@ -419,42 +419,20 @@ TextureImporter:
       name: tree_attack_12
       rect:
         serializedVersion: 2
-        x: 224
-        y: 69
-        width: 50
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fceb06d42a7bd11c0800000000000000
-      internalID: -4531263742354080049
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tree_attack_13
-      rect:
-        serializedVersion: 2
-        x: 14
+        x: 0
         y: 0
-        width: 50
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.57, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7d672b9bb46ee83d0800000000000000
-      internalID: -3202369072101427497
+      spriteID: e38332b631ed308438d490cbc0cb6477
+      internalID: -4531263742354080049
       vertices: []
       indices: 
       edges: []
@@ -463,7 +441,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 473e488544b09724b9f916a12ebac60f
     internalID: 0
     vertices: []
     indices: 
@@ -478,7 +456,6 @@ TextureImporter:
       tree_attack_10: 1737775664938963849
       tree_attack_11: -7183772857903750615
       tree_attack_12: -4531263742354080049
-      tree_attack_13: -3202369072101427497
       tree_attack_2: 4670254977482704744
       tree_attack_3: 8563376334163227016
       tree_attack_4: 6495668643838346840

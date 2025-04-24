@@ -125,12 +125,12 @@ TextureImporter:
       name: tree_grow_0
       rect:
         serializedVersion: 2
-        x: 28
-        y: 82
-        width: 15
-        height: 39
+        x: 0
+        y: 80
+        width: 70
+        height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -147,12 +147,12 @@ TextureImporter:
       name: tree_grow_1
       rect:
         serializedVersion: 2
-        x: 89
-        y: 81
-        width: 30
-        height: 49
+        x: 70
+        y: 80
+        width: 70
+        height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -169,12 +169,12 @@ TextureImporter:
       name: tree_grow_2
       rect:
         serializedVersion: 2
-        x: 13
-        y: 1
-        width: 39
-        height: 55
+        x: 0
+        y: 0
+        width: 70
+        height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -191,12 +191,12 @@ TextureImporter:
       name: tree_grow_3
       rect:
         serializedVersion: 2
-        x: 80
+        x: 70
         y: 0
-        width: 50
-        height: 64
+        width: 70
+        height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -213,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8317450fb074df441a61e50b12b949c6
     internalID: 0
     vertices: []
     indices: 

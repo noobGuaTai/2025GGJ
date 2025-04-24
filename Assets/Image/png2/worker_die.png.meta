@@ -152,12 +152,12 @@ TextureImporter:
       name: worker_die_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 119
-        width: 38
-        height: 30
+        x: 0
+        y: 120
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -174,12 +174,12 @@ TextureImporter:
       name: worker_die_1
       rect:
         serializedVersion: 2
-        x: 57
-        y: 119
-        width: 37
-        height: 29
+        x: 50
+        y: 120
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -196,12 +196,12 @@ TextureImporter:
       name: worker_die_2
       rect:
         serializedVersion: 2
-        x: 106
-        y: 119
-        width: 37
-        height: 28
+        x: 100
+        y: 120
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: worker_die_3
       rect:
         serializedVersion: 2
-        x: 156
-        y: 119
-        width: 37
-        height: 27
+        x: 150
+        y: 120
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -240,12 +240,12 @@ TextureImporter:
       name: worker_die_4
       rect:
         serializedVersion: 2
-        x: 6
-        y: 79
-        width: 37
-        height: 29
+        x: 0
+        y: 80
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -262,12 +262,12 @@ TextureImporter:
       name: worker_die_5
       rect:
         serializedVersion: 2
-        x: 56
-        y: 79
-        width: 37
-        height: 26
+        x: 50
+        y: 80
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -284,12 +284,12 @@ TextureImporter:
       name: worker_die_6
       rect:
         serializedVersion: 2
-        x: 106
-        y: 79
-        width: 37
-        height: 21
+        x: 100
+        y: 80
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -306,12 +306,12 @@ TextureImporter:
       name: worker_die_7
       rect:
         serializedVersion: 2
-        x: 156
-        y: 79
-        width: 37
-        height: 12
+        x: 150
+        y: 80
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -328,12 +328,12 @@ TextureImporter:
       name: worker_die_8
       rect:
         serializedVersion: 2
-        x: 6
-        y: 39
-        width: 37
-        height: 12
+        x: 0
+        y: 40
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -350,12 +350,12 @@ TextureImporter:
       name: worker_die_9
       rect:
         serializedVersion: 2
-        x: 56
-        y: 39
-        width: 37
-        height: 12
+        x: 50
+        y: 40
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -372,12 +372,12 @@ TextureImporter:
       name: worker_die_10
       rect:
         serializedVersion: 2
-        x: 106
-        y: 39
-        width: 37
-        height: 12
+        x: 100
+        y: 40
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -394,12 +394,12 @@ TextureImporter:
       name: worker_die_11
       rect:
         serializedVersion: 2
-        x: 156
-        y: 39
-        width: 37
-        height: 12
+        x: 150
+        y: 40
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -416,12 +416,12 @@ TextureImporter:
       name: worker_die_12
       rect:
         serializedVersion: 2
-        x: 6
+        x: 0
         y: 0
-        width: 37
-        height: 11
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -438,7 +438,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 25cd8ab5a30057341a2eb10915acacb9
     internalID: 0
     vertices: []
     indices: 

@@ -1,0 +1,871 @@
+fileFormatVersion: 2
+guid: 14dcd8f537ac3aa4993720984bb759eb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8697555417204627396
+    second: stonecar_walk&attack&die_0
+  - first:
+      213: 494000263013859619
+    second: stonecar_walk&attack&die_1
+  - first:
+      213: -6253553588029370810
+    second: stonecar_walk&attack&die_2
+  - first:
+      213: -6157095263983063453
+    second: stonecar_walk&attack&die_3
+  - first:
+      213: -7965280866589434869
+    second: stonecar_walk&attack&die_4
+  - first:
+      213: -9146511474985003483
+    second: stonecar_walk&attack&die_5
+  - first:
+      213: -9021542868731037843
+    second: stonecar_walk&attack&die_6
+  - first:
+      213: 6430220877547617698
+    second: stonecar_walk&attack&die_7
+  - first:
+      213: -534699048522893567
+    second: stonecar_walk&attack&die_8
+  - first:
+      213: 2008915426342528958
+    second: stonecar_walk&attack&die_9
+  - first:
+      213: 1067724479570343103
+    second: stonecar_walk&attack&die_10
+  - first:
+      213: 654941478540739204
+    second: stonecar_walk&attack&die_11
+  - first:
+      213: -938492366941142659
+    second: stonecar_walk&attack&die_12
+  - first:
+      213: 6844783413862634492
+    second: stonecar_walk&attack&die_13
+  - first:
+      213: 2761213945264501604
+    second: stonecar_walk&attack&die_14
+  - first:
+      213: 3481593294905443728
+    second: stonecar_walk&attack&die_15
+  - first:
+      213: 3611224110076895160
+    second: stonecar_walk&attack&die_16
+  - first:
+      213: 7198195730448778616
+    second: stonecar_walk&attack&die_17
+  - first:
+      213: -6050266401645850991
+    second: stonecar_walk&attack&die_18
+  - first:
+      213: -7908028157062056951
+    second: stonecar_walk&attack&die_19
+  - first:
+      213: 8838404835960707496
+    second: stonecar_walk&attack&die_20
+  - first:
+      213: -355384138178657631
+    second: stonecar_walk&attack&die_21
+  - first:
+      213: -3848427901609176857
+    second: stonecar_walk&attack&die_22
+  - first:
+      213: 5320795410551402274
+    second: stonecar_walk&attack&die_23
+  - first:
+      213: 2917038262113841326
+    second: stonecar_walk&attack&die_24
+  - first:
+      213: 5866651682004783410
+    second: stonecar_walk&attack&die_25
+  - first:
+      213: 6574626893371873871
+    second: stonecar_walk&attack&die_26
+  - first:
+      213: 2508632905890065906
+    second: stonecar_walk&attack&die_27
+  - first:
+      213: 3366503074752341956
+    second: stonecar_walk&attack&die_28
+  - first:
+      213: 1529500392944773195
+    second: stonecar_walk&attack&die_29
+  - first:
+      213: 6036330779141276187
+    second: stonecar_walk&attack&die_30
+  - first:
+      213: 4223815707802812537
+    second: stonecar_walk&attack&die_31
+  - first:
+      213: 7109280126731427998
+    second: stonecar_walk&attack&die_32
+  - first:
+      213: -8354737700735908972
+    second: stonecar_walk&attack&die_33
+  - first:
+      213: -1987284435111644292
+    second: stonecar_walk&attack&die_34
+  - first:
+      213: 5721008773807323607
+    second: stonecar_walk&attack&die_35
+  - first:
+      213: -6967659413120748782
+    second: stonecar_walk&attack&die_36
+  - first:
+      213: 2153185566617290294
+    second: stonecar_walk&attack&die_37
+  - first:
+      213: -5715739012551956465
+    second: stonecar_walk&attack&die_38
+  - first:
+      213: 5761257891662433854
+    second: stonecar_walk&attack&die_39
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c791c0029ce3b870800000000000000
+      internalID: 8697555417204627396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 240
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32104e33f9a0bd600800000000000000
+      internalID: 494000263013859619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_2
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 240
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64ec3a9f42ae639a0800000000000000
+      internalID: -6253553588029370810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_3
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 240
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36eac06aa7a9d8aa0800000000000000
+      internalID: -6157095263983063453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_4
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 240
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0c98b2f043a57190800000000000000
+      internalID: -7965280866589434869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_5
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 240
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5261c771640111180800000000000000
+      internalID: -9146511474985003483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_6
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 180
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d67f35f1f8a0dc280800000000000000
+      internalID: -9021542868731037843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_7
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 180
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2adb681c1dbbc3950800000000000000
+      internalID: 6430220877547617698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_8
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 180
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 107bd0f5c0e5498f0800000000000000
+      internalID: -534699048522893567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_9
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 180
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb7e2f2cfe911eb10800000000000000
+      internalID: 2008915426342528958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_10
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 180
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb477c2d1c151de00800000000000000
+      internalID: 1067724479570343103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 120
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48207110ec1d61900800000000000000
+      internalID: 654941478540739204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_12
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 120
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d71ce042a2ec9f2f0800000000000000
+      internalID: -938492366941142659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_13
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 120
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf394cbef3e8dfe50800000000000000
+      internalID: 6844783413862634492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_14
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 120
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4637854247dc15620800000000000000
+      internalID: 2761213945264501604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_15
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 120
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 095883bc7aa115030800000000000000
+      internalID: 3481593294905443728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_16
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 120
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bf957de135ad1230800000000000000
+      internalID: 3611224110076895160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_17
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 60
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 875022111e025e360800000000000000
+      internalID: 7198195730448778616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_18
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 60
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19e0b6d63c2290ca0800000000000000
+      internalID: -6050266401645850991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_19
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 60
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90477882a4a014290800000000000000
+      internalID: -7908028157062056951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_20
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 60
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a95884de5258aa70800000000000000
+      internalID: 8838404835960707496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_21
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 60
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a28d0d520c611bf0800000000000000
+      internalID: -355384138178657631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e012ec9633a79ac0800000000000000
+      internalID: -3848427901609176857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_23
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22fe1703c3347d940800000000000000
+      internalID: 5320795410551402274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_24
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea0b48128d66b7820800000000000000
+      internalID: 2917038262113841326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_25
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 231d7d63f988a6150800000000000000
+      internalID: 5866651682004783410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stonecar_walk&attack&die_26
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4a192e5354cd3b50800000000000000
+      internalID: 6574626893371873871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d0c5588d9aa4da847bd4e1effdb6e4da
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      stonecar_walk&attack&die_0: 8697555417204627396
+      stonecar_walk&attack&die_1: 494000263013859619
+      stonecar_walk&attack&die_10: 1067724479570343103
+      stonecar_walk&attack&die_11: 654941478540739204
+      stonecar_walk&attack&die_12: -938492366941142659
+      stonecar_walk&attack&die_13: 6844783413862634492
+      stonecar_walk&attack&die_14: 2761213945264501604
+      stonecar_walk&attack&die_15: 3481593294905443728
+      stonecar_walk&attack&die_16: 3611224110076895160
+      stonecar_walk&attack&die_17: 7198195730448778616
+      stonecar_walk&attack&die_18: -6050266401645850991
+      stonecar_walk&attack&die_19: -7908028157062056951
+      stonecar_walk&attack&die_2: -6253553588029370810
+      stonecar_walk&attack&die_20: 8838404835960707496
+      stonecar_walk&attack&die_21: -355384138178657631
+      stonecar_walk&attack&die_22: -3848427901609176857
+      stonecar_walk&attack&die_23: 5320795410551402274
+      stonecar_walk&attack&die_24: 2917038262113841326
+      stonecar_walk&attack&die_25: 5866651682004783410
+      stonecar_walk&attack&die_26: 6574626893371873871
+      stonecar_walk&attack&die_3: -6157095263983063453
+      stonecar_walk&attack&die_4: -7965280866589434869
+      stonecar_walk&attack&die_5: -9146511474985003483
+      stonecar_walk&attack&die_6: -9021542868731037843
+      stonecar_walk&attack&die_7: 6430220877547617698
+      stonecar_walk&attack&die_8: -534699048522893567
+      stonecar_walk&attack&die_9: 2008915426342528958
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

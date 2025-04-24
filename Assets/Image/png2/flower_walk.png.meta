@@ -161,12 +161,12 @@ TextureImporter:
       name: flower_walk_0
       rect:
         serializedVersion: 2
-        x: 25
-        y: 149
-        width: 28
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 10
+        y: 150
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -183,12 +183,12 @@ TextureImporter:
       name: flower_walk_1
       rect:
         serializedVersion: 2
-        x: 94
-        y: 149
-        width: 30
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 80
+        y: 150
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -205,12 +205,12 @@ TextureImporter:
       name: flower_walk_2
       rect:
         serializedVersion: 2
-        x: 163
-        y: 149
-        width: 32
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 150
+        y: 150
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -227,12 +227,12 @@ TextureImporter:
       name: flower_walk_3
       rect:
         serializedVersion: 2
-        x: 229
-        y: 149
-        width: 39
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 220
+        y: 150
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -249,12 +249,12 @@ TextureImporter:
       name: flower_walk_4
       rect:
         serializedVersion: 2
-        x: 19
-        y: 99
-        width: 39
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 10
+        y: 100
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -271,12 +271,12 @@ TextureImporter:
       name: flower_walk_5
       rect:
         serializedVersion: 2
-        x: 89
-        y: 99
-        width: 39
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 80
+        y: 100
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -293,12 +293,12 @@ TextureImporter:
       name: flower_walk_6
       rect:
         serializedVersion: 2
-        x: 163
-        y: 99
-        width: 31
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 150
+        y: 100
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -315,12 +315,12 @@ TextureImporter:
       name: flower_walk_7
       rect:
         serializedVersion: 2
-        x: 237
-        y: 99
-        width: 23
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 220
+        y: 100
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -337,12 +337,12 @@ TextureImporter:
       name: flower_walk_8
       rect:
         serializedVersion: 2
-        x: 28
-        y: 49
-        width: 21
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 10
+        y: 50
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -359,12 +359,12 @@ TextureImporter:
       name: flower_walk_9
       rect:
         serializedVersion: 2
-        x: 97
-        y: 49
-        width: 24
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 80
+        y: 50
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -381,12 +381,12 @@ TextureImporter:
       name: flower_walk_10
       rect:
         serializedVersion: 2
-        x: 163
-        y: 49
-        width: 32
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 150
+        y: 50
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -403,12 +403,12 @@ TextureImporter:
       name: flower_walk_11
       rect:
         serializedVersion: 2
-        x: 229
-        y: 49
-        width: 39
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 220
+        y: 50
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -425,12 +425,12 @@ TextureImporter:
       name: flower_walk_12
       rect:
         serializedVersion: 2
-        x: 19
+        x: 10
         y: 0
-        width: 39
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -447,12 +447,12 @@ TextureImporter:
       name: flower_walk_13
       rect:
         serializedVersion: 2
-        x: 89
+        x: 80
         y: 0
-        width: 39
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -469,12 +469,12 @@ TextureImporter:
       name: flower_walk_14
       rect:
         serializedVersion: 2
-        x: 163
+        x: 150
         y: 0
-        width: 32
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -491,12 +491,12 @@ TextureImporter:
       name: flower_walk_15
       rect:
         serializedVersion: 2
-        x: 234
+        x: 220
         y: 0
-        width: 30
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -513,7 +513,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ffb9bde621561b34ba9da80bda854d7b
     internalID: 0
     vertices: []
     indices: 

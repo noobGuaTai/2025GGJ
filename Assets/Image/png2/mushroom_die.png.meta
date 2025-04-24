@@ -149,12 +149,12 @@ TextureImporter:
       name: mushroom_die_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 60
-        width: 18
-        height: 18
+        width: 20
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -171,12 +171,12 @@ TextureImporter:
       name: mushroom_die_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 38
-        width: 18
+        x: 20
+        y: 60
+        width: 20
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -193,12 +193,12 @@ TextureImporter:
       name: mushroom_die_2
       rect:
         serializedVersion: 2
-        x: 21
-        y: 57
-        width: 18
+        x: 40
+        y: 60
+        width: 20
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -215,12 +215,12 @@ TextureImporter:
       name: mushroom_die_3
       rect:
         serializedVersion: 2
-        x: 41
-        y: 58
-        width: 18
-        height: 17
+        x: 60
+        y: 60
+        width: 20
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -237,19 +237,19 @@ TextureImporter:
       name: mushroom_die_4
       rect:
         serializedVersion: 2
-        x: 61
-        y: 58
-        width: 18
-        height: 17
+        x: 0
+        y: 40
+        width: 20
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 73b50ad7561bc0160800000000000000
+      spriteID: 897e90cbb8c8fbc4bbd54ba48187f64c
       internalID: 6993159370857012023
       vertices: []
       indices: 
@@ -259,19 +259,19 @@ TextureImporter:
       name: mushroom_die_5
       rect:
         serializedVersion: 2
-        x: 21
-        y: 38
-        width: 19
-        height: 19
+        x: 20
+        y: 40
+        width: 20
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5375e67153771f660800000000000000
+      spriteID: b7e389552a63b294f99a54e33c74aa04
       internalID: 7417841131165996853
       vertices: []
       indices: 
@@ -281,19 +281,19 @@ TextureImporter:
       name: mushroom_die_6
       rect:
         serializedVersion: 2
-        x: 41
-        y: 38
-        width: 16
-        height: 16
+        x: 40
+        y: 40
+        width: 20
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1d1987306abea1f20800000000000000
+      spriteID: 0ec0efa370db6f24e8359d597d6cd783
       internalID: 3394284367432421841
       vertices: []
       indices: 
@@ -303,19 +303,19 @@ TextureImporter:
       name: mushroom_die_7
       rect:
         serializedVersion: 2
-        x: 61
-        y: 38
-        width: 16
-        height: 16
+        x: 60
+        y: 40
+        width: 20
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: da8f6012634faeae0800000000000000
+      spriteID: efdbc6539d423184283d985857516258
       internalID: -1519133410964604755
       vertices: []
       indices: 
@@ -325,19 +325,19 @@ TextureImporter:
       name: mushroom_die_8
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 20
-        width: 16
-        height: 14
+        width: 20
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 77203cffd47647aa0800000000000000
+      spriteID: 3e2417bb141286447b0d76ea47c9c772
       internalID: -6164188405262253449
       vertices: []
       indices: 
@@ -347,19 +347,19 @@ TextureImporter:
       name: mushroom_die_9
       rect:
         serializedVersion: 2
-        x: 21
+        x: 20
         y: 20
-        width: 16
-        height: 14
+        width: 20
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3766812ea3e6d3800800000000000000
+      spriteID: 54a80e17801e95e48a110196cecaa64f
       internalID: 593751925063181939
       vertices: []
       indices: 
@@ -369,19 +369,19 @@ TextureImporter:
       name: mushroom_die_10
       rect:
         serializedVersion: 2
-        x: 41
+        x: 40
         y: 20
-        width: 16
-        height: 14
+        width: 20
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0bb16e662a46ef7b0800000000000000
+      spriteID: 6413a961805e6f84884ecff64fa6d82b
       internalID: -5188599072010396752
       vertices: []
       indices: 
@@ -391,19 +391,19 @@ TextureImporter:
       name: mushroom_die_11
       rect:
         serializedVersion: 2
-        x: 61
+        x: 60
         y: 20
-        width: 16
-        height: 14
+        width: 20
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9fc10bf813290d640800000000000000
+      spriteID: 2e86c90f6ae271d458b70e982eeee93e
       internalID: 5102739119372508409
       vertices: []
       indices: 
@@ -413,7 +413,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 27d4da6355c490645a65bbc4179c5cfe
     internalID: 0
     vertices: []
     indices: 

@@ -4,33 +4,34 @@ using UnityEngine;
 
 public class ChickenManPatrolState : IState
 {
-    private ChickenManFSM fSM;
+    private ChickenManFSM fsm;
     private ChickenManParameters parameters;
 
     public ChickenManPatrolState(ChickenManFSM fSM)
     {
-        this.fSM = fSM;
+        this.fsm = fSM;
         this.parameters = fSM.parameters;
     }
 
     Coroutine patrolCoroutine;
     public void OnEnter()
     {
-        patrolCoroutine = fSM.TwoPointPatrol(
-            new Vector2(fSM.initPos.x + parameters.patrolParameter.range[0], fSM.initPos.y), new Vector2(fSM.initPos.x + parameters.patrolParameter.range[1], fSM.initPos.y),
-            parameters.patrolParameter.speed, isChangeScale:false);
+        fsm.animator.Play("run", 0, 0);
+        patrolCoroutine = fsm.TwoPointPatrol(
+            new Vector2(fsm.initPos.x + parameters.patrolParameter.range[0], fsm.initPos.y), new Vector2(fsm.initPos.x + parameters.patrolParameter.range[1], fsm.initPos.y),
+            parameters.patrolParameter.speed, isChangeScale: false);
     }
 
     public void OnExit()
     {
-        fSM.StopCoroutine(patrolCoroutine);
+        fsm.StopCoroutine(patrolCoroutine);
     }
 
     public void OnFixedUpdate()
     {
-        if (fSM.GetComponent<TargetCollect>().attackTarget.Count == 0)
+        if (fsm.GetComponent<TargetCollect>().attackTarget.Count == 0)
             return;
-        fSM.ChangeState(ChickenManStateType.Attack);
+        fsm.ChangeState(ChickenManStateType.Attack);
     }
 
 

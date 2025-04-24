@@ -134,12 +134,12 @@ TextureImporter:
       name: top_die_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 79
-        width: 24
-        height: 25
+        x: 0
+        y: 80
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -156,12 +156,12 @@ TextureImporter:
       name: top_die_1
       rect:
         serializedVersion: 2
-        x: 56
-        y: 79
-        width: 21
-        height: 24
+        x: 40
+        y: 80
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -178,12 +178,12 @@ TextureImporter:
       name: top_die_2
       rect:
         serializedVersion: 2
-        x: 94
-        y: 79
-        width: 25
-        height: 22
+        x: 80
+        y: 80
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -200,12 +200,12 @@ TextureImporter:
       name: top_die_3
       rect:
         serializedVersion: 2
-        x: 14
-        y: 39
-        width: 25
-        height: 22
+        x: 0
+        y: 40
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -222,12 +222,12 @@ TextureImporter:
       name: top_die_4
       rect:
         serializedVersion: 2
-        x: 54
-        y: 39
-        width: 25
-        height: 17
+        x: 40
+        y: 40
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -244,12 +244,12 @@ TextureImporter:
       name: top_die_5
       rect:
         serializedVersion: 2
-        x: 94
-        y: 39
-        width: 25
-        height: 14
+        x: 80
+        y: 40
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -266,12 +266,12 @@ TextureImporter:
       name: top_die_6
       rect:
         serializedVersion: 2
-        x: 14
+        x: 0
         y: 0
-        width: 22
-        height: 10
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -288,7 +288,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 993aebbe596b4504885502adeb59a5f4
     internalID: 0
     vertices: []
     indices: 

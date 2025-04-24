@@ -128,10 +128,10 @@ TextureImporter:
       name: flower_attack_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 49
-        width: 28
-        height: 31
+        x: 0
+        y: 50
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,10 +150,10 @@ TextureImporter:
       name: flower_attack_1
       rect:
         serializedVersion: 2
-        x: 61
-        y: 49
-        width: 28
-        height: 32
+        x: 50
+        y: 50
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,10 +172,10 @@ TextureImporter:
       name: flower_attack_2
       rect:
         serializedVersion: 2
-        x: 111
-        y: 49
-        width: 28
-        height: 31
+        x: 100
+        y: 50
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,10 +194,10 @@ TextureImporter:
       name: flower_attack_3
       rect:
         serializedVersion: 2
-        x: 11
+        x: 0
         y: 0
-        width: 28
-        height: 31
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,10 +216,10 @@ TextureImporter:
       name: flower_attack_4
       rect:
         serializedVersion: 2
-        x: 61
+        x: 50
         y: 0
-        width: 28
-        height: 30
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -238,7 +238,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bb2eed45f4294fb439c63d2820fed0ad
     internalID: 0
     vertices: []
     indices: 

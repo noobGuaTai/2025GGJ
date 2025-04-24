@@ -137,12 +137,12 @@ TextureImporter:
       name: police_walk_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 54
-        width: 9
-        height: 16
+        x: 0
+        y: 50
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -159,12 +159,12 @@ TextureImporter:
       name: police_walk_1
       rect:
         serializedVersion: 2
-        x: 11
-        y: 49
-        width: 22
-        height: 31
+        x: 40
+        y: 50
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -181,12 +181,12 @@ TextureImporter:
       name: police_walk_2
       rect:
         serializedVersion: 2
-        x: 46
-        y: 55
-        width: 9
-        height: 16
+        x: 0
+        y: 0
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -203,12 +203,12 @@ TextureImporter:
       name: police_walk_3
       rect:
         serializedVersion: 2
-        x: 51
-        y: 49
-        width: 22
-        height: 32
+        x: 40
+        y: 0
+        width: 40
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -221,99 +221,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: police_walk_4
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 4
-        width: 9
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d92763e23c21aa180800000000000000
-      internalID: -9103443067272793443
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: police_walk_5
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 0
-        width: 22
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ee5dd8772e19ac450800000000000000
-      internalID: 6109856246335919598
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: police_walk_6
-      rect:
-        serializedVersion: 2
-        x: 46
-        y: 5
-        width: 9
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1a9cf445113710820800000000000000
-      internalID: 2882711754759981473
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: police_walk_7
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 0
-        width: 22
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1f1ce34e6a48e3470800000000000000
-      internalID: 8376278209284456945
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b94ef6d04e7ea754ba559cec621ea610
     internalID: 0
     vertices: []
     indices: 
@@ -327,10 +239,6 @@ TextureImporter:
       police_walk_1: -7719952686285944735
       police_walk_2: -3436970664294844845
       police_walk_3: -8626034609807082936
-      police_walk_4: -9103443067272793443
-      police_walk_5: 6109856246335919598
-      police_walk_6: 2882711754759981473
-      police_walk_7: 8376278209284456945
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

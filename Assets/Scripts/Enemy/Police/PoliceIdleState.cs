@@ -11,6 +11,7 @@ public class PoliceIdleState : IState
     public void OnEnter()
     {
         fsm.OnEnter(PoliceStateType.Idle);
+        fsm.animator.Play("run", 0, 0);
         patrol = fsm.StartCoroutine(Patrol());
     }
 

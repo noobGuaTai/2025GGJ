@@ -13,6 +13,7 @@ public class PoliceAttackState : IState
     public void OnEnter()
     {
         fsm.OnEnter(PoliceStateType.Attack);
+        fsm.animator.Play("attack", 0, 0);
         fsm.rb.linearVelocity = Vector2.zero;
         fsm.transform.localScale = new Vector3(fsm.transform.position.x < PlayerFSM.Instance.transform.position.x ? 1 : -1, 1, 1);
         if (fsm.param.attackCollider.All(x => x.enabled == false)) fsm.EnableAttackCollider();

@@ -182,12 +182,12 @@ TextureImporter:
       name: police_die_0
       rect:
         serializedVersion: 2
-        x: 25
-        y: 124
-        width: 9
-        height: 16
+        x: 10
+        y: 120
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -204,12 +204,12 @@ TextureImporter:
       name: police_die_1
       rect:
         serializedVersion: 2
-        x: 30
-        y: 119
-        width: 22
-        height: 31
+        x: 70
+        y: 120
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -226,12 +226,12 @@ TextureImporter:
       name: police_die_2
       rect:
         serializedVersion: 2
-        x: 84
-        y: 122
-        width: 9
-        height: 16
+        x: 130
+        y: 120
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -248,12 +248,12 @@ TextureImporter:
       name: police_die_3
       rect:
         serializedVersion: 2
-        x: 90
-        y: 119
-        width: 18
-        height: 29
+        x: 190
+        y: 120
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -270,12 +270,12 @@ TextureImporter:
       name: police_die_4
       rect:
         serializedVersion: 2
-        x: 106
-        y: 122
-        width: 7
-        height: 7
+        x: 10
+        y: 80
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -292,12 +292,12 @@ TextureImporter:
       name: police_die_5
       rect:
         serializedVersion: 2
-        x: 139
-        y: 119
-        width: 15
-        height: 12
+        x: 70
+        y: 80
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -314,12 +314,12 @@ TextureImporter:
       name: police_die_6
       rect:
         serializedVersion: 2
-        x: 153
-        y: 119
-        width: 22
-        height: 28
+        x: 130
+        y: 80
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -336,12 +336,12 @@ TextureImporter:
       name: police_die_7
       rect:
         serializedVersion: 2
-        x: 196
-        y: 119
-        width: 18
-        height: 7
+        x: 190
+        y: 80
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -358,12 +358,12 @@ TextureImporter:
       name: police_die_8
       rect:
         serializedVersion: 2
-        x: 213
-        y: 119
-        width: 22
-        height: 28
+        x: 10
+        y: 40
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -380,12 +380,12 @@ TextureImporter:
       name: police_die_9
       rect:
         serializedVersion: 2
-        x: 16
-        y: 79
-        width: 18
-        height: 7
+        x: 70
+        y: 40
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -402,12 +402,12 @@ TextureImporter:
       name: police_die_10
       rect:
         serializedVersion: 2
-        x: 33
-        y: 79
-        width: 22
-        height: 27
+        x: 130
+        y: 40
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -424,12 +424,12 @@ TextureImporter:
       name: police_die_11
       rect:
         serializedVersion: 2
-        x: 76
-        y: 79
-        width: 18
-        height: 7
+        x: 190
+        y: 40
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -446,12 +446,12 @@ TextureImporter:
       name: police_die_12
       rect:
         serializedVersion: 2
-        x: 93
-        y: 79
-        width: 22
-        height: 29
+        x: 10
+        y: 0
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -468,12 +468,12 @@ TextureImporter:
       name: police_die_13
       rect:
         serializedVersion: 2
-        x: 136
-        y: 79
-        width: 18
-        height: 7
+        x: 70
+        y: 0
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -486,209 +486,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: police_die_14
-      rect:
-        serializedVersion: 2
-        x: 153
-        y: 79
-        width: 22
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3c5d3d035d4bf5850800000000000000
-      internalID: 6368007225865393603
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: police_die_15
-      rect:
-        serializedVersion: 2
-        x: 196
-        y: 79
-        width: 18
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 17ddf5b0793507680800000000000000
-      internalID: -8759409367039615631
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: police_die_16
-      rect:
-        serializedVersion: 2
-        x: 213
-        y: 79
-        width: 22
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 960d50bffc9c88a80800000000000000
-      internalID: -8464293604535971735
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: police_die_17
-      rect:
-        serializedVersion: 2
-        x: 28
-        y: 39
-        width: 27
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bf3839df4871e3fb0800000000000000
-      internalID: -4666266303951830021
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: police_die_18
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 39
-        width: 27
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 456740a9e536589c0800000000000000
-      internalID: -3925622242221459884
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: police_die_19
-      rect:
-        serializedVersion: 2
-        x: 148
-        y: 39
-        width: 27
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f06b4f49deefea330800000000000000
-      internalID: 3724194238241748495
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: police_die_20
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 39
-        width: 27
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d15fca2492fe0dcd0800000000000000
-      internalID: -2535263629718260451
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: police_die_21
-      rect:
-        serializedVersion: 2
-        x: 28
-        y: 0
-        width: 27
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7fa3caaa11d707220800000000000000
-      internalID: 2481620909512473335
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: police_die_22
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 0
-        width: 27
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ed0153c9ba4978460800000000000000
-      internalID: 7243921990429774046
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1a01d25a1b1c66a439133e8ac53655d5
     internalID: 0
     vertices: []
     indices: 
@@ -704,16 +506,7 @@ TextureImporter:
       police_die_11: -1484584033642457254
       police_die_12: -6674023053787949507
       police_die_13: 48345363170471806
-      police_die_14: 6368007225865393603
-      police_die_15: -8759409367039615631
-      police_die_16: -8464293604535971735
-      police_die_17: -4666266303951830021
-      police_die_18: -3925622242221459884
-      police_die_19: 3724194238241748495
       police_die_2: 8707344225474744428
-      police_die_20: -2535263629718260451
-      police_die_21: 2481620909512473335
-      police_die_22: 7243921990429774046
       police_die_3: 5752797551268277431
       police_die_4: 1110354987014122920
       police_die_5: 4850646272138871930

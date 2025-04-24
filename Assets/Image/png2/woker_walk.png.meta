@@ -125,12 +125,12 @@ TextureImporter:
       name: woker_walk_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 39
-        width: 38
-        height: 30
+        x: 0
+        y: 40
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -147,12 +147,12 @@ TextureImporter:
       name: woker_walk_1
       rect:
         serializedVersion: 2
-        x: 56
-        y: 39
-        width: 38
-        height: 31
+        x: 50
+        y: 40
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -169,12 +169,12 @@ TextureImporter:
       name: woker_walk_2
       rect:
         serializedVersion: 2
-        x: 6
+        x: 0
         y: 0
-        width: 38
-        height: 29
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -191,12 +191,12 @@ TextureImporter:
       name: woker_walk_3
       rect:
         serializedVersion: 2
-        x: 56
+        x: 50
         y: 0
-        width: 38
-        height: 31
+        width: 50
+        height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -213,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 46e1bc9d10a08684b9577320ee442c93
     internalID: 0
     vertices: []
     indices: 

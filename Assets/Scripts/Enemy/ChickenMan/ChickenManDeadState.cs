@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class ChickenManDeadState : IState
 {
-    private ChickenManFSM fSM;
+    private ChickenManFSM fsm;
     private ChickenManParameters parameters;
 
     public ChickenManDeadState(ChickenManFSM fSM)
     {
-        this.fSM = fSM;
+        this.fsm = fSM;
         this.parameters = fSM.parameters;
     }
 
     public void OnEnter()
     {
-        
+        fsm.animator.Play("die", 0, 0);
+
     }
 
     public void OnExit()

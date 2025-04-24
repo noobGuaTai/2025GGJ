@@ -9,7 +9,9 @@ public enum ChickenManStateType
     Attack,
     SprintAttack,
     Covered,
-    Dead
+    Dead,
+    UnderSwallowed,
+    KnockedBack
 }
 
 [Serializable]
@@ -18,6 +20,7 @@ public class ChickenManParameters
     public ChickenManStateType currentState;
     public AnimationCurve sprintAttackCurve;
     public PatrolParameter patrolParameter = new();
+    public Action onStart;
 }
 
 public class ChickenManFSM : EnemyFSM
@@ -34,8 +37,16 @@ public class ChickenManFSM : EnemyFSM
         state.Add(ChickenManStateType.Attack, new ChickenManAttackState(this));
         state.Add(ChickenManStateType.SprintAttack, new ChickenManSprintAttackState(this));
         state.Add(ChickenManStateType.Covered, new ChickenManCoveredState(this));
+        state.Add(ChickenManStateType.UnderSwallowed, new ChickenManUnderSwallowedState(this));
+        state.Add(ChickenManStateType.KnockedBack, new ChickenManKnockedBackState(this));
+
+
         state.Add(ChickenManStateType.Dead, new ChickenManDeadState(this));
         ChangeState(ChickenManStateType.Patrol);
+
+        GetComponent<SwallowedEnemy>().onLoadActions += () => ChangeState(ChickenManStateType.UnderSwallowed);
+        GetComponent<SwallowedEnemy>().onBreakActions += () => ChangeState(ChickenManStateType.Patrol);
+        GetComponent<KnockedBackEnemy>().onKnockedBackActions += () => ChangeState(ChickenManStateType.KnockedBack);
     }
 
     void Update()
@@ -47,8 +58,8 @@ public class ChickenManFSM : EnemyFSM
     {
         currentState.OnFixedUpdate();
     }
-   
-   
+
+
 
     public void ChangeState(ChickenManStateType stateType)
     {

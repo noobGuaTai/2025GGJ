@@ -12,6 +12,7 @@ public class PolicePatrolState : IState
     public void OnEnter()
     {
         fsm.OnEnter(PoliceStateType.Patrol);
+        fsm.animator.Play("run", 0, 0);
         relax = fsm.StartCoroutine(Relax());
     }
 
