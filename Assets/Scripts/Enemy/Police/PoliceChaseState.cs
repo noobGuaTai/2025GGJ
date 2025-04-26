@@ -37,7 +37,7 @@ public class PoliceChaseState : IState
             fsm.ChaseObject(fsm.param.chaseSpeed, g);
             return;
         }
-        if (fsm.IsDetectObjectByLayer(fsm.param.attackDetectRange, LayerMask.GetMask("Bbble"), out var b))
+        if (fsm.IsDetectObjectByLayer(fsm.param.attackDetectRange, LayerMask.GetMask("Bubble"), out var b))
         {
             fsm.ChaseObject(fsm.param.chaseSpeed, b);
             return;
