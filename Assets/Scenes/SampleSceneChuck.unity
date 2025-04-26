@@ -659,7 +659,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &619394801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -782,6 +782,10 @@ PrefabInstance:
     - target: {fileID: 6519572436789688924, guid: 7ae2f13131c82734bb5038ec67616dcb, type: 3}
       propertyPath: m_Name
       value: FlowerMan
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519572436789688924, guid: 7ae2f13131c82734bb5038ec67616dcb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9027380424867919135, guid: 7ae2f13131c82734bb5038ec67616dcb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4548,7 +4552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6519572436789688924, guid: ee98d6e454eebd845abdc33d630db8a6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6882816926513969201, guid: ee98d6e454eebd845abdc33d630db8a6, type: 3}
       propertyPath: m_Color.b

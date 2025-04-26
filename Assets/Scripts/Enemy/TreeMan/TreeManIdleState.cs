@@ -13,7 +13,7 @@ public class TreeManIdleState : IState
 
     public void OnEnter()
     {
-        
+        fSM.animator.Play("idle", 0, 0);
     }
 
     public void OnExit()

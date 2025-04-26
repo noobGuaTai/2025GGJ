@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -13,28 +14,27 @@ public class TreeManGrowState : IState
     }
     public void PlayAnimation()
     {
-        fSM.animator.SetTrigger("GrowBegin");
 
     }
-    public GameObject CreateGrowMirage()
-    {
-        var mirageIns = Object.Instantiate(fSM.parameters.saplingGrowUpMirage);
-        mirageIns.transform.position = fSM.parameters.growPosition;
-        return mirageIns;
-    }
+
     public bool growFinish;
     public GameObject growMirage;
-
+    const float growAnimationTime = 0.5f;
     public void OnEnter()
     {
         growFinish = false;
         PlayAnimation();
-        growMirage = CreateGrowMirage();
+        // fSM.animator.speed *= -1;
+        fSM.animator.Play("grow_down", 0, 0);
+
+        var tw = fSM.GetOrAddComponent<Tween>();
+        tw.AddTween("grawProcess", (x)=>{ },0, 0, 0.5f).
+        AddTween(_ => growFinish = true, 0, 0, 0).
+        Play();
     }
 
     public void OnExit()
     {
-        fSM.animator.SetTrigger("GrowEnd");
     }
 
     public void OnFixedUpdate()
