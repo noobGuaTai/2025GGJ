@@ -10,11 +10,11 @@ public class BovineManChargedEnergyState : BovineBaseState
 
     override public void OnEnter()
     {
-        fSM.rb.linearVelocity = Vector3.zero;
+        fsm.rb.linearVelocity = Vector3.zero;
         chargeTimer = 0.0f;
         float randomValue = Random.value;
-        float chargingDuration = (parameters.chargingDurationUpper - parameters.chargingDurationLower) * randomValue + parameters.chargingDurationLower;
-        fSM.parameters.chargingDuration = chargingDuration;
+        float chargingDuration = (param.chargingDurationUpper - param.chargingDurationLower) * randomValue + param.chargingDurationLower;
+        fsm.param.chargingDuration = chargingDuration;
     }
 
     override public void OnExit()
@@ -29,25 +29,20 @@ public class BovineManChargedEnergyState : BovineBaseState
     {
         chargeTimer += Time.deltaTime;
         // 不在攻击检测范围内一段时候后取消蓄力
-        if(!fSM.DetectPlayer(parameters.attackDetectRange) && !fSM.IsBubbleInFront(parameters.attackDetectRange))
+        if(!fsm.IsDetectObjectByLayer(fsm.param.detectRange, LayerMask.GetMask("Player", "Bubble"), out var _))
         {
             detectTimer += Time.deltaTime;
-            if(detectTimer >= parameters.canCancelChargingDuration)
-                fSM.ChangeState(BovineManStateType.Patrol);
+            if(detectTimer >= param.canCancelChargingDuration)
+                fsm.ChangeState(BovineManStateType.Patrol);
         }
         // 蓄力完成后冲刺攻击
-        else if(chargeTimer >= fSM.parameters.chargingDuration)
+        else if(chargeTimer >= fsm.param.chargingDuration)
         {
-            fSM.ChangeState(BovineManStateType.SprintAttack);
+            fsm.ChangeState(BovineManStateType.Chase);
         }
         // 检测到泡泡或者玩家进入攻击范围
-        else if(fSM.DetectPlayer(parameters.attackDetectRange) || fSM.DetectBubble(parameters.attackDetectRange, out var _))
+        else if(fsm.IsDetectObjectByLayer(fsm.param.detectRange, LayerMask.GetMask("Player", "Bubble"), out var _))
         {
-            GameObject bubble;
-            if(fSM.DetectBubble(parameters.attackDetectRange, out bubble))
-                fSM.parameters.sprintDirection = fSM.transform.position.x > bubble.transform.position.x ? -1 : 1;
-            else
-                fSM.parameters.sprintDirection = fSM.transform.position.x > PlayerFSM.Instance.transform.position.x ? -1 : 1;
             detectTimer = 0.0f;
         }
     }

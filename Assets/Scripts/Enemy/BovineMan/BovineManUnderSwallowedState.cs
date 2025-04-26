@@ -8,7 +8,7 @@ public class BovineManUnderSwallowedState : BovineBaseState
 
     public override void OnEnter()
     {
-        parameters.currentSpeed = 0;
+        param.chaseSpeed = 0;
     }
 
     public override void OnExit()
