@@ -49,11 +49,10 @@ public class BovineManParameters
     public float returnSpeed;  // 返回原地的速度
     public bool isOnGround => groundCheck.isChecked;
     internal AnythingCheck groundCheck;
-    public LayerMask deadlyLayers;
- }
+}
 
- public class BovineManFSM : EnemyFSM
- {
+public class BovineManFSM : EnemyFSM
+{
     public BovineManParameters parameters;
     public IState currentState;
     public Dictionary<BovineManStateType, IState> state = new Dictionary<BovineManStateType, IState>();
