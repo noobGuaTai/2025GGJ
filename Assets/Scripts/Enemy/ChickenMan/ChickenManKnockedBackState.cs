@@ -25,6 +25,9 @@ public class ChickenManKnockedBackState : IState
 
     public void OnUpdate()
     {
-
+        if (fsm.rb.linearVelocity.magnitude < 40f)
+        {
+            fsm.ChangeState(ChickenManStateType.Patrol);
+        }
     }
 }

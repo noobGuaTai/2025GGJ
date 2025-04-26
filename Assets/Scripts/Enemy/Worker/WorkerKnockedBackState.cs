@@ -18,6 +18,7 @@ public class WorkerKnockedBackState : IState
 
     public void OnExit()
     {
+        fsm.DisableAttackCollider();
     }
 
     public void OnFixedUpdate()

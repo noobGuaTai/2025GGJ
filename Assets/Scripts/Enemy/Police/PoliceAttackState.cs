@@ -16,7 +16,6 @@ public class PoliceAttackState : IState
         fsm.animator.Play("attack", 0, 0);
         fsm.rb.linearVelocity = Vector2.zero;
         fsm.transform.localScale = new Vector3(fsm.transform.position.x < PlayerFSM.Instance.transform.position.x ? 1 : -1, 1, 1);
-        if (fsm.param.attackCollider.All(x => x.enabled == false)) fsm.EnableAttackCollider();
         wait = fsm.StartCoroutine(Wait());
         disableAttackCollider = fsm.StartCoroutine(DisableAttackCollider());
     }
@@ -37,13 +36,15 @@ public class PoliceAttackState : IState
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.625f);
         fsm.ChangeState(PoliceStateType.Idle);
     }
 
     IEnumerator DisableAttackCollider()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.6f);
+        if (fsm.param.attackCollider.All(x => x.enabled == false)) fsm.EnableAttackCollider();
+        yield return new WaitForSeconds(0.1f);
         fsm.DisableAttackCollider();
     }
 }

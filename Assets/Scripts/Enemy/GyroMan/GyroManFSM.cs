@@ -20,6 +20,7 @@ public class GyroManParameters
     public GyroManStateType currentState;
     public float chaseSpeed;
     public float returnSpeed;
+    public float decelerateSpeed;
     public float detectRange;// 追逐玩家过程中超过该范围则返回原地
     public bool isOnGround => groundCheck.isChecked;
     internal AnythingCheck groundCheck;
@@ -58,6 +59,7 @@ public class GyroManFSM : EnemyFSM
         GetComponent<SwallowedEnemy>().onLoadActions += () => ChangeState(GyroManStateType.UnderSwallowed);
         GetComponent<SwallowedEnemy>().onBreakActions += () => ChangeState(GyroManStateType.Idle);
         GetComponent<KnockedBackEnemy>().onKnockedBackActions += () => ChangeState(GyroManStateType.KnockedBack);
+        GetComponentInChildren<EnemyAttackAnything>().onAttacked += (other) => { if (other.TryGetComponent<SmallBubble>(out var s)) s.isBeingDestroyed = true; BubbleQueue.DestroyBubble(other.gameObject); };
     }
 
     void Update()
@@ -108,10 +110,10 @@ public class GyroManFSM : EnemyFSM
     public override void OnTriggerEnter2D(Collider2D other)
     {
         base.OnTriggerEnter2D(other);
-        if (other.gameObject.layer == LayerMask.NameToLayer("Bubble"))
-        {
-            BubbleQueue.DestroyBubble(other.gameObject);
-        }
+        // if (other.gameObject.layer == LayerMask.NameToLayer("Bubble"))
+        // {
+        //     BubbleQueue.DestroyBubble(other.gameObject);
+        // }
     }
 
 }

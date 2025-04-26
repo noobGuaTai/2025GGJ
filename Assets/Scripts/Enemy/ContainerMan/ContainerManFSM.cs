@@ -26,6 +26,7 @@ public class ContainerManParameters
     public float attackRange;
     public Vector2 idleToPatrolTime;
     public Vector2 patrolToIdleTime;
+    public float attackCooldown = 2f;
     public bool isOnGround => groundCheck.isChecked;
     internal AnythingCheck groundCheck;
     public GameObject tirePrefab;
@@ -62,7 +63,7 @@ public class ContainerManFSM : EnemyFSM
         ChangeState(ContainerManStateType.Idle);
         GetComponent<SwallowedEnemy>().onLoadActions += () => ChangeState(ContainerManStateType.UnderSwallowed);
         GetComponent<SwallowedEnemy>().onBreakActions += () => ChangeState(ContainerManStateType.Idle);
-        GetComponent<KnockedBackEnemy>().onKnockedBackActions += () => ChangeState(ContainerManStateType.KnockedBack);
+        // GetComponent<KnockedBackEnemy>().onKnockedBackActions += () => ChangeState(ContainerManStateType.KnockedBack);
     }
 
     void Update()
@@ -107,4 +108,14 @@ public class ContainerManFSM : EnemyFSM
     }
 
     public void OnEnter(ContainerManStateType stateType) => enterStateActions[stateType]?.Invoke();
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, param.detectRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, param.attackDetectRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, param.attackRange);
+    }
 }

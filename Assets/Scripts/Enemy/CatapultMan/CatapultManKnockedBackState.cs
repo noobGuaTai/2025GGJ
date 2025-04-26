@@ -15,16 +15,19 @@ public class CatapultManKnockedBackState : IState
 
     public void OnExit()
     {
-        
+
     }
 
     public void OnFixedUpdate()
     {
-        
+
     }
 
     public void OnUpdate()
     {
-        
+        if (fsm.rb.linearVelocity.magnitude < 40f)
+        {
+            fsm.ChangeState(CatapultManStateType.Idle);
+        }
     }
 }
