@@ -16,6 +16,7 @@ public class WorkerPatrolState : IState
     public void OnEnter()
     {
         relax = fsm.StartCoroutine(Relax());
+        fsm.animator.Play("run", 0, 0);
     }
 
     public void OnExit()

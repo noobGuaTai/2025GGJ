@@ -252,7 +252,7 @@ public class EnemyFSM : MonoBehaviour
 
 
 
-    public virtual void ChaseObject(float speed, GameObject aim)
+    public virtual void ChaseObject(float speed, GameObject aim, bool isChangeScale = true)
     {
         float tolerance = 1f;
         if (Mathf.Abs(transform.position.x - aim.transform.position.x) > tolerance)
@@ -261,6 +261,8 @@ public class EnemyFSM : MonoBehaviour
             float targetVelocity = direction * speed;
             float velocityChange = targetVelocity - rb.linearVelocityX;
             rb.AddForce(velocityChange * Vector2.right, ForceMode2D.Impulse);
+            if (isChangeScale)
+                transform.localScale = new Vector3(direction, transform.localScale.y, transform.localScale.z);
         }
         else
         {
@@ -268,10 +270,9 @@ public class EnemyFSM : MonoBehaviour
         }
     }
 
-    public virtual void InertialChaseObject(float speed, GameObject aim)
+    public virtual void InertialChaseObject(float speed, GameObject aim, float inertiaFactor = 0.1f)
     {
         float tolerance = 1f;
-        float inertiaFactor = 0.1f;
 
         if (Mathf.Abs(transform.position.x - aim.transform.position.x) > tolerance)
         {

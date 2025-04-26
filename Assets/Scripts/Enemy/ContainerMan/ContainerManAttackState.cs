@@ -12,7 +12,7 @@ public class ContainerManAttackState : IState
     public void OnEnter()
     {
         fsm.OnEnter(ContainerManStateType.Attack);
-
+        fsm.animator.Play("attack", 0, 0);
         fsm.rb.linearVelocity = Vector2.zero;
         wait = fsm.StartCoroutine(Wait());
         Attack();
@@ -38,8 +38,14 @@ public class ContainerManAttackState : IState
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(1f);
-        fsm.ChangeState(ContainerManStateType.Idle);
+        yield return new WaitForSeconds(fsm.param.attackCooldown);
+        if (fsm.IsDetectObjectByLayer(fsm.param.attackDetectRange, LayerMask.GetMask("Player", "Bubble"), out var _))
+        {
+            Attack();
+            wait = fsm.StartCoroutine(Wait());
+        }
+        else
+            fsm.ChangeState(ContainerManStateType.Idle);
     }
 
     void Attack()

@@ -81,10 +81,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1375231315
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1246392865353077368, guid: 7a04899a4f449b64794b174555ea4278, type: 3}
+  m_Sprite: {fileID: 9043691314618419008, guid: 5a8b6acdfcf15254283c50df932a63df, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -156,17 +156,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 6.9}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 16, y: 17}
+    pivot: {x: 0.573, y: 0.3}
+    oldSize: {x: 70, y: 70}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 16, y: 17}
+  m_Size: {x: 20.51, y: 56}
   m_EdgeRadius: 0
 --- !u!61 &8482787136885981979
 BoxCollider2D:
@@ -205,8 +205,8 @@ BoxCollider2D:
   m_Offset: {x: -13.871559, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 16, y: 17}
+    pivot: {x: 0.573, y: 0.3}
+    oldSize: {x: 70, y: 70}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -224,7 +224,7 @@ Animator:
   m_GameObject: {fileID: 6519572436789688924}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 75c3b24b9935a2147a017bba28f6c3dd, type: 2}
+  m_Controller: {fileID: 9100000, guid: eee8a72d56b347f479e1977af3241ba5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -324,3 +324,4 @@ MonoBehaviour:
     currentState: 0
     growPosition: {x: 0, y: 0, z: 0}
     saplingPrefab: {fileID: 5685344956359619370, guid: e381fa39d158b4340bd21e534b1ea2dc, type: 3}
+    saplingGrowUpMirage: {fileID: 8725607087845352967, guid: 76c1ab9d64423f24581f8cbc1e95544a, type: 3}

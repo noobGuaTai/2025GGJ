@@ -11,6 +11,7 @@ public class SpringManChaseState : IState
     public void OnEnter()
     {
         fsm.OnEnter(SpringManStateType.Chase);
+        fsm.animator.Play("run", 0, 0);
     }
 
     public void OnExit()

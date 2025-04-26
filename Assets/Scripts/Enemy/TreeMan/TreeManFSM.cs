@@ -31,7 +31,7 @@ public class TreeManFSM : EnemyFSM
 
     public override void Start()
     {
-base.Start();
+        base.Start();
         state.Add(TreeManStateType.Idle, new TreeManIdleState(this));
         state.Add(TreeManStateType.Grow, new TreeManGrowState(this));
         state.Add(TreeManStateType.Attack, new TreeManAttackState(this));

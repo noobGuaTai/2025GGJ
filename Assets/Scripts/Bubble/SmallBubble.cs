@@ -22,7 +22,7 @@ public class SmallBubble : BaseBubble
     private static bool isCleanupRegistered = false;
 
     // 标记泡泡是否正在被销毁
-    private bool isBeingDestroyed = false;
+    public bool isBeingDestroyed = false;
 
     public override void Awake()
     {

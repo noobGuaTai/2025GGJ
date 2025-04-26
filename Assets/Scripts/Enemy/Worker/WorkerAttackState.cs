@@ -14,8 +14,8 @@ public class WorkerAttackState : IState
 
     public void OnEnter()
     {
+        fsm.animator.Play("attack", 0, 0);
         fsm.rb.linearVelocity = Vector2.zero;
-        fsm.EnableAttackCollider();
         wait = fsm.StartCoroutine(Wait());
     }
 
@@ -23,6 +23,7 @@ public class WorkerAttackState : IState
     {
         if (wait != null)
             fsm.StopCoroutine(wait);
+        fsm.DisableAttackCollider();
     }
 
     public void OnFixedUpdate()
@@ -35,7 +36,9 @@ public class WorkerAttackState : IState
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.625f);
+        fsm.animator.Play("run", 0, 0);
+        yield return new WaitForSeconds(0.875f);
         fsm.DisableAttackCollider();
         fsm.ChangeState(WorkerStateType.Idle);
     }
