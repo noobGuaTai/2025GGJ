@@ -11,11 +11,8 @@ public class BovineManPatrolState : BovineBaseState
     {
         if(param.patrolPoint.Length == 0)
         {
-            // parameters.patrolPoint = new Vector2[2] { fSM.transform.position - Vector3.right * 50, fSM.transform.position + Vector3.right * 50 };
             param.patrolPoint = new float[2] { -50f, 50f };
         }
-        // patrolCoroutine = fSM.TwoPointPatrol(parameters.patrolPoint[0], parameters.patrolPoint[1], p arameters.patrolSpeed);
-        // parameters.currentSpeed = parameters.patrolSpeed;
     }
 
     override public void OnExit()
@@ -31,6 +28,7 @@ public class BovineManPatrolState : BovineBaseState
 
     override public void OnUpdate()
     {
+        // Debug.Log("is on ground: " + fsm.param.isOnGround);
         StartPatrol();
         if(fsm.IsDetectObjectByLayer(fsm.param.detectRange, LayerMask.GetMask("Player", "Bubble"), out var _))
             fsm.ChangeState(BovineManStateType.ChargedEnergy);
@@ -46,6 +44,7 @@ public class BovineManPatrolState : BovineBaseState
                 new Vector2(fsm.initPos.x + param.patrolPoint[1], fsm.initPos.y),
                 param.patrolSpeed
             );
+            Debug.Log("patrol set" + param.patrolSpeed + param.patrolPoint);
         }
     }
 }

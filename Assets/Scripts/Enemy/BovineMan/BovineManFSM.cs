@@ -66,13 +66,14 @@ public class BovineManFSM : EnemyFSM
         state.Add(BovineManStateType.ChargedEnergy, new BovineManChargedEnergyState(this));
         state.Add(BovineManStateType.Chase, new BovineManChaseState(this));
         state.Add(BovineManStateType.UnderSwallowed, new BovineManUnderSwallowedState(this));
+        state.Add(BovineManStateType.Return, new BovineManReturnState(this));
 
         ChangeState(BovineManStateType.Patrol);
 
         GetComponent<SwallowedEnemy>().onLoadActions += () => ChangeState(BovineManStateType.UnderSwallowed);
         GetComponent<SwallowedEnemy>().onBreakActions += () => ChangeState(BovineManStateType.Patrol);
 
-        GetComponentInChildren<EnemyAttackAnything>().onAttacked += (other) => { if (other.TryGetComponent<SmallBubble>(out var s)) s.isBeingDestroyed = true; BubbleQueue.DestroyBubble(other.gameObject); };
+        // GetComponentInChildren<EnemyAttackAnything>().onAttacked += (other) => { if (other.TryGetComponent<SmallBubble>(out var s)) s.isBeingDestroyed = true; BubbleQueue.DestroyBubble(other.gameObject); };
     }
 
     void Update()
