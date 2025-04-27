@@ -19,7 +19,7 @@ public class TreeManParameters
     public GameObject saplingPrefab;
     public GameObject saplingGrowUpMirage;
     public GameObject saplingIns = null;
-    public Vector3 currentShootingPos;
+    public bool cancelAttack = false;
 }
 
 public class TreeManFSM : EnemyFSM
@@ -27,7 +27,10 @@ public class TreeManFSM : EnemyFSM
     public void AnimationEventOnShoot()
     {
         var attackState = state[TreeManStateType.Attack] as TreeManAttackState;
-        parameters.saplingIns = attackState.Shoot(GetComponent<TargetCollect>().attackTarget.First().transform.position);
+        var targets = GetComponent<TargetCollect>().attackTarget;
+        if (targets.Count != 0)
+            parameters.saplingIns = attackState.Shoot(targets.First().transform.position);
+        else parameters.cancelAttack = true;
     }
     public TreeManParameters parameters;
     public IState currentState;

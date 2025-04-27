@@ -36,7 +36,7 @@ public class TreeManAttackState : IState
     {
         Debug.Log($"ENTER Attack {Time.realtimeSinceStartup}");
         fSM.animator.Play("attack", 0, 0);
-        fSM.parameters.currentShootingPos = fSM.GetComponent<TargetCollect>().attackTarget.First().transform.position;
+        fSM.parameters.cancelAttack = false;
     }
 
     public void OnExit()
@@ -47,6 +47,10 @@ public class TreeManAttackState : IState
 
     public void OnFixedUpdate()
     {
+        if (fSM.parameters.cancelAttack)
+        {
+            fSM.ChangeState(TreeManStateType.Idle);
+        }
         if (fSM.parameters.saplingIns == null)
             return;
         if (fSM.parameters.saplingIns.GetComponent<TreeManSapling>().impacted)
