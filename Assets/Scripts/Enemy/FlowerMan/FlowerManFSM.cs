@@ -16,6 +16,10 @@ public class FlowerManParameters
     public FlowerManStateType currentState;
     public PatrolParameter patrolParameter = new();
     public float returnSpeed;
+    public GameObject flowerProjectile;
+    public float flowerSpeed = 10f;
+    public float shootCD = 0.5f;
+
 }
 
 public class FlowerManFSM : EnemyFSM
@@ -26,7 +30,7 @@ public class FlowerManFSM : EnemyFSM
 
     public override void Start()
     {
-base.Start();
+        base.Start();
         state.Add(FlowerManStateType.Patrol, new FlowerManPatrolState(this));
         state.Add(FlowerManStateType.Attack, new FlowerManAttackState(this));
         state.Add(FlowerManStateType.Return, new FlowerManReturnState(this));

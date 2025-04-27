@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum TreeManStateType
@@ -17,10 +18,17 @@ public class TreeManParameters
     public Vector3 growPosition;
     public GameObject saplingPrefab;
     public GameObject saplingGrowUpMirage;
+    public GameObject saplingIns = null;
+    public Vector3 currentShootingPos;
 }
 
 public class TreeManFSM : EnemyFSM
 {
+    public void AnimationEventOnShoot()
+    {
+        var attackState = state[TreeManStateType.Attack] as TreeManAttackState;
+        parameters.saplingIns = attackState.Shoot(GetComponent<TargetCollect>().attackTarget.First().transform.position);
+    }
     public TreeManParameters parameters;
     public IState currentState;
     public Dictionary<TreeManStateType, IState> state = new Dictionary<TreeManStateType, IState>();
