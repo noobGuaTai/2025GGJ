@@ -224,6 +224,7 @@ public class BigBubble : BaseBubble
 
     IEnumerator SlideOnWall()
     {
+        GetComponent<PlatformEffector2D>().surfaceArc = 150;
         while (true)
         {
             rb.MovePosition(new Vector2(transform.position.x, transform.position.y - slideSpeed));
