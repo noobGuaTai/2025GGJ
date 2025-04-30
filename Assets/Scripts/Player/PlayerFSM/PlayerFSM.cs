@@ -242,10 +242,12 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
             if (param.moveInput == Vector2.zero)
             {
                 param.blowArea.GetComponent<Blow>().direction = Vector2.left * transform.localScale.x;
+                param.animator.Play("push_hori", 0, 0);
             }
             else
             {
                 param.blowArea.GetComponent<Blow>().direction = new Vector2(param.moveInput.x, param.moveInput.y).normalized;
+                param.animator.Play("push_up", 0, 0);
             }
             Push();
         }
