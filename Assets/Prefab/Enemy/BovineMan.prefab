@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3870363175586900258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4721677160842280347}
+  m_Layer: 9
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4721677160842280347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3870363175586900258}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -21.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9027380424867919135}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6519572436789688924
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,13 +45,14 @@ GameObject:
   - component: {fileID: 8817198467322062312}
   - component: {fileID: 8482787136885981979}
   - component: {fileID: -8929536887990909823}
-  - component: {fileID: 4590935172930462887}
+  - component: {fileID: 2040296755133011858}
   - component: {fileID: 411948332934334272}
   - component: {fileID: 5172676911752498154}
   - component: {fileID: 2145778462892949615}
   - component: {fileID: 12068841302449124}
   - component: {fileID: 6897505058639377702}
   - component: {fileID: -8788806428374510836}
+  - component: {fileID: 5152318869229225661}
   m_Layer: 9
   m_Name: BovineMan
   m_TagString: Untagged
@@ -40,7 +72,8 @@ Transform:
   m_LocalPosition: {x: 7.9056654, y: -63.885628, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4721677160842280347}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6882816926513969201
@@ -84,8 +117,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1375231315
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 5784731289588789516, guid: e85984d4205f15c40a05ce9b9c28a75f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -113,7 +146,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 50
+  m_GravityScale: 10
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -123,7 +156,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &8817198467322062312
 BoxCollider2D:
@@ -239,7 +272,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4590935172930462887
+--- !u!114 &2040296755133011858
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -248,7 +281,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6519572436789688924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4bbe95785fe57f4c90c7d98f173de64, type: 3}
+  m_Script: {fileID: 11500000, guid: ac59dc5dd7f19bf40b27c01bb167a717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
@@ -259,38 +292,23 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   somatoType: 0
-  parameters:
+  param:
     currentState: 0
-    sprintAttackCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: -0.0035438538
-        value: 250
-        inSlope: -135.98636
-        outSlope: -135.98636
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0.14333335
-      - serializedVersion: 3
-        time: 2
-        value: 1
-        inSlope: -101.97534
-        outSlope: -101.97534
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.20000002
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    patrolParameter:
-      range:
-      - -100
-      - 100
-      speed: 50
-  attackDirection: 0
+    chaseSpeed: 40
+    patrolPoint:
+    - -20
+    - 20
+    patrolSpeed: 20
+    sprintBaseSpeed: 0
+    chargingDurationUpper: 5
+    chargingDurationLower: 1
+    speedIncrementOnChargingPerSec: 4
+    canCancelChargingDuration: 2
+    chargingDuration: 0
+    decelerateSpeed: 10
+    detectRange: 50
+    returnDetectRange: 80
+    returnSpeed: 40
 --- !u!58 &411948332934334272
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -391,3 +409,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c2048a1c04e3347b997953abba2172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5152318869229225661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519572436789688924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c9891b7e3d0ed47a674d36e6f82cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkMethod: 0
+  anythingCheckpoints:
+  - {fileID: 4721677160842280347}
+  checkRadius: 0.2
+  layer:
+    serializedVersion: 2
+    m_Bits: 64
+  isChecked: 0

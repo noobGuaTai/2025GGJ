@@ -9,19 +9,16 @@ public class BovineManPatrolState : BovineBaseState
 
     override public void OnEnter()
     {
-        if(parameters.patrolPoint.Length == 0)
+        if(param.patrolPoint.Length == 0)
         {
-            // parameters.patrolPoint = new Vector2[2] { fSM.transform.position - Vector3.right * 50, fSM.transform.position + Vector3.right * 50 };
-            parameters.patrolPoint = new float[2] { -50f, 50f };
+            param.patrolPoint = new float[2] { -50f, 50f };
         }
-        // patrolCoroutine = fSM.TwoPointPatrol(parameters.patrolPoint[0], parameters.patrolPoint[1], p arameters.patrolSpeed);
-        // parameters.currentSpeed = parameters.patrolSpeed;
     }
 
     override public void OnExit()
     {
         if(patrolCoroutine != null)
-            fSM.StopCoroutine(patrolCoroutine);
+            fsm.StopCoroutine(patrolCoroutine);
         patrolCoroutine = null;
     }
 
@@ -31,22 +28,23 @@ public class BovineManPatrolState : BovineBaseState
 
     override public void OnUpdate()
     {
+        // Debug.Log("is on ground: " + fsm.param.isOnGround);
         StartPatrol();
-        if(fSM.DetectPlayer(parameters.attackDetectRange))
-            fSM.ChangeState(BovineManStateType.ChargedEnergy);
+        if(fsm.IsDetectObjectByLayer(fsm.param.detectRange, LayerMask.GetMask("Player", "Bubble"), out var _))
+            fsm.ChangeState(BovineManStateType.ChargedEnergy);
     }
 
     void StartPatrol()
     {
-        if(patrolCoroutine == null && fSM.parameters.isOnGround)
+        if(patrolCoroutine == null && fsm.param.isOnGround)
         {
-            fSM.initPos = fSM.transform.position;
-            patrolCoroutine = fSM.TwoPointPatrol(
-                new Vector2(fSM.initPos.x + parameters.patrolPoint[0], fSM.initPos.y),
-                new Vector2(fSM.initPos.x + parameters.patrolPoint[1], fSM.initPos.y),
-                parameters.patrolSpeed
+            fsm.initPos = fsm.transform.position;
+            patrolCoroutine = fsm.TwoPointPatrol(
+                new Vector2(fsm.initPos.x + param.patrolPoint[0], fsm.initPos.y),
+                new Vector2(fsm.initPos.x + param.patrolPoint[1], fsm.initPos.y),
+                param.patrolSpeed
             );
-            parameters.currentSpeed = parameters.patrolSpeed;
+            Debug.Log("patrol set" + param.patrolSpeed + param.patrolPoint);
         }
     }
 }
