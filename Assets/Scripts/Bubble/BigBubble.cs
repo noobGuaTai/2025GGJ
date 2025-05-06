@@ -123,7 +123,7 @@ public class BigBubble : BaseBubble
 
     void SetGravityScale() => rb.gravityScale = 1;
 
-    public override void Break()
+    public override void Break(bool isMerge = false)
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius, explosionEffectMask);
         foreach (Collider2D hit in colliders)
@@ -143,7 +143,7 @@ public class BigBubble : BaseBubble
                 k.OnKnockedBack();
             }
         }
-        base.Break();
+        base.Break(isMerge);
     }
 
     void OnDrawGizmosSelected()
