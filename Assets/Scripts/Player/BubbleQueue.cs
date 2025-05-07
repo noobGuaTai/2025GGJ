@@ -48,7 +48,7 @@ public static class BubbleQueue
         bigBubbleNums = 0;
     }
 
-    public static void DestroyBubble(GameObject bubble)
+    public static void DestroyBubble(GameObject bubble, bool isMerge = false)
     {
         Queue<GameObject> tempQueue = new Queue<GameObject>();
         while (bubbles.Count > 0)
@@ -66,7 +66,7 @@ public static class BubbleQueue
         else if (bubble.TryGetComponent<BigBubble>(out var _))
             bigBubbleNums--;
 
-        bubble.GetComponent<BaseBubble>().Break();
+        bubble.GetComponent<BaseBubble>().Break(isMerge);
         Debug.Log($"smallBubbleNums: {smallBubbleNums}, bigBubbleNums: {bigBubbleNums}");
 
     }

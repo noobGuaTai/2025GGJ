@@ -13,7 +13,7 @@ public class FarmerKnockedBackState : IState
 
     public void OnEnter()
     {
-        
+
     }
 
     public void OnExit()
@@ -26,5 +26,9 @@ public class FarmerKnockedBackState : IState
 
     public void OnUpdate()
     {
+        if (fsm.rb.linearVelocity.magnitude < 40f)
+        {
+            fsm.ChangeState(FarmerStateType.Idle);
+        }
     }
 }

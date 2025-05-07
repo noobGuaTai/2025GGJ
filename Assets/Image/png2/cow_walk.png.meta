@@ -140,10 +140,10 @@ TextureImporter:
       name: cow_walk_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 104
-        width: 31
-        height: 42
+        x: 0
+        y: 100
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,10 +162,10 @@ TextureImporter:
       name: cow_walk_1
       rect:
         serializedVersion: 2
-        x: 58
-        y: 104
-        width: 31
-        height: 43
+        x: 50
+        y: 100
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +184,10 @@ TextureImporter:
       name: cow_walk_2
       rect:
         serializedVersion: 2
-        x: 108
-        y: 104
-        width: 31
-        height: 41
+        x: 100
+        y: 100
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,10 +206,10 @@ TextureImporter:
       name: cow_walk_3
       rect:
         serializedVersion: 2
-        x: 8
-        y: 54
-        width: 31
-        height: 42
+        x: 0
+        y: 50
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,10 +228,10 @@ TextureImporter:
       name: cow_walk_4
       rect:
         serializedVersion: 2
-        x: 58
-        y: 54
-        width: 31
-        height: 43
+        x: 50
+        y: 50
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,10 +250,10 @@ TextureImporter:
       name: cow_walk_5
       rect:
         serializedVersion: 2
-        x: 107
-        y: 54
-        width: 31
-        height: 41
+        x: 100
+        y: 50
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,10 +272,10 @@ TextureImporter:
       name: cow_walk_6
       rect:
         serializedVersion: 2
-        x: 8
-        y: 4
-        width: 31
-        height: 42
+        x: 0
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -294,10 +294,10 @@ TextureImporter:
       name: cow_walk_7
       rect:
         serializedVersion: 2
-        x: 58
-        y: 4
-        width: 31
-        height: 43
+        x: 50
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -316,10 +316,10 @@ TextureImporter:
       name: cow_walk_8
       rect:
         serializedVersion: 2
-        x: 108
-        y: 4
-        width: 31
-        height: 43
+        x: 100
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -338,7 +338,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b20bf0c35136e1846ac3340a5561ec46
     internalID: 0
     vertices: []
     indices: 

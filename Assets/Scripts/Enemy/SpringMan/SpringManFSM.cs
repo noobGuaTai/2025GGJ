@@ -115,7 +115,7 @@ public class SpringManFSM : EnemyFSM
         if (param.isOnGround && (currentState == state[SpringManStateType.Patrol] || currentState == state[SpringManStateType.Chase]) && param.springTimer > param.springCoolDown)
         {
             param.springTimer = 0;
-            rb.AddForce(new Vector2(0, param.springForce), ForceMode2D.Impulse);
+            animator.Play("jump", 0, 0);
         }
         param.springTimer += Time.deltaTime;
     }
@@ -136,4 +136,5 @@ public class SpringManFSM : EnemyFSM
         }
 
     }
+    public void SpringAddForce() => rb.AddForce(new Vector2(0, param.springForce), ForceMode2D.Impulse);
 }

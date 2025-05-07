@@ -152,12 +152,12 @@ TextureImporter:
       name: cow_die_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 152
-        width: 31
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 150
+        width: 60
+        height: 50
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -174,12 +174,12 @@ TextureImporter:
       name: cow_die_1
       rect:
         serializedVersion: 2
-        x: 80
-        y: 152
-        width: 35
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 60
+        y: 150
+        width: 60
+        height: 50
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -196,12 +196,12 @@ TextureImporter:
       name: cow_die_2
       rect:
         serializedVersion: 2
-        x: 136
-        y: 154
-        width: 39
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 120
+        y: 150
+        width: 60
+        height: 50
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: cow_die_3
       rect:
         serializedVersion: 2
-        x: 190
-        y: 155
-        width: 41
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 180
+        y: 150
+        width: 60
+        height: 50
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -240,12 +240,12 @@ TextureImporter:
       name: cow_die_4
       rect:
         serializedVersion: 2
-        x: 10
-        y: 105
-        width: 41
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 100
+        width: 60
+        height: 50
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -262,12 +262,12 @@ TextureImporter:
       name: cow_die_5
       rect:
         serializedVersion: 2
-        x: 70
-        y: 105
-        width: 41
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 60
+        y: 100
+        width: 60
+        height: 50
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -284,12 +284,12 @@ TextureImporter:
       name: cow_die_6
       rect:
         serializedVersion: 2
-        x: 130
-        y: 105
-        width: 41
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 120
+        y: 100
+        width: 60
+        height: 50
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -306,12 +306,12 @@ TextureImporter:
       name: cow_die_7
       rect:
         serializedVersion: 2
-        x: 190
-        y: 105
-        width: 37
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 180
+        y: 100
+        width: 60
+        height: 50
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -328,12 +328,12 @@ TextureImporter:
       name: cow_die_8
       rect:
         serializedVersion: 2
-        x: 10
-        y: 55
-        width: 37
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 50
+        width: 60
+        height: 50
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -350,12 +350,12 @@ TextureImporter:
       name: cow_die_9
       rect:
         serializedVersion: 2
-        x: 70
-        y: 55
-        width: 37
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 60
+        y: 50
+        width: 60
+        height: 50
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -372,12 +372,12 @@ TextureImporter:
       name: cow_die_10
       rect:
         serializedVersion: 2
-        x: 130
-        y: 55
-        width: 37
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 120
+        y: 50
+        width: 60
+        height: 50
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -394,12 +394,12 @@ TextureImporter:
       name: cow_die_11
       rect:
         serializedVersion: 2
-        x: 190
-        y: 55
-        width: 37
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 180
+        y: 50
+        width: 60
+        height: 50
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -416,12 +416,12 @@ TextureImporter:
       name: cow_die_12
       rect:
         serializedVersion: 2
-        x: 10
-        y: 5
-        width: 37
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 60
+        height: 50
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -438,7 +438,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 36eb2e75fc4598e489071141118d39d9
     internalID: 0
     vertices: []
     indices: 

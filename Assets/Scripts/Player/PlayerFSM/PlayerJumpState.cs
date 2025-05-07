@@ -16,7 +16,7 @@ public class PlayerJumpState : IState
     public void OnEnter()
     {
         fsm.param.rb.linearVelocityY = fsm.attributes.jumpSpeed;
-        fsm.param.animator.Play("jump", 0, 0f);
+        fsm.param.animator.Play("jump_start", 0, 0f);
 
     }
 

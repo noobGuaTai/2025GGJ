@@ -131,12 +131,12 @@ TextureImporter:
       name: chicken_walk_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 29
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 30
+        width: 30
+        height: 30
+      alignment: 9
+      pivot: {x: 0.48, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -153,12 +153,12 @@ TextureImporter:
       name: chicken_walk_1
       rect:
         serializedVersion: 2
-        x: 34
-        y: 29
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 30
+        y: 30
+        width: 30
+        height: 30
+      alignment: 9
+      pivot: {x: 0.48, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -175,12 +175,12 @@ TextureImporter:
       name: chicken_walk_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 29
-        width: 21
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 60
+        y: 30
+        width: 30
+        height: 30
+      alignment: 9
+      pivot: {x: 0.48, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -197,12 +197,12 @@ TextureImporter:
       name: chicken_walk_3
       rect:
         serializedVersion: 2
-        x: 4
+        x: 0
         y: 0
-        width: 21
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 30
+        height: 30
+      alignment: 9
+      pivot: {x: 0.48, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -219,12 +219,12 @@ TextureImporter:
       name: chicken_walk_4
       rect:
         serializedVersion: 2
-        x: 34
+        x: 30
         y: 0
-        width: 21
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 30
+        height: 30
+      alignment: 9
+      pivot: {x: 0.48, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -241,12 +241,12 @@ TextureImporter:
       name: chicken_walk_5
       rect:
         serializedVersion: 2
-        x: 64
+        x: 60
         y: 0
-        width: 21
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 30
+        height: 30
+      alignment: 9
+      pivot: {x: 0.48, y: 0.28}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -263,7 +263,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bb16c915f7fad4c429a2101cf65d9280
     internalID: 0
     vertices: []
     indices: 

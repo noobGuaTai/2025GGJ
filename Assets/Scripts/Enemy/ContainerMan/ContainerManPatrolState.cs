@@ -13,6 +13,7 @@ public class ContainerManPatrolState : IState
     public void OnEnter()
     {
         fsm.OnEnter(ContainerManStateType.Patrol);
+        fsm.animator.Play("run", 0, 0);
         relax = fsm.StartCoroutine(Relax());
     }
 

@@ -19,9 +19,8 @@ public class BaseBubble : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = initSpeed;
-        destoryAudio = GetComponent<AudioSource>();
-        Addressables.LoadAssetAsync<AudioClip>("Assets/Sound/bubble7.mp3").Completed += OnAudioClipLoaded;
-
+        // Addressables.LoadAssetAsync<AudioClip>("Assets/Sound/bubble7.mp3").Completed += OnAudioClipLoaded;
+        print(destoryAudio.clip.name);
     }
 
     public virtual void Start()
@@ -35,14 +34,15 @@ public class BaseBubble : MonoBehaviour
 
     }
 
-    public virtual void Break()
+    public virtual void Break(bool isMerge = false)
     {
         if (swallowedObject != null)
             swallowedObject?.GetComponent<SwallowedObject>().OnBreak(this);
         swallowedObject = null;
         animator.Play("bomb");
         colliders.Any(c => c.enabled = false);
-        destoryAudio.Play();
+        if (!isMerge)
+            destoryAudio.Play();
         Destroy(gameObject, 0.4f);
     }
 

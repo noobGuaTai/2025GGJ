@@ -13,11 +13,12 @@ public class WorkerUnderSwallowedState : IState
 
     public void OnEnter()
     {
-        
+
     }
 
     public void OnExit()
     {
+        fsm.DisableAttackCollider();
     }
 
     public void OnFixedUpdate()

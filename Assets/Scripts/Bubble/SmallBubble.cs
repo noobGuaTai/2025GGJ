@@ -22,7 +22,10 @@ public class SmallBubble : BaseBubble
     private static bool isCleanupRegistered = false;
 
     // 标记泡泡是否正在被销毁
-    private bool isBeingDestroyed = false;
+    public bool isBeingDestroyed = false;
+
+
+    public AudioSource mergeAudio;
 
     public override void Awake()
     {
@@ -151,8 +154,10 @@ public class SmallBubble : BaseBubble
                 bigBubble.GetComponent<BigBubble>().initSpeed = averageVelocity;
             }
 
-            BubbleQueue.DestroyBubble(otherBubble.gameObject);
-            BubbleQueue.DestroyBubble(gameObject);
+            BubbleQueue.DestroyBubble(otherBubble.gameObject, true);
+            BubbleQueue.DestroyBubble(gameObject, true);
+
+            mergeAudio.Play();
         }
         finally
         {

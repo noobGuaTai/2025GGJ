@@ -5,14 +5,13 @@ public class PlayerAudioManager : MonoBehaviour
     public AudioSource dieAudio;
     public AudioSource winAudio;
     public AudioSource walkAudio;
+    public AudioSource pushAudio;
     public AudioSource blowAudio;
-    public AudioSource shootAudio;
     public AudioSource underAttackAudio;
-    PlayerFSM playerFSM;
+    PlayerFSM playerFSM => PlayerFSM.Instance;
 
     void Start()
     {
-        playerFSM = GetComponent<PlayerFSM>();
         playerFSM.delegateParam.onDie += () =>
         {
             if (!dieAudio.isPlaying)
@@ -21,8 +20,8 @@ public class PlayerAudioManager : MonoBehaviour
 
         playerFSM.delegateParam.onBlowBubble += () =>
         {
-            if (!shootAudio.isPlaying)
-                shootAudio.Play();
+            if (!blowAudio.isPlaying)
+                blowAudio.Play();
         };
     }
 }

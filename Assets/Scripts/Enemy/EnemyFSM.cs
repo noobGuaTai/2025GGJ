@@ -270,10 +270,9 @@ public class EnemyFSM : MonoBehaviour
         }
     }
 
-    public virtual void InertialChaseObject(float speed, GameObject aim)
+    public virtual void InertialChaseObject(float speed, GameObject aim, float inertiaFactor = 0.1f)
     {
         float tolerance = 1f;
-        float inertiaFactor = 0.1f;
 
         if (Mathf.Abs(transform.position.x - aim.transform.position.x) > tolerance)
         {

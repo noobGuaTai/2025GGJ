@@ -6,11 +6,11 @@ public class Sickle : MonoBehaviour
     public float initSpeed;
     public float flyTime;
     Vector2 direction;
-    GameObject father;
+    public GameObject father;
     Tween tween;
     Rigidbody2D rb;
     Action onStart;
-    bool isReturn;
+    public bool isReturn;
 
     void Start()
     {
