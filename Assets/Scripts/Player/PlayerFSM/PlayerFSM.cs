@@ -172,7 +172,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         GetComponent<Collider2D>().enabled = true;
         param.rb.gravityScale = attributes.initGravityScale;
         transform.rotation = Quaternion.Euler(0, 0, 0);
-        UIManager.Instance.ShowDialog($"enemy{GameManager.Instance.level}");
+        // UIManager.Instance.ShowDialog($"enemy{GameManager.Instance.level}");
     }
 
     public void PlayerMove(InputAction.CallbackContext context)
