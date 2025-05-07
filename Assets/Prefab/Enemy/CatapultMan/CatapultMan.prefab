@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1959630325313923174
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2567699737206474930}
+  m_Layer: 9
+  m_Name: RockSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2567699737206474930
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959630325313923174}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.9, y: 34.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9027380424867919135}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3533595712882967195
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +200,7 @@ Transform:
   m_Children:
   - {fileID: 6934090196938974}
   - {fileID: 7978463243563586483}
+  - {fileID: 2567699737206474930}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6882816926513969201
@@ -454,6 +486,8 @@ MonoBehaviour:
   deadlyLayers:
     serializedVersion: 2
     m_Bits: 256
+  dieAudio: {fileID: -8508218714168517717}
+  attackAudio: {fileID: -5384885091611364752}
   somatoType: 1
   param:
     currentState: 0
@@ -464,10 +498,13 @@ MonoBehaviour:
     chaseSpeed: 15
     detectRange: 200
     attackDetectRange: 160
+    attackCooldown: {x: 1, y: 2}
     attackRange: 160
     idleToPatrolTime: {x: 0, y: 2}
     patrolToIdleTime: {x: 5, y: 10}
     rockPrefab: {fileID: 7872871544301588018, guid: a730f3f5677a9e14c8febab9412d8552, type: 3}
+    rockSpawnPoint: {fileID: 1959630325313923174}
+    attackAim: {fileID: 0}
 --- !u!82 &-5384885091611364752
 AudioSource:
   m_ObjectHideFlags: 0
@@ -478,8 +515,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: fd1fe73b289fe794b8bebdfcd1f16431, type: 3}
+  m_Resource: {fileID: 8300000, guid: fd1fe73b289fe794b8bebdfcd1f16431, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -575,8 +612,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: aaf2eb1875742e249a6f81ffef13a563, type: 3}
+  m_Resource: {fileID: 8300000, guid: aaf2eb1875742e249a6f81ffef13a563, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

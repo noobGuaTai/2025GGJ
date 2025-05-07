@@ -20,6 +20,7 @@ public class TreeManParameters
     public GameObject saplingGrowUpMirage;
     public GameObject saplingIns = null;
     public bool cancelAttack = false;
+    public AudioSource growAudio;
 }
 
 public class TreeManFSM : EnemyFSM

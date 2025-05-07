@@ -19,10 +19,7 @@ public class FarmerAttackState : IState
         if (fsm.param.currentSickle != null)
             return;
         fsm.transform.localScale = new Vector3(fsm.transform.position.x < PlayerFSM.Instance.transform.position.x ? 1 : -1, 1, 1);
-        var s = GameObject.Instantiate(fsm.param.sicklePrefab, new Vector3(fsm.transform.position.x, fsm.transform.position.y + 10f), Quaternion.identity).GetComponent<Sickle>();
-        s.Init(fsm.transform.localScale.x * Vector2.right, fsm.gameObject);
-        s.Attack();
-        fsm.param.currentSickle = s.gameObject;
+        fsm.animator.Play("attack", 0, 0);
 
     }
 

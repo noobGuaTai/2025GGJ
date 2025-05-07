@@ -40,23 +40,29 @@ public class BorerManAttackState : IState
         while (true)
         {
             Array.ForEach(collider2D, x => x.enabled = false);
+            fsm.param.drillInAudio.Play();
             yield return new WaitForSeconds(fsm.param.attackTime);
-
-            var hit = Physics2D.Raycast(PlayerFSM.Instance.transform.position, Vector2.down, 100f, LayerMask.GetMask("Ground"));
+            fsm.param.drillOutAudio.Play();
+            var hit = Physics2D.Raycast(fsm.param.aim.transform.position, Vector2.down, 400f, LayerMask.GetMask("Ground"));
             fsm.transform.SetPosX(hit.point.x);
             fsm.transform.rotation = Quaternion.Euler(0, 0, 180);
             var tween = fsm.gameObject.AddComponent<Tween>();
             tween.AddTween("Attack", x =>
             {
                 fsm.transform.SetPosY(x);
-            }, fsm.transform.position.y, PlayerFSM.Instance.transform.position.y + 10f, 0.5f);
+            }, fsm.transform.position.y, fsm.param.aim.transform.position.y + 10f, 0.5f);
             tween.AddTween("Attack", x =>
             {
                 fsm.transform.rotation = Quaternion.Euler(0, 0, x);
             }, 180, 360, 0.5f).Play();
-
             Array.ForEach(collider2D, x => x.enabled = true);
             yield return new WaitForSeconds(fsm.param.attackCoolDown);
+            if ((fsm.param.aim.transform.position - fsm.transform.position).magnitude > fsm.param.detectRange)
+            {
+                fsm.ChangeState(BorerManStateType.Idle);
+                yield break;
+            }
+
         }
     }
 }

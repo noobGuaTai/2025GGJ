@@ -19,25 +19,26 @@ public class Tire : MonoBehaviour
         Destroy(gameObject, 8f);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.CompareTag("Player"))
+
+        if (other.gameObject.CompareTag("Player"))
         {
-            other.GetComponent<PlayerFSM>().Die();
+            other.gameObject.GetComponent<PlayerFSM>().Die();
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Bubble"))
         {
-            if (other.TryGetComponent<SmallBubble>(out var _))
+            if (other.gameObject.TryGetComponent<SmallBubble>(out var _))
                 BubbleQueue.DestroyBubble(other.gameObject);
         }
 
-        if (other.gameObject == father)
-        {
-            Destroy(gameObject);
-        }
+        // if (other.gameObject == father)
+        // {
+        //     Destroy(gameObject);
+        // }
 
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
             Destroy(gameObject);
         }

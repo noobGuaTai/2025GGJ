@@ -11,11 +11,10 @@ public class CatapultManAttackState : IState
     public void OnEnter()
     {
         fsm.OnEnter(CatapultManStateType.Attack);
+        fsm.attackAudio.Play();
+        fsm.animator.Play("attack", 0, 0);
         fsm.rb.linearVelocity = Vector2.zero;
         wait = fsm.StartCoroutine(Wait());
-        Attack();
-
-
     }
 
     public void OnExit()
@@ -36,15 +35,7 @@ public class CatapultManAttackState : IState
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(Random.Range(fsm.param.attackCooldown.x, fsm.param.attackCooldown.y));
         fsm.ChangeState(CatapultManStateType.Idle);
-    }
-
-    void Attack()
-    {
-        fsm.transform.localScale = new Vector3(fsm.transform.position.x < PlayerFSM.Instance.transform.position.x ? 1 : -1, 1, 1);
-        var tire = GameObject.Instantiate(fsm.param.rockPrefab, new Vector3(fsm.transform.position.x, fsm.transform.position.y + 10f), Quaternion.identity).GetComponent<Rock>();
-        tire.Init(fsm.transform.localScale.x * Vector2.right, fsm.gameObject, PlayerFSM.Instance.transform.position);
-        tire.Attack();
     }
 }

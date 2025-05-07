@@ -44,6 +44,7 @@ public class PoliceAttackState : IState
     {
         yield return new WaitForSeconds(0.6f);
         if (fsm.param.attackCollider.All(x => x.enabled == false)) fsm.EnableAttackCollider();
+        fsm.attackAudio.Play();
         yield return new WaitForSeconds(0.1f);
         fsm.DisableAttackCollider();
     }

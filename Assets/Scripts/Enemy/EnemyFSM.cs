@@ -10,6 +10,8 @@ public class EnemyFSM : MonoBehaviour
     public Vector2 initPos;
     public float health;
     public LayerMask deadlyLayers;
+    public AudioSource dieAudio;
+    public AudioSource attackAudio;
     public enum EnemySomatoType
     {
         Light,
@@ -290,7 +292,11 @@ public class EnemyFSM : MonoBehaviour
 
     public virtual void Die()
     {
-        Destroy(gameObject);
+        if (dieAudio != null) dieAudio.Play();
+        animator.Play("die", 0, 0);
+        enabled = false;
+        StopAllCoroutines();
+        Destroy(gameObject, 1f);
     }
 
     public virtual void OnTriggerEnter2D(Collider2D other)

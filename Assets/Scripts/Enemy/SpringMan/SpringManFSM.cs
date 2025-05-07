@@ -116,6 +116,7 @@ public class SpringManFSM : EnemyFSM
         {
             param.springTimer = 0;
             animator.Play("jump", 0, 0);
+            attackAudio.Play();
         }
         param.springTimer += Time.deltaTime;
     }

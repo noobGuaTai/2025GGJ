@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class TreeManAttackState : IState
 {
-    private TreeManFSM fSM;
+    private TreeManFSM fsm;
 
     public TreeManAttackState(TreeManFSM fSM)
     {
-        this.fSM = fSM;
+        this.fsm = fSM;
     }
     public GameObject Shoot(Vector3 targetPos)
     {
         Debug.Log($"Shoot {Time.realtimeSinceStartup}");
-        var saplingIns = UnityEngine.Object.Instantiate(fSM.parameters.saplingPrefab);
-        saplingIns.transform.position = fSM.transform.position;
+        fsm.attackAudio.Play();
+        var saplingIns = UnityEngine.Object.Instantiate(fsm.parameters.saplingPrefab);
+        saplingIns.transform.position = fsm.transform.position;
         var rb = saplingIns.GetComponent<Rigidbody2D>();
         for (var angle = 30; angle < 360; angle += 30)
         {
             if (angle % 90 == 0) continue;
             var v = ProjectileMotion.CalculateInitialVelocity(
-                fSM.transform.position, targetPos, angle,
+                fsm.transform.position, targetPos, angle,
                 saplingIns.GetComponent<Rigidbody2D>().gravityScale * 9.81f);
             if (v != Vector3.zero)
             {
@@ -35,29 +36,29 @@ public class TreeManAttackState : IState
     public void OnEnter()
     {
         Debug.Log($"ENTER Attack {Time.realtimeSinceStartup}");
-        fSM.animator.Play("attack", 0, 0);
-        fSM.parameters.cancelAttack = false;
+        fsm.animator.Play("attack", 0, 0);
+        fsm.parameters.cancelAttack = false;
     }
 
     public void OnExit()
     {
-        UnityEngine.Object.Destroy(fSM.parameters.saplingIns);
-        fSM.parameters.saplingIns = null;
+        UnityEngine.Object.Destroy(fsm.parameters.saplingIns);
+        fsm.parameters.saplingIns = null;
     }
 
     public void OnFixedUpdate()
     {
-        if (fSM.parameters.cancelAttack)
+        if (fsm.parameters.cancelAttack)
         {
-            fSM.ChangeState(TreeManStateType.Idle);
+            fsm.ChangeState(TreeManStateType.Idle);
         }
-        if (fSM.parameters.saplingIns == null)
+        if (fsm.parameters.saplingIns == null)
             return;
-        if (fSM.parameters.saplingIns.GetComponent<TreeManSapling>().impacted)
+        if (fsm.parameters.saplingIns.GetComponent<TreeManSapling>().impacted)
         {
-            fSM.parameters.growPosition = fSM.parameters.saplingIns.transform.position;
-            UnityEngine.Object.Destroy(fSM.parameters.saplingIns);
-            fSM.ChangeState(TreeManStateType.Grow);
+            fsm.parameters.growPosition = fsm.parameters.saplingIns.transform.position;
+            UnityEngine.Object.Destroy(fsm.parameters.saplingIns);
+            fsm.ChangeState(TreeManStateType.Grow);
         }
     }
 

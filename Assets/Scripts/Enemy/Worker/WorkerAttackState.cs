@@ -36,6 +36,7 @@ public class WorkerAttackState : IState
 
     IEnumerator Wait()
     {
+        fsm.attackAudio.Play();
         yield return new WaitForSeconds(0.625f);
         fsm.animator.Play("run", 0, 0);
         yield return new WaitForSeconds(0.875f);

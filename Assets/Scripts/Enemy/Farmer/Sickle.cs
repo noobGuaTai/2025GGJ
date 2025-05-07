@@ -17,7 +17,7 @@ public class Sickle : MonoBehaviour
         tween = gameObject.AddComponent<Tween>();
         rb = GetComponent<Rigidbody2D>();
         onStart?.Invoke();
-        Destroy(gameObject, 8f);
+        Destroy(gameObject, 5f);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -54,7 +54,7 @@ public class Sickle : MonoBehaviour
             Tween.TransitionType.CIRC, Tween.EaseType.OUT);
         tween.AddTween("attack", (x) => isReturn = true, 0, 0, 0);
         tween.AddTween("attack", (x) => rb.linearVelocity = x, Vector2.zero, -direction * initSpeed, flyTime,
-            Tween.TransitionType.QUART, Tween.EaseType.IN).Play();
+            Tween.TransitionType.LINEAR, Tween.EaseType.IN).Play();
     };
 
     void OnDestroy()

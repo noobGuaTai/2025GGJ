@@ -41,9 +41,9 @@ public class BigBubble : BaseBubble
     }
     public override void OnCollisionEnter2D(Collision2D other)
     {
-        if (rb.bodyType != RigidbodyType2D.Kinematic)
+        if (rb.bodyType != RigidbodyType2D.Kinematic && !other.gameObject.TryGetComponent<BaseBubble>(out var _) && !other.gameObject.TryGetComponent<PlayerFSM>(out var _))
             SwallowObject(other.gameObject);
-        Destroyed(other.gameObject);
+        IsDestroyBubble(other.gameObject);
     }
 
 

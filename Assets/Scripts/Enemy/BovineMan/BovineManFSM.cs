@@ -44,6 +44,7 @@ public class BovineManParameters
     public float returnSpeed;  // 返回原地的速度
     public bool isOnGround => groundCheck.isChecked;
     internal AnythingCheck groundCheck;
+
 }
 
 public class BovineManFSM : EnemyFSM
