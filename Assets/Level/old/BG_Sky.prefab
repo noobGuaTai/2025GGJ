@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 3281733911588347241}
   - component: {fileID: 4270472440115415490}
   m_Layer: 0
-  m_Name: Level1
+  m_Name: BG_Sky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
