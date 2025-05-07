@@ -32,6 +32,7 @@ public class FarmerParameters
     internal AnythingCheck groundCheck;
     public GameObject sicklePrefab;
     internal GameObject currentSickle;
+    public GameObject sickleSpawnPoint;
 }
 
 public class FarmerFSM : EnemyFSM
@@ -123,5 +124,14 @@ public class FarmerFSM : EnemyFSM
         Gizmos.DrawWireSphere(transform.position, param.pullRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, param.attackRange);
+    }
+
+    public void Attack()
+    {
+        var s = GameObject.Instantiate(param.sicklePrefab, param.sickleSpawnPoint.transform.position, Quaternion.identity).GetComponent<Sickle>();
+        s.Init(transform.localScale.x * Vector2.right, gameObject);
+        s.Attack();
+        param.currentSickle = s.gameObject;
+        attackAudio.Play();
     }
 }

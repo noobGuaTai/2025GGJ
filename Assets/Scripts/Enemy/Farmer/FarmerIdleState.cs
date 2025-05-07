@@ -14,6 +14,7 @@ public class FarmerIdleState : IState
     public void OnEnter()
     {
         fsm.OnEnter(FarmerStateType.Idle);
+        fsm.animator.Play("run", 0, 0);
         patrol = fsm.StartCoroutine(Patrol());
     }
 

@@ -12,6 +12,7 @@ public class ContainerManAttackState : IState
     public void OnEnter()
     {
         fsm.OnEnter(ContainerManStateType.Attack);
+        fsm.attackAudio.Play();
         fsm.animator.Play("attack", 0, 0);
         fsm.rb.linearVelocity = Vector2.zero;
         wait = fsm.StartCoroutine(Wait());

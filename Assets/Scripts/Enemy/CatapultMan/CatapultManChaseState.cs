@@ -25,8 +25,12 @@ public class CatapultManChaseState : IState
 
     public void OnUpdate()
     {
-        if (fsm.IsDetectObjectByLayer(fsm.param.attackRange, LayerMask.GetMask("Player", "Bubble"), out var _))
+        if (fsm.IsDetectObjectByLayer(fsm.param.attackRange, LayerMask.GetMask("Player", "Bubble"), out var aim))
+        {
             fsm.ChangeState(CatapultManStateType.Attack);
+            fsm.param.attackAim = aim;
+        }
+
         if (!fsm.IsDetectObjectByLayer(fsm.param.detectRange, LayerMask.GetMask("Player", "Bubble"), out var _))
             fsm.ChangeState(CatapultManStateType.Idle);
 

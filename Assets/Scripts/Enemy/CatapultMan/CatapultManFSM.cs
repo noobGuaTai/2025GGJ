@@ -23,12 +23,15 @@ public class CatapultManParameters
     public float chaseSpeed;
     public float detectRange;// 追逐玩家过程中超过该范围则返回原地
     public float attackDetectRange;// 玩家进入该范围则进入攻击状态
+    public Vector2 attackCooldown;
     public float attackRange;
     public Vector2 idleToPatrolTime;
     public Vector2 patrolToIdleTime;
     public bool isOnGround => groundCheck.isChecked;
     internal AnythingCheck groundCheck;
     public GameObject rockPrefab;
+    public GameObject rockSpawnPoint;
+    public GameObject attackAim;
 }
 
 public class CatapultManFSM : EnemyFSM
@@ -107,4 +110,12 @@ public class CatapultManFSM : EnemyFSM
     }
 
     public void OnEnter(CatapultManStateType stateType) => enterStateActions[stateType]?.Invoke();
+
+    public void Attack()
+    {
+        transform.localScale = new Vector3(transform.position.x < PlayerFSM.Instance.transform.position.x ? 1 : -1, 1, 1);
+        var tire = GameObject.Instantiate(param.rockPrefab, param.rockSpawnPoint.transform.position, Quaternion.identity).GetComponent<Rock>();
+        tire.Init(transform.localScale.x * Vector2.right, gameObject, param.attackAim.transform.position);
+        tire.Attack();
+    }
 }

@@ -8,6 +8,12 @@ public class Blow : MonoBehaviour
 
     void Start()
     {
+
+    }
+
+    void OnEnable()
+    {
+        Invoke("Disable", 0.1f);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -35,7 +41,9 @@ public class Blow : MonoBehaviour
         {
             bubbleScript.rb.AddForce(direction * blowForce, ForceMode2D.Impulse);
         }
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
     }
+
+    void Disable() => gameObject.SetActive(false);
 }
 

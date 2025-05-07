@@ -62,6 +62,8 @@ public class PlayerAttributes
     public bool isBlowing = false;
     internal float initGravityScale = 50;
     public float throwCoinSpeed;
+    public float pushCooldown;
+    internal float pushTimer;
 }
 
 
@@ -126,7 +128,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
     void Update()
     {
         currentState.OnUpdate();
-
+        attributes.pushTimer += Time.deltaTime;
         if (attributes.health <= 0)
         {
             // Die();
@@ -170,7 +172,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         GetComponent<Collider2D>().enabled = true;
         param.rb.gravityScale = attributes.initGravityScale;
         transform.rotation = Quaternion.Euler(0, 0, 0);
-        UIManager.Instance.ShowDialog($"enemy{GameManager.Instance.level}");
+        // UIManager.Instance.ShowDialog($"enemy{GameManager.Instance.level}");
     }
 
     public void PlayerMove(InputAction.CallbackContext context)
@@ -237,9 +239,11 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
 
     public void PlayerPush(InputAction.CallbackContext context)
     {
+        if (attributes.pushTimer <= attributes.pushCooldown)
+            return;
         if (context.phase == InputActionPhase.Started)
         {
-            if (param.moveInput == Vector2.zero)
+            if (param.moveInput.y == 0)
             {
                 param.blowArea.GetComponent<Blow>().direction = Vector2.left * transform.localScale.x;
                 param.animator.Play("push_hori", 0, 0);
@@ -249,7 +253,8 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
                 param.blowArea.GetComponent<Blow>().direction = new Vector2(param.moveInput.x, param.moveInput.y).normalized;
                 param.animator.Play("push_up", 0, 0);
             }
-            Push();
+            // Push();
+            attributes.pushTimer = 0;
         }
 
     }
@@ -264,17 +269,17 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
 
     }
 
-
+    void Push()
+    {
+        param.blowArea.gameObject.SetActive(true);
+    }
     void Push(float duration)
     {
         param.blowArea.GetComponent<Blow>().blowForce = duration * 1000f;
         param.blowArea.gameObject.SetActive(true);
     }
 
-    void Push()
-    {
-        param.blowArea.gameObject.SetActive(true);
-    }
+
 
 
     void InstantiateBubble()

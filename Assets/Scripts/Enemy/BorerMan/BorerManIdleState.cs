@@ -25,7 +25,11 @@ public class BorerManIdleState : IState
 
     public void OnUpdate()
     {
-        if (fsm.IsDetectObjectByLayer(fsm.param.attackDetectRange, LayerMask.GetMask("Player", "Bubble"), out var _))
+        if (fsm.IsDetectObjectByLayer(fsm.param.attackDetectRange, LayerMask.GetMask("Player"), out var aim))
+        {
             fsm.ChangeState(BorerManStateType.Attack);
+            fsm.param.aim = aim;
+        }
+
     }
 }

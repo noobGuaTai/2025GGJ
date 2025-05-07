@@ -139,7 +139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initSpeed: 300
-  flyTime: 2
+  flyTime: 1.5
+  father: {fileID: 0}
+  isReturn: 0
 --- !u!50 &-3348303881421465747
 Rigidbody2D:
   serializedVersion: 5

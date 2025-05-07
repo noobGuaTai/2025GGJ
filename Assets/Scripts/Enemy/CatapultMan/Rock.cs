@@ -32,10 +32,10 @@ public class Rock : MonoBehaviour
                 BubbleQueue.DestroyBubble(other.gameObject);
         }
 
-        if (other.gameObject == father)
-        {
-            Destroy(gameObject);
-        }
+        // if (other.gameObject == father)
+        // {
+        //     Destroy(gameObject);
+        // }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
@@ -50,61 +50,30 @@ public class Rock : MonoBehaviour
     }
     public void Attack() => onStart = () =>
     {
-        Vector2 directionToTarget = (Vector2)aim - (Vector2)transform.position;
-
-        float dx = directionToTarget.x;
-        float dy = directionToTarget.y;
-
         float g = Mathf.Abs(Physics2D.gravity.y * rb.gravityScale);
-
         float m = rb.mass;
-        float v0y = high / m;
 
-        float force_x;
+        Vector2 startPos = transform.position;
+        Vector2 targetPos = aim;
+        float dx = targetPos.x - startPos.x;
+        float dy = targetPos.y - startPos.y;
 
-        if (Mathf.Approximately(dy, 0))
-        {
-            force_x = dx * g * m / (2 * v0y);
-        }
-        else
-        {
-            float discriminant = v0y * v0y - 2 * g * dy;
+        float apexY = Mathf.Max(startPos.y, targetPos.y) + high;
 
-            if (discriminant < 0)
-            {
-                Debug.LogWarning("Target is too high to reach with the given vertical force.");
-                force_x = directionToTarget.normalized.x * high;
-            }
-            else
-            {
-                float t1 = (v0y + Mathf.Sqrt(discriminant)) / g;
-                float t2 = (v0y - Mathf.Sqrt(discriminant)) / g;
+        float v0y = Mathf.Sqrt(2 * g * (apexY - startPos.y));
 
-                float timeToTarget;
-                if (t1 > 0 && t2 > 0)
-                {
-                    timeToTarget = (dy > 0) ? Mathf.Min(t1, t2) : Mathf.Max(t1, t2);
-                }
-                else if (t1 > 0)
-                {
-                    timeToTarget = t1;
-                }
-                else if (t2 > 0)
-                {
-                    timeToTarget = t2;
-                }
-                else
-                {
-                    timeToTarget = v0y / g;
-                }
+        float tUp = v0y / g;
+        float tDown = Mathf.Sqrt(2 * (apexY - targetPos.y) / g);
+        float flightTime = tUp + tDown;
 
-                float v0x = dx / timeToTarget;
-                force_x = m * v0x;
-            }
-        }
+        float v0x = dx / flightTime;
 
-        rb.AddForce(new Vector2(force_x, high), ForceMode2D.Impulse);
+        Vector2 impulse = new Vector2(v0x * m, v0y * m);
+
+        rb.AddForce(impulse, ForceMode2D.Impulse);
     };
+
+
 
     void OnDestroy()
     {

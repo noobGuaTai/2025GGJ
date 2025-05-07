@@ -32,6 +32,7 @@ public class TreeManGrowState : IState
         tw.AddTween("grawProcess", (x) => { }, 0, 0, 0.5f).
         AddTween(_ => growFinish = true, 0, 0, 0).
         Play();
+        fSM.parameters.growAudio.Play();
     }
 
     public void OnExit()

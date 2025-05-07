@@ -22,6 +22,9 @@ public class BorerManParameters
     public float attackCoolDown;
     public bool isOnGround => groundCheck.isChecked;
     internal AnythingCheck groundCheck;
+    public AudioSource drillInAudio;
+    public AudioSource drillOutAudio;
+    public GameObject aim;
 }
 
 public class BorerManFSM : EnemyFSM
@@ -56,6 +59,8 @@ public class BorerManFSM : EnemyFSM
         GetComponent<SwallowedEnemy>().onLoadActions += () => ChangeState(BorerManStateType.UnderSwallowed);
         GetComponent<SwallowedEnemy>().onBreakActions += () => ChangeState(BorerManStateType.Idle);
         GetComponent<KnockedBackEnemy>().onKnockedBackActions += () => ChangeState(BorerManStateType.KnockedBack);
+        GetComponentInChildren<EnemyAttackAnything>().onAttacked += (other) => { if (other.TryGetComponent<SmallBubble>(out var s)) s.isBeingDestroyed = true; BubbleQueue.DestroyBubble(other.gameObject); };
+
     }
 
     void Update()
