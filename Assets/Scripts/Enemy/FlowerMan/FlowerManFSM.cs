@@ -16,9 +16,16 @@ public class FlowerManParameters
     public FlowerManStateType currentState;
     public PatrolParameter patrolParameter = new();
     public float returnSpeed;
-    public GameObject flowerProjectile;
+    public GameObject flowerProjectilePrefab;
     public float flowerSpeed = 10f;
     public float shootCD = 0.5f;
+    public bool isOnGround => groundCheck.isChecked;
+    internal AnythingCheck groundCheck;
+    public float detectRange;// 追逐玩家过程中超过该范围则返回原地
+    public float attackRange;// 玩家进入该范围则进入攻击状态
+    public float shootTimer;
+    public GameObject flowerProjectilePrefabSpawnPoint;
+    public GameObject[] flowers;
 
 }
 
@@ -35,11 +42,14 @@ public class FlowerManFSM : EnemyFSM
         state.Add(FlowerManStateType.Attack, new FlowerManAttackState(this));
         state.Add(FlowerManStateType.Return, new FlowerManReturnState(this));
         ChangeState(FlowerManStateType.Patrol);
+
+        parameters.groundCheck = GetComponentInChildren<AnythingCheck>();
     }
 
     void Update()
     {
         currentState.OnUpdate();
+        parameters.shootTimer += Time.deltaTime;
     }
 
     void FixedUpdate()
@@ -56,5 +66,12 @@ public class FlowerManFSM : EnemyFSM
         currentState = state[stateType];
         currentState.OnEnter();
         parameters.currentState = stateType;
+    }
+
+    public void Attack(GameObject aim)
+    {
+        var g = Instantiate(parameters.flowers[UnityEngine.Random.Range(0, parameters.flowers.Length)], transform.position, Quaternion.identity);
+        g.GetComponent<Rigidbody2D>().linearVelocity = ((aim.transform.position - transform.position).normalized * parameters.flowerSpeed);
+        g.transform.parent = transform;
     }
 }

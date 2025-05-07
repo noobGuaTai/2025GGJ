@@ -60,7 +60,7 @@ public class EnemyFSM : MonoBehaviour
     /// <returns>调整后的两个巡逻点</returns>
     protected virtual (Vector2, Vector2) AdjustPatrolPoints(Vector2 first, Vector2 second)
     {
-        const float wallSafeDistance = 9f;
+        const float wallSafeDistance = 14f;
         const float minPointDistance = 0.01f;
         const int maxIterations = 3;
 

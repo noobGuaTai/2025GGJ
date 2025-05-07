@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &57344465596227964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2883659582585037554}
+  m_Layer: 9
+  m_Name: CheckGround
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2883659582585037554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57344465596227964}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -25.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9027380424867919135}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6519572436789688924
 GameObject:
   m_ObjectHideFlags: 0
@@ -18,6 +49,7 @@ GameObject:
   - component: {fileID: 5172676911752498154}
   - component: {fileID: 2145778462892949615}
   - component: {fileID: 2267545085438933963}
+  - component: {fileID: 5853616055030749895}
   m_Layer: 9
   m_Name: FlowerMan
   m_TagString: Untagged
@@ -37,7 +69,9 @@ Transform:
   m_LocalPosition: {x: 7.9056654, y: -63.885628, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 2883659582585037554}
+  - {fileID: 2038996367798088418}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6882816926513969201
@@ -84,7 +118,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1246392865353077368, guid: 7a04899a4f449b64794b174555ea4278, type: 3}
+  m_Sprite: {fileID: -4419413497425163506, guid: e718adcfd96dd954188649215ea97490, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -132,7 +166,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8af89a44db7a01f47984bc2d88753bec, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -156,17 +190,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -11}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 16, y: 17}
+    pivot: {x: 0.59, y: 0.5}
+    oldSize: {x: 50, y: 50}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 16, y: 17}
+  m_Size: {x: 14, y: 30}
   m_EdgeRadius: 0
 --- !u!61 &8482787136885981979
 BoxCollider2D:
@@ -178,13 +212,13 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8af89a44db7a01f47984bc2d88753bec, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -202,11 +236,11 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -13.871559, y: 0}
+  m_Offset: {x: -13.871559, y: -9.7}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 16, y: 17}
+    pivot: {x: 0.59, y: 0.5}
+    oldSize: {x: 50, y: 50}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -224,7 +258,7 @@ Animator:
   m_GameObject: {fileID: 6519572436789688924}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 75c3b24b9935a2147a017bba28f6c3dd, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3a06c2bdb9139474986c8539758b2349, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -252,7 +286,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -318,7 +352,9 @@ MonoBehaviour:
   health: 0
   deadlyLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
+  dieAudio: {fileID: 0}
+  attackAudio: {fileID: 0}
   somatoType: 0
   parameters:
     currentState: 0
@@ -326,8 +362,69 @@ MonoBehaviour:
       range:
       - -50
       - 50
-      speed: 100
+      speed: 50
     returnSpeed: 100
-    flowerProjectile: {fileID: 5685344956359619370, guid: 411b05c36b3bbdb468c6351864079f7f, type: 3}
+    flowerProjectilePrefab: {fileID: 5685344956359619370, guid: 411b05c36b3bbdb468c6351864079f7f, type: 3}
     flowerSpeed: 100
-    shootCD: 0.5
+    shootCD: 2
+    detectRange: 120
+    attackRange: 80
+    shootTimer: 0
+    flowerProjectilePrefabSpawnPoint: {fileID: 0}
+    flowers:
+    - {fileID: 3288716951583142139, guid: 218eebafb5acf274498d67e6e0ee56ad, type: 3}
+    - {fileID: 1854526641525362804, guid: b2c09606074835e4488b572cb039cd95, type: 3}
+    - {fileID: 7780495743391730174, guid: 2c891272666021746b44f720b246031b, type: 3}
+    - {fileID: 5738598924002285826, guid: 9c36a0dfd04206446af57e5abb242b95, type: 3}
+    - {fileID: 8621682736899911481, guid: 4b1437a722504cf40a9c16dcb5a5f873, type: 3}
+--- !u!114 &5853616055030749895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519572436789688924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c9891b7e3d0ed47a674d36e6f82cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkMethod: 0
+  anythingCheckpoints:
+  - {fileID: 2883659582585037554}
+  checkRadius: 2
+  layer:
+    serializedVersion: 2
+    m_Bits: 64
+  isChecked: 0
+--- !u!1 &8528913475067466045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2038996367798088418}
+  m_Layer: 9
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2038996367798088418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8528913475067466045}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2, y: 5.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9027380424867919135}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
