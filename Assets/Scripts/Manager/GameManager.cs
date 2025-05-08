@@ -12,42 +12,65 @@ public class GameManager : MonoSingleton<GameManager>
     public bool richmanKilled = false;
 
     public Vector2[] playerInitPos;
+    public Vector3 playerInitPosition;
+    public GameObject currentLevel;
+    public GameObject currentLevelPrefab;
+    public Vector3 currentLevelPos;
+    public int currentCoins;
     public void ResetGame()
     {
-        Transform stone = transform.Find($"/Root/Level/Level{level}/Stone");
-        if (stone != null)
-            stone.GetComponent<StoneController>().ResetSelf();
-        enemy = transform.Find($"/Root/Level/Level{level}/Enemy");
-        if (enemy != null)
-        {
-            enemy.gameObject.SetActive(true);
-            enemy.TryGetComponent<EnemyFSM>(out var e);
-            if (e != null)
-                e.ResetSelf();
-        }
-        PlayerFSM.Instance.transform.position = playerInitPos[level];
+        // Transform stone = transform.Find($"/Root/Level/Level{level}/Stone");
+        // if (stone != null)
+        //     stone.GetComponent<StoneController>().ResetSelf();
+        // enemy = transform.Find($"/Root/Level/Level{level}/Enemy");
+        // if (enemy != null)
+        // {
+        //     enemy.gameObject.SetActive(true);
+        //     enemy.TryGetComponent<EnemyFSM>(out var e);
+        //     if (e != null)
+        //         e.ResetSelf();
+        // }
+        Destroy(currentLevel);
+        currentLevel = Instantiate(currentLevelPrefab, currentLevelPos, Quaternion.identity);
+        PlayerFSM.Instance.transform.position = playerInitPosition;
         PlayerFSM.Instance.param.rb.linearVelocity = Vector2.zero;
         BubbleQueue.Clear();
+        PlayerFSM.Instance.param.playerInventory.coins = currentCoins;
+        currentLevel.SetActive(true);
     }
     [Header("Level")]
     public string levelNameString = "";
     public List<string> levelNames => levelNameString.Replace(" ", "").Split(',').ToList();
-    public int levelIndex = -1;
+    public int levelIndex = 0;
     private GameObject lastLevel = null;
     public void StartGame()
     {
-        NextGame();
+        // NextGame();
+        lastLevel = LevelNode(levelNames[levelIndex]);
+        PlayerFSM.Instance.enabled = true;
+        PlayerFSM.Instance.param.rb.gravityScale = PlayerFSM.Instance.param.initGravityScale;
         UIManager.Instance.mainPage.SetActive(false);
         UIManager.Instance.playerUI.SetActive(true);
     }
     public GameObject LevelNode(string levelName)
         => transform.Find($"../Level/Level{levelName}").gameObject;
-    public void NextGame()
+    public void NextGame(GameObject level, Vector3 pos)
     {
-        levelIndex++;
-        lastLevel?.SetActive(false);
-        lastLevel = LevelNode(levelNames[levelIndex]);
-        lastLevel.SetActive(true);
+        // var pos = lastLevel.transform.position;
+        // levelIndex++;
+        // lastLevel?.SetActive(false);
+        // lastLevel = LevelNode(levelNames[levelIndex]);
+        // lastLevel.transform.position = pos + Vector3.right * 560;
+        // Camera.main.transform.position += lastLevel.transform.position;
+        // lastLevel.SetActive(true);
+        Destroy(currentLevel);
+        currentLevel = Instantiate(level, currentLevel.transform.position + pos, Quaternion.identity);
+        Camera.main.transform.position += pos;
+        playerInitPosition = PlayerFSM.Instance.transform.position;
+        currentLevelPrefab = level;
+        currentLevelPos += pos;
+        currentCoins = PlayerFSM.Instance.param.playerInventory.coins;
+        currentLevel.SetActive(true);
     }
 
     public void LastGame()
@@ -91,5 +114,10 @@ public class GameManager : MonoSingleton<GameManager>
     // 关闭应用程序
     Application.Quit();
 #endif
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0.5f;
     }
 }

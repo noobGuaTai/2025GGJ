@@ -61,7 +61,7 @@ public class Door : MonoBehaviour
     {
         if (!isOpen)
             return false;
-        GameManager.Instance.NextGame();
+        // GameManager.Instance.NextGame();
         return true;
     }
 

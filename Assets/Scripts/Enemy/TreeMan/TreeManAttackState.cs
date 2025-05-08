@@ -16,6 +16,7 @@ public class TreeManAttackState : IState
         fsm.attackAudio.Play();
         var saplingIns = UnityEngine.Object.Instantiate(fsm.parameters.saplingPrefab);
         saplingIns.transform.position = fsm.transform.position;
+        saplingIns.transform.parent = fsm.transform;
         var rb = saplingIns.GetComponent<Rigidbody2D>();
         for (var angle = 30; angle < 360; angle += 30)
         {

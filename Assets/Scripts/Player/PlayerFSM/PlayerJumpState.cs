@@ -41,7 +41,8 @@ public class PlayerJumpState : IState
 
     public void OnUpdate()
     {
-
+        if (fsm.param.isOnGround)
+            fsm.ChangeState(PlayerStateType.Idle);
     }
 
 }

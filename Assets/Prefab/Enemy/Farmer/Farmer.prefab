@@ -171,7 +171,6 @@ GameObject:
   - component: {fileID: 687017811085693696}
   - component: {fileID: -8929536887990909823}
   - component: {fileID: -458252106087995134}
-  - component: {fileID: -5699326640305639141}
   - component: {fileID: -3072049877793455537}
   - component: {fileID: 8918869802295284714}
   - component: {fileID: 1060872501328041528}
@@ -294,7 +293,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 655d7a63bd4ccaf48b008b67a9cc74bf, type: 2}
+  m_Material: {fileID: 6200000, guid: 8af89a44db7a01f47984bc2d88753bec, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -436,18 +435,6 @@ MonoBehaviour:
     patrolToIdleTime: {x: 1, y: 2}
     sicklePrefab: {fileID: 7872871544301588018, guid: 3cc67da9f955bf14a97d9e7a4e5afda6, type: 3}
     sickleSpawnPoint: {fileID: 3316483061742876047}
---- !u!114 &-5699326640305639141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6519572436789688924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3c2048a1c04e3347b997953abba2172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-3072049877793455537
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -82,8 +82,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1983266021
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -3557995642865903261, guid: be0b036b1cff8c241a2d49eda49ba913, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -108,7 +108,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 7
   m_LinearDamping: 1
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -414,7 +414,7 @@ MonoBehaviour:
   outsideCollider: {fileID: 959944911756882733}
   triggerCollider: {fileID: 9016929489739431230}
   explosionRadius: 100
-  explosionForce: 1000
+  explosionForce: 1200
   contactGroundThreshold: 1
   absorbedType: 0
   impactedSpeedCurve:
@@ -441,7 +441,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  reboundVelocity: 200
+  reboundVelocity: 300
   slideSpeed: 0.1
 --- !u!251 &-4789898301398657727
 PlatformEffector2D:

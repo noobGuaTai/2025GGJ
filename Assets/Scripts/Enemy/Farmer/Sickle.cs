@@ -39,7 +39,7 @@ public class Sickle : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
-            Instantiate(gameObject, transform.position, Quaternion.identity);
+            // Instantiate(gameObject, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

@@ -38,5 +38,7 @@ public class PlayerReboundState : IState
         {
             fsm.Move();
         }
+        if (fsm.param.isOnGround)
+            fsm.ChangeState(PlayerStateType.Idle);
     }
 }

@@ -30,16 +30,16 @@ public class PlayerCollisionHandler : MonoBehaviour
             playerFSM.Die();
         }
 
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") &&
-        (playerFSM.currentState == playerFSM.state[PlayerStateType.Jump] ||
-        playerFSM.currentState == playerFSM.state[PlayerStateType.Rebound] ||
-        playerFSM.currentState == playerFSM.state[PlayerStateType.KnockedBack]))
-        {
-            if (other.contacts[0].normal.y >= groundThreshold)
-            {
-                playerFSM.ChangeState(PlayerStateType.Idle);
-            }
-        }
+        // if (other.gameObject.layer == LayerMask.NameToLayer("Ground") &&
+        // (playerFSM.currentState == playerFSM.state[PlayerStateType.Jump] ||
+        // playerFSM.currentState == playerFSM.state[PlayerStateType.Rebound] ||
+        // playerFSM.currentState == playerFSM.state[PlayerStateType.KnockedBack]))
+        // {
+        //     if (other.contacts[0].normal.y >= groundThreshold)
+        //     {
+        //         playerFSM.ChangeState(PlayerStateType.Idle);
+        //     }
+        // }
 
         // if (other.gameObject.TryGetComponent<BigBubble>(out var b))
         // {

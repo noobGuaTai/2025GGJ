@@ -7,7 +7,9 @@ public enum FlowerManStateType
 {
     Patrol,
     Attack,
-    Return
+    Return,
+    KnockedBack,
+    UnderSwallowed
 }
 
 [Serializable]
@@ -41,7 +43,12 @@ public class FlowerManFSM : EnemyFSM
         state.Add(FlowerManStateType.Patrol, new FlowerManPatrolState(this));
         state.Add(FlowerManStateType.Attack, new FlowerManAttackState(this));
         state.Add(FlowerManStateType.Return, new FlowerManReturnState(this));
+        state.Add(FlowerManStateType.KnockedBack, new FlowerManKnockedBackState(this));
+        state.Add(FlowerManStateType.UnderSwallowed, new FlowerManUnderSwallowedState(this));
         ChangeState(FlowerManStateType.Patrol);
+        GetComponent<SwallowedEnemy>().onLoadActions += () => ChangeState(FlowerManStateType.UnderSwallowed);
+        GetComponent<SwallowedEnemy>().onBreakActions += () => ChangeState(FlowerManStateType.Patrol);
+        GetComponent<KnockedBackEnemy>().onKnockedBackActions += () => ChangeState(FlowerManStateType.KnockedBack);
 
         parameters.groundCheck = GetComponentInChildren<AnythingCheck>();
     }
