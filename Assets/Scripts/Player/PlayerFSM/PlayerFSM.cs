@@ -42,6 +42,7 @@ public class PlayerParameters
     internal BubbleCheck bubbleCheck;
     internal PlayerInventory playerInventory;
     public float initGravityScale;
+    public bool isDebug;
 }
 
 [Serializable]
@@ -160,6 +161,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
 
     public void Die()
     {
+        if (param.isDebug) return;
         param.rb.linearVelocity = Vector2.zero;
         ChangeState(PlayerStateType.Idle);
         transform.rotation = Quaternion.Euler(0, 0, -90 * transform.localScale.x);

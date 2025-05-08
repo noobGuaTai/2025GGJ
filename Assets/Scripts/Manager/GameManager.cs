@@ -37,6 +37,10 @@ public class GameManager : MonoSingleton<GameManager>
         BubbleQueue.Clear();
         PlayerFSM.Instance.param.playerInventory.coins = currentCoins;
         currentLevel.SetActive(true);
+        if (currentLevel.name.Contains("Underground_6"))
+            PlayerFSM.Instance.param.rb.linearVelocityY = PlayerFSM.Instance.attributes.jumpSpeed;
+        if (currentLevel.name.Contains("Sunny_1") && currentLevel.transform.position.y - playerInitPosition.y > 200f)
+            PlayerFSM.Instance.param.rb.linearVelocityY = PlayerFSM.Instance.attributes.jumpSpeed;
     }
     [Header("Level")]
     public string levelNameString = "";
@@ -46,7 +50,7 @@ public class GameManager : MonoSingleton<GameManager>
     public void StartGame()
     {
         // NextGame();
-        lastLevel = LevelNode(levelNames[levelIndex]);
+        // lastLevel = LevelNode(levelNames[levelIndex]);
         PlayerFSM.Instance.enabled = true;
         PlayerFSM.Instance.param.rb.gravityScale = PlayerFSM.Instance.param.initGravityScale;
         UIManager.Instance.mainPage.SetActive(false);
@@ -54,7 +58,7 @@ public class GameManager : MonoSingleton<GameManager>
     }
     public GameObject LevelNode(string levelName)
         => transform.Find($"../Level/Level{levelName}").gameObject;
-    public void NextGame(GameObject level, Vector3 pos)
+    public void NextGame(GameObject level, Vector3 pos)// 不知道为什么level8_到下一关会调用两次
     {
         // var pos = lastLevel.transform.position;
         // levelIndex++;
@@ -71,6 +75,11 @@ public class GameManager : MonoSingleton<GameManager>
         currentLevelPos += pos;
         currentCoins = PlayerFSM.Instance.param.playerInventory.coins;
         currentLevel.SetActive(true);
+        if (currentLevel.name.Contains("Underground_6"))
+            PlayerFSM.Instance.param.rb.linearVelocityY = PlayerFSM.Instance.attributes.jumpSpeed;
+        if (currentLevel.name.Contains("Sunny_1") && currentLevel.transform.position.y - playerInitPosition.y > 200f)
+            PlayerFSM.Instance.param.rb.linearVelocityY = PlayerFSM.Instance.attributes.jumpSpeed;
+
     }
 
     public void LastGame()
