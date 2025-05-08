@@ -100,6 +100,7 @@ public class RichmanFSM : EnemyFSM
     {
         base.Die();
         GameManager.Instance.richmanKilled = true;
+        door.Open();
     }
 
 }

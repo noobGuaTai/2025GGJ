@@ -39,6 +39,11 @@ public class PoliceFSM : EnemyFSM
     public IState currentState;
     public Dictionary<PoliceStateType, IState> state = new Dictionary<PoliceStateType, IState>();
     Dictionary<PoliceStateType, Action> enterStateActions = new Dictionary<PoliceStateType, Action>();
+    static HashSet<GameObject> AllPolice = new();
+    static void RiseAllPolice()
+    {
+        AllPolice.ToList().ForEach(x => x.SetActive(true));
+    }
 
     public override void Awake()
     {
@@ -140,5 +145,9 @@ public class PoliceFSM : EnemyFSM
         {
             Destroy(other.gameObject);
         }
+    }
+    public void OnDestroy()
+    {
+        AllPolice.Remove(gameObject);
     }
 }
