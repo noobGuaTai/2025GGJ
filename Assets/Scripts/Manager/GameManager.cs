@@ -9,6 +9,7 @@ public class GameManager : MonoSingleton<GameManager>
     public int level = 1;//第几关
     public bool getedBook = false;
     public Transform enemy;
+    public bool richmanKilled = false;
 
     public Vector2[] playerInitPos;
     public void ResetGame()
