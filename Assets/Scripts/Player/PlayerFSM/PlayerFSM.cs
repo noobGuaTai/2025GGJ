@@ -101,6 +101,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
 
         param.groundCheck = GetComponent<AnythingCheck>();
         param.bubbleCheck = GetComponent<BubbleCheck>();
+        enabled = false;
     }
 
     void InitAction()

@@ -31,11 +31,13 @@ public class GameManager : MonoSingleton<GameManager>
     [Header("Level")]
     public string levelNameString = "";
     public List<string> levelNames => levelNameString.Replace(" ", "").Split(',').ToList();
-    public int levelIndex = -1;
+    public int levelIndex = 0;
     private GameObject lastLevel = null;
     public void StartGame()
     {
-        NextGame();
+        // NextGame();
+        lastLevel = LevelNode(levelNames[levelIndex]);
+        PlayerFSM.Instance.enabled = true;
         UIManager.Instance.mainPage.SetActive(false);
         UIManager.Instance.playerUI.SetActive(true);
     }
@@ -43,9 +45,12 @@ public class GameManager : MonoSingleton<GameManager>
         => transform.Find($"../Level/Level{levelName}").gameObject;
     public void NextGame()
     {
+        var pos = lastLevel.transform.position;
         levelIndex++;
         lastLevel?.SetActive(false);
         lastLevel = LevelNode(levelNames[levelIndex]);
+        lastLevel.transform.position = pos + Vector3.right * 560;
+        Camera.main.transform.position += lastLevel.transform.position;
         lastLevel.SetActive(true);
     }
 
