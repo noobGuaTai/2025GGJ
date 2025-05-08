@@ -99,7 +99,8 @@ public class RichmanFSM : EnemyFSM
     public override void Die()
     {
         base.Die();
-        GameManager.Instance.richmanKilled = true;
+        GameManager.Instance.RichmanKilled = true;
+
         door.Open();
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,16 @@ public class GameManager : MonoSingleton<GameManager>
     public int level = 1;//第几关
     public bool getedBook = false;
     public Transform enemy;
-    public bool richmanKilled = false;
+    private bool richmanKilled = false;
+    public bool RichmanKilled
+    {
+        set
+        {
+            richmanKilled = value;
+            PoliceFSM.RiseAllPolice();
+        }
+        get => richmanKilled;
+    }
 
     public Vector2[] playerInitPos;
     public Vector3 playerInitPosition;
@@ -71,7 +81,9 @@ public class GameManager : MonoSingleton<GameManager>
         currentLevelPos += pos;
         currentCoins = PlayerFSM.Instance.param.playerInventory.coins;
         currentLevel.SetActive(true);
+        OnChangeLevel?.Invoke();
     }
+    public Action OnChangeLevel;
 
     public void LastGame()
     {
