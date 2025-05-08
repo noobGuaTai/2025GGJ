@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class SwallowedEnemy : SwallowedObject
@@ -12,12 +13,17 @@ public class SwallowedEnemy : SwallowedObject
     public override void OnBreak(BaseBubble bubble)
     {
         base.OnBreak(bubble);
-        onBreakActions?.Invoke();
+        StartCoroutine(wait());
     }
 
     public override void OnLoad(BaseBubble bubble)
     {
         base.OnLoad(bubble);
         onLoadActions?.Invoke();
+    }
+    IEnumerator wait()
+    {
+        yield return null;
+        onBreakActions?.Invoke();
     }
 }

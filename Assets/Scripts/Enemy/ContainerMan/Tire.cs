@@ -29,7 +29,7 @@ public class Tire : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Bubble"))
         {
-            if (other.gameObject.TryGetComponent<SmallBubble>(out var _))
+            if (other.gameObject.TryGetComponent<BaseBubble>(out var _))
                 BubbleQueue.DestroyBubble(other.gameObject);
         }
 

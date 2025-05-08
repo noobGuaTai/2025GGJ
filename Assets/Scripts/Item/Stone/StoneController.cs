@@ -12,9 +12,10 @@ public class StoneController : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (other.gameObject.TryGetComponent<EnemyFSM>(out var e))
         {
-            other.gameObject.SetActive(false);
+            if (e.somatoType == EnemyFSM.EnemySomatoType.Light)
+                other.gameObject.SetActive(false);
         }
     }
 

@@ -166,7 +166,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 655d7a63bd4ccaf48b008b67a9cc74bf, type: 2}
+  m_Material: {fileID: 6200000, guid: 8af89a44db7a01f47984bc2d88753bec, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -289,6 +289,8 @@ MonoBehaviour:
   deadlyLayers:
     serializedVersion: 2
     m_Bits: 256
+  dieAudio: {fileID: 0}
+  attackAudio: {fileID: 0}
   somatoType: 0
   parameters:
     currentState: 0

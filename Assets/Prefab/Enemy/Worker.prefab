@@ -140,7 +140,6 @@ GameObject:
   - component: {fileID: 687017811085693696}
   - component: {fileID: -8929536887990909823}
   - component: {fileID: -2919695179572340279}
-  - component: {fileID: -5699326640305639141}
   - component: {fileID: -3072049877793455537}
   - component: {fileID: 8918869802295284714}
   - component: {fileID: 1060872501328041528}
@@ -403,18 +402,6 @@ MonoBehaviour:
     idleToPatrolTime: {x: 0, y: 2}
     patrolToIdleTime: {x: 5, y: 10}
     attackCollider: {fileID: 1364287371229804807}
---- !u!114 &-5699326640305639141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6519572436789688924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3c2048a1c04e3347b997953abba2172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-3072049877793455537
 MonoBehaviour:
   m_ObjectHideFlags: 0

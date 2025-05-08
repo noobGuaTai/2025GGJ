@@ -384,7 +384,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 655d7a63bd4ccaf48b008b67a9cc74bf, type: 2}
+  m_Material: {fileID: 6200000, guid: 8af89a44db7a01f47984bc2d88753bec, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -626,10 +626,10 @@ MonoBehaviour:
   somatoType: 0
   param:
     currentState: 0
-    chaseSpeed: 350
+    chaseSpeed: 200
     returnSpeed: 60
     decelerateSpeed: 5
-    detectRange: 100
+    detectRange: 80
 --- !u!82 &-4962663776994910964
 AudioSource:
   m_ObjectHideFlags: 0

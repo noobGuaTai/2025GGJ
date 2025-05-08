@@ -40,6 +40,7 @@ public class PlayerParameters
     public bool isOnBigBubble => bubbleCheck.isChecked;
     internal AnythingCheck groundCheck;
     internal BubbleCheck bubbleCheck;
+    internal PlayerInventory playerInventory;
 }
 
 [Serializable]
@@ -82,6 +83,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         param.rb = GetComponent<Rigidbody2D>();
         param.animator = GetComponentInChildren<Animator>();
         param.sr = GetComponent<SpriteRenderer>();
+        param.playerInventory = GetComponent<PlayerInventory>();
         attributes.initGravityScale = param.rb.gravityScale;
         Addressables.LoadAssetAsync<GameObject>("Assets/Prefab/Bubble/SmallBubble.prefab").Completed += (AsyncOperationHandle<GameObject> handle) => { if (handle.Status == AsyncOperationStatus.Succeeded) param.bubblePrefab = handle.Result; };
         Addressables.LoadAssetAsync<GameObject>("Assets/Prefab/Item/WeaponCoin.prefab").Completed += (AsyncOperationHandle<GameObject> handle) => { if (handle.Status == AsyncOperationStatus.Succeeded) param.weaponCoinPrefab = handle.Result; };
@@ -210,8 +212,10 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
     {
         if (attributes.blowTimer <= 0f)
         {
+            param.bubblingAnimator.gameObject.transform.localPosition =
+                param.moveInput.y > 0 ? new Vector3(0, 30, 0) : param.moveInput.y < 0 ? new Vector3(0, -30, 0) : new Vector3(-23, 0, 0);
             param.bubblingAnimator.Play("bubbling");
-            Invoke("InstantiateBubble", 0.5f);
+            StartCoroutine(InstantiateBubble(param.moveInput.y));
             attributes.blowTimer = attributes.blowCooldown;
         }
         else
@@ -254,7 +258,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
                 param.blowArea.GetComponent<Blow>().direction = new Vector2(param.moveInput.x, param.moveInput.y).normalized;
                 param.animator.Play("push_up", 0, 0);
             }
-            // Push();
+            Invoke("Push", 0.2f);
             attributes.pushTimer = 0;
         }
 
@@ -262,10 +266,11 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
 
     public void PlayerThrowCoin(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started && param.playerInventory.coins > 0)
         {
             var c = Instantiate(param.weaponCoinPrefab, transform.position, Quaternion.identity).GetComponent<WeaponCoin>();
             c.onInit += () => c.rb.linearVelocity = new Vector2(-transform.localScale.x, 2).normalized * attributes.throwCoinSpeed;
+            param.playerInventory.coins--;
         }
 
     }
@@ -283,11 +288,11 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
 
 
 
-    void InstantiateBubble()
+    IEnumerator InstantiateBubble(float moveInputY)
     {
-        var b = Instantiate(param.bubblePrefab, transform.position + Vector3.left * transform.localScale.x * 23f, Quaternion.identity);
-        // b.transform.localScale = new Vector3(25, 25, 25);
-        // b.transform.SetParent(transform.Find("/Root/Bubbles"), false);
+        yield return new WaitForSeconds(0.5f);
+        Vector3 p = transform.position + (moveInputY > 0 ? new Vector3(0, 30, 0) : moveInputY < 0 ? new Vector3(0, -30, 0) : new Vector3(-23, 0, 0) * transform.localScale.x);
+        var b = Instantiate(param.bubblePrefab, p, Quaternion.identity);
         delegateParam.onBlowBubble?.Invoke();
     }
 

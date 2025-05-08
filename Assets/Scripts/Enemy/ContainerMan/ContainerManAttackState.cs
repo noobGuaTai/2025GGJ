@@ -55,5 +55,6 @@ public class ContainerManAttackState : IState
         var tire = GameObject.Instantiate(fsm.param.tirePrefab, new Vector3(fsm.transform.position.x, fsm.transform.position.y + 10f), Quaternion.identity).GetComponent<Tire>();
         tire.Init(fsm.transform.localScale.x * Vector2.right, fsm.gameObject);
         tire.Attack();
+        tire.transform.parent = fsm.transform;
     }
 }

@@ -175,7 +175,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 30, y: 30}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -1170,7 +1170,7 @@ MonoBehaviour:
     bubblingAnimator: {fileID: 5408160020305475881}
     jumpInput: 0
   attributes:
-    blowCooldown: 1
+    blowCooldown: 0.7
     moveSpeed: 100
     health: 0
     jumpSpeed: 250
