@@ -167,8 +167,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2028050695
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -933,7 +933,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2028050695
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -889739676950766307, guid: 3ee95ae693214e54396eefd33fd4f6a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1169,6 +1169,7 @@ MonoBehaviour:
     blowArea: {fileID: 813489461257095057}
     bubblingAnimator: {fileID: 5408160020305475881}
     jumpInput: 0
+    initGravityScale: 0
   attributes:
     blowCooldown: 0.7
     moveSpeed: 100
@@ -1363,7 +1364,7 @@ MonoBehaviour:
   checkRadius: 2
   layer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 576
   isChecked: 0
 --- !u!114 &5553140781517143693
 MonoBehaviour:

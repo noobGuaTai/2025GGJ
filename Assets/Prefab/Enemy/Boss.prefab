@@ -15,11 +15,11 @@ GameObject:
   - component: {fileID: 687017811085693696}
   - component: {fileID: -8929536887990909823}
   - component: {fileID: -3072049877793455537}
-  - component: {fileID: 1060872501328041528}
-  - component: {fileID: 8047810682933925830}
+  - component: {fileID: 5482216318276291448}
   - component: {fileID: 4499308980323295100}
+  - component: {fileID: 302436655885630391}
   m_Layer: 9
-  m_Name: Richman
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayerID: 1375231315
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7484083665311710167, guid: 4963729c162c58f4bacb69325e47a647, type: 3}
+  m_Sprite: {fileID: 452173336742308625, guid: b740aa121ce08c741a57018191c1504b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -160,7 +160,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 32, y: 40}
+    oldSize: {x: 60, y: 40}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -206,7 +206,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 32, y: 40}
+    oldSize: {x: 60, y: 40}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -224,7 +224,7 @@ Animator:
   m_GameObject: {fileID: 6519572436789688924}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5e07dc58a9ef17e469f55358ab96b7a0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6a88cad85e5bbae4faf40a0dbc20e8cc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c2c78bc7b7bf6458a186c9433230b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1060872501328041528
+--- !u!114 &5482216318276291448
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -257,36 +257,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6519572436789688924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2998b35cd967df459c0a33045016e7d, type: 3}
+  m_Script: {fileID: 11500000, guid: d5c9891b7e3d0ed47a674d36e6f82cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8047810682933925830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6519572436789688924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e78df280de88f7408e9065ad493a8cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  animator: {fileID: 0}
-  initPos: {x: 0, y: 0}
-  health: 0
-  deadlyLayers:
+  checkMethod: 0
+  anythingCheckpoints:
+  - {fileID: 0}
+  checkRadius: 2
+  layer:
     serializedVersion: 2
-    m_Bits: 0
-  dieAudio: {fileID: 0}
-  attackAudio: {fileID: 0}
-  somatoType: 0
-  param:
-    currentState: 0
-    needCoinNum: 1
-    currentHasCoin: 0
-  door: {fileID: 0}
+    m_Bits: 64
+  isChecked: 0
 --- !u!58 &4499308980323295100
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -323,3 +304,29 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 20
+--- !u!114 &302436655885630391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519572436789688924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c4a73566485ed4ba0443a95dbbf715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  animator: {fileID: 0}
+  initPos: {x: 0, y: 0}
+  health: 0
+  deadlyLayers:
+    serializedVersion: 2
+    m_Bits: 1048832
+  dieAudio: {fileID: 0}
+  attackAudio: {fileID: 0}
+  somatoType: 0
+  param:
+    currentState: 0
+    enemys: []
+    spawnInterval: 3

@@ -303,13 +303,13 @@ MonoBehaviour:
     - -20
     - 20
     patrolSpeed: 20
-    sprintBaseSpeed: 0
-    chargingDurationUpper: 5
+    sprintBaseSpeed: 70
+    chargingDurationUpper: 2
     chargingDurationLower: 1
-    speedIncrementOnChargingPerSec: 4
-    canCancelChargingDuration: 2
+    speedIncrementOnChargingPerSec: 30
+    canCancelChargingDuration: 1
     chargingDuration: 0
-    decelerateSpeed: 10
+    decelerateSpeed: 30
     detectRange: 50
     returnDetectRange: 80
     returnSpeed: 40

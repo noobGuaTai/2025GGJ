@@ -41,6 +41,7 @@ public class PlayerParameters
     internal AnythingCheck groundCheck;
     internal BubbleCheck bubbleCheck;
     internal PlayerInventory playerInventory;
+    public float initGravityScale;
 }
 
 [Serializable]
@@ -104,6 +105,8 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         param.groundCheck = GetComponent<AnythingCheck>();
         param.bubbleCheck = GetComponent<BubbleCheck>();
         enabled = false;
+        param.initGravityScale = param.rb.gravityScale;
+        param.rb.gravityScale = 0;
     }
 
     void InitAction()

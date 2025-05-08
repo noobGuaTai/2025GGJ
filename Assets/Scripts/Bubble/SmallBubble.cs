@@ -182,6 +182,10 @@ public class SmallBubble : BaseBubble
             else
                 base.SwallowObject(other);
         }
+        if (other.gameObject.layer == LayerMask.NameToLayer("Stone"))
+        {
+            base.SwallowObject(other);
+        }
     }
 
     void OnDestroy()

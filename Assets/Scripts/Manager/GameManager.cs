@@ -36,6 +36,7 @@ public class GameManager : MonoSingleton<GameManager>
         PlayerFSM.Instance.param.rb.linearVelocity = Vector2.zero;
         BubbleQueue.Clear();
         PlayerFSM.Instance.param.playerInventory.coins = currentCoins;
+        currentLevel.SetActive(true);
     }
     [Header("Level")]
     public string levelNameString = "";
@@ -47,6 +48,7 @@ public class GameManager : MonoSingleton<GameManager>
         // NextGame();
         lastLevel = LevelNode(levelNames[levelIndex]);
         PlayerFSM.Instance.enabled = true;
+        PlayerFSM.Instance.param.rb.gravityScale = PlayerFSM.Instance.param.initGravityScale;
         UIManager.Instance.mainPage.SetActive(false);
         UIManager.Instance.playerUI.SetActive(true);
     }
@@ -68,6 +70,7 @@ public class GameManager : MonoSingleton<GameManager>
         currentLevelPrefab = level;
         currentLevelPos += pos;
         currentCoins = PlayerFSM.Instance.param.playerInventory.coins;
+        currentLevel.SetActive(true);
     }
 
     public void LastGame()
@@ -111,5 +114,10 @@ public class GameManager : MonoSingleton<GameManager>
     // 关闭应用程序
     Application.Quit();
 #endif
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0.5f;
     }
 }
