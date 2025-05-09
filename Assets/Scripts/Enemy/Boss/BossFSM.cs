@@ -94,6 +94,14 @@ public class BossFSM : EnemyFSM
     public override void Die()
     {
         base.Die();
-        GameManager.Instance.GameOver();
+        GameManager.Instance.GameStep();
+    }
+
+    public void SpawnEnemy()
+    {
+        var spawnPos = param.spawnPoints[UnityEngine.Random.Range(0, param.spawnPoints.Length)].position;
+        GameObject.Instantiate(param.smoke, spawnPos, Quaternion.identity);
+        var g = GameObject.Instantiate(param.enemys[UnityEngine.Random.Range(0, param.enemys.Length)], spawnPos, Quaternion.identity);
+        g.transform.parent = transform;
     }
 }

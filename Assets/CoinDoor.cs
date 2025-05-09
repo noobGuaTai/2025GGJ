@@ -3,6 +3,12 @@ using UnityEngine;
 
 public class CoinDoor : MonoBehaviour
 {
+    public bool isOpenOnStart = false;
+    void Start()
+    {
+        if (GameManager.Instance.isReturning && isOpenOnStart)
+            Open();
+    }
     public void Open()
     {
         Debug.Log("[CoinDoor] open");

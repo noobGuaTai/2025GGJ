@@ -15,8 +15,6 @@ GameObject:
   - component: {fileID: 687017811085693696}
   - component: {fileID: -8929536887990909823}
   - component: {fileID: -3072049877793455537}
-  - component: {fileID: 5482216318276291448}
-  - component: {fileID: 4499308980323295100}
   - component: {fileID: 302436655885630391}
   - component: {fileID: -7124334788637326561}
   m_Layer: 9
@@ -157,10 +155,10 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.316, y: 0.372}
     oldSize: {x: 60, y: 40}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
@@ -203,10 +201,10 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.316, y: 0.372}
     oldSize: {x: 60, y: 40}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
@@ -249,62 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c2c78bc7b7bf6458a186c9433230b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5482216318276291448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6519572436789688924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5c9891b7e3d0ed47a674d36e6f82cd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  checkMethod: 0
-  anythingCheckpoints:
-  - {fileID: 0}
-  checkRadius: 2
-  layer:
-    serializedVersion: 2
-    m_Bits: 64
-  isChecked: 0
---- !u!58 &4499308980323295100
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6519572436789688924}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 8
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 8323063
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 20
 --- !u!114 &302436655885630391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,11 +271,22 @@ MonoBehaviour:
   somatoType: 0
   param:
     currentState: 0
-    enemys: []
-    spawnInterval: 3
+    enemys:
+    - {fileID: 6519572436789688924, guid: b6a53147b54cd15498fc8de8e57f3dd0, type: 3}
+    - {fileID: 6519572436789688924, guid: 08ba18f8bfa86564b8cf2e66f53e1442, type: 3}
+    - {fileID: 6519572436789688924, guid: 585f913a54f8b864e8d7e7e694db413d, type: 3}
+    - {fileID: 6519572436789688924, guid: 7ae2f13131c82734bb5038ec67616dcb, type: 3}
+    - {fileID: 6519572436789688924, guid: ee98d6e454eebd845abdc33d630db8a6, type: 3}
+    - {fileID: 6519572436789688924, guid: 4e0d9ddb4bd51b74b8686a64e8ef29a6, type: 3}
+    - {fileID: 6519572436789688924, guid: 0e12ebfd9d3be404db021f3d796448df, type: 3}
+    - {fileID: 6519572436789688924, guid: 744fe1d7f8fef1b46821a6f782dbd18c, type: 3}
+    - {fileID: 6519572436789688924, guid: 448118e3e75267e4f9fcf4f0d4bdac8a, type: 3}
+    - {fileID: 6519572436789688924, guid: d9f306e64c05dfa48af429d3d58181f1, type: 3}
+    - {fileID: 6519572436789688924, guid: 3972053ba6a359b40bb8daffd2f9aca9, type: 3}
+    spawnInterval: 7
     spawnPoints: []
     spawnPointsParent: {fileID: 0}
-    smoke: {fileID: 0}
+    smoke: {fileID: 3719655069984880188, guid: 67fde906207f0d940bf8ec6960fd33a1, type: 3}
 --- !u!114 &-7124334788637326561
 MonoBehaviour:
   m_ObjectHideFlags: 0

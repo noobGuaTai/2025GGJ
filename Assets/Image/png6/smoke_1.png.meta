@@ -1,58 +1,40 @@
 fileFormatVersion: 2
-guid: b740aa121ce08c741a57018191c1504b
+guid: 6d7b54d2daa1a524e91f0611ee33505e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 452173336742308625
-    second: boss_die_0
+      213: 784732256070717992
+    second: smoke_1_0
   - first:
-      213: 3077742312518270781
-    second: boss_die_1
+      213: -3408495463162915663
+    second: smoke_1_1
   - first:
-      213: 6511294349804783910
-    second: boss_die_2
+      213: -166204928689896171
+    second: smoke_1_2
   - first:
-      213: 1128099875486059516
-    second: boss_die_3
+      213: 3264293924362480483
+    second: smoke_1_3
   - first:
-      213: -8248755089659597997
-    second: boss_die_4
+      213: -8305643540642714450
+    second: smoke_1_4
   - first:
-      213: 2257939132917655216
-    second: boss_die_5
+      213: 5163810351582277450
+    second: smoke_1_5
   - first:
-      213: 1971816170318152139
-    second: boss_die_6
+      213: -5138727429217585563
+    second: smoke_1_6
   - first:
-      213: -8199519593938592833
-    second: boss_die_7
+      213: 5537052990890602896
+    second: smoke_1_7
   - first:
-      213: -7286316081891554658
-    second: boss_die_8
+      213: 651789077576799135
+    second: smoke_1_8
   - first:
-      213: 923966738900205637
-    second: boss_die_9
+      213: 1101016609011029413
+    second: smoke_1_9
   - first:
-      213: -2283992782015388896
-    second: boss_die_10
-  - first:
-      213: -7654729240197452408
-    second: boss_die_11
-  - first:
-      213: 1924807565323185977
-    second: boss_die_12
-  - first:
-      213: 8997910571957715809
-    second: boss_die_13
-  - first:
-      213: -7016714505668820691
-    second: boss_die_14
-  - first:
-      213: 6536647109657925534
-    second: boss_die_15
-  - first:
-      213: -5172242850354350788
-    second: boss_die_16
+      213: 5548714163343665844
+    second: smoke_1_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -161,309 +143,243 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boss_die_0
+      name: smoke_1_0
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 76
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 822d2e644dde3ea00800000000000000
+      internalID: 784732256070717992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smoke_1_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 82
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b4d4ab6f6792b0d0800000000000000
+      internalID: -3408495463162915663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smoke_1_2
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 77
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51505897f7581bdf0800000000000000
+      internalID: -166204928689896171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smoke_1_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 60
-        height: 40
-      alignment: 9
-      pivot: {x: 0.316, y: 0.372}
+        y: 32
+        width: 32
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 11bad690141764600800000000000000
-      internalID: 452173336742308625
+      spriteID: 36b671c770a1d4d20800000000000000
+      internalID: 3264293924362480483
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_die_1
+      name: smoke_1_4
       rect:
         serializedVersion: 2
-        x: 60
-        y: 0
-        width: 60
-        height: 40
-      alignment: 9
-      pivot: {x: 0.316, y: 0.372}
+        x: 23
+        y: 69
+        width: 22
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d3f37df935656ba20800000000000000
-      internalID: 3077742312518270781
+      spriteID: eac29f8743d6cbc80800000000000000
+      internalID: -8305643540642714450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_die_2
+      name: smoke_1_5
       rect:
         serializedVersion: 2
-        x: 120
-        y: 0
-        width: 60
-        height: 40
-      alignment: 9
-      pivot: {x: 0.316, y: 0.372}
+        x: 51
+        y: 67
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6294f1c76b3cc5a50800000000000000
-      internalID: 6511294349804783910
+      spriteID: a4feb8dd72a89a740800000000000000
+      internalID: 5163810351582277450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_die_3
+      name: smoke_1_6
       rect:
         serializedVersion: 2
-        x: 180
-        y: 0
-        width: 60
-        height: 40
-      alignment: 9
-      pivot: {x: 0.316, y: 0.372}
+        x: 67
+        y: 71
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cfb428d1cd0d7af00800000000000000
-      internalID: 1128099875486059516
+      spriteID: 566fde711a29fa8b0800000000000000
+      internalID: -5138727429217585563
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_die_4
+      name: smoke_1_7
       rect:
         serializedVersion: 2
-        x: 240
-        y: 0
-        width: 60
-        height: 40
-      alignment: 9
-      pivot: {x: 0.316, y: 0.372}
+        x: 83
+        y: 44
+        width: 10
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 35be4a123f8868d80800000000000000
-      internalID: -8248755089659597997
+      spriteID: 0917c80db5097dc40800000000000000
+      internalID: 5537052990890602896
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_die_5
+      name: smoke_1_8
       rect:
         serializedVersion: 2
-        x: 300
-        y: 0
-        width: 60
-        height: 40
-      alignment: 9
-      pivot: {x: 0.316, y: 0.372}
+        x: 34
+        y: 51
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9f207666976214b4d8a6278b9770b373
-      internalID: 2257939132917655216
+      spriteID: f93d17576be9b0900800000000000000
+      internalID: 651789077576799135
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_die_6
+      name: smoke_1_9
       rect:
         serializedVersion: 2
-        x: 360
-        y: 0
-        width: 60
-        height: 40
-      alignment: 9
-      pivot: {x: 0.316, y: 0.372}
+        x: 51
+        y: 37
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9586194b4bbf5d34ab48a0746f21c92b
-      internalID: 1971816170318152139
+      spriteID: 5a558efb5c8974f00800000000000000
+      internalID: 1101016609011029413
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_die_7
+      name: smoke_1_10
       rect:
         serializedVersion: 2
-        x: 420
-        y: 0
-        width: 60
-        height: 40
-      alignment: 9
-      pivot: {x: 0.316, y: 0.372}
+        x: 36
+        y: 33
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 1862327b7950fe14bbf9c67a0f7b020e
-      internalID: -8199519593938592833
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boss_die_8
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 0
-        width: 60
-        height: 40
-      alignment: 9
-      pivot: {x: 0.316, y: 0.372}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1ab63a63f17d69b4bb6e7a947de1c43a
-      internalID: -7286316081891554658
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boss_die_9
-      rect:
-        serializedVersion: 2
-        x: 540
-        y: 0
-        width: 60
-        height: 40
-      alignment: 9
-      pivot: {x: 0.316, y: 0.372}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: deb8e5948dba1934684936e4caf21166
-      internalID: 923966738900205637
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boss_die_10
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 0
-        width: 60
-        height: 40
-      alignment: 9
-      pivot: {x: 0.316, y: 0.372}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c685426a6c3fe248a2168bf54de1b4c
-      internalID: -2283992782015388896
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boss_die_11
-      rect:
-        serializedVersion: 2
-        x: 660
-        y: 0
-        width: 60
-        height: 40
-      alignment: 9
-      pivot: {x: 0.316, y: 0.372}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48cea9a7470708e4392c0e645835eed6
-      internalID: -7654729240197452408
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boss_die_12
-      rect:
-        serializedVersion: 2
-        x: 720
-        y: 0
-        width: 60
-        height: 40
-      alignment: 9
-      pivot: {x: 0.316, y: 0.372}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3e903d51421b4934d873845d27c3868e
-      internalID: 1924807565323185977
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boss_die_13
-      rect:
-        serializedVersion: 2
-        x: 780
-        y: 0
-        width: 60
-        height: 40
-      alignment: 9
-      pivot: {x: 0.316, y: 0.372}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a0cc456f52c114849b2bd220b20899a5
-      internalID: 8997910571957715809
+      spriteID: 4ba274a122ef00d40800000000000000
+      internalID: 5548714163343665844
       vertices: []
       indices: 
       edges: []
@@ -472,7 +388,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 780b1cc8adae0d7449880141e17a2933
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -482,20 +398,17 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      boss_die_0: 452173336742308625
-      boss_die_1: 3077742312518270781
-      boss_die_10: -2283992782015388896
-      boss_die_11: -7654729240197452408
-      boss_die_12: 1924807565323185977
-      boss_die_13: 8997910571957715809
-      boss_die_2: 6511294349804783910
-      boss_die_3: 1128099875486059516
-      boss_die_4: -8248755089659597997
-      boss_die_5: 2257939132917655216
-      boss_die_6: 1971816170318152139
-      boss_die_7: -8199519593938592833
-      boss_die_8: -7286316081891554658
-      boss_die_9: 923966738900205637
+      smoke_1_0: 784732256070717992
+      smoke_1_1: -3408495463162915663
+      smoke_1_10: 5548714163343665844
+      smoke_1_2: -166204928689896171
+      smoke_1_3: 3264293924362480483
+      smoke_1_4: -8305643540642714450
+      smoke_1_5: 5163810351582277450
+      smoke_1_6: -5138727429217585563
+      smoke_1_7: 5537052990890602896
+      smoke_1_8: 651789077576799135
+      smoke_1_9: 1101016609011029413
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

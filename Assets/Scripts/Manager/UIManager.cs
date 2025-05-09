@@ -186,11 +186,13 @@ public class UIManager : MonoSingleton<UIManager>
 
     public void RollUpGameOver()
     {
+        gameOver.SetActive(true);
         StartCoroutine(RollUpGameOverCoroutine());
     }
 
     private IEnumerator RollUpGameOverCoroutine()
     {
+        yield return new WaitForSeconds(3f);
         float duration = 8f; // 持续时间为3秒
         float elapsed = 0f;
 

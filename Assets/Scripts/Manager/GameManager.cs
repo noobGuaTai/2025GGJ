@@ -21,7 +21,7 @@ public class GameManager : MonoSingleton<GameManager>
         get => richmanKilled;
     }
 
-    public Vector2[] playerInitPos;
+    // public Vector2[] playerInitPos;
     public Vector3 playerInitPosition;
     public GameObject currentLevel;
     public GameObject currentLevelPrefab;
@@ -38,6 +38,9 @@ public class GameManager : MonoSingleton<GameManager>
         {"Sunny", 3},
         {"Underground", 4},
     };
+
+    public GameObject firstLevelPrefab;
+    public Vector3 firstLevelPlayerPos;
     void Start()
     {
         bgm = GetComponents<AudioSource>();
@@ -88,6 +91,7 @@ public class GameManager : MonoSingleton<GameManager>
         UIManager.Instance.mainPage.SetActive(false);
         UIManager.Instance.playerUI.SetActive(true);
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("RightBorder"), true);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("LeftBorder"), false);
     }
     public GameObject LevelNode(string levelName)
         => transform.Find($"../Level/Level{levelName}").gameObject;
@@ -124,6 +128,16 @@ public class GameManager : MonoSingleton<GameManager>
             }
         }
 
+        if (isReturning)
+        {
+            foreach (Transform child in currentLevel.transform)
+            {
+                if (child.TryGetComponent<EnemyFSM>(out var _) ||
+                    child.gameObject.layer == LayerMask.NameToLayer("Coin") ||
+                        child.gameObject.layer == LayerMask.NameToLayer("Stone")) Destroy(child.gameObject);
+            }
+        }
+
         OnChangeLevel?.Invoke();
     }
     public Action OnChangeLevel;
@@ -149,9 +163,18 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void BackGame()
     {
-        levels[level].SetActive(false);
-        level = 0;
-        levels[level].SetActive(true);
+        // levels[level].SetActive(false);
+        // level = 0;
+        // levels[level].SetActive(true);
+        // Destroy(currentLevel);
+        // currentLevel = Instantiate(firstLevelPrefab, Vector3.zero, Quaternion.identity);
+        // playerInitPosition = firstLevelPlayerPos;
+        // currentLevelPrefab = firstLevelPrefab;
+        // Camera.main.transform.position = new Vector3(0, -67, -10);
+        // PlayerFSM.Instance.transform.position = firstLevelPlayerPos;
+        NextGame(firstLevelPrefab, new Vector3(560, 0, 0));
+        PlayerFSM.Instance.transform.position = firstLevelPlayerPos;
+        playerInitPosition = firstLevelPlayerPos;
         UIManager.Instance.mainPage.SetActive(true);
         UIManager.Instance.playerUI.SetActive(false);
         UIManager.Instance.gameOver.SetActive(false);
@@ -171,12 +194,24 @@ public class GameManager : MonoSingleton<GameManager>
 #endif
     }
 
-    public void GameOver()
+    public void GameStep()
     {
         isReturning = true;
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("LeftBorder"), true);
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("RightBorder"), false);
 
+    }
+
+    public void GameOver()
+    {
+        isReturning = false;
+        StartCoroutine(GameOverCoroutine());
+    }
+
+    IEnumerator GameOverCoroutine()
+    {
+        yield return new WaitForSeconds(6f);
+        UIManager.Instance.RollUpGameOver();
     }
 
     void DisableDoor()
