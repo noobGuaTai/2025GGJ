@@ -1212,6 +1212,7 @@ MonoBehaviour:
     isBlowing: 0
     throwCoinSpeed: 130
     pushCooldown: 0.7
+    blowRecoil: 700
 --- !u!95 &1820713251153905025
 Animator:
   serializedVersion: 7
@@ -1269,13 +1270,13 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 8af89a44db7a01f47984bc2d88753bec, type: 2}
+  m_Material: {fileID: 6200000, guid: 655d7a63bd4ccaf48b008b67a9cc74bf, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1321,7 +1322,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1048447
+    m_Bits: 8388543
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

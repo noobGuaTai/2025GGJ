@@ -104,7 +104,7 @@ public class SmallBubble : BaseBubble
             }
         }
 
-        if (other.gameObject.layer == LayerMask.NameToLayer("Item") || other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Item"))
         {
             float angle = Vector2.Angle(Vector2.up, (other.transform.position - transform.position).normalized);
             if (angle <= 60f && !isBeingDestroyed)
@@ -114,6 +114,20 @@ public class SmallBubble : BaseBubble
                 bubblesBeingMerged.Remove(GetInstanceID());
                 handledBubbleCollisions.Remove(GetInstanceID());
                 SafeDestroyBubble();
+            }
+        }
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            float angle = Vector2.Angle(Vector2.up, (other.transform.position - transform.position).normalized);
+            if (angle <= 60f && !isBeingDestroyed)
+            {
+                isBeingDestroyed = true;
+                other.gameObject.GetComponent<Rigidbody2D>().linearVelocityY = reboundVelocity;
+                bubblesBeingMerged.Remove(GetInstanceID());
+                handledBubbleCollisions.Remove(GetInstanceID());
+                SafeDestroyBubble();
+                if (TryGetComponent<EnemyFSM>(out var e)) e.Die();
             }
         }
     }

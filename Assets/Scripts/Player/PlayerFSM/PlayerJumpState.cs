@@ -42,7 +42,7 @@ public class PlayerJumpState : IState
     public void OnUpdate()
     {
         timer += Time.deltaTime;
-        if (fsm.param.isOnGround && timer > 0.2f)
+        if (fsm.param.isOnGround && timer > 0.5f)
             fsm.ChangeState(PlayerStateType.Idle);
     }
 
