@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public enum PoliceStateType
@@ -39,11 +40,19 @@ public class PoliceFSM : EnemyFSM
     public IState currentState;
     public Dictionary<PoliceStateType, IState> state = new Dictionary<PoliceStateType, IState>();
     Dictionary<PoliceStateType, Action> enterStateActions = new Dictionary<PoliceStateType, Action>();
+    static HashSet<GameObject> AllPolice = new();
+    static public void RiseAllPolice()
+    {
+        AllPolice.ToList().ForEach(x => x.SetActive(true));
+    }
 
     public override void Awake()
     {
         base.Awake();
         param.groundCheck = GetComponent<AnythingCheck>();
+        AllPolice.Add(gameObject);
+        if(GameManager.Instance.RichmanKilled)
+            gameObject.SetActive(false);
     }
 
     public override void Start()
@@ -140,5 +149,9 @@ public class PoliceFSM : EnemyFSM
         {
             Destroy(other.gameObject);
         }
+    }
+    public void OnDestroy()
+    {
+        AllPolice.Remove(gameObject);
     }
 }

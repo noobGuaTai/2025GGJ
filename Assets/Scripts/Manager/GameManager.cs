@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,16 @@ public class GameManager : MonoSingleton<GameManager>
     public int level = 1;//第几关
     public bool getedBook = false;
     public Transform enemy;
-    public bool richmanKilled = false;
+    private bool richmanKilled = false;
+    public bool RichmanKilled
+    {
+        set
+        {
+            richmanKilled = value;
+            PoliceFSM.RiseAllPolice();
+        }
+        get => richmanKilled;
+    }
 
     public Vector2[] playerInitPos;
     public Vector3 playerInitPosition;
@@ -17,6 +27,7 @@ public class GameManager : MonoSingleton<GameManager>
     public GameObject currentLevelPrefab;
     public Vector3 currentLevelPos;
     public int currentCoins;
+    public bool isReturning;
     public void ResetGame()
     {
         // Transform stone = transform.Find($"/Root/Level/Level{level}/Stone");
@@ -30,8 +41,12 @@ public class GameManager : MonoSingleton<GameManager>
         //     if (e != null)
         //         e.ResetSelf();
         // }
-        Destroy(currentLevel);
-        currentLevel = Instantiate(currentLevelPrefab, currentLevelPos, Quaternion.identity);
+        if (!isReturning)
+        {
+            Destroy(currentLevel);
+            currentLevel = Instantiate(currentLevelPrefab, currentLevelPos, Quaternion.identity);
+        }
+
         PlayerFSM.Instance.transform.position = playerInitPosition;
         PlayerFSM.Instance.param.rb.linearVelocity = Vector2.zero;
         BubbleQueue.Clear();
@@ -55,6 +70,8 @@ public class GameManager : MonoSingleton<GameManager>
         PlayerFSM.Instance.param.rb.gravityScale = PlayerFSM.Instance.param.initGravityScale;
         UIManager.Instance.mainPage.SetActive(false);
         UIManager.Instance.playerUI.SetActive(true);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("RightBorder"), true);
+
     }
     public GameObject LevelNode(string levelName)
         => transform.Find($"../Level/Level{levelName}").gameObject;
@@ -68,6 +85,7 @@ public class GameManager : MonoSingleton<GameManager>
         // Camera.main.transform.position += lastLevel.transform.position;
         // lastLevel.SetActive(true);
         Destroy(currentLevel);
+        DisableDoor();
         currentLevel = Instantiate(level, currentLevel.transform.position + pos, Quaternion.identity);
         Camera.main.transform.position += pos;
         playerInitPosition = PlayerFSM.Instance.transform.position;
@@ -80,7 +98,9 @@ public class GameManager : MonoSingleton<GameManager>
         if (currentLevel.name.Contains("Sunny_1") && currentLevel.transform.position.y - playerInitPosition.y > 200f)
             PlayerFSM.Instance.param.rb.linearVelocityY = PlayerFSM.Instance.attributes.jumpSpeed;
 
+        OnChangeLevel?.Invoke();
     }
+    public Action OnChangeLevel;
 
     public void LastGame()
     {
@@ -127,6 +147,20 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void GameOver()
     {
-        Time.timeScale = 0.5f;
+        isReturning = true;
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("LeftBorder"), true);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("RightBorder"), false);
+
+    }
+
+    void DisableDoor()
+    {
+        foreach (Transform child in currentLevel.transform)
+        {
+            if (child.name.Contains("Door"))
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
     }
 }

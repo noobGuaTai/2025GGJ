@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public enum RichmanStateType
@@ -50,6 +51,8 @@ public class RichmanFSM : EnemyFSM
     void Update()
     {
         currentState.OnUpdate();
+        var tmp =transform.Find("Label").GetComponent<TextMeshPro>();
+        tmp.text = $"Coin: {param.currentHasCoin}/{param.needCoinNum}";
     }
 
     void FixedUpdate()
@@ -99,7 +102,9 @@ public class RichmanFSM : EnemyFSM
     public override void Die()
     {
         base.Die();
-        GameManager.Instance.richmanKilled = true;
+        GameManager.Instance.RichmanKilled = true;
+
+        door.Open();
     }
 
 }
