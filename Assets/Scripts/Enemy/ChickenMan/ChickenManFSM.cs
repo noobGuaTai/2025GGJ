@@ -25,6 +25,7 @@ public class ChickenManParameters
 
 public class ChickenManFSM : EnemyFSM
 {
+    public TargetCollect targetCollect => transform.Find("EnemyDetect").GetComponent<TargetCollect>();
     public ChickenManParameters parameters;
     public IState currentState;
     public Dictionary<ChickenManStateType, IState> state = new Dictionary<ChickenManStateType, IState>();

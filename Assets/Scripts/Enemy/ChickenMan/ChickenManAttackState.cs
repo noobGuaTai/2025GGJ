@@ -18,7 +18,7 @@ public class ChickenManAttackState : IState
     {
         fsm.animator.Play("attack", 0, 0);
         fsm.attackAudio.Play();
-        var target = fsm.GetComponent<TargetCollect>().attackTarget.First();
+        var target = fsm.targetCollect.attackTarget.First();
         var dir = Mathf.Sign(target.transform.position.x - fsm.transform.position.x);
         fsm.attackDirection = dir;
         var tw = fsm.GetOrAddComponent<Tween>();

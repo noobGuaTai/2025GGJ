@@ -29,7 +29,7 @@ public class ChickenManPatrolState : IState
 
     public void OnFixedUpdate()
     {
-        if (fsm.GetComponent<TargetCollect>().attackTarget.Count == 0)
+        if (fsm.targetCollect.attackTarget.Count == 0)
             return;
         fsm.ChangeState(ChickenManStateType.Attack);
     }

@@ -1164,7 +1164,7 @@ Rigidbody2D:
   m_Mass: 5
   m_LinearDamping: 0.5
   m_AngularDamping: 0.05
-  m_GravityScale: 50
+  m_GravityScale: 100
   m_Material: {fileID: 6200000, guid: 655d7a63bd4ccaf48b008b67a9cc74bf, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1209,7 +1209,7 @@ MonoBehaviour:
     blowCooldown: 0.7
     moveSpeed: 100
     health: 0
-    jumpSpeed: 250
+    jumpSpeed: 360
     isBlowing: 0
     throwCoinSpeed: 130
     pushCooldown: 0.7
