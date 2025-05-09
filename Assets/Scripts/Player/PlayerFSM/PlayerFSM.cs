@@ -172,7 +172,8 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         transform.rotation = Quaternion.Euler(0, 0, -90 * transform.localScale.x);
         enabled = false;
         GetComponent<Collider2D>().enabled = false;
-        param.rb.gravityScale = 0;
+        // param.rb.gravityScale = 0;
+        param.rb.bodyType = RigidbodyType2D.Kinematic;
         UIManager.Instance.CancelInvoke("CloseDialog");
         Invoke("Restore", 1f);
         delegateParam.onDie?.Invoke();
@@ -183,7 +184,8 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         GameManager.Instance.ResetGame();
         enabled = true;
         GetComponent<Collider2D>().enabled = true;
-        param.rb.gravityScale = attributes.initGravityScale;
+        // param.rb.gravityScale = attributes.initGravityScale;
+        param.rb.bodyType = RigidbodyType2D.Dynamic;
         transform.rotation = Quaternion.Euler(0, 0, 0);
         // UIManager.Instance.ShowDialog($"enemy{GameManager.Instance.level}");
     }
@@ -227,14 +229,15 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
             param.bubblingAnimator.Play("bubbling");
             var tw = gameObject.GetOrAddComponent<Tween>();
             var moveInputY = param.moveInput.y;
-            tw.AddTween("BubbleRecoil", (x) => {
+            tw.AddTween("BubbleRecoil", (x) =>
+            {
                 var force = moveInputY > 0 ? Vector2.down : moveInputY < 0 ? Vector2.up : Vector2.right * transform.localScale.x;
                 if (moveInputY != 0) force *= attributes.bubbleRecoilYScale;
                 param.rb.AddForce(force * attributes.bubbleRecoil.Evaluate(x), ForceMode2D.Impulse);
-                
+
             },
                 0, 1, 0.5f).Play();
-                
+
             StartCoroutine(InstantiateBubble(moveInputY));
             attributes.blowTimer = attributes.blowCooldown;
         }

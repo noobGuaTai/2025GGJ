@@ -7,6 +7,7 @@ public class Car : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             PlayerFSM.Instance.transform.position = new Vector3(-16000, 0, 0);
+            GetComponent<Animator>().Play("drive", 0, 0);
             GameManager.Instance.GameOver();
             var t = gameObject.AddComponent<Tween>();
             t.AddTween("drive", x =>

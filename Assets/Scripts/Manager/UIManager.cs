@@ -32,6 +32,7 @@ public class UIManager : MonoSingleton<UIManager>
     private Camera mainCamera;
     private RectTransform canvasRectTransform;
     public GameObject level0Helper;
+    public GameObject level1Helper;
 
     void Start()
     {
@@ -62,8 +63,6 @@ public class UIManager : MonoSingleton<UIManager>
         if (enemyDialog != null)
             enemyDialog.gameObject.SetActive(false);
 
-        Action a = HideHelper;
-        GameManager.Instance.OnChangeLevel += a.AsOneTimeAction();
     }
 
     void LateUpdate()
@@ -217,5 +216,6 @@ public class UIManager : MonoSingleton<UIManager>
         rectTransform.anchoredPosition = endPos;
     }
 
-    public void HideHelper() => level0Helper.SetActive(false);
+    public void ShowHelper0(bool isShow) => level0Helper.SetActive(isShow);
+    public void ShowHelper1(bool isShow) => level1Helper.SetActive(isShow);
 }

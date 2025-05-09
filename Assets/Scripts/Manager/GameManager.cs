@@ -37,6 +37,7 @@ public class GameManager : MonoSingleton<GameManager>
         {"Rain", 2},
         {"Sunny", 3},
         {"Underground", 4},
+        {"GameOver",5}
     };
 
     public GameObject firstLevelPrefab;
@@ -137,8 +138,20 @@ public class GameManager : MonoSingleton<GameManager>
                         child.gameObject.layer == LayerMask.NameToLayer("Stone")) Destroy(child.gameObject);
             }
         }
-
         OnChangeLevel?.Invoke();
+
+        if (isReturning)
+            return;
+        if (currentLevel.name.Contains("Level0") || currentLevel.name.Contains("Tutorial_0"))
+            UIManager.Instance.ShowHelper0(true);
+        else
+            UIManager.Instance.ShowHelper0(false);
+        if (currentLevel.name.Contains("Tutorial_1"))
+            UIManager.Instance.ShowHelper1(true);
+        else
+            UIManager.Instance.ShowHelper1(false);
+
+
     }
     public Action OnChangeLevel;
 

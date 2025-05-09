@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -296,6 +297,7 @@ public class EnemyFSM : MonoBehaviour
         animator.Play("die", 0, 0);
         enabled = false;
         StopAllCoroutines();
+        GetComponentsInChildren<Collider2D>().Any(c => c.enabled = false);
         Destroy(gameObject, 1f);
     }
 

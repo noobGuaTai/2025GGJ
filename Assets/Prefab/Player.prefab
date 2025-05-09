@@ -1218,7 +1218,7 @@ MonoBehaviour:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 200
+        value: 50
         inSlope: 481.1812
         outSlope: 481.1812
         tangentMode: 0
@@ -1238,7 +1238,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     bubbleRecoilYScale: 0.2
-  isDebug: 0
+  isDebug: 1
 --- !u!95 &1820713251153905025
 Animator:
   serializedVersion: 7

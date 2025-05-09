@@ -51,8 +51,9 @@ public class PoliceFSM : EnemyFSM
         base.Awake();
         param.groundCheck = GetComponent<AnythingCheck>();
         AllPolice.Add(gameObject);
-        if(GameManager.Instance.RichmanKilled)
+        if (!GameManager.Instance.RichmanKilled)
             gameObject.SetActive(false);
+
     }
 
     public override void Start()
