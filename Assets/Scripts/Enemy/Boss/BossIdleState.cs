@@ -33,7 +33,7 @@ public class BossIdleState : IState
     {
         fsm.animator.Play("attack", 0, 0);
         yield return new WaitForSeconds(0.2f);
-        SpawnEnemy();
+        // SpawnEnemy();
         yield return new WaitForSeconds(fsm.param.spawnInterval);
     }
 

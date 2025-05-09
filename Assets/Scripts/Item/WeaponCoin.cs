@@ -17,20 +17,20 @@ public class WeaponCoin : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.TryGetComponent<KilledByCoinEnemy>(out var k))
-        {
-            // float angle = Vector2.Angle(Vector2.up, (transform.position - other.transform.position).normalized);
-            // if (angle <= 60f)
-            // {
-            //     Destroy(other.gameObject);
-            //     Destroy(gameObject);
-            // }
-            if (rb.linearVelocity.magnitude > 60)
-            {
-                Destroy(other.gameObject);
-                Destroy(gameObject);
-            }
-        }
+        // if (other.gameObject.TryGetComponent<KilledByCoinEnemy>(out var k))
+        // {
+        //     // float angle = Vector2.Angle(Vector2.up, (transform.position - other.transform.position).normalized);
+        //     // if (angle <= 60f)
+        //     // {
+        //     //     Destroy(other.gameObject);
+        //     //     Destroy(gameObject);
+        //     // }
+        //     if (rb.linearVelocity.magnitude > 60)
+        //     {
+        //         Destroy(other.gameObject);
+        //         Destroy(gameObject);
+        //     }
+        // }
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             PlayerFSM.Instance.param.playerInventory.coins++;

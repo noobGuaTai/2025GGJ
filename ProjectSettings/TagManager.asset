@@ -21,10 +21,10 @@ TagManager:
   - Key
   - DoorTrader
   - Coin
-  - 
+  - RightBorder
   - Item
   - Wall
-  - Border
+  - LeftBorder
   - PlayerAttack
   - EnemyWeapon
   - EnemyAttack

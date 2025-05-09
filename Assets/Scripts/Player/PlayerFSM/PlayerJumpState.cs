@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerJumpState : IState
 {
     private PlayerFSM fsm;
-
+    float timer;
     private Vector2 lastInput = Vector2.zero;
 
     public PlayerJumpState(PlayerFSM playerFSM)
@@ -17,7 +17,7 @@ public class PlayerJumpState : IState
     {
         fsm.param.rb.linearVelocityY = fsm.attributes.jumpSpeed;
         fsm.param.animator.Play("jump_start", 0, 0f);
-
+        timer = 0;
     }
 
     public void OnExit()
@@ -41,7 +41,8 @@ public class PlayerJumpState : IState
 
     public void OnUpdate()
     {
-        if (fsm.param.isOnGround)
+        timer += Time.deltaTime;
+        if (fsm.param.isOnGround && timer > 0.2f)
             fsm.ChangeState(PlayerStateType.Idle);
     }
 

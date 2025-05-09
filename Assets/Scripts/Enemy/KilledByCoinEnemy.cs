@@ -6,7 +6,7 @@ public class KilledByCoinEnemy : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("WeaponCoin"))
         {
-            if (other.gameObject.GetComponent<Rigidbody2D>().linearVelocity.magnitude > 100f)
+            if (other.gameObject.GetComponent<Rigidbody2D>().linearVelocity.magnitude > 60f)
             {
                 if (TryGetComponent<EnemyFSM>(out var e)) e.Die();
             }

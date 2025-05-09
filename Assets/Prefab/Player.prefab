@@ -1170,6 +1170,7 @@ MonoBehaviour:
     bubblingAnimator: {fileID: 5408160020305475881}
     jumpInput: 0
     initGravityScale: 0
+    isDebug: 0
   attributes:
     blowCooldown: 0.7
     moveSpeed: 100

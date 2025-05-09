@@ -27,6 +27,7 @@ public class GameManager : MonoSingleton<GameManager>
     public GameObject currentLevelPrefab;
     public Vector3 currentLevelPos;
     public int currentCoins;
+    public bool isReturning;
     public void ResetGame()
     {
         // Transform stone = transform.Find($"/Root/Level/Level{level}/Stone");
@@ -40,13 +41,21 @@ public class GameManager : MonoSingleton<GameManager>
         //     if (e != null)
         //         e.ResetSelf();
         // }
-        Destroy(currentLevel);
-        currentLevel = Instantiate(currentLevelPrefab, currentLevelPos, Quaternion.identity);
+        if (!isReturning)
+        {
+            Destroy(currentLevel);
+            currentLevel = Instantiate(currentLevelPrefab, currentLevelPos, Quaternion.identity);
+        }
+
         PlayerFSM.Instance.transform.position = playerInitPosition;
         PlayerFSM.Instance.param.rb.linearVelocity = Vector2.zero;
         BubbleQueue.Clear();
         PlayerFSM.Instance.param.playerInventory.coins = currentCoins;
         currentLevel.SetActive(true);
+        if (currentLevel.name.Contains("Underground_6"))
+            PlayerFSM.Instance.param.rb.linearVelocityY = PlayerFSM.Instance.attributes.jumpSpeed;
+        if (currentLevel.name.Contains("Sunny_1") && currentLevel.transform.position.y - playerInitPosition.y > 200f)
+            PlayerFSM.Instance.param.rb.linearVelocityY = PlayerFSM.Instance.attributes.jumpSpeed;
     }
     [Header("Level")]
     public string levelNameString = "";
@@ -56,15 +65,17 @@ public class GameManager : MonoSingleton<GameManager>
     public void StartGame()
     {
         // NextGame();
-        lastLevel = LevelNode(levelNames[levelIndex]);
+        // lastLevel = LevelNode(levelNames[levelIndex]);
         PlayerFSM.Instance.enabled = true;
         PlayerFSM.Instance.param.rb.gravityScale = PlayerFSM.Instance.param.initGravityScale;
         UIManager.Instance.mainPage.SetActive(false);
         UIManager.Instance.playerUI.SetActive(true);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("RightBorder"), true);
+
     }
     public GameObject LevelNode(string levelName)
         => transform.Find($"../Level/Level{levelName}").gameObject;
-    public void NextGame(GameObject level, Vector3 pos)
+    public void NextGame(GameObject level, Vector3 pos)// 不知道为什么level8_到下一关会调用两次
     {
         // var pos = lastLevel.transform.position;
         // levelIndex++;
@@ -74,6 +85,7 @@ public class GameManager : MonoSingleton<GameManager>
         // Camera.main.transform.position += lastLevel.transform.position;
         // lastLevel.SetActive(true);
         Destroy(currentLevel);
+        DisableDoor();
         currentLevel = Instantiate(level, currentLevel.transform.position + pos, Quaternion.identity);
         Camera.main.transform.position += pos;
         playerInitPosition = PlayerFSM.Instance.transform.position;
@@ -81,6 +93,11 @@ public class GameManager : MonoSingleton<GameManager>
         currentLevelPos += pos;
         currentCoins = PlayerFSM.Instance.param.playerInventory.coins;
         currentLevel.SetActive(true);
+        if (currentLevel.name.Contains("Underground_6"))
+            PlayerFSM.Instance.param.rb.linearVelocityY = PlayerFSM.Instance.attributes.jumpSpeed;
+        if (currentLevel.name.Contains("Sunny_1") && currentLevel.transform.position.y - playerInitPosition.y > 200f)
+            PlayerFSM.Instance.param.rb.linearVelocityY = PlayerFSM.Instance.attributes.jumpSpeed;
+
         OnChangeLevel?.Invoke();
     }
     public Action OnChangeLevel;
@@ -130,6 +147,20 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void GameOver()
     {
-        Time.timeScale = 0.5f;
+        isReturning = true;
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("LeftBorder"), true);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("RightBorder"), false);
+
+    }
+
+    void DisableDoor()
+    {
+        foreach (Transform child in currentLevel.transform)
+        {
+            if (child.name.Contains("Door"))
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
     }
 }
