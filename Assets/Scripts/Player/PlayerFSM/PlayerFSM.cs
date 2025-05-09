@@ -66,6 +66,7 @@ public class PlayerAttributes
     public float throwCoinSpeed;
     public float pushCooldown;
     internal float pushTimer;
+    public float blowRecoil;
 }
 
 
@@ -300,7 +301,9 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         yield return new WaitForSeconds(0.5f);
         Vector3 p = transform.position + (moveInputY > 0 ? new Vector3(0, 30, 0) : moveInputY < 0 ? new Vector3(0, -30, 0) : new Vector3(-23, 5, 0) * transform.localScale.x);
         var b = Instantiate(param.bubblePrefab, p, Quaternion.identity);
+        b.GetComponent<BaseBubble>().rb.linearVelocity = param.rb.linearVelocity;
         delegateParam.onBlowBubble?.Invoke();
+        param.rb.AddForce(moveInputY > 0 ? Vector2.up : moveInputY < 0 ? Vector2.down : Vector2.right * transform.localScale.x * attributes.blowRecoil, ForceMode2D.Impulse);
     }
 
     public void BubbleBomb(InputAction.CallbackContext context)
