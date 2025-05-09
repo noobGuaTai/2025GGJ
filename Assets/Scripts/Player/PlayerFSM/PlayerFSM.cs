@@ -76,6 +76,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
     public PlayerAttributes attributes;
     public IState currentState;
     public Dictionary<PlayerStateType, IState> state = new Dictionary<PlayerStateType, IState>();
+    public bool isDebug = false;
 
     private Tween tween;
 
@@ -160,6 +161,8 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
 
     public void Die()
     {
+        if (isDebug)
+            return;
         param.rb.linearVelocity = Vector2.zero;
         ChangeState(PlayerStateType.Idle);
         transform.rotation = Quaternion.Euler(0, 0, -90 * transform.localScale.x);
