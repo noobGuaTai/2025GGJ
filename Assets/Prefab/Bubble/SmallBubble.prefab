@@ -217,7 +217,7 @@ MonoBehaviour:
   destoryAudio: {fileID: -5590158697434578146}
   initSpeed: {x: 0, y: 0}
   bigBubblePrefab: {fileID: 0}
-  reboundVelocity: 200
+  reboundVelocity: 360
   isBeingDestroyed: 0
   mergeAudio: {fileID: 4293251702615182026}
 --- !u!95 &8361603716610868231
