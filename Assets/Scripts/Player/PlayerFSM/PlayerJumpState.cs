@@ -22,7 +22,7 @@ public class PlayerJumpState : IState
 
     public void OnExit()
     {
-
+        fsm.CreateFX(fsm.param.JumpOnGroundFX);
     }
 
     public void OnFixedUpdate()

@@ -128,6 +128,7 @@ public class SmallBubble : BaseBubble
                 handledBubbleCollisions.Remove(GetInstanceID());
                 SafeDestroyBubble();
                 if (TryGetComponent<EnemyFSM>(out var e)) e.Die();
+                PlayerFSM.Instance.CreateFX(PlayerFSM.Instance.param.StepOnBubbleFX);
             }
         }
     }

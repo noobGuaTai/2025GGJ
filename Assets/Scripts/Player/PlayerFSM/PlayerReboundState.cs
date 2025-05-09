@@ -18,6 +18,7 @@ public class PlayerReboundState : IState
         fsm.delegateParam.onRebound?.Invoke();
         fsm.delegateParam.onRebound = null;
         canControl = false;
+        fsm.CreateFX(fsm.param.StepOnBubbleFX);
     }
 
     public void OnExit()

@@ -28,6 +28,22 @@ public class GameManager : MonoSingleton<GameManager>
     public Vector3 currentLevelPos;
     public int currentCoins;
     public bool isReturning;
+    public AudioSource[] bgm;
+    AudioSource currentBGM;
+    public Dictionary<string, int> bgmPair = new Dictionary<string, int>()
+    {
+        {"Tutorial", 0},
+        {"Snow", 1},
+        {"Rain", 2},
+        {"Sunny", 3},
+        {"Underground", 4},
+    };
+    void Start()
+    {
+        bgm = GetComponents<AudioSource>();
+        bgm[0].Play();
+        currentBGM = bgm[0];
+    }
     public void ResetGame()
     {
         // Transform stone = transform.Find($"/Root/Level/Level{level}/Stone");
@@ -56,6 +72,7 @@ public class GameManager : MonoSingleton<GameManager>
             PlayerFSM.Instance.param.rb.linearVelocityY = PlayerFSM.Instance.attributes.jumpSpeed;
         if (currentLevel.name.Contains("Sunny_1") && currentLevel.transform.position.y - playerInitPosition.y > 200f)
             PlayerFSM.Instance.param.rb.linearVelocityY = PlayerFSM.Instance.attributes.jumpSpeed;
+
     }
     [Header("Level")]
     public string levelNameString = "";
@@ -96,6 +113,16 @@ public class GameManager : MonoSingleton<GameManager>
             PlayerFSM.Instance.param.rb.linearVelocityY = PlayerFSM.Instance.attributes.jumpSpeed;
         if (currentLevel.name.Contains("Sunny_1") && currentLevel.transform.position.y - playerInitPosition.y > 200f)
             PlayerFSM.Instance.param.rb.linearVelocityY = PlayerFSM.Instance.attributes.jumpSpeed;
+
+        foreach (var pair in bgmPair)
+        {
+            if (currentLevel.name.Contains(pair.Key) && currentBGM != bgm[pair.Value])
+            {
+                currentBGM.Stop();
+                currentBGM = bgm[pair.Value];
+                currentBGM.Play();
+            }
+        }
 
         OnChangeLevel?.Invoke();
     }

@@ -1203,7 +1203,8 @@ MonoBehaviour:
     bubblingAnimator: {fileID: 5408160020305475881}
     jumpInput: 0
     initGravityScale: 0
-    isDebug: 0
+    JumpOnGroundFX: {fileID: 704414710948297510, guid: 71ef8fa125b7c0b47ae55ce08e8ea08e, type: 3}
+    StepOnBubbleFX: {fileID: 704414710948297510, guid: e440dde1110a9d34183886a3acf70822, type: 3}
   attributes:
     blowCooldown: 0.7
     moveSpeed: 100
@@ -1212,7 +1213,8 @@ MonoBehaviour:
     isBlowing: 0
     throwCoinSpeed: 130
     pushCooldown: 0.7
-    blowRecoil: 700
+    blowRecoil: 500
+  isDebug: 0
 --- !u!95 &1820713251153905025
 Animator:
   serializedVersion: 7

@@ -42,6 +42,8 @@ public class PlayerParameters
     internal BubbleCheck bubbleCheck;
     internal PlayerInventory playerInventory;
     public float initGravityScale;
+    public GameObject JumpOnGroundFX;
+    public GameObject StepOnBubbleFX;
 }
 
 [Serializable]
@@ -338,4 +340,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
             param.rb.linearVelocity = clampedVelocity;
         }
     }
+
+    public void CreateFX(GameObject fx) => GameObject.Instantiate(fx, transform.position + Vector3.down * 15, Quaternion.identity);
+
 }
