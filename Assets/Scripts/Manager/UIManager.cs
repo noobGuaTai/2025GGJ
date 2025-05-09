@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -30,6 +31,7 @@ public class UIManager : MonoSingleton<UIManager>
 
     private Camera mainCamera;
     private RectTransform canvasRectTransform;
+    public GameObject level0Helper;
 
     void Start()
     {
@@ -59,6 +61,9 @@ public class UIManager : MonoSingleton<UIManager>
             playerDialog.gameObject.SetActive(false);
         if (enemyDialog != null)
             enemyDialog.gameObject.SetActive(false);
+
+        Action a = HideHelper;
+        GameManager.Instance.OnChangeLevel += a.AsOneTimeAction();
     }
 
     void LateUpdate()
@@ -209,4 +214,6 @@ public class UIManager : MonoSingleton<UIManager>
 
         rectTransform.anchoredPosition = endPos;
     }
+
+    public void HideHelper() => level0Helper.SetActive(false);
 }
