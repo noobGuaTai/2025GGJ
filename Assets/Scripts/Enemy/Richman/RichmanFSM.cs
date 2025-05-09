@@ -87,7 +87,7 @@ public class RichmanFSM : EnemyFSM
     }
 
     public void OnEnter(RichmanStateType stateType) => enterStateActions[stateType]?.Invoke();
-    public Door door;
+    public CoinDoor door;
     public override void OnTriggerEnter2D(Collider2D other)
     {
         base.OnTriggerEnter2D(other);

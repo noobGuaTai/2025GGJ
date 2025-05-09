@@ -42,7 +42,6 @@ public class PlayerParameters
     internal BubbleCheck bubbleCheck;
     internal PlayerInventory playerInventory;
     public float initGravityScale;
-    public bool isDebug;
 }
 
 [Serializable]
@@ -162,7 +161,6 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
 
     public void Die()
     {
-        if (param.isDebug) return;
         param.rb.linearVelocity = Vector2.zero;
         ChangeState(PlayerStateType.Idle);
         transform.rotation = Quaternion.Euler(0, 0, -90 * transform.localScale.x);
@@ -275,6 +273,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         if (context.phase == InputActionPhase.Started && param.playerInventory.coins > 0)
         {
             var c = Instantiate(param.weaponCoinPrefab, transform.position, Quaternion.identity).GetComponent<WeaponCoin>();
+            c.transform.parent = GameManager.Instance.currentLevel.transform;
             c.onInit += () => c.rb.linearVelocity = new Vector2(-transform.localScale.x, 2).normalized * attributes.throwCoinSpeed;
             param.playerInventory.coins--;
         }
