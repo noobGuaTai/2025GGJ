@@ -8,6 +8,7 @@ public class SpringManIdleState : IState
     Coroutine patrol;
 
     public SpringManIdleState(SpringManFSM fsm) => this.fsm = fsm;
+    
 
     public void OnEnter()
     {
