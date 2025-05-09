@@ -1218,18 +1218,18 @@ MonoBehaviour:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 50
-        inSlope: 481.1812
-        outSlope: 481.1812
+        value: 4
+        inSlope: 38.190155
+        outSlope: 38.190155
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
-        outWeight: 0.036666665
+        outWeight: 0.09583333
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -50
-        outSlope: -50
+        inSlope: -4
+        outSlope: -4
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
@@ -1237,8 +1237,8 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    bubbleRecoilYScale: 0.2
-  isDebug: 1
+    bubbleRecoilYScale: 1
+  isDebug: 0
 --- !u!95 &1820713251153905025
 Animator:
   serializedVersion: 7

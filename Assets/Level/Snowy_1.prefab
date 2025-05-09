@@ -5790,6 +5790,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2662087285884722958, guid: 735006c727da7b343a7675b2010b17a3, type: 3}
   m_PrefabInstance: {fileID: 1204718296737894828}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6063400303807381986 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4944251568222801998, guid: 735006c727da7b343a7675b2010b17a3, type: 3}
+  m_PrefabInstance: {fileID: 1204718296737894828}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9c757d46ed5124c87b049911ab67da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1885681867186830166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6116,6 +6127,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8047810682933925830, guid: 51a3b02db10a3d24f8431bf1b96e34af, type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 6063400303807381986}
     - target: {fileID: 9027380424867919135, guid: 51a3b02db10a3d24f8431bf1b96e34af, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
