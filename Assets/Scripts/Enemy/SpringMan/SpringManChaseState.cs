@@ -24,10 +24,16 @@ public class SpringManChaseState : IState
 
     }
 
+    float chaseCoodDown = 2f;
+    float chaseTimer = 2f;
     public void OnUpdate()
     {
         if (!fsm.IsDetectObjectByLayer(fsm.param.detectRange, LayerMask.GetMask("Player", "Bubble"), out var _))
             fsm.ChangeState(SpringManStateType.Idle);
+        chaseTimer += Time.deltaTime;
+        if (chaseTimer < chaseCoodDown)
+            return;
+        chaseTimer -= chaseCoodDown;
         if (fsm.IsDetectObjectByLayer(fsm.param.attackDetectRange, LayerMask.GetMask("Player"), out var p))
         {
             fsm.ChaseObject(fsm.param.chaseSpeed, p);
