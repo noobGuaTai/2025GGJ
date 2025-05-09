@@ -66,7 +66,8 @@ public class PlayerAttributes
     public float throwCoinSpeed;
     public float pushCooldown;
     internal float pushTimer;
-    public float blowRecoil;
+    public AnimationCurve bubbleRecoil;
+    public float bubbleRecoilYScale = 0.33f;
 }
 
 
@@ -222,7 +223,17 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
             param.bubblingAnimator.gameObject.transform.localPosition =
                 param.moveInput.y > 0 ? new Vector3(0, 30, 0) : param.moveInput.y < 0 ? new Vector3(0, -30, 0) : new Vector3(-23, 0, 0);
             param.bubblingAnimator.Play("bubbling");
-            StartCoroutine(InstantiateBubble(param.moveInput.y));
+            var tw = gameObject.GetOrAddComponent<Tween>();
+            var moveInputY = param.moveInput.y;
+            tw.AddTween("BubbleRecoil", (x) => {
+                var force = moveInputY > 0 ? Vector2.down : moveInputY < 0 ? Vector2.up : Vector2.right * transform.localScale.x;
+                if (moveInputY != 0) force *= attributes.bubbleRecoilYScale;
+                param.rb.AddForce(force * attributes.bubbleRecoil.Evaluate(x), ForceMode2D.Impulse);
+                
+            },
+                0, 1, 0.5f).Play();
+                
+            StartCoroutine(InstantiateBubble(moveInputY));
             attributes.blowTimer = attributes.blowCooldown;
         }
         else
@@ -301,9 +312,8 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         yield return new WaitForSeconds(0.5f);
         Vector3 p = transform.position + (moveInputY > 0 ? new Vector3(0, 30, 0) : moveInputY < 0 ? new Vector3(0, -30, 0) : new Vector3(-23, 5, 0) * transform.localScale.x);
         var b = Instantiate(param.bubblePrefab, p, Quaternion.identity);
-        b.GetComponent<BaseBubble>().rb.linearVelocity = param.rb.linearVelocity;
+        b.GetComponent<BaseBubble>().rb.linearVelocity = param.rb.linearVelocity * 0.5f;
         delegateParam.onBlowBubble?.Invoke();
-        param.rb.AddForce(moveInputY > 0 ? Vector2.up : moveInputY < 0 ? Vector2.down : Vector2.right * transform.localScale.x * attributes.blowRecoil, ForceMode2D.Impulse);
     }
 
     public void BubbleBomb(InputAction.CallbackContext context)

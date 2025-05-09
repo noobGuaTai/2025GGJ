@@ -1203,7 +1203,6 @@ MonoBehaviour:
     bubblingAnimator: {fileID: 5408160020305475881}
     jumpInput: 0
     initGravityScale: 0
-    isDebug: 0
   attributes:
     blowCooldown: 0.7
     moveSpeed: 100
@@ -1212,7 +1211,32 @@ MonoBehaviour:
     isBlowing: 0
     throwCoinSpeed: 130
     pushCooldown: 0.7
-    blowRecoil: 700
+    bubbleRecoil:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 200
+        inSlope: 481.1812
+        outSlope: 481.1812
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.036666665
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -50
+        outSlope: -50
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    bubbleRecoilYScale: 0.2
+  isDebug: 0
 --- !u!95 &1820713251153905025
 Animator:
   serializedVersion: 7
