@@ -298,6 +298,7 @@ public class EnemyFSM : MonoBehaviour
         enabled = false;
         StopAllCoroutines();
         GetComponentsInChildren<Collider2D>().Any(c => c.enabled = false);
+        if (TryGetComponent<AggressiveEnemy>(out var a)) Destroy(a);
         Destroy(gameObject, 1f);
     }
 
