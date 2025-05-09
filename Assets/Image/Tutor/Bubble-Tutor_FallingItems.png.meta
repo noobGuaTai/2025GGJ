@@ -141,9 +141,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 40
-        width: 16
-        height: 15
+        y: 32
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,10 +162,10 @@ TextureImporter:
       name: Bubble-Tutor_FallingItems_1
       rect:
         serializedVersion: 2
-        x: 15
-        y: 40
-        width: 13
-        height: 15
+        x: 0
+        y: 0
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,165 +180,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Bubble-Tutor_FallingItems_2
-      rect:
-        serializedVersion: 2
-        x: 27
-        y: 38
-        width: 35
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ee596011f9d224510800000000000000
-      internalID: 1531836984468084206
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bubble-Tutor_FallingItems_3
-      rect:
-        serializedVersion: 2
-        x: 10
-        y: 20
-        width: 14
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 34f6b212d72e10750800000000000000
-      internalID: 6269541183331725123
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bubble-Tutor_FallingItems_4
-      rect:
-        serializedVersion: 2
-        x: 22
-        y: 7
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 99f0e400a593f6a10800000000000000
-      internalID: 1904804226115964825
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bubble-Tutor_FallingItems_5
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 14
-        width: 13
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bb9aca6b09dfc3cd0800000000000000
-      internalID: -2576906088780879429
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bubble-Tutor_FallingItems_6
-      rect:
-        serializedVersion: 2
-        x: 46
-        y: 14
-        width: 8
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b59d52274272ee2e0800000000000000
-      internalID: -2094693739193312933
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bubble-Tutor_FallingItems_7
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 1
-        width: 12
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9df541edf48ca4510800000000000000
-      internalID: 1534258868426923993
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bubble-Tutor_FallingItems_8
-      rect:
-        serializedVersion: 2
-        x: 37
-        y: 0
-        width: 15
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d617aede04c8de3e0800000000000000
-      internalID: -2022806447122124435
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -350,13 +196,6 @@ TextureImporter:
     nameFileIdTable:
       Bubble-Tutor_FallingItems_0: -7726556438589560355
       Bubble-Tutor_FallingItems_1: 3948422639234108969
-      Bubble-Tutor_FallingItems_2: 1531836984468084206
-      Bubble-Tutor_FallingItems_3: 6269541183331725123
-      Bubble-Tutor_FallingItems_4: 1904804226115964825
-      Bubble-Tutor_FallingItems_5: -2576906088780879429
-      Bubble-Tutor_FallingItems_6: -2094693739193312933
-      Bubble-Tutor_FallingItems_7: 1534258868426923993
-      Bubble-Tutor_FallingItems_8: -2022806447122124435
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

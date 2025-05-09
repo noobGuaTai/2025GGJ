@@ -71,7 +71,6 @@ public class GameManager : MonoSingleton<GameManager>
         UIManager.Instance.mainPage.SetActive(false);
         UIManager.Instance.playerUI.SetActive(true);
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("RightBorder"), true);
-
     }
     public GameObject LevelNode(string levelName)
         => transform.Find($"../Level/Level{levelName}").gameObject;

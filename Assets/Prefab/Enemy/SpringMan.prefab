@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 5822850840863521195}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -10.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -71,7 +71,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5822850840863521195}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -98,7 +98,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.96, y: 5.6}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -108,7 +108,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 100, y: 16}
+  m_Size: {x: 27.84, y: 20.9}
   m_EdgeRadius: 0
 --- !u!114 &1004151329279487216
 MonoBehaviour:
@@ -139,7 +139,6 @@ GameObject:
   - component: {fileID: 8817198467322062312}
   - component: {fileID: 687017811085693696}
   - component: {fileID: -8929536887990909823}
-  - component: {fileID: -5699326640305639141}
   - component: {fileID: -3072049877793455537}
   - component: {fileID: 8918869802295284714}
   - component: {fileID: 1060872501328041528}
@@ -367,18 +366,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-5699326640305639141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6519572436789688924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3c2048a1c04e3347b997953abba2172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-3072049877793455537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,7 +472,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 26e5e2d8f341b4649b063f8e0b538e31, type: 3}
   m_Resource: {fileID: 8300000, guid: 26e5e2d8f341b4649b063f8e0b538e31, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

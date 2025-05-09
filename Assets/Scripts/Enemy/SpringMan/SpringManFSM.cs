@@ -65,6 +65,18 @@ public class SpringManFSM : EnemyFSM
         GetComponent<SwallowedEnemy>().onLoadActions += () => ChangeState(SpringManStateType.UnderSwallowed);
         GetComponent<SwallowedEnemy>().onBreakActions += () => ChangeState(SpringManStateType.Patrol);
         GetComponent<KnockedBackEnemy>().onKnockedBackActions += () => ChangeState(SpringManStateType.KnockedBack);
+        GetComponentInChildren<EnemyAttackAnything>().onAttacked += (other) =>
+        {
+            if (other.TryGetComponent<SmallBubble>(out var s))
+            {
+                s.isBeingDestroyed = true;
+                BubbleQueue.DestroyBubble(other.gameObject);
+            }
+            if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                PlayerFSM.Instance.Die();
+            }
+        };
     }
 
     void Update()
@@ -133,6 +145,14 @@ public class SpringManFSM : EnemyFSM
                 {
                     e.rb.AddForce(new Vector2(0, param.sprintHeavyThingForce), ForceMode2D.Impulse);
                 }
+            }
+        }
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            float angle = Vector2.Angle(Vector2.up, (other.transform.position - transform.position).normalized);
+            if (angle < 60f)
+            {
+                PlayerFSM.Instance.ChangeState(PlayerStateType.Jump);
             }
         }
 

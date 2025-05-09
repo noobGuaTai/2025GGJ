@@ -295,7 +295,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
     IEnumerator InstantiateBubble(float moveInputY)
     {
         yield return new WaitForSeconds(0.5f);
-        Vector3 p = transform.position + (moveInputY > 0 ? new Vector3(0, 30, 0) : moveInputY < 0 ? new Vector3(0, -30, 0) : new Vector3(-23, 0, 0) * transform.localScale.x);
+        Vector3 p = transform.position + (moveInputY > 0 ? new Vector3(0, 30, 0) : moveInputY < 0 ? new Vector3(0, -30, 0) : new Vector3(-23, 5, 0) * transform.localScale.x);
         var b = Instantiate(param.bubblePrefab, p, Quaternion.identity);
         delegateParam.onBlowBubble?.Invoke();
     }
