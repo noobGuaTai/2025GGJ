@@ -8310,6 +8310,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6943432757564365281}
     m_Modifications:
+    - target: {fileID: -458252106087995134, guid: 585f913a54f8b864e8d7e7e694db413d, type: 3}
+      propertyPath: 'param.patrolPoint.Array.data[0]'
+      value: -30
+      objectReference: {fileID: 0}
     - target: {fileID: 6519572436789688924, guid: 585f913a54f8b864e8d7e7e694db413d, type: 3}
       propertyPath: m_Name
       value: Farmer

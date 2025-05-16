@@ -268,6 +268,8 @@ GameObject:
   - component: {fileID: 5482216318276291448}
   - component: {fileID: 8564184085348994014}
   - component: {fileID: -4962663776994910964}
+  - component: {fileID: 2104772366663312922}
+  - component: {fileID: -7999544083762465289}
   m_Layer: 9
   m_Name: GyroMan
   m_TagString: Untagged
@@ -727,3 +729,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2104772366663312922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519572436789688924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1041ac66317d90a4cb423f528618a12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  somatoType: 0
+--- !u!114 &-7999544083762465289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519572436789688924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1041ac66317d90a4cb423f528618a12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  somatoType: 1

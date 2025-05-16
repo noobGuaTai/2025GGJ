@@ -68,8 +68,10 @@ public class PlayerAttributes
     public float throwCoinSpeed;
     public float pushCooldown;
     internal float pushTimer;
+    public bool isEnableRecoil;
     public AnimationCurve bubbleRecoil;
     public float bubbleRecoilYScale = 0.33f;
+    public float bubbleInitSpeedRatio = 0.1f;// 相对于玩家的速度
 }
 
 
@@ -233,10 +235,10 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
             {
                 var force = moveInputY > 0 ? Vector2.down : moveInputY < 0 ? Vector2.up : Vector2.right * transform.localScale.x;
                 if (moveInputY != 0) force *= attributes.bubbleRecoilYScale;
-                param.rb.AddForce(force * attributes.bubbleRecoil.Evaluate(x), ForceMode2D.Impulse);
+                if (attributes.isEnableRecoil)
+                    param.rb.AddForce(force * attributes.bubbleRecoil.Evaluate(x), ForceMode2D.Impulse);
 
-            },
-                0, 1, 0.5f).Play();
+            }, 0, 1, 0.5f).Play();
 
             StartCoroutine(InstantiateBubble(moveInputY));
             attributes.blowTimer = attributes.blowCooldown;
@@ -314,10 +316,10 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
 
     IEnumerator InstantiateBubble(float moveInputY)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f / 3f);
         Vector3 p = transform.position + (moveInputY > 0 ? new Vector3(0, 30, 0) : moveInputY < 0 ? new Vector3(0, -30, 0) : new Vector3(-23, 5, 0) * transform.localScale.x);
         var b = Instantiate(param.bubblePrefab, p, Quaternion.identity);
-        b.GetComponent<BaseBubble>().rb.linearVelocity = param.rb.linearVelocity * 0.5f;
+        b.GetComponent<BaseBubble>().rb.linearVelocity = param.rb.linearVelocity * attributes.bubbleInitSpeedRatio;
         delegateParam.onBlowBubble?.Invoke();
     }
 

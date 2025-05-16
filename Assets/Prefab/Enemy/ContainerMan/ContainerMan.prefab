@@ -139,12 +139,12 @@ GameObject:
   - component: {fileID: 8817198467322062312}
   - component: {fileID: 687017811085693696}
   - component: {fileID: -8929536887990909823}
-  - component: {fileID: -3072049877793455537}
   - component: {fileID: 1060872501328041528}
   - component: {fileID: 5482216318276291448}
   - component: {fileID: 7532256630583625744}
   - component: {fileID: 1321959607482280783}
   - component: {fileID: 5640425551062611242}
+  - component: {fileID: 6108910230400179128}
   m_Layer: 9
   m_Name: ContainerMan
   m_TagString: Untagged
@@ -365,18 +365,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-3072049877793455537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6519572436789688924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95c2c78bc7b7bf6458a186c9433230b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1060872501328041528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,3 +627,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6108910230400179128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519572436789688924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 905906516b154184bb710d4842b416b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

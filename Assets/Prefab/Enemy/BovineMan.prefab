@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 5152318869229225661}
   - component: {fileID: 2624095255657605700}
   - component: {fileID: 1936825257640401399}
+  - component: {fileID: 169181814975292347}
   m_Layer: 9
   m_Name: BovineMan
   m_TagString: Untagged
@@ -292,10 +293,10 @@ MonoBehaviour:
   health: 0
   deadlyLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   dieAudio: {fileID: 1936825257640401399}
   attackAudio: {fileID: 2624095255657605700}
-  somatoType: 0
+  somatoType: 1
   param:
     currentState: 0
     chaseSpeed: 40
@@ -627,3 +628,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &169181814975292347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519572436789688924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1041ac66317d90a4cb423f528618a12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  somatoType: 1

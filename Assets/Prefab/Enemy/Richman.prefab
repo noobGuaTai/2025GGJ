@@ -419,7 +419,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7586744949413561496, guid: 6e9cb39eb9436fd4b915dacd3a7b6392, type: 2}
+  - {fileID: 7586744949413561496, guid: c7e835b19a0ef604cabc6b392a04a92d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -463,8 +463,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Coin: 0/1'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6e9cb39eb9436fd4b915dacd3a7b6392, type: 2}
-  m_sharedMaterial: {fileID: 7586744949413561496, guid: 6e9cb39eb9436fd4b915dacd3a7b6392, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c7e835b19a0ef604cabc6b392a04a92d, type: 2}
+  m_sharedMaterial: {fileID: 7586744949413561496, guid: c7e835b19a0ef604cabc6b392a04a92d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

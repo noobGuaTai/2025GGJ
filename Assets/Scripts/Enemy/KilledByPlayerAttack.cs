@@ -9,4 +9,12 @@ public class KilledByPlayerAttack : MonoBehaviour
             if (TryGetComponent<EnemyFSM>(out var e)) e.Die();
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
+        {
+            if (TryGetComponent<EnemyFSM>(out var e)) e.Die();
+        }
+    }
 }

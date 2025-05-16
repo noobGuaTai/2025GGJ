@@ -15,6 +15,7 @@ public class WorkerIdleState : IState
     public void OnEnter()
     {
         patrol = fsm.StartCoroutine(Patrol());
+        fsm.animator.Play("idle", 0, 0);
     }
 
     public void OnExit()

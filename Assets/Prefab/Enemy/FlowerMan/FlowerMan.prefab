@@ -52,6 +52,9 @@ GameObject:
   - component: {fileID: 5853616055030749895}
   - component: {fileID: -4118846935922309221}
   - component: {fileID: -4316974534309215678}
+  - component: {fileID: 3010688312812384001}
+  - component: {fileID: 8494027639473115690}
+  - component: {fileID: -8864495663760520227}
   m_Layer: 9
   m_Name: FlowerMan
   m_TagString: Untagged
@@ -423,6 +426,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2f2616475a5174da41dd40a0d66caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3010688312812384001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519572436789688924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c2c78bc7b7bf6458a186c9433230b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8494027639473115690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519572436789688924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1041ac66317d90a4cb423f528618a12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  somatoType: 0
+--- !u!114 &-8864495663760520227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519572436789688924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1041ac66317d90a4cb423f528618a12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  somatoType: 1
 --- !u!1 &8528913475067466045
 GameObject:
   m_ObjectHideFlags: 0

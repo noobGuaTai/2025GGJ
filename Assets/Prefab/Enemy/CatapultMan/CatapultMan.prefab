@@ -177,6 +177,8 @@ GameObject:
   - component: {fileID: 2179795277994776689}
   - component: {fileID: -5384885091611364752}
   - component: {fileID: -8508218714168517717}
+  - component: {fileID: -1575968125810802676}
+  - component: {fileID: -6481467084847196909}
   m_Layer: 9
   m_Name: CatapultMan
   m_TagString: Untagged
@@ -294,7 +296,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 8af89a44db7a01f47984bc2d88753bec, type: 2}
+  m_Material: {fileID: 6200000, guid: 655d7a63bd4ccaf48b008b67a9cc74bf, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -686,3 +688,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1575968125810802676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519572436789688924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1041ac66317d90a4cb423f528618a12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  somatoType: 1
+--- !u!114 &-6481467084847196909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519572436789688924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1041ac66317d90a4cb423f528618a12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  somatoType: 0

@@ -12,11 +12,18 @@ public class StoneController : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.TryGetComponent<EnemyFSM>(out var e))
-        {
-            if (e.somatoType == EnemyFSM.EnemySomatoType.Light)
-                other.gameObject.SetActive(false);
-        }
+        // if (other.gameObject.TryGetComponent<EnemyFSM>(out var e))
+        // {
+        //     if (e.somatoType == EnemyFSM.EnemySomatoType.Light)
+        //     {
+        //         float angle = Vector2.Angle(Vector2.up, (other.transform.position - transform.position).normalized);
+        //         if (angle < 60f)
+        //         {
+        //             other.gameObject.SetActive(false);
+        //         }
+        //     }
+
+        // }
     }
 
     public void ResetSelf()
