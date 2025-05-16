@@ -34,7 +34,7 @@ public class NewBovineManIdleState : IState
         timer += Time.deltaTime;
         if (timer < fsm.param.calmDownTime)
             return;
-        if (fsm.IsDetectObjectByLayer(fsm.param.detectRange, LayerMask.GetMask("Player", "Bubble"), out var a))
+        if (fsm.IsDetectObjectByLayer(0, fsm.param.detectRange, LayerMask.GetMask("Player", "Bubble"), out var a))
             fsm.ChangeState(NewBovineManStateType.Charge, () => fsm.transform.SetScaleX(Mathf.Sign(a.transform.position.x - fsm.transform.position.x)));
     }
 }

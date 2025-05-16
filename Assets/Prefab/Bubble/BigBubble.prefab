@@ -441,7 +441,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  reboundVelocity: 300
+  reboundVelocity: 500
   slideSpeed: 0.1
 --- !u!251 &-4789898301398657727
 PlatformEffector2D:

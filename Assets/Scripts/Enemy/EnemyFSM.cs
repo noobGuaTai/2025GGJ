@@ -189,17 +189,17 @@ public class EnemyFSM : MonoBehaviour
     /// <summary>
     /// 往左往右发射射线检测物体
     /// </summary>
-    /// <param name="range">射线长度</param>
+    /// <param name="leftRange">射线长度</param>
     /// <param name="layer">目标layer</param>
     /// <param name="detected">返回第一个碰到的物体</param>
     /// <param name="direction">-1仅往左发射，1仅往右发射，0左右都发射</param>
     /// <returns>是否检测到物体</returns>
-    public virtual bool IsDetectObjectByLayer(float range, LayerMask layer, out GameObject detected, int direction = 0)
+    public virtual bool IsDetectObjectByLayer(float leftRange, float rightRange, LayerMask layer, out GameObject detected, int direction = 0)
     {
         detected = null;
         if (direction >= 0)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, range, layer);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, rightRange, layer);
             if (hit.collider != null)
             {
                 detected = hit.collider.gameObject;
@@ -209,7 +209,33 @@ public class EnemyFSM : MonoBehaviour
 
         if (direction <= 0)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, range, layer);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left * transform.localScale.x, leftRange, layer);
+            if (hit.collider != null)
+            {
+                detected = hit.collider.gameObject;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public virtual bool IsDetectObjectByLayer(float range, LayerMask layer, out GameObject detected, int direction = 0)
+    {
+        detected = null;
+        if (direction >= 0)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, range, layer);
+            if (hit.collider != null)
+            {
+                detected = hit.collider.gameObject;
+                return true;
+            }
+        }
+
+        if (direction <= 0)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left * transform.localScale.x, range, layer);
             if (hit.collider != null)
             {
                 detected = hit.collider.gameObject;
@@ -226,7 +252,7 @@ public class EnemyFSM : MonoBehaviour
         LayerMask layer = customLayer ?? Physics2D.AllLayers;
         if (direction >= 0)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, range, layer);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, range, layer);
             if (hit.collider != null)
             {
                 if (hit.collider.TryGetComponent<T>(out var _))
@@ -239,7 +265,7 @@ public class EnemyFSM : MonoBehaviour
 
         if (direction <= 0)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, range, layer);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left * transform.localScale.x, range, layer);
             if (hit.collider != null)
             {
                 if (hit.collider.TryGetComponent<T>(out var _))
