@@ -104,11 +104,12 @@ public class SmallBubble : BaseBubble
             }
         }
 
-        if (other.gameObject.layer == LayerMask.NameToLayer("Item"))
+        if ((LayerMask.GetMask("WeaponCoin", "Stone") & (1 << other.gameObject.layer)) != 0)
         {
             float angle = Vector2.Angle(Vector2.up, (other.transform.position - transform.position).normalized);
             if (angle <= 60f && !isBeingDestroyed)
             {
+                other.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
                 isBeingDestroyed = true;
                 other.gameObject.GetComponent<Rigidbody2D>().linearVelocityY = reboundVelocity;
                 bubblesBeingMerged.Remove(GetInstanceID());

@@ -136,7 +136,13 @@ public class BigBubble : BaseBubble
             float distance = direction.magnitude;
             float forceFactor = impactedSpeedCurve.Evaluate(distance / explosionRadius);
             // rb.linearVelocity = direction.normalized * explosionForce * forceFactor;
+            rb.linearVelocity = Vector2.zero;
             rb.AddForce(direction.normalized * explosionForce * forceFactor, ForceMode2D.Impulse);
+            if (hit.gameObject.layer == LayerMask.NameToLayer("WeaponCoin"))
+            {
+                if (hit.TryGetComponent<Rigidbody2D>(out var i))
+                    i.gravityScale = 0;
+            }
 
             if (hit.TryGetComponent<KnockedBackObject>(out var k))
             {

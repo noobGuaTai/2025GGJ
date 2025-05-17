@@ -9,10 +9,12 @@ public class KilledByEnemyDrop : MonoBehaviour
         {
             if (e.somatoType == somatoType)
             {
+                var eSpeed = e.GetComponent<Rigidbody2D>().linearVelocityY;
+                var thisSpeed = GetComponent<Rigidbody2D>().linearVelocityY;
                 float angle = Vector2.Angle(Vector2.up, (other.transform.position - transform.position).normalized);
-                if (angle < 60f)
+                if (angle < 45f && Mathf.Abs(eSpeed - thisSpeed) > 10f)
                 {
-                    e.Die();
+                    GetComponent<EnemyFSM>().Die();
                 }
             }
         }
@@ -24,10 +26,12 @@ public class KilledByEnemyDrop : MonoBehaviour
         {
             if (e.somatoType == somatoType)
             {
+                var eSpeed = e.GetComponent<Rigidbody2D>().linearVelocityY;
+                var thisSpeed = GetComponent<Rigidbody2D>().linearVelocityY;
                 float angle = Vector2.Angle(Vector2.up, (other.transform.position - transform.position).normalized);
-                if (angle < 60f)
+                if (angle < 45f && Mathf.Abs(eSpeed - thisSpeed) > 10f)
                 {
-                    e.Die();
+                    GetComponent<EnemyFSM>().Die();
                 }
             }
         }

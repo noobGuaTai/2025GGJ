@@ -24,6 +24,7 @@ public class EnemyFSM : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        rb.gravityScale = 20f;
     }
 
     public virtual void Start()
@@ -344,6 +345,7 @@ public class EnemyFSM : MonoBehaviour
         GetComponentsInChildren<Collider2D>().Any(c => c.enabled = false);
         if (TryGetComponent<AggressiveEnemy>(out var a)) Destroy(a);
         Destroy(gameObject, 1f);
+        rb.bodyType = RigidbodyType2D.Kinematic;
     }
 
     public virtual void OnTriggerEnter2D(Collider2D other)

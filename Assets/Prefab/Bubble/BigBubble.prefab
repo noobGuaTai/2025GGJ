@@ -414,7 +414,7 @@ MonoBehaviour:
   outsideCollider: {fileID: 959944911756882733}
   triggerCollider: {fileID: 9016929489739431230}
   explosionRadius: 100
-  explosionForce: 1200
+  explosionForce: 5000
   contactGroundThreshold: 1
   absorbedType: 0
   impactedSpeedCurve:

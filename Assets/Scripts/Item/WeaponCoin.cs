@@ -8,12 +8,14 @@ public class WeaponCoin : MonoBehaviour
     public Rigidbody2D rb;
     float timer;
     public Collider2D colliderPlayer;
+    float initGravityScale;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         onInit?.Invoke();
         colliderPlayer.enabled = false;
+        initGravityScale = rb.gravityScale;
     }
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -31,6 +33,7 @@ public class WeaponCoin : MonoBehaviour
         //         Destroy(gameObject);
         //     }
         // }
+        rb.gravityScale = initGravityScale;
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             PlayerFSM.Instance.param.playerInventory.coins++;

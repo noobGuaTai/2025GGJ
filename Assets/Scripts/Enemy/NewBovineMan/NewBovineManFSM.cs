@@ -112,13 +112,14 @@ public class NewBovineManFSM : EnemyFSM
     public void CalmDown() => GetComponent<SpriteRenderer>().color = param.initColor;
     public void ToAttack() => ChangeState(NewBovineManStateType.Attack);
 
-    public override void OnCollisionEnter2D(Collision2D other)
+    public override void OnTriggerEnter2D(Collider2D other)
     {
-        base.OnCollisionEnter2D(other);
+
+        base.OnTriggerEnter2D(other);
         StartCoroutine(HandleKnockBack(other));
     }
 
-    IEnumerator HandleKnockBack(Collision2D other)
+    IEnumerator HandleKnockBack(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {

@@ -22,7 +22,7 @@ TagManager:
   - DoorTrader
   - Coin
   - RightBorder
-  - Item
+  - WeaponCoin
   - Wall
   - LeftBorder
   - PlayerAttack

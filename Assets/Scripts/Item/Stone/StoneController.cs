@@ -4,11 +4,13 @@ public class StoneController : MonoBehaviour
 {
     public Vector2 initPos;
     private Rigidbody2D rb;
+    float initGravityScale;
 
     void Start()
     {
         initPos = transform.position;
         rb = GetComponent<Rigidbody2D>();
+        initGravityScale = rb.gravityScale;
     }
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -24,6 +26,7 @@ public class StoneController : MonoBehaviour
         //     }
 
         // }
+        // rb.gravityScale = initGravityScale;
     }
 
     public void ResetSelf()
