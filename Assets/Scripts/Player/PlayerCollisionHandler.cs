@@ -25,10 +25,10 @@ public class PlayerCollisionHandler : MonoBehaviour
             playerFSM.Die();
         }
 
-        if (other.gameObject.TryGetComponent<AggressiveEnemy>(out var a))
-        {
-            playerFSM.Die();
-        }
+        // if (other.gameObject.TryGetComponent<AggressiveEnemy>(out var a))
+        // {
+        //     playerFSM.Die();
+        // }
 
         // if (other.gameObject.layer == LayerMask.NameToLayer("Ground") &&
         // (playerFSM.currentState == playerFSM.state[PlayerStateType.Jump] ||

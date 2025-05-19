@@ -123,7 +123,7 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
         {
             { "Move", PlayerMove },
             { "Blow", PlayerBlowBubble },
-            { "Push", PlayerPush },
+            { "Push", PlayerLongPush },
             { "Bomb", BubbleBomb },
             { "Jump", PlayerJump },
             { "Throw", PlayerThrowCoin }
@@ -251,6 +251,8 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
 
     public void PlayerLongPush(InputAction.CallbackContext context)
     {
+        if (attributes.pushTimer <= attributes.pushCooldown)
+            return;
         if (context.phase == InputActionPhase.Started)
         {
             attributes.isBlowing = true;
@@ -262,7 +264,18 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
             {
                 float pressDuration = Math.Clamp(Time.time - attributes.blowPressStartTime, 0, 1);
                 attributes.isBlowing = false;
-                Push(pressDuration);
+                StartCoroutine(Push(pressDuration));
+                if (param.moveInput.y == 0)
+                {
+                    param.blowArea.GetComponent<Blow>().direction = Vector2.left * transform.localScale.x;
+                    param.animator.Play("push_hori", 0, 0);
+                }
+                else
+                {
+                    param.blowArea.GetComponent<Blow>().direction = new Vector2(param.moveInput.x, param.moveInput.y).normalized;
+                    param.animator.Play("push_up", 0, 0);
+                }
+                attributes.pushTimer = 0;
             }
         }
     }
@@ -305,8 +318,9 @@ public class PlayerFSM : MonoSingleton<PlayerFSM>
     {
         param.blowArea.gameObject.SetActive(true);
     }
-    void Push(float duration)
+    IEnumerator Push(float duration)
     {
+        yield return new WaitForSeconds(0.2f);
         param.blowArea.GetComponent<Blow>().blowForce = duration * 1000f;
         param.blowArea.gameObject.SetActive(true);
     }

@@ -9,6 +9,7 @@ public class KilledByCoinEnemy : MonoBehaviour
             if (other.gameObject.GetComponent<Rigidbody2D>().linearVelocity.magnitude > 60f)
             {
                 if (TryGetComponent<EnemyFSM>(out var e)) e.Die();
+                other.gameObject.GetComponent<WeaponCoin>().DestorySelf();
             }
         }
     }
@@ -20,6 +21,7 @@ public class KilledByCoinEnemy : MonoBehaviour
             if (other.gameObject.GetComponent<Rigidbody2D>().linearVelocity.magnitude > 60f)
             {
                 if (TryGetComponent<EnemyFSM>(out var e)) e.Die();
+                other.gameObject.GetComponent<WeaponCoin>().DestorySelf();
             }
         }
     }

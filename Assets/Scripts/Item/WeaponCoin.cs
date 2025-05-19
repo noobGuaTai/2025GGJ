@@ -10,6 +10,9 @@ public class WeaponCoin : MonoBehaviour
     public Collider2D colliderPlayer;
     float initGravityScale;
 
+    AnythingCheck anythingCheck => GetComponent<AnythingCheck>();
+    Animator animator => GetComponent<Animator>();
+    AnimatorStateInfo currentStateInfo => animator.GetCurrentAnimatorStateInfo(0);
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -17,6 +20,7 @@ public class WeaponCoin : MonoBehaviour
         colliderPlayer.enabled = false;
         initGravityScale = rb.gravityScale;
     }
+
     void OnCollisionEnter2D(Collision2D other)
     {
         // if (other.gameObject.TryGetComponent<KilledByCoinEnemy>(out var k))
@@ -42,9 +46,23 @@ public class WeaponCoin : MonoBehaviour
     }
     void Update()
     {
+        if (anythingCheck.isChecked && currentStateInfo.IsName("drop"))
+        {
+            animator.Play("idle", 0, 0);
+        }
+        else if (!anythingCheck.isChecked && currentStateInfo.IsName("idle"))
+        {
+            animator.Play("drop", 0, 0);
+        }
+
         if (timer > 1)
             return;
         timer += Time.deltaTime;
         if (timer > 1) colliderPlayer.enabled = true;
+    }
+    public void DestorySelf()
+    {
+        animator.Play("shoot", 0, 0);
+        Destroy(gameObject, 0.625f);
     }
 }

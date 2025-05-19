@@ -13,6 +13,7 @@ public class BaseBubble : MonoBehaviour
     public AudioSource destoryAudio;
     public Vector2 initSpeed;
     float swallowedObjectMass;
+    public bool isDestorySwallowedObjectOnBreak;
     public virtual void Awake()
     {
         colliders = GetComponents<Collider2D>();

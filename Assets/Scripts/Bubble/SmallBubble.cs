@@ -128,7 +128,7 @@ public class SmallBubble : BaseBubble
                 bubblesBeingMerged.Remove(GetInstanceID());
                 handledBubbleCollisions.Remove(GetInstanceID());
                 SafeDestroyBubble();
-                if (swallowedObject != null) if (swallowedObject.TryGetComponent<EnemyFSM>(out var e)) e.Die();
+                if (swallowedObject != null && isDestorySwallowedObjectOnBreak) if (swallowedObject.TryGetComponent<EnemyFSM>(out var e)) e.Die();
                 PlayerFSM.Instance.CreateFX(PlayerFSM.Instance.param.StepOnBubbleFX);
             }
         }

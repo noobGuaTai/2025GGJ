@@ -1206,13 +1206,13 @@ MonoBehaviour:
     JumpOnGroundFX: {fileID: 704414710948297510, guid: 71ef8fa125b7c0b47ae55ce08e8ea08e, type: 3}
     StepOnBubbleFX: {fileID: 704414710948297510, guid: e440dde1110a9d34183886a3acf70822, type: 3}
   attributes:
-    blowCooldown: 0.7
+    blowCooldown: 0.5
     moveSpeed: 100
     health: 0
     jumpSpeed: 360
     isBlowing: 0
     throwCoinSpeed: 130
-    pushCooldown: 0.7
+    pushCooldown: 0.4
     isEnableRecoil: 0
     bubbleRecoil:
       serializedVersion: 2
