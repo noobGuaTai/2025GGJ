@@ -25,6 +25,7 @@ public class BorerManParameters
     public AudioSource drillInAudio;
     public AudioSource drillOutAudio;
     public GameObject aim;
+    public SpriteRenderer sr;
 }
 
 public class BorerManFSM : EnemyFSM
@@ -38,6 +39,7 @@ public class BorerManFSM : EnemyFSM
     {
         base.Awake();
         param.groundCheck = GetComponent<AnythingCheck>();
+        param.sr = GetComponent<SpriteRenderer>();
     }
 
     public override void Start()
@@ -59,7 +61,7 @@ public class BorerManFSM : EnemyFSM
         GetComponent<SwallowedEnemy>().onLoadActions += () => ChangeState(BorerManStateType.UnderSwallowed);
         GetComponent<SwallowedEnemy>().onBreakActions += () => ChangeState(BorerManStateType.Idle);
         GetComponent<KnockedBackEnemy>().onKnockedBackActions += () => ChangeState(BorerManStateType.KnockedBack);
-        GetComponentInChildren<EnemyAttackAnything>().onAttacked += (other) => { if (other.TryGetComponent<SmallBubble>(out var s)) s.isBeingDestroyed = true; BubbleQueue.DestroyBubble(other.gameObject); };
+        GetComponentInChildren<EnemyAttackAnything>().onAttacked += (other) => { BubbleQueue.DestroyBubble(other.gameObject); };
 
     }
 

@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 7978463243563586483}
   - component: {fileID: 1364287371229804807}
   - component: {fileID: 1004151329279487216}
+  - component: {fileID: 404495337040845417}
   m_Layer: 21
   m_Name: Attack
   m_TagString: Untagged
@@ -125,6 +126,33 @@ MonoBehaviour:
   aim:
     serializedVersion: 2
     m_Bits: 128
+--- !u!50 &404495337040845417
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5822850840863521195}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6519572436789688924
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,8 +177,6 @@ GameObject:
   - component: {fileID: 4802326540408769342}
   - component: {fileID: 8590747836126454747}
   - component: {fileID: 2691326589138289587}
-  - component: {fileID: 2390254116621771445}
-  - component: {fileID: 3760104893974312432}
   m_Layer: 9
   m_Name: BorerMan
   m_TagString: Untagged
@@ -216,8 +242,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1375231315
-  m_SortingLayer: 3
+  m_SortingLayerID: -268021933
+  m_SortingLayer: 2
   m_SortingOrder: -1
   m_Sprite: {fileID: 6977267264750840145, guid: 7b8508b194d1875419740136c6138b84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -516,6 +542,7 @@ MonoBehaviour:
     drillInAudio: {fileID: 4802326540408769342}
     drillOutAudio: {fileID: 8590747836126454747}
     aim: {fileID: 0}
+    sr: {fileID: 0}
 --- !u!82 &4802326540408769342
 AudioSource:
   m_ObjectHideFlags: 0
@@ -807,31 +834,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2390254116621771445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6519572436789688924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1041ac66317d90a4cb423f528618a12f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  somatoType: 1
---- !u!114 &3760104893974312432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6519572436789688924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d83937ab5ad05a845b8e40ddc16635b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layer:
-    serializedVersion: 2
-    m_Bits: 4096

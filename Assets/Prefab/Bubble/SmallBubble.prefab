@@ -81,9 +81,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1983266021
-  m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingLayerID: 689969053
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: -3557995642865903261, guid: be0b036b1cff8c241a2d49eda49ba913, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -216,9 +216,10 @@ MonoBehaviour:
     m_Bits: 256
   destoryAudio: {fileID: -5590158697434578146}
   initSpeed: {x: 0, y: 0}
+  isDestorySwallowedObjectOnBreak: 0
+  isDestroyed: 0
   bigBubblePrefab: {fileID: 0}
   reboundVelocity: 250
-  isBeingDestroyed: 0
   mergeAudio: {fileID: 4293251702615182026}
 --- !u!95 &8361603716610868231
 Animator:

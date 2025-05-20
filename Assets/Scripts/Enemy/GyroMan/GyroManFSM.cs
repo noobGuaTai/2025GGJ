@@ -59,7 +59,7 @@ public class GyroManFSM : EnemyFSM
         GetComponent<SwallowedEnemy>().onLoadActions += () => ChangeState(GyroManStateType.UnderSwallowed);
         GetComponent<SwallowedEnemy>().onBreakActions += () => ChangeState(GyroManStateType.Idle);
         GetComponent<KnockedBackEnemy>().onKnockedBackActions += () => ChangeState(GyroManStateType.KnockedBack);
-        GetComponentInChildren<EnemyAttackAnything>().onAttacked += (other) => { if (other.TryGetComponent<SmallBubble>(out var s)) s.isBeingDestroyed = true; BubbleQueue.DestroyBubble(other.gameObject); };
+        GetComponentInChildren<EnemyAttackAnything>().onAttacked += (other) => { BubbleQueue.DestroyBubble(other.gameObject); };
     }
 
     void Update()

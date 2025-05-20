@@ -4,3 +4,4 @@
 [submodule "Assets/Scripts/Tools"]
 	path = Assets/Scripts/Tools
 	url = https://github.com/sclchuck/UnityTools.git
+	branch = main

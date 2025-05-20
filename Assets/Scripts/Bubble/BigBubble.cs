@@ -32,7 +32,11 @@ public class BigBubble : BaseBubble
     {
         base.Awake();
         tween = gameObject.AddComponent<Tween>();
-        Invoke("SetGravityScale", 1f);
+        // Invoke("SetGravityScale", 3f);
+        tween.AddTween("gravity", x =>
+        {
+            rb.gravityScale = x;
+        }, 0f, 1f, 3f).Play();
     }
 
     public override void Start()
@@ -51,11 +55,11 @@ public class BigBubble : BaseBubble
     {
         base.OnTriggerEnter2D(other);
         collidingObjects.Add(other);
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") && slideCoroutine != null)
-        {
-            StopCoroutine(slideCoroutine);
-            slideCoroutine = null;
-        }
+        // if (other.gameObject.layer == LayerMask.NameToLayer("Ground") && slideCoroutine != null)
+        // {
+        //     StopCoroutine(slideCoroutine);
+        //     slideCoroutine = null;
+        // }
     }
 
     public override void OnTriggerStay2D(Collider2D other)

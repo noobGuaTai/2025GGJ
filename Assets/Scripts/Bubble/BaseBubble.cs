@@ -14,6 +14,7 @@ public class BaseBubble : MonoBehaviour
     public Vector2 initSpeed;
     float swallowedObjectMass;
     public bool isDestorySwallowedObjectOnBreak;
+    public bool isDestroyed = false;
     public virtual void Awake()
     {
         colliders = GetComponents<Collider2D>();

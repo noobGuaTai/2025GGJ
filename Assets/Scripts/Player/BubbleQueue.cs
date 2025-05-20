@@ -50,6 +50,9 @@ public static class BubbleQueue
 
     public static void DestroyBubble(GameObject bubble, bool isMerge = false)
     {
+        if (bubble.GetComponent<BaseBubble>().isDestroyed)
+            return;
+        bubble.GetComponent<BaseBubble>().isDestroyed = true;
         Queue<GameObject> tempQueue = new Queue<GameObject>();
         while (bubbles.Count > 0)
         {

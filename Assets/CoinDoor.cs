@@ -13,7 +13,8 @@ public class CoinDoor : MonoBehaviour
     {
         Debug.Log("[CoinDoor] open");
         var tw = gameObject.GetOrAddComponent<Tween>();
-        tw.AddTween("down", (x) => transform.position = transform.position.NewY(x), 0, -50, 0.1f);
+        tw.Clear("down");
+        tw.AddTween("down", (x) => transform.position = transform.position.NewY(x), transform.position.y, transform.position.y - 50, 1f);
         tw.Play();
     }
 }

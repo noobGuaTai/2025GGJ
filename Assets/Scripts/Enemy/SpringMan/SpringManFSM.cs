@@ -67,15 +67,10 @@ public class SpringManFSM : EnemyFSM
         GetComponent<KnockedBackEnemy>().onKnockedBackActions += () => ChangeState(SpringManStateType.KnockedBack);
         GetComponentInChildren<EnemyAttackAnything>().onAttacked += (other) =>
         {
-            if (other.TryGetComponent<SmallBubble>(out var s))
-            {
-                s.isBeingDestroyed = true;
+            if (other.TryGetComponent<BaseBubble>(out var s))
                 BubbleQueue.DestroyBubble(other.gameObject);
-            }
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-            {
                 PlayerFSM.Instance.Die();
-            }
         };
     }
 

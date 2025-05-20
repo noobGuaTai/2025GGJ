@@ -22,7 +22,7 @@ public class SmallBubble : BaseBubble
     private static bool isCleanupRegistered = false;
 
     // 标记泡泡是否正在被销毁
-    public bool isBeingDestroyed = false;
+    // public bool isDestroyed = false;
 
 
     public AudioSource mergeAudio;
@@ -74,7 +74,7 @@ public class SmallBubble : BaseBubble
     public override void OnCollisionEnter2D(Collision2D other)
     {
         // 如果已经在销毁过程中，跳过所有碰撞处理
-        if (isBeingDestroyed)
+        if (isDestroyed)
             return;
 
         base.OnCollisionEnter2D(other);
@@ -87,7 +87,7 @@ public class SmallBubble : BaseBubble
         {
             int otherID = otherBubble.GetInstanceID();
 
-            if (bubblesBeingMerged.Contains(otherID) || otherBubble.isBeingDestroyed)
+            if (bubblesBeingMerged.Contains(otherID) || otherBubble.isDestroyed)
                 return;
 
             if (myID < otherID && !handledBubbleCollisions.Contains(myID) && !handledBubbleCollisions.Contains(otherID))
@@ -107,10 +107,10 @@ public class SmallBubble : BaseBubble
         if ((LayerMask.GetMask("WeaponCoin", "Stone") & (1 << other.gameObject.layer)) != 0)
         {
             float angle = Vector2.Angle(Vector2.up, (other.transform.position - transform.position).normalized);
-            if (angle <= 60f && !isBeingDestroyed)
+            if (angle <= 60f && !isDestroyed)
             {
                 other.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
-                isBeingDestroyed = true;
+                // isDestroyed = true;
                 other.gameObject.GetComponent<Rigidbody2D>().linearVelocityY = reboundVelocity;
                 bubblesBeingMerged.Remove(GetInstanceID());
                 handledBubbleCollisions.Remove(GetInstanceID());
@@ -121,9 +121,9 @@ public class SmallBubble : BaseBubble
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             float angle = Vector2.Angle(Vector2.up, (other.transform.position - transform.position).normalized);
-            if (angle <= 60f && !isBeingDestroyed)
+            if (angle <= 60f && !isDestroyed)
             {
-                isBeingDestroyed = true;
+                // isDestroyed = true;
                 other.gameObject.GetComponent<Rigidbody2D>().linearVelocityY = reboundVelocity;
                 bubblesBeingMerged.Remove(GetInstanceID());
                 handledBubbleCollisions.Remove(GetInstanceID());
@@ -136,8 +136,8 @@ public class SmallBubble : BaseBubble
 
     private void SafeDestroyBubble()
     {
-        if (!isBeingDestroyed)
-            return;
+        // if (!isDestroyed)
+        //     return;
 
         StartCoroutine(DelayedDestroy());
     }
@@ -155,11 +155,11 @@ public class SmallBubble : BaseBubble
     {
         try
         {
-            if (otherBubble == null || this == null || isBeingDestroyed || otherBubble.isBeingDestroyed)
+            if (otherBubble == null || this == null || isDestroyed || otherBubble.isDestroyed)
                 return;
 
-            isBeingDestroyed = true;
-            otherBubble.isBeingDestroyed = true;
+            // isDestroyed = true;
+            // otherBubble.isDestroyed = true;
 
             Vector3 centerPosition = (transform.position + otherBubble.transform.position) / 2;
 
@@ -185,14 +185,14 @@ public class SmallBubble : BaseBubble
 
     public override void SwallowObject(GameObject other)
     {
-        if (isBeingDestroyed)
+        if (isDestroyed)
             return;
 
         if (other.TryGetComponent<EnemyFSM>(out var e))
         {
             if (e.somatoType == EnemyFSM.EnemySomatoType.Heavy)
             {
-                isBeingDestroyed = true;
+                // isDestroyed = true;
                 BubbleQueue.DestroyBubble(gameObject);
             }
             else
