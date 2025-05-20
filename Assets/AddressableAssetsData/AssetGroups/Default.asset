@@ -140,11 +140,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b4b50482537f67044a50bbcb73081200
-    m_Address: "Assets/Sound/\u6CE1\u6CE1/big_bubbles_brust_0.wav"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b7afb00d9cc15ae45a829f21d581cdea
     m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/coin_kills_flesh_2.wav"
     m_ReadOnly: 0
