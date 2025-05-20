@@ -1413,7 +1413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba9c757d46ed5124c87b049911ab67da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpenOnStart: 1
+  isOpenOnStart: 0
 --- !u!50 &5056771631888696591
 Rigidbody2D:
   serializedVersion: 5

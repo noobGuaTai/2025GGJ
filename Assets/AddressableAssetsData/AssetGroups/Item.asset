@@ -20,11 +20,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 22a5e6027a0b8994eb5b45d3fb7d366e
-    m_Address: Assets/Prefab/Item/WeaponCoin.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3d048469dffa6464fb43c2625fdaabe4
     m_Address: Assets/Prefab/Item/Key.prefab
     m_ReadOnly: 0

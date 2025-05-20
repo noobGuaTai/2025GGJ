@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChickenMan
       objectReference: {fileID: 0}
+    - target: {fileID: 6519572436789688924, guid: 744fe1d7f8fef1b46821a6f782dbd18c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9027380424867919135, guid: 744fe1d7f8fef1b46821a6f782dbd18c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.9056654
@@ -236,6 +240,63 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1381992423}
   m_SourcePrefab: {fileID: 100100000, guid: 1dc1cf310056a8e4b893ea1647281959, type: 3}
+--- !u!1001 &89028392
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6519572436789688924, guid: b6a53147b54cd15498fc8de8e57f3dd0, type: 3}
+      propertyPath: m_Name
+      value: CatapultMan
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027380424867919135, guid: b6a53147b54cd15498fc8de8e57f3dd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.9056654
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027380424867919135, guid: b6a53147b54cd15498fc8de8e57f3dd0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -63.885628
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027380424867919135, guid: b6a53147b54cd15498fc8de8e57f3dd0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027380424867919135, guid: b6a53147b54cd15498fc8de8e57f3dd0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027380424867919135, guid: b6a53147b54cd15498fc8de8e57f3dd0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027380424867919135, guid: b6a53147b54cd15498fc8de8e57f3dd0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027380424867919135, guid: b6a53147b54cd15498fc8de8e57f3dd0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027380424867919135, guid: b6a53147b54cd15498fc8de8e57f3dd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027380424867919135, guid: b6a53147b54cd15498fc8de8e57f3dd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027380424867919135, guid: b6a53147b54cd15498fc8de8e57f3dd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b6a53147b54cd15498fc8de8e57f3dd0, type: 3}
 --- !u!1001 &148669667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1178,6 +1239,7 @@ MonoBehaviour:
   gameOverText: {fileID: 552706730}
   level0Helper: {fileID: 0}
   level1Helper: {fileID: 0}
+  playerTipsOnGameEnd: {fileID: 0}
 --- !u!114 &978125389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1411,6 +1473,10 @@ PrefabInstance:
     - target: {fileID: 6519572436789688924, guid: 4e0d9ddb4bd51b74b8686a64e8ef29a6, type: 3}
       propertyPath: m_Name
       value: BorerMan
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519572436789688924, guid: 4e0d9ddb4bd51b74b8686a64e8ef29a6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9027380424867919135, guid: 4e0d9ddb4bd51b74b8686a64e8ef29a6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5395,11 +5461,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1592291461830382405, guid: 9b8f075e451f3b843b34a73f5d7d9e83, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 53.7
+      value: -71
       objectReference: {fileID: 0}
     - target: {fileID: 1592291461830382405, guid: 9b8f075e451f3b843b34a73f5d7d9e83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 49.9
+      value: -62
       objectReference: {fileID: 0}
     - target: {fileID: 1592291461830382405, guid: 9b8f075e451f3b843b34a73f5d7d9e83, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5815,3 +5881,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1577220268}
   - {fileID: 1165609638}
+  - {fileID: 89028392}

@@ -9,6 +9,7 @@ public class PlayerAudioManager : MonoBehaviour
     public AudioSource blowAudio;
     public AudioSource underAttackAudio;
     public AudioSource punchAudio;
+    public AudioSource coinCollectAudio;
     PlayerFSM playerFSM => PlayerFSM.Instance;
 
     void Start()

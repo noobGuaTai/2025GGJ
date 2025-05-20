@@ -6,7 +6,7 @@ public class CoinDoor : MonoBehaviour
     public bool isOpenOnStart = false;
     void Start()
     {
-        if (GameManager.Instance.isReturning && isOpenOnStart)
+        if (GameManager.Instance.isReturning || isOpenOnStart)
             Open();
     }
     public void Open()

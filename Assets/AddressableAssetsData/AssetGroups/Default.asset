@@ -30,6 +30,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 059578f4ac31d78478b1e112325fc665
+    m_Address: Assets/Prefab/Item/WeaponCoin.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0f939f1d2e1bd1044a256d1bfa41eacb
     m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/coin_kills_flesh_1.wav"
     m_ReadOnly: 0
@@ -37,6 +42,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 14660d546946fd5478f5babfbc6e1210
     m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/coin_flies_0.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 22a5e6027a0b8994eb5b45d3fb7d366e
+    m_Address: Assets/Prefab/Item/DecorationCoin.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

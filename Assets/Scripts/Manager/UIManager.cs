@@ -206,7 +206,7 @@ public class UIManager : MonoSingleton<UIManager>
         }
 
         Vector2 startPos = rectTransform.anchoredPosition;
-        Vector2 endPos = startPos + new Vector2(0, 1100f); // 向上移动1000像素
+        Vector2 endPos = startPos + new Vector2(0, 1300f); // 向上移动1000像素
 
         while (elapsed < duration)
         {
