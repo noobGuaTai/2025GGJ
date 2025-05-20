@@ -44,15 +44,15 @@ public class RichmanFSM : EnemyFSM
             stateType => stateType,
             _ => (Action)null
         );
-        
+
         ChangeState(RichmanStateType.Idle);
     }
 
     void Update()
     {
         currentState.OnUpdate();
-        var tmp =transform.Find("Label").GetComponent<TextMeshPro>();
-        tmp.text = $"Coin: {param.currentHasCoin}/{param.needCoinNum}";
+        var tmp = transform.Find("Label").GetComponent<TextMeshPro>();
+        tmp.text = $": {param.currentHasCoin}/{param.needCoinNum}";
     }
 
     void FixedUpdate()
@@ -97,7 +97,7 @@ public class RichmanFSM : EnemyFSM
             param.currentHasCoin++;
             if (param.currentHasCoin >= param.needCoinNum)
                 door.Open();
-        }      
+        }
     }
     public override void Die()
     {

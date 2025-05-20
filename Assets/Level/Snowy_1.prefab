@@ -6608,6 +6608,10 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 6063400303807381986}
+    - target: {fileID: 8047810682933925830, guid: 51a3b02db10a3d24f8431bf1b96e34af, type: 3}
+      propertyPath: param.needCoinNum
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9027380424867919135, guid: 51a3b02db10a3d24f8431bf1b96e34af, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
