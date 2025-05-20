@@ -55,7 +55,7 @@ public class PlayerCollisionHandler : MonoBehaviour
                 float angle = Vector2.Angle(Vector2.up, (transform.position - other.transform.position).normalized);
                 if (angle <= 45f && lastPlayerVelocity.normalized.y < -0.5f)
                 {
-                    var speed = other.GetContact(0).normal * b.reboundVelocity;
+                    var speed = other.GetContact(0).normal * b.reboundVelocityOnAbsorb;
                     playerFSM.delegateParam.onRebound += () => playerFSM.param.rb.linearVelocity = speed;
                     playerFSM.ChangeState(PlayerStateType.Rebound);
                 }

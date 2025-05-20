@@ -119,12 +119,22 @@ public class GameManager : MonoSingleton<GameManager>
         if (currentLevel.name.Contains("Sunny_1") && currentLevel.transform.position.y - playerInitPosition.y > 200f)
             PlayerFSM.Instance.param.rb.linearVelocityY = PlayerFSM.Instance.attributes.jumpSpeed;
 
-        foreach (var pair in bgmPair)
+        if (!isReturning)
+            foreach (var pair in bgmPair)
+            {
+                if (currentLevel.name.Contains(pair.Key) && currentBGM != bgm[pair.Value])
+                {
+                    currentBGM.Stop();
+                    currentBGM = bgm[pair.Value];
+                    currentBGM.Play();
+                }
+            }
+        else
         {
-            if (currentLevel.name.Contains(pair.Key) && currentBGM != bgm[pair.Value])
+            if (currentLevel.name.Contains("GameOver"))
             {
                 currentBGM.Stop();
-                currentBGM = bgm[pair.Value];
+                currentBGM = bgm[5];
                 currentBGM.Play();
             }
         }

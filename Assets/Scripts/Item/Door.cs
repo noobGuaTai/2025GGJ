@@ -45,6 +45,10 @@ public class Door : MonoBehaviour
     {
         if (!isOpen)
             Open();
+        if (!isOpen && GameManager.Instance.isReturning)
+        {
+            OpenSuccess();
+        }
     }
     public bool OpenSuccess()
     {

@@ -24,6 +24,7 @@ public class BigBubble : BaseBubble
     Tween tween;
     float radius = 7f;
     HashSet<Collider2D> collidingObjects = new HashSet<Collider2D>();
+    public float reboundVelocityOnAbsorb;
     public float reboundVelocity;
     public float slideSpeed;
     Coroutine slideCoroutine;
@@ -54,7 +55,16 @@ public class BigBubble : BaseBubble
             Vector2 contactPoint = other.GetContact(0).point;
             Vector2 direction = (contactPoint - (Vector2)transform.position).normalized;
             other.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
-            other.gameObject.GetComponent<Rigidbody2D>().linearVelocity = reboundVelocity * direction;
+            other.gameObject.GetComponent<Rigidbody2D>().linearVelocity = reboundVelocityOnAbsorb * direction;
+        }
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            float angle = Vector2.Angle(Vector2.up, (other.transform.position - transform.position).normalized);
+            if (angle <= 60f)
+            {
+                other.gameObject.GetComponent<Rigidbody2D>().linearVelocityY = reboundVelocity;
+            }
         }
     }
 

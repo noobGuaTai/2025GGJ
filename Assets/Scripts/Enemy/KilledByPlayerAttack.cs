@@ -6,6 +6,7 @@ public class KilledByPlayerAttack : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
         {
+            PlayerFSM.Instance.GetComponentInChildren<PlayerAudioManager>().punchAudio.Play();
             if (TryGetComponent<EnemyFSM>(out var e)) e.Die();
         }
     }
@@ -14,6 +15,7 @@ public class KilledByPlayerAttack : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
         {
+            PlayerFSM.Instance.GetComponentInChildren<PlayerAudioManager>().punchAudio.Play();
             if (TryGetComponent<EnemyFSM>(out var e)) e.Die();
         }
     }
