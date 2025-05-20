@@ -48,6 +48,14 @@ public class BigBubble : BaseBubble
         if (rb.bodyType != RigidbodyType2D.Kinematic && !other.gameObject.TryGetComponent<BaseBubble>(out var _) && !other.gameObject.TryGetComponent<PlayerFSM>(out var _))
             SwallowObject(other.gameObject);
         IsDestroyBubble(other.gameObject);
+
+        if ((LayerMask.GetMask("WeaponCoin", "Stone") & (1 << other.gameObject.layer)) != 0)
+        {
+            Vector2 contactPoint = other.GetContact(0).point;
+            Vector2 direction = (contactPoint - (Vector2)transform.position).normalized;
+            other.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+            other.gameObject.GetComponent<Rigidbody2D>().linearVelocity = reboundVelocity * direction;
+        }
     }
 
 

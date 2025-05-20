@@ -66,7 +66,7 @@ public class GameManager : MonoSingleton<GameManager>
             Destroy(currentLevel);
             currentLevel = Instantiate(currentLevelPrefab, currentLevelPos, Quaternion.identity);
         }
-
+        richmanKilled = false;
         PlayerFSM.Instance.transform.position = playerInitPosition;
         PlayerFSM.Instance.param.rb.linearVelocity = Vector2.zero;
         BubbleQueue.Clear();
@@ -212,7 +212,7 @@ public class GameManager : MonoSingleton<GameManager>
         isReturning = true;
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("LeftBorder"), true);
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("RightBorder"), false);
-
+        UIManager.Instance.ShowPlayerTipsOnGameEnd();
     }
 
     public void GameOver()

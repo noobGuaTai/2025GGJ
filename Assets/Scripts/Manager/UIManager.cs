@@ -33,6 +33,7 @@ public class UIManager : MonoSingleton<UIManager>
     private RectTransform canvasRectTransform;
     public GameObject level0Helper;
     public GameObject level1Helper;
+    public GameObject playerTipsOnGameEnd;
 
     void Start()
     {
@@ -96,6 +97,7 @@ public class UIManager : MonoSingleton<UIManager>
                 {
                     localPos += screenOffset;
                     playerDialog.rectTransform.anchoredPosition = localPos;
+                    playerTipsOnGameEnd.GetComponent<TextMeshProUGUI>().rectTransform.anchoredPosition = localPos;
                     if (!playerDialog.gameObject.activeSelf)
                         playerDialog.gameObject.SetActive(true);
                 }
@@ -146,6 +148,7 @@ public class UIManager : MonoSingleton<UIManager>
                     enemyDialog.gameObject.SetActive(false);
             }
         }
+
 
     }
 
@@ -218,4 +221,14 @@ public class UIManager : MonoSingleton<UIManager>
 
     public void ShowHelper0(bool isShow) => level0Helper.SetActive(isShow);
     public void ShowHelper1(bool isShow) => level1Helper.SetActive(isShow);
+    public void ShowPlayerTipsOnGameEnd()
+    {
+        StartCoroutine(ShowPlayerTipsOnGameEndCoroutine());
+    }
+    IEnumerator ShowPlayerTipsOnGameEndCoroutine()
+    {
+        playerTipsOnGameEnd.gameObject.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        playerTipsOnGameEnd.gameObject.SetActive(false);
+    }
 }
