@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Item
+  m_EditorClassIdentifier: 
+  m_GroupName: Item
+  m_GUID: b6ace35281ed9ff4d9d60d65cdf73b35
+  m_SerializeEntries:
+  - m_GUID: 1cdf2540879f98c4fa3ce8d5597004c0
+    m_Address: Assets/Prefab/Bubble/BigBubble.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d048469dffa6464fb43c2625fdaabe4
+    m_Address: Assets/Prefab/Item/Key.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3deea4df39b6e6143a167c034373b6a6
+    m_Address: Assets/Prefab/Item/Door.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 42f10f69e285ee748847db5e3a744ac1
+    m_Address: Assets/Prefab/Bubble/SmallBubble.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 436f0aaa1e9f2a34c8954dea154654fc
+    m_Address: Assets/Prefab/Item/ItemCoin.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e90a72900763ad4caf818a5a29564d0
+    m_Address: Assets/Prefab/Item/Stone.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 91d5562720cb6704eb8c6fa2e205753e
+    m_Address: Assets/Prefab/Item/DoorButton.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: d4171720940b8ea4ba23569bd51f8989, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e9a9119cbb259df41b0bd707d81746b4, type: 2}
+    - {fileID: 11400000, guid: 7150235a01adf614dac51533d954fe74, type: 2}

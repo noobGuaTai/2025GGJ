@@ -1,0 +1,178 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Sound
+  m_EditorClassIdentifier: 
+  m_GroupName: Sound
+  m_GUID: 21c98b1f4e6ddbb43a5a2dc2b21d171f
+  m_SerializeEntries:
+  - m_GUID: 07ddb6e9623364b43aa5394d042edb20
+    m_Address: Assets/Sound/NPC/human_die.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1a5b9cd53a66dc349a692950386f06f7
+    m_Address: Assets/Sound/bubble1.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e7b06353c018604abe201559fa8a017
+    m_Address: Assets/Sound/NPC/bull_dies.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 230113edbf5cf68409e119b50bef8d68
+    m_Address: Assets/Sound/NPC/machines_die.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 26e5e2d8f341b4649b063f8e0b538e31
+    m_Address: Assets/Sound/NPC/spring_jumps.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2ebcc215d5d3521478ee60fedb7912ca
+    m_Address: Assets/Sound/bubble6.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2f6dfcbd0d3fc2041a7630bf5bce7b0a
+    m_Address: Assets/Sound/NPC/chicken_dies.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e514aa350d8c6d4badec7cd4db1c338
+    m_Address: Assets/Sound/NPC/drill_indirt.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 417f97449fe20774fa9a203efd9ef7a5
+    m_Address: Assets/Sound/bubble3.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 434834bd44016e84fa21df119145765d
+    m_Address: Assets/Sound/bubble5.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 604526fc7e9dfe94d9539ff8e94c3be0
+    m_Address: Assets/Sound/NPC/chicken_attacks.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 76a9266df55698845af2642a8e9b8555
+    m_Address: Assets/Sound/bubble8.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 79ac2b91a8a40ca449f8ca5544441f12
+    m_Address: Assets/Sound/NPC/famer_attacks.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b6e3d7f413753b498a12a33b3232dd1
+    m_Address: Assets/Sound/NPC/container_attacks.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d92dc47efa059e46ab55bef466e8968
+    m_Address: Assets/Sound/NPC/police_attacks.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 81474bc2e988dc14385b948fe5c83184
+    m_Address: Assets/Sound/bubble4.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 967c707bbd2bc694bac6a32b6a80e458
+    m_Address: Assets/Sound/bubble7.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9bf55e4c98d8fa6439a3574c3b81aef9
+    m_Address: Assets/Sound/coin.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9e52898118813de48aa88c7981aa5fa5
+    m_Address: Assets/Sound/NPC/worker_attacks.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aaf2eb1875742e249a6f81ffef13a563
+    m_Address: Assets/Sound/NPC/catapult_dies.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b60d9a4140045d647977212a19d9e4a1
+    m_Address: Assets/Sound/NPC/tree_attacks.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b90f022214be89f4dac8627dc3ce881a
+    m_Address: Assets/Sound/NPC/chainsaw_speedups.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bc5c66f38a45cc447bf2c1d84625d231
+    m_Address: Assets/Sound/NPC/drill_outdirt.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c2a311e82569b7140aff29de0dd2d824
+    m_Address: Assets/Sound/NPC/tree_dies.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c32172297fcc3d24ca7b292bf404544a
+    m_Address: Assets/Sound/bgm.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c48358347afea5b4fb68429d8d86a32e
+    m_Address: Assets/Sound/NPC/tree_grows.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf873518b4894fd4eb5eeec7e0491f03
+    m_Address: Assets/Sound/NPC/tree_plants.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dbe6af483b3a86944b5350eafa59bace
+    m_Address: Assets/Sound/bubble2.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f5a1cd2039504584797922dfd95f249c
+    m_Address: Assets/Sound/die.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f91b9fca1fa7f5f42ba70c6dd7a568b2
+    m_Address: Assets/Sound/NPC/bull_attacks.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd1fe73b289fe794b8bebdfcd1f16431
+    m_Address: Assets/Sound/NPC/catapult_attacks.wav
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: d4171720940b8ea4ba23569bd51f8989, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: bc1dd7d7640f8ce48835b2c8c628836e, type: 2}
+    - {fileID: 11400000, guid: ff3790869f80e0141b57874058d7be8a, type: 2}

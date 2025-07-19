@@ -1,0 +1,547 @@
+fileFormatVersion: 2
+guid: e718adcfd96dd954188649215ea97490
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4419413497425163506
+    second: flower_walk_0
+  - first:
+      213: 6612429755158919785
+    second: flower_walk_1
+  - first:
+      213: -5225733848822619806
+    second: flower_walk_2
+  - first:
+      213: 7844935784388537773
+    second: flower_walk_3
+  - first:
+      213: 8680436766487151669
+    second: flower_walk_4
+  - first:
+      213: -2322224377214850691
+    second: flower_walk_5
+  - first:
+      213: -3843010977687266011
+    second: flower_walk_6
+  - first:
+      213: 8048912800958951286
+    second: flower_walk_7
+  - first:
+      213: -7155508982271569395
+    second: flower_walk_8
+  - first:
+      213: 3448168151358915750
+    second: flower_walk_9
+  - first:
+      213: 939379514751590670
+    second: flower_walk_10
+  - first:
+      213: 409074732347922829
+    second: flower_walk_11
+  - first:
+      213: 2247985924038970633
+    second: flower_walk_12
+  - first:
+      213: -1567819057373578127
+    second: flower_walk_13
+  - first:
+      213: -1556111075927854487
+    second: flower_walk_14
+  - first:
+      213: 6472458834762423786
+    second: flower_walk_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: flower_walk_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 150
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0b0862d6d61ba2c0800000000000000
+      internalID: -4419413497425163506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_walk_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 150
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96a787204d114cb50800000000000000
+      internalID: 6612429755158919785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_walk_2
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 150
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 261613a60c67a77b0800000000000000
+      internalID: -5225733848822619806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_walk_3
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 150
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dadaa3a188fcedc60800000000000000
+      internalID: 7844935784388537773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_walk_4
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 100
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53405b98f3b177870800000000000000
+      internalID: 8680436766487151669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_walk_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 100
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d792b5b8b3dc5cfd0800000000000000
+      internalID: -2322224377214850691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_walk_6
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 100
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52d160f70e1eaaac0800000000000000
+      internalID: -3843010977687266011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_walk_7
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 100
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67fa0492c8b73bf60800000000000000
+      internalID: 8048912800958951286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_walk_8
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 50
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d02169cfd7682bc90800000000000000
+      internalID: -7155508982271569395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_walk_9
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 50
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a4409b1aaa5adf20800000000000000
+      internalID: 3448168151358915750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_walk_10
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 50
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e012c0e01b8590d00800000000000000
+      internalID: 939379514751590670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_walk_11
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 50
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d899f2c3d435da500800000000000000
+      internalID: 409074732347922829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_walk_12
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 0
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90dcb6e9943723f10800000000000000
+      internalID: 2247985924038970633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_walk_13
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17cf82dbfdcfd3ae0800000000000000
+      internalID: -1567819057373578127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_walk_14
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 962f4489835976ae0800000000000000
+      internalID: -1556111075927854487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower_walk_15
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 0
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aed5a55840bc2d950800000000000000
+      internalID: 6472458834762423786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: ffb9bde621561b34ba9da80bda854d7b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      flower_walk_0: -4419413497425163506
+      flower_walk_1: 6612429755158919785
+      flower_walk_10: 939379514751590670
+      flower_walk_11: 409074732347922829
+      flower_walk_12: 2247985924038970633
+      flower_walk_13: -1567819057373578127
+      flower_walk_14: -1556111075927854487
+      flower_walk_15: 6472458834762423786
+      flower_walk_16: -387785969
+      flower_walk_2: -5225733848822619806
+      flower_walk_3: 7844935784388537773
+      flower_walk_4: 8680436766487151669
+      flower_walk_5: -2322224377214850691
+      flower_walk_6: -3843010977687266011
+      flower_walk_7: 8048912800958951286
+      flower_walk_8: -7155508982271569395
+      flower_walk_9: 3448168151358915750
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

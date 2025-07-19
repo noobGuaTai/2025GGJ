@@ -2,32 +2,32 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Bubble
+  - Nail
+  - Enemy
+  - DoorButton
+  - Door
+  - Stone
+  - Key
+  - DoorTrader
+  - Coin
+  - RightBorder
+  - WeaponCoin
+  - Wall
+  - LeftBorder
+  - PlayerAttack
+  - EnemyWeapon
+  - EnemyAttack
   - 
   - 
   - 
@@ -41,3 +41,23 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG
+    uniqueID: 689969053
+    locked: 0
+  - name: Ground
+    uniqueID: 4026945363
+    locked: 0
+  - name: Enemy
+    uniqueID: 1375231315
+    locked: 0
+  - name: Item
+    uniqueID: 1983266021
+    locked: 0
+  - name: Player
+    uniqueID: 2266916601
+    locked: 0
+  - name: UI
+    uniqueID: 2434232161
+    locked: 0
+  m_RenderingLayers:
+  - Default

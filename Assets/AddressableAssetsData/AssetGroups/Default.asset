@@ -1,0 +1,203 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  m_GroupName: Default
+  m_GUID: b76681afc9a34f949bc92ee7f8328047
+  m_SerializeEntries:
+  - m_GUID: 001939194e87e584bb71c8ed8348eb2d
+    m_Address: "Assets/Sound/\u6CE1\u6CE1/small_bubbles_combine_0.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 03ed4326529177b46a69f4350f388899
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/spike_stab_0.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0565fb3fc57e2174786b9493d59fa8f6
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/spike_stabs_2.mp3"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 059578f4ac31d78478b1e112325fc665
+    m_Address: Assets/Prefab/Item/WeaponCoin.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f939f1d2e1bd1044a256d1bfa41eacb
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/coin_kills_flesh_1.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 14660d546946fd5478f5babfbc6e1210
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/coin_flies_0.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 22a5e6027a0b8994eb5b45d3fb7d366e
+    m_Address: Assets/Prefab/Item/DecorationCoin.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2955d4bc74c93844d9c8b7d8c34ed3cd
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/coin_kills_flesh_0.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 297b1a0ddce5a0448a56cc345d51d8b1
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/rock_cracks_1.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2d973a2dae367fa409ce92b7d2ae5260
+    m_Address: "Assets/Sound/\u6CE1\u6CE1/small_bubbles_brust_6.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2fe660d58e8d0c348b07aeb405b34728
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/coin_flies_2.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 34fb44491664e5940969b874a71cbb24
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/wood_cracks_0.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3faae7d021266b446b6f74924818423b
+    m_Address: "Assets/Sound/\u6CE1\u6CE1/small_bubbles_make_1.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 446e7965ac84089499f9cd2089ed1e6a
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/rock_cracks_0.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4b0be61f44bc00247bdc4250ceec5df6
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/coin_kills_machine_1.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5181c54400642774dbd156b0b4ed0e83
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/wood_cracks_1.mp3"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 59c7b83b3beeb8c43af4379f9e9268db
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/coin_falls_1.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 647536c38b195c64089e5d136d191bf9
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/rock_cracks_3.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 668d4340992aa334ea3b1c2510e3e403
+    m_Address: "Assets/Sound/\u6CE1\u6CE1/small_bubbles_combine_1.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d275881340fa0b45afa44b7830d796f
+    m_Address: "Assets/Sound/\u6CE1\u6CE1/small_bubbles_make_2.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c0c00f0df2241d448dad3da1549ba18
+    m_Address: "Assets/Sound/\u6CE1\u6CE1/small_bubbles_brust_3.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 883f7bb6f27652746bf1404e0d5f2058
+    m_Address: "Assets/Sound/\u6CE1\u6CE1/small_bubbles_brust_5.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 95b7e64580ea58944bf8e71c8cad055e
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/coin_kills_machine_0.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5225b3052aef4f4cb86e1a7a553b00c
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/coin_falls_0.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5b6baa3e939bd14ea2fc67e88883c46
+    m_Address: "Assets/Sound/\u6CE1\u6CE1/small_bubbles_make_0.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7379b9fd093c58478d564bed3a08dca
+    m_Address: "Assets/Sound/\u6CE1\u6CE1/big_bubbles_brust_1.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b239d5123ee1ef448b642e53f594f0fa
+    m_Address: "Assets/Sound/\u6CE1\u6CE1/small_bubbles_brust_1.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7afb00d9cc15ae45a829f21d581cdea
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/coin_kills_flesh_2.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b993aef81dc1098468cb620bb21e6365
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/rock_cracks_2.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c15122a9098010f419c8bd552d69bba2
+    m_Address: "Assets/Sound/\u6CE1\u6CE1/small_bubbles_brust_2.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cbc952aaab7abe44b83d137ca7515c22
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/spike_stab_1.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dfd3ac51fa901ca4f989541e2a265f5d
+    m_Address: "Assets/Sound/\u6CE1\u6CE1/small_bubbles_brust_0.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e35dfa6e5afeca847982332111371507
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/coin_flies_1.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e6d68b22d3fce27499c555dad2a8fd60
+    m_Address: "Assets/Sound/\u6CE1\u6CE1/small_bubbles_brust_4.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e74240e4a6fbf0848af36e265c7695f7
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/coin_kills_machine_2.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec91ce10e48504d48ab858991092d918
+    m_Address: "Assets/Sound/\u73AF\u5883\u4E0E\u9053\u5177/wood_cracks_2.wav"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: d4171720940b8ea4ba23569bd51f8989, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: fb9f0dde603e2304db8d8adb9497aad3, type: 2}
+    - {fileID: 11400000, guid: 0ea218166d80dca4883714ad28fb9e9e, type: 2}
