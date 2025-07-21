@@ -8139,7 +8139,7 @@ PrefabInstance:
     - target: {fileID: 8898923658836203230, guid: 20900d89fde66a049afd64f200337843, type: 3}
       propertyPath: nextLevel
       value: 
-      objectReference: {fileID: 3290123360391563851, guid: 2ab01dbdbc0c3bc49b9070ea3a3967e3, type: 3}
+      objectReference: {fileID: 4903120405507121185, guid: 4f21ac8933bf9b04996cd46567b3d820, type: 3}
     - target: {fileID: 8898923658836203230, guid: 20900d89fde66a049afd64f200337843, type: 3}
       propertyPath: nextLevelType
       value: 1
